@@ -1,0 +1,5 @@
+{
+  "name": "QRP Generator",
+  "description": "A mathematical visualization tool for quantum energy fields, featuring configurable sequences, dynamic geometry generation, and sequence animation.",
+  "requestFramePermissions": []
+}
