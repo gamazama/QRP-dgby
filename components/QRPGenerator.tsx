@@ -25,6 +25,7 @@ interface QRPGeneratorProps extends Partial<GeoConfig> {
   description?: string;
   exportMode?: boolean;
   exportTheme?: 'light' | 'dark';
+  animationRotation?: number; // Manual rotation for video export (in degrees)
 }
 
 const QRPGenerator: React.FC<QRPGeneratorProps> = ({ 
@@ -76,7 +77,8 @@ const QRPGenerator: React.FC<QRPGeneratorProps> = ({
   ringStroke = 0.8,
   stripeStroke = 2.0,
   exportMode = false,
-  exportTheme = 'light'
+  exportTheme = 'light',
+  animationRotation = 0 // Manual rotation for video export
 }) => {
   // Center coordinates in SVG space
   const cx = 200;
@@ -444,8 +446,12 @@ const QRPGenerator: React.FC<QRPGeneratorProps> = ({
                     {/* Content: Seeds (Only show if Sunflower AND Seed design selected) */}
                     {lobeType === 'sunflower' && lobeDesign === 'seeds' && (
                         <g 
-                            className="animate-[spin_24s_linear_infinite]"
-                            style={{ animationPlayState: active ? 'running' : 'paused' }}
+                            className={exportMode ? undefined : "animate-spin-reverse"}
+                            style={exportMode ? undefined : { 
+                                animationPlayState: active ? 'running' : 'paused'
+                            }}
+                            transform={exportMode ? `rotate(${animationRotation})` : undefined}
+                            data-rotate={exportMode ? "seeds" : undefined}
                         >
                             <path 
                                 d={lobe.seedPath}
@@ -484,8 +490,12 @@ const QRPGenerator: React.FC<QRPGeneratorProps> = ({
                 {/* --- 2b. Central Ghost Sunflower OR SVG --- */}
                 <g transform={`translate(${cx}, ${cy})`} className="pointer-events-none" style={{ opacity: centerOpacity }}>
                     <g
-                        className="animate-[spin_48s_linear_infinite]"
-                        style={{ animationPlayState: active ? 'running' : 'paused' }}
+                        className={exportMode ? undefined : "animate-spin-reverse-slow"}
+                        style={exportMode ? undefined : { 
+                            animationPlayState: active ? 'running' : 'paused'
+                        }}
+                        transform={exportMode ? `rotate(${animationRotation * 0.5})` : undefined}
+                        data-rotate={exportMode ? "central" : undefined}
                     >
                         {centerDesign === 'seeds' ? (
                             centralSeeds.map((seed, idx) => (

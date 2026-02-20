@@ -1,19 +1,19 @@
 
 import React, { useState, useEffect } from 'react';
-import { useTheme } from './hooks/useTheme';
-import { useSequencer } from './hooks/useSequencer';
-import { compressConfig, decompressConfig } from './utils/compression';
+import { useTheme } from '../hooks/useTheme';
+import { useSequencer } from '../hooks/useSequencer';
+import { compressConfig, decompressConfig } from '../utils/compression';
 import { Flower, Anchor, Droplets } from 'lucide-react';
-import { SUNFLOWER_PRESET, DHARMA_PRESET, LOTUS_PRESET } from './constants';
-import { GeoConfig } from './types';
+import { SUNFLOWER_PRESET, DHARMA_PRESET, LOTUS_PRESET } from '../constants';
+import { GeoConfig } from '../types';
 
-import Header from './components/Header';
-import FullScreenOverlay from './components/FullScreenOverlay';
-import VisualizerStage from './components/VisualizerStage';
-import PlaybackControls from './components/PlaybackControls';
-import GeometryTuner from './components/GeometryTuner';
-import SequenceManager from './components/SequenceManager';
-import ImportModal from './components/ImportModal';
+import Header from './Header';
+import FullScreenOverlay from './FullScreenOverlay';
+import VisualizerStage from './VisualizerStage';
+import PlaybackControls from './PlaybackControls';
+import GeometryTuner from './GeometryTuner';
+import SequenceManager from './SequenceManager';
+import ImportModal from './ImportModal';
 
 const App: React.FC = () => {
   // --- Hooks & State ---
@@ -303,6 +303,7 @@ const App: React.FC = () => {
                     sequences={sequencer.sequences}
                     activeId={sequencer.activeSequence.id}
                     isPlaying={sequencer.isPlaying}
+                    timingMs={sequencer.timingMs}
                     onUpdate={sequencer.updateSequence}
                     onReset={sequencer.resetSequences}
                     onAdd={sequencer.addSequence}

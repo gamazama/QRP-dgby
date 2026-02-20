@@ -302,6 +302,7 @@ const App: React.FC = () => {
                     sequences={sequencer.sequences}
                     activeId={sequencer.activeSequence.id}
                     isPlaying={sequencer.isPlaying}
+                    timingMs={sequencer.timingMs}
                     onUpdate={sequencer.updateSequence}
                     onReset={sequencer.resetSequences}
                     onAdd={sequencer.addSequence}

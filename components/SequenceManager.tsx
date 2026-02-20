@@ -1,7 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import SequenceEditor from './SequenceEditor';
 import QRPGenerator from './QRPGenerator';
-import { RefreshCw, Plus, Trash2, List, GripVertical, Copy, ImageDown, ImageUp, Upload } from 'lucide-react';
+import VideoExportModal from './VideoExportModal';
+import { RefreshCw, Plus, Trash2, List, GripVertical, Copy, ImageDown, ImageUp, Upload, Film } from 'lucide-react';
 import { Sequence } from '../types';
 import { compressConfig, decompressConfig } from '../utils/compression';
 import { writePngMetadata, readPngMetadata } from '../utils/png';
@@ -10,6 +11,7 @@ interface SequenceManagerProps {
   sequences: Sequence[];
   activeId: number;
   isPlaying: boolean;
+  timingMs: number;
   onUpdate: (id: number, updates: Partial<Sequence>) => void;
   onReset: () => void;
   onAdd: () => void;
@@ -25,6 +27,7 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
   sequences, 
   activeId, 
   isPlaying, 
+  timingMs,
   onUpdate, 
   onReset,
   onAdd,
@@ -42,6 +45,7 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   const [isExporting, setIsExporting] = useState(false);
+  const [showVideoExport, setShowVideoExport] = useState(false);
 
   // Auto-scroll to active item in the list
   useEffect(() => {
@@ -312,6 +316,15 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
                         <ImageDown size={16} /> Save Card
                     </button>
 
+                    {/* Video Export Button */}
+                    <button
+                        onClick={() => setShowVideoExport(true)}
+                        className="flex items-center justify-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
+                        title="Export Video"
+                    >
+                        <Film size={16} /> Export Video
+                    </button>
+
                     {onDuplicate && (
                         <button
                             onClick={() => onDuplicate(activeSequence.id)}
@@ -371,6 +384,15 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
 
             </div>
         )}
+
+        {/* Video Export Modal */}
+        <VideoExportModal
+            isOpen={showVideoExport}
+            onClose={() => setShowVideoExport(false)}
+            sequences={sequences}
+            timingMs={timingMs}
+            isDarkMode={isDarkMode}
+        />
     </div>
   );
 };
