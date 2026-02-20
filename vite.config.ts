@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => {
         {
           name: 'copy-nojekyll',
           closeBundle() {
-            fs.writeFileSync('dist/.nojekyll', '');
+            fs.writeFileSync('dist/.nojekyll', '# This file is required for GitHub Pages to prevent Jekyll processing\n');
           }
         }
       ],
