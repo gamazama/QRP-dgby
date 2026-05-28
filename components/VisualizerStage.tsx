@@ -10,15 +10,17 @@ interface VisualizerStageProps {
   isPlaying: boolean;
   geoConfig: GeoConfig;
   onEnterFullScreen: () => void;
+  imageSrc?: string;
 }
 
-const VisualizerStage: React.FC<VisualizerStageProps> = ({ 
-  sequence, 
-  name, 
+const VisualizerStage: React.FC<VisualizerStageProps> = ({
+  sequence,
+  name,
   description,
-  isPlaying, 
-  geoConfig, 
-  onEnterFullScreen 
+  isPlaying,
+  geoConfig,
+  onEnterFullScreen,
+  imageSrc
 }) => {
   return (
     <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl p-4 sm:p-8 flex flex-col items-center justify-center min-h-[400px] lg:min-h-[500px] relative overflow-hidden group transition-colors duration-300">
@@ -43,24 +45,27 @@ const VisualizerStage: React.FC<VisualizerStageProps> = ({
 
         {/* The Shape */}
         <div className="relative z-0 transform transition-transform duration-700 ease-out w-full flex justify-center">
-            <QRPGenerator 
-                sequence={sequence} 
+            <QRPGenerator
+                sequence={sequence}
                 size={420}
                 active={isPlaying}
                 showLabels={false}
                 title={name}
                 description={description}
                 {...geoConfig}
+                imageSrc={imageSrc}
             />
         </div>
         
-        {/* Only show title below if frame is NOT showing it */}
-        {(!geoConfig.showFrame || !geoConfig.frameDoubleTop) && (
+        {/* Only show title below if frame is NOT showing it (image cards never show the frame) */}
+        {(imageSrc || !geoConfig.showFrame || !geoConfig.frameDoubleTop) && (
             <div className="mt-8 text-center">
                 <h2 className="text-xl sm:text-2xl font-light text-slate-800 dark:text-slate-200 mb-1">{name}</h2>
-                <p className="font-mono text-xs sm:text-sm text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full inline-block">
-                    [{sequence.join(', ')}]
-                </p>
+                {!imageSrc && (
+                    <p className="font-mono text-xs sm:text-sm text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full inline-block">
+                        [{sequence.join(', ')}]
+                    </p>
+                )}
             </div>
         )}
     </div>

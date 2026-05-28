@@ -55,4 +55,8 @@ export interface Sequence {
     description?: string;
     data: number[];
     geoConfig: GeoConfig;
+    // Optional uploaded image (data URL). When set, the card renders this image
+    // instead of the generated geometry. Not included in share URLs (too large);
+    // persisted only via JSON save and exported PNG/MP4 frames.
+    imageSrc?: string;
 }

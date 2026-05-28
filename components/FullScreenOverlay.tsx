@@ -11,6 +11,7 @@ interface FullScreenOverlayProps {
   isPlaying: boolean;
   geoConfig: GeoConfig;
   isViewOnly?: boolean;
+  imageSrc?: string;
 }
 
 const FullScreenOverlay: React.FC<FullScreenOverlayProps> = ({
@@ -20,7 +21,8 @@ const FullScreenOverlay: React.FC<FullScreenOverlayProps> = ({
   sequenceDesc,
   isPlaying,
   geoConfig,
-  isViewOnly = false
+  isViewOnly = false,
+  imageSrc
 }) => {
   
   useEffect(() => {
@@ -44,18 +46,19 @@ const FullScreenOverlay: React.FC<FullScreenOverlayProps> = ({
         
         <div className="w-full max-w-2xl bg-transparent flex flex-col items-center justify-center h-full">
              <div className="w-full h-full relative flex items-center justify-center">
-                  <QRPGenerator 
-                      sequence={sequence} 
+                  <QRPGenerator
+                      sequence={sequence}
                       active={isPlaying}
                       showLabels={false}
                       title={sequenceName}
                       description={sequenceDesc}
                       {...geoConfig}
+                      imageSrc={imageSrc}
                   />
              </div>
              
-             {/* Only show overlay text if not in frame */}
-             {(!geoConfig.showFrame || !geoConfig.frameDoubleTop) && (
+             {/* Only show overlay text if not in frame (image cards never show the frame) */}
+             {(imageSrc || !geoConfig.showFrame || !geoConfig.frameDoubleTop) && (
                 <div className="absolute bottom-10 flex flex-col items-center gap-2 pointer-events-none">
                     <h2 className="text-xl font-light text-slate-900 dark:text-white/80">{sequenceName}</h2>
                 </div>

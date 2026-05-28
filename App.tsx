@@ -211,7 +211,7 @@ const App: React.FC = () => {
       />
 
       {isFullScreen && (
-          <FullScreenOverlay 
+          <FullScreenOverlay
              onClose={() => setIsFullScreen(false)}
              sequence={sequencer.activeSequence.data}
              sequenceName={sequencer.activeSequence.name}
@@ -219,6 +219,7 @@ const App: React.FC = () => {
              isPlaying={sequencer.isPlaying}
              geoConfig={activeGeoConfig}
              isViewOnly={isViewOnly}
+             imageSrc={sequencer.activeSequence.imageSrc}
           />
       )}
 
@@ -233,13 +234,14 @@ const App: React.FC = () => {
         
         {/* Left Column: Visualizer & Controls */}
         <div className={`flex-1 flex flex-col gap-6 order-1 lg:order-none ${isViewOnly ? 'mx-auto max-w-3xl' : ''}`}>
-            <VisualizerStage 
+            <VisualizerStage
                 sequence={sequencer.activeSequence.data}
                 name={sequencer.activeSequence.name}
                 description={sequencer.activeSequence.description}
                 isPlaying={sequencer.isPlaying}
                 geoConfig={activeGeoConfig}
                 onEnterFullScreen={() => setIsFullScreen(true)}
+                imageSrc={sequencer.activeSequence.imageSrc}
             />
 
             <PlaybackControls 

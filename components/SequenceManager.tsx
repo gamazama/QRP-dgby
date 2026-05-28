@@ -43,6 +43,7 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
   const previewRef = useRef<HTMLDivElement>(null);
   const exportRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const imageInputRef = useRef<HTMLInputElement>(null);
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   const [isExporting, setIsExporting] = useState(false);
   const [showVideoExport, setShowVideoExport] = useState(false);
@@ -172,6 +173,31 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
 
   const handleImportClick = () => {
       fileInputRef.current?.click();
+  };
+
+  const handleImageClick = () => {
+      imageInputRef.current?.click();
+  };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (e.target.files && e.target.files[0] && activeSequence) {
+          const file = e.target.files[0];
+          const reader = new FileReader();
+          reader.onload = (ev) => {
+              if (typeof ev.target?.result === 'string') {
+                  // Store as a data URL on the active card; this replaces the
+                  // generated geometry wherever the card is rendered.
+                  onUpdate(activeSequence.id, { imageSrc: ev.target.result });
+              }
+          };
+          reader.readAsDataURL(file);
+      }
+      // Reset input so re-selecting the same file fires onChange again
+      if (imageInputRef.current) imageInputRef.current.value = '';
+  };
+
+  const handleRemoveImage = () => {
+      if (activeSequence) onUpdate(activeSequence.id, { imageSrc: undefined });
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -307,6 +333,32 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
                         </>
                     )}
 
+                    {/* Image Card: upload / replace */}
+                    <input
+                        type="file"
+                        ref={imageInputRef}
+                        onChange={handleImageChange}
+                        accept="image/*"
+                        className="hidden"
+                    />
+                    <button
+                        onClick={handleImageClick}
+                        className="flex items-center justify-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
+                        title={activeSequence.imageSrc ? "Replace the card image" : "Replace this card with an image"}
+                    >
+                        <ImageUp size={16} /> {activeSequence.imageSrc ? "Replace Image" : "Use Image"}
+                    </button>
+
+                    {activeSequence.imageSrc && (
+                        <button
+                            onClick={handleRemoveImage}
+                            className="flex items-center justify-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-medium text-amber-600 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-900/20 transition-colors border-amber-100 dark:border-amber-900/30"
+                            title="Remove image and restore the generated geometry"
+                        >
+                            <RefreshCw size={16} /> Remove Image
+                        </button>
+                    )}
+
                     <button
                         onClick={handleExportPng}
                         disabled={isExporting}
@@ -350,16 +402,17 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
                     className="bg-slate-100 dark:bg-slate-800 rounded-lg p-4 flex justify-center border border-slate-200/50 dark:border-slate-700/50 relative overflow-hidden"
                 >
                      <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#444_1px,transparent_1px)] [background-size:8px_8px]" />
-                    <QRPGenerator 
-                        sequence={activeSequence.data} 
-                        size={220} 
-                        className="" 
+                    <QRPGenerator
+                        sequence={activeSequence.data}
+                        size={220}
+                        className=""
                         showLabels={false}
                         active={isPlaying && activeSequence.id === activeId}
                         title={activeSequence.name} // Pass Title
                         description={activeSequence.description} // Pass Description
                         // Spread active config directly!
                         {...activeSequence.geoConfig}
+                        imageSrc={activeSequence.imageSrc}
                         // Explicit override if needed for specific preview styling (none needed here as we want WYSIWYG)
                     />
                 </div>
@@ -369,16 +422,17 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
                     ref={exportRef} 
                     style={{ position: 'absolute', top: -9999, left: -9999, width: 1000, height: 1000, pointerEvents: 'none' }}
                 >
-                    <QRPGenerator 
-                        sequence={activeSequence.data} 
+                    <QRPGenerator
+                        sequence={activeSequence.data}
                         size={1000}
-                        showLabels={false} 
+                        showLabels={false}
                         active={false}
                         title={activeSequence.name}
                         description={activeSequence.description}
-                        exportMode={true} 
+                        exportMode={true}
                         exportTheme={isDarkMode ? 'dark' : 'light'} // Dynamic Export Theme
                         {...activeSequence.geoConfig}
+                        imageSrc={activeSequence.imageSrc}
                     />
                 </div>
 

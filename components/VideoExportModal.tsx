@@ -588,6 +588,7 @@ const VideoExportModal: React.FC<VideoExportModalProps> = ({
               exportTheme={isDarkMode ? 'dark' : 'light'}
               animationRotation={animationRotation}
               {...currentSequence.geoConfig}
+              imageSrc={currentSequence.imageSrc}
             />
           )}
         </div>

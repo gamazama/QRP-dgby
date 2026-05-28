@@ -26,6 +26,7 @@ interface QRPGeneratorProps extends Partial<GeoConfig> {
   exportMode?: boolean;
   exportTheme?: 'light' | 'dark';
   animationRotation?: number; // Manual rotation for video export (in degrees)
+  imageSrc?: string; // When set, render this image instead of the generated geometry
 }
 
 const QRPGenerator: React.FC<QRPGeneratorProps> = ({ 
@@ -78,7 +79,8 @@ const QRPGenerator: React.FC<QRPGeneratorProps> = ({
   stripeStroke = 2.0,
   exportMode = false,
   exportTheme = 'light',
-  animationRotation = 0 // Manual rotation for video export
+  animationRotation = 0, // Manual rotation for video export
+  imageSrc
 }) => {
   // Center coordinates in SVG space
   const cx = 200;
@@ -316,6 +318,39 @@ const QRPGenerator: React.FC<QRPGeneratorProps> = ({
 
   // Center SVG Scale logic: Fit inside Ring Inner
   const centerSvgScale = (R_RING_INNER * 2 * 0.9) / 300;
+
+  // --- Image Card: replace generated geometry with an uploaded image ---
+  // Rendered as an <image> inside the same viewBox so PNG/MP4 export paths
+  // (which serialize this <svg>) keep working unchanged.
+  if (imageSrc) {
+    return (
+      <div
+        className={`relative mx-auto aspect-[4/7] ${className}`}
+        style={{
+          maxWidth: typeof size === 'number' ? size : '100%',
+          width: typeof size === 'number' ? size : '100%'
+        }}
+      >
+        <svg
+          viewBox="0 -150 400 700"
+          width="100%"
+          height="100%"
+          preserveAspectRatio="xMidYMid meet"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <image
+            href={imageSrc}
+            xlinkHref={imageSrc}
+            x={0}
+            y={-150}
+            width={400}
+            height={700}
+            preserveAspectRatio="xMidYMid meet"
+          />
+        </svg>
+      </div>
+    );
+  }
 
   return (
     <div 
