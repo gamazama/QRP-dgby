@@ -112,6 +112,24 @@ const VideoExportModal: React.FC<VideoExportModalProps> = ({
   const [frameCounter, setFrameCounter] = useState(0); // Force re-render on each frame
   const renderRef = useRef<HTMLDivElement>(null);
   const rotationRef = useRef(0); // Use ref for immediate rotation value
+  const imageCacheRef = useRef<Map<string, HTMLImageElement>>(new Map()); // Decoded image-card bitmaps, keyed by data URL
+
+  // Decode an image-card source once and reuse it across every frame of the scene.
+  const loadCachedImage = useCallback((src: string): Promise<HTMLImageElement> => {
+    const cached = imageCacheRef.current.get(src);
+    if (cached && cached.complete && cached.naturalWidth > 0) {
+      return Promise.resolve(cached);
+    }
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        imageCacheRef.current.set(src, img);
+        resolve(img);
+      };
+      img.onerror = () => reject(new Error('Failed to load card image'));
+      img.src = src;
+    });
+  }, []);
 
   // Export options
   const [loopCount, setLoopCount] = useState(3);
@@ -198,6 +216,39 @@ const VideoExportModal: React.FC<VideoExportModalProps> = ({
       return;
     }
 
+    // Image-card fast path: the image is identical on every frame of the scene,
+    // so skip the per-frame SVG serialize + base64 decode and just draw the
+    // cached bitmap. Framing matches the live card's 4:7 viewBox (contain).
+    if (sequence?.imageSrc) {
+      const img = await loadCachedImage(sequence.imageSrc);
+      const boxAspect = 400 / 700; // QRPGenerator viewBox aspect
+      const canvasAspect = canvas.width / canvas.height;
+      let boxW: number;
+      let boxH: number;
+      if (boxAspect > canvasAspect) {
+        boxW = canvas.width;
+        boxH = canvas.width / boxAspect;
+      } else {
+        boxH = canvas.height;
+        boxW = canvas.height * boxAspect;
+      }
+      const boxX = (canvas.width - boxW) / 2;
+      const boxY = (canvas.height - boxH) / 2;
+      // Fit (contain) the image inside the card box — matches preserveAspectRatio="meet"
+      const imgAspect = img.width / img.height;
+      let dW: number;
+      let dH: number;
+      if (imgAspect > boxW / boxH) {
+        dW = boxW;
+        dH = boxW / imgAspect;
+      } else {
+        dH = boxH;
+        dW = boxH * imgAspect;
+      }
+      ctx.drawImage(img, boxX + (boxW - dW) / 2, boxY + (boxH - dH) / 2, dW, dH);
+      return;
+    }
+
     if (!renderRef.current) {
       throw new Error('Render container not found');
     }
@@ -273,7 +324,7 @@ const VideoExportModal: React.FC<VideoExportModalProps> = ({
 
       img.src = url;
     });
-  }, [isDarkMode, videoName]);
+  }, [isDarkMode, videoName, loadCachedImage]);
 
   // Start export with frame-by-frame rendering
   const handleStartExport = useCallback(async () => {
@@ -323,25 +374,31 @@ const VideoExportModal: React.FC<VideoExportModalProps> = ({
         const currentRotation = -globalFrameIndex * rotationPerFrame; // Negative for anti-clockwise
         
         globalFrameIndex++;
-        
-        // Use flushSync to ensure state updates are applied synchronously
-        flushSync(() => {
-          // Update state for rendering
-          setIsIntroFrame(isIntro);
-          setIsOutroFrame(isOutro);
-          
-          // Update both ref (immediate) and state (for React re-render)
-          rotationRef.current = currentRotation;
-          setAnimationRotation(currentRotation);
-          setFrameCounter(globalFrameIndex); // Force re-render on each frame
-          
-          if (!isIntro && !isOutro) {
-            // Update the current sequence index to trigger re-render
-            const index = sequences.findIndex(s => s.id === sequence.id);
-            setCurrentSequenceIndex(index >= 0 ? index : 0);
-          }
-        });
-        
+
+        // Image cards render straight from a cached bitmap and never read the
+        // hidden QRPGenerator, so skip the per-frame React re-render for them.
+        const isImageCard = !isIntro && !isOutro && !!sequence.imageSrc;
+
+        if (!isImageCard) {
+          // Use flushSync to ensure state updates are applied synchronously
+          flushSync(() => {
+            // Update state for rendering
+            setIsIntroFrame(isIntro);
+            setIsOutroFrame(isOutro);
+
+            // Update both ref (immediate) and state (for React re-render)
+            rotationRef.current = currentRotation;
+            setAnimationRotation(currentRotation);
+            setFrameCounter(globalFrameIndex); // Force re-render on each frame
+
+            if (!isIntro && !isOutro) {
+              // Update the current sequence index to trigger re-render
+              const index = sequences.findIndex(s => s.id === sequence.id);
+              setCurrentSequenceIndex(index >= 0 ? index : 0);
+            }
+          });
+        }
+
         // Render the frame with the current rotation
         await renderFrame(canvas, sequence, isIntro, isOutro, currentRotation);
       }
