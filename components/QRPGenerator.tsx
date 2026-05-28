@@ -218,10 +218,19 @@ const QRPGenerator: React.FC<QRPGeneratorProps> = ({
   }, [lobeCount, R_LOBE_INNER_CIRCLE, petals, petalSize, petalRoundness, lobeType, lobeDesign, R_LOBE_RADIUS, R_LOBE_CENTER_DIST, shellScale, cx, cy]);
 
   // Central Ghost Sunflower
-  const centralSeeds = useMemo(() => {
-    // Only generate seeds if we are using seeds design
-    if (centerDesign !== 'seeds') return [];
-    return generateSunflowerPoints(0, 0, R_RING_INNER - 5, 300);
+  // Emit a single concatenated <path> (circle-as-arc) instead of 300 <circle>
+  // nodes: one node repaints far cheaper than 300 when the group is rotating.
+  const centralSeedsPath = useMemo(() => {
+    if (centerDesign !== 'seeds') return "";
+    const seeds = generateSunflowerPoints(0, 0, R_RING_INNER - 5, 300);
+    let d = "";
+    for (const seed of seeds) {
+      const r = 0.8 + (seed.r / R_RING_INNER) * 1.5;
+      const rr = r.toFixed(2);
+      const d2 = (r * 2).toFixed(2);
+      d += `M ${seed.x.toFixed(2)} ${seed.y.toFixed(2)} m -${rr},0 a ${rr},${rr} 0 1,0 ${d2},0 a ${rr},${rr} 0 1,0 -${d2},0 `;
+    }
+    return d;
   }, [R_RING_INNER, centerDesign]);
 
   // Concentric Rings
@@ -482,8 +491,9 @@ const QRPGenerator: React.FC<QRPGeneratorProps> = ({
                     {lobeType === 'sunflower' && lobeDesign === 'seeds' && (
                         <g 
                             className={exportMode ? undefined : "animate-spin-reverse"}
-                            style={exportMode ? undefined : { 
-                                animationPlayState: active ? 'running' : 'paused'
+                            style={exportMode ? undefined : {
+                                animationPlayState: active ? 'running' : 'paused',
+                                willChange: 'transform'
                             }}
                             transform={exportMode ? `rotate(${animationRotation})` : undefined}
                             data-rotate={exportMode ? "seeds" : undefined}
@@ -526,22 +536,15 @@ const QRPGenerator: React.FC<QRPGeneratorProps> = ({
                 <g transform={`translate(${cx}, ${cy})`} className="pointer-events-none" style={{ opacity: centerOpacity }}>
                     <g
                         className={exportMode ? undefined : "animate-spin-reverse-slow"}
-                        style={exportMode ? undefined : { 
-                            animationPlayState: active ? 'running' : 'paused'
+                        style={exportMode ? undefined : {
+                            animationPlayState: active ? 'running' : 'paused',
+                            willChange: 'transform'
                         }}
                         transform={exportMode ? `rotate(${animationRotation * 0.5})` : undefined}
                         data-rotate={exportMode ? "central" : undefined}
                     >
                         {centerDesign === 'seeds' ? (
-                            centralSeeds.map((seed, idx) => (
-                                <circle 
-                                    key={`c-seed-${idx}`}
-                                    cx={seed.x} 
-                                    cy={seed.y}
-                                    r={0.8 + (seed.r / R_RING_INNER) * 1.5} 
-                                    fill="currentColor"
-                                />
-                            ))
+                            <path d={centralSeedsPath} fill="currentColor" />
                         ) : centerDesign === 'uranus' ? (
                              <g transform={`scale(${centerSvgScale * 0.36}) translate(-940, -540)`}>
                                 <UranusGeometry />
