@@ -12,7 +12,7 @@ interface GeometryTunerProps {
 }
 
 const GeometryTuner: React.FC<GeometryTunerProps> = ({ config, onChange }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
 
   // Helper to update specific key
   const updateConfig = (key: keyof GeoConfig, value: any) => {
@@ -25,7 +25,7 @@ const GeometryTuner: React.FC<GeometryTunerProps> = ({ config, onChange }) => {
   };
 
   return (
-    <div className="bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-300 flex flex-col max-h-[80vh]">
+    <div className="bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-300 flex flex-col">
        {/* Tuner Header */}
        <button 
           onClick={() => setIsExpanded(!isExpanded)}
@@ -39,7 +39,7 @@ const GeometryTuner: React.FC<GeometryTunerProps> = ({ config, onChange }) => {
        </button>
        
        {isExpanded && (
-           <div className="flex-1 overflow-y-auto p-3 pt-0 custom-scrollbar animate-in slide-in-from-top-2 duration-200">
+           <div className="p-3 pt-0 animate-in">
               
               <PresetSelector currentType={config.lobeType} onSelect={applyPreset} />
               

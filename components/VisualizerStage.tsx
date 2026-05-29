@@ -27,19 +27,20 @@ const VisualizerStage: React.FC<VisualizerStageProps> = ({
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-50/50 dark:from-blue-900/10 to-transparent pointer-events-none" />
         
         {/* Expand Button */}
-        <button 
+        <button
             onClick={onEnterFullScreen}
-            className="absolute top-4 right-4 p-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-full text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 shadow-sm transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 hidden md:flex items-center justify-center z-10 hover:scale-110 hover:shadow-md"
+            aria-label="Enter full screen"
+            className="absolute top-4 right-4 p-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-full text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 shadow-sm transition-all opacity-60 group-hover:opacity-100 focus:opacity-100 hidden md:flex items-center justify-center z-10 hover:scale-110 hover:shadow-md"
             title="Enter Full Screen"
         >
             <Maximize size={24} />
         </button>
 
         {/* Status Indicator */}
-        <div className="absolute top-4 left-4 sm:top-6 sm:left-6 flex items-center gap-2">
+        <div className="absolute top-4 left-4 sm:top-6 sm:left-6 flex items-center gap-2" aria-live="polite">
             <div className={`w-2 h-2 rounded-full ${isPlaying ? 'bg-green-500 animate-pulse' : 'bg-slate-300 dark:bg-slate-700'}`} />
             <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
-                {isPlaying ? 'Running' : 'Standby'}
+                {isPlaying ? 'Playing' : 'Paused'}
             </span>
         </div>
 

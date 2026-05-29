@@ -2,6 +2,10 @@ import { useState, useEffect, useRef } from 'react';
 import { DEFAULT_SEQUENCES, SUNFLOWER_PRESET } from '../constants';
 import { Sequence, GeoConfig } from '../types';
 
+// Next free card id (max existing + 1).
+const nextSeqId = (seqs: Sequence[]) =>
+  seqs.length > 0 ? Math.max(...seqs.map(s => s.id)) + 1 : 1;
+
 export const useSequencer = () => {
   const [sequences, setSequences] = useState<Sequence[]>(DEFAULT_SEQUENCES);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -9,6 +13,21 @@ export const useSequencer = () => {
   const [timingMs, setTimingMs] = useState(1500);
   
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // Undo history for destructive actions (delete / reset). Snapshot is taken
+  // before the mutation; undo() restores the most recent one.
+  const historyRef = useRef<{ sequences: Sequence[]; activeIndex: number }[]>([]);
+  const snapshot = () => {
+    historyRef.current.push({ sequences, activeIndex });
+    if (historyRef.current.length > 20) historyRef.current.shift();
+  };
+  const undo = () => {
+    const snap = historyRef.current.pop();
+    if (!snap) return;
+    setSequences(snap.sequences);
+    setActiveIndex(snap.activeIndex);
+    setIsPlaying(false);
+  };
 
   // Animation Loop
   useEffect(() => {
@@ -48,21 +67,8 @@ export const useSequencer = () => {
     }));
   };
 
-  // Deprecated: Global resize (kept for safety but logic moved to resizeSequence for granular control)
-  const setSequenceLength = (length: number) => {
-    setSequences(prev => prev.map(seq => {
-        if (seq.data.length === length) return seq;
-        if (seq.data.length > length) {
-            return { ...seq, data: seq.data.slice(0, length), geoConfig: { ...seq.geoConfig, sequenceLength: length } };
-        } else {
-            const diff = length - seq.data.length;
-            return { ...seq, data: [...seq.data, ...new Array(diff).fill(0)], geoConfig: { ...seq.geoConfig, sequenceLength: length } };
-        }
-    }));
-  };
-
   const addSequence = () => {
-    const newId = sequences.length > 0 ? Math.max(...sequences.map(s => s.id)) + 1 : 1;
+    const newId = nextSeqId(sequences);
     // Clone configuration from the currently active sequence for continuity
     const activeSeq = sequences[activeIndex] || sequences[0];
     const baseConfig = activeSeq ? { ...activeSeq.geoConfig } : { ...SUNFLOWER_PRESET };
@@ -86,8 +92,8 @@ export const useSequencer = () => {
   };
 
   const importSequence = (importedSeq: Sequence) => {
-      const newId = sequences.length > 0 ? Math.max(...sequences.map(s => s.id)) + 1 : 1;
-      
+      const newId = nextSeqId(sequences);
+
       const newSeq: Sequence = {
           ...importedSeq,
           id: newId,
@@ -101,12 +107,42 @@ export const useSequencer = () => {
       setIsPlaying(false);
   };
 
+  // Add one new card per supplied image (data URL). Each card renders the
+  // image instead of generated geometry. Cloned geoConfig from the active
+  // sequence keeps frame/length consistent for export. Appended in a single
+  // state update (a forEach over importSequence would read stale `sequences`).
+  const addImageSequences = (images: { src: string; name?: string }[]) => {
+      if (images.length === 0) return;
+
+      setSequences(prev => {
+          let nextId = nextSeqId(prev);
+          const activeSeq = prev[activeIndex] || prev[0];
+          const baseConfig = activeSeq ? { ...activeSeq.geoConfig } : { ...SUNFLOWER_PRESET };
+          const seqLength = baseConfig.sequenceLength;
+
+          const newCards: Sequence[] = images.map(({ src, name }) => ({
+              id: nextId++,
+              name: name && name.trim() ? name : `Card ${nextId - 1}`,
+              description: 'Image card',
+              data: new Array(seqLength).fill(0),
+              geoConfig: { ...baseConfig },
+              imageSrc: src,
+          }));
+
+          const merged = [...prev, ...newCards];
+          // Select the first newly added card.
+          setActiveIndex(prev.length);
+          return merged;
+      });
+      setIsPlaying(false);
+  };
+
   const duplicateSequence = (id: number) => {
       const sourceSeq = sequences.find(s => s.id === id);
       if (!sourceSeq) return;
 
-      const newId = sequences.length > 0 ? Math.max(...sequences.map(s => s.id)) + 1 : 1;
-      
+      const newId = nextSeqId(sequences);
+
       const newSeq: Sequence = {
           ...sourceSeq,
           id: newId,
@@ -124,9 +160,11 @@ export const useSequencer = () => {
 
   const deleteSequence = (id: number) => {
     if (sequences.length <= 1) return; // Prevent deleting the last one
-    
+
     const idxToDelete = sequences.findIndex(s => s.id === id);
     if (idxToDelete === -1) return;
+
+    snapshot();
 
     const newSequences = sequences.filter(s => s.id !== id);
     setSequences(newSequences);
@@ -159,6 +197,7 @@ export const useSequencer = () => {
   };
 
   const resetSequences = () => {
+      snapshot();
       setSequences(DEFAULT_SEQUENCES);
       setActiveIndex(0);
       setIsPlaying(false);
@@ -188,15 +227,16 @@ export const useSequencer = () => {
     setTimingMs,
     updateSequence: handleSequenceUpdate,
     resizeSequence,
-    setSequenceLength,
     addSequence,
     importSequence,
+    addImageSequences,
     duplicateSequence,
     deleteSequence,
     reorderSequences,
     resetSequences,
     loadSequences,
     togglePlay,
-    selectSequence
+    selectSequence,
+    undo
   };
 };

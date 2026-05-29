@@ -22,6 +22,15 @@ const ImportModal: React.FC<ImportModalProps> = ({ onClose, onImport }) => {
     return () => clearTimeout(timer);
   }, []);
 
+  // Close on Escape, matching the rest of the app's modal behavior.
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [onClose]);
+
   const handlePasteClipboard = async () => {
     try {
       const text = await navigator.clipboard.readText();
@@ -107,16 +116,27 @@ const ImportModal: React.FC<ImportModalProps> = ({ onClose, onImport }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200">
-      <div className="bg-white dark:bg-slate-900 w-full max-w-lg rounded-xl shadow-2xl border border-slate-200 dark:border-slate-800 p-6 relative">
-        <button 
+    <div
+        className="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in"
+        onClick={onClose}
+    >
+      <div
+        className="bg-white dark:bg-slate-900 w-full max-w-lg rounded-xl shadow-2xl border border-slate-200 dark:border-slate-800 p-6 relative"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="import-modal-title"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
             onClick={onClose}
+            aria-label="Close"
+            title="Close (Esc)"
             className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
         >
             <X size={20} />
         </button>
 
-        <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Load Configuration</h2>
+        <h2 id="import-modal-title" className="text-xl font-bold text-slate-900 dark:text-white mb-2">Load Configuration</h2>
         
         {/* File Drop Zone */}
         <div 

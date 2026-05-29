@@ -82,13 +82,30 @@ export const LayoutSection: React.FC<SectionProps> = ({ config, update }) => (
             />
        </div>
 
-       <SliderControl 
+       <SliderControl
             label="Header Offset"
             icon={ArrowUpFromLine}
             value={config.frameHeaderOffset}
             min={5} max={100} step={1}
             onChange={(val) => update('frameHeaderOffset', val)}
        />
+
+       <div className="grid grid-cols-2 gap-2">
+            <SliderControl
+                 label="Frame Stroke"
+                 icon={PenLine}
+                 value={config.frameStrokeWidth}
+                 min={0.5} max={5} step={0.1}
+                 onChange={(val) => update('frameStrokeWidth', val)}
+            />
+            <SliderControl
+                 label="Tick Length"
+                 icon={MoveHorizontal}
+                 value={config.frameTickLength}
+                 min={0} max={100} step={1}
+                 onChange={(val) => update('frameTickLength', val)}
+            />
+       </div>
     </div>
 );
 
@@ -128,14 +145,23 @@ export const GeometrySection: React.FC<SectionProps> = ({ config, update }) => (
            />
        </div>
        
-        <SliderControl 
-            label="Rotation"
-            icon={RotateCw}
-            value={config.geometryRotation || 0}
-            min={0} max={360} step={1}
-            onChange={(val) => update('geometryRotation', val)}
-        />
-        
+        <div className="grid grid-cols-2 gap-2">
+            <SliderControl
+                label="Shell Scale"
+                icon={Maximize2}
+                value={config.shellScale}
+                min={0.5} max={1.5} step={0.05}
+                onChange={(val) => update('shellScale', val)}
+            />
+            <SliderControl
+                label="Rotation"
+                icon={RotateCw}
+                value={config.geometryRotation || 0}
+                min={0} max={360} step={1}
+                onChange={(val) => update('geometryRotation', val)}
+            />
+        </div>
+
         {/* Extended Control Group for Dharma OR Lotus */}
         {(config.lobeType === 'dharma' || config.lobeType === 'lotus') && (
             <div className={`p-3 rounded-lg space-y-3 mt-2 ${config.lobeType === 'lotus' ? 'bg-emerald-50 dark:bg-emerald-900/20' : 'bg-blue-50 dark:bg-blue-900/20'}`}>
@@ -232,6 +258,24 @@ export const InnerSection: React.FC<SectionProps> = ({ config, update }) => (
             </div>
         </div>
 
+        {/* Fill opacity for the lobe & center patterns above */}
+        <div className="grid grid-cols-2 gap-2">
+            <SliderControl
+                label="Lobe Opacity"
+                icon={Eye}
+                value={config.lobeOpacity ?? 0.7}
+                min={0.0} max={1.0} step={0.05}
+                onChange={(val) => update('lobeOpacity', val)}
+            />
+            <SliderControl
+                label="Center Opacity"
+                icon={Eye}
+                value={config.centerOpacity ?? 0.1}
+                min={0.0} max={1.0} step={0.05}
+                onChange={(val) => update('centerOpacity', val)}
+            />
+        </div>
+
         {/* Conditional Seeds Controls */}
         {config.lobeDesign === 'seeds' && (
              <div className="bg-amber-50 dark:bg-amber-900/20 p-3 rounded-lg space-y-3">
@@ -286,22 +330,7 @@ export const InnerSection: React.FC<SectionProps> = ({ config, update }) => (
         )}
 
         <div className="space-y-3">
-             <div className="flex justify-between items-center text-xs font-medium text-slate-500 dark:text-slate-400">
-                <span className="flex items-center gap-1.5"><Hash size={12}/> Sequence Length</span>
-                <div className="flex bg-slate-100 dark:bg-slate-800 rounded p-0.5">
-                    {[9, 10, 44].map((steps) => (
-                            <button 
-                            key={steps}
-                            onClick={() => update('sequenceLength', steps)}
-                            className={`px-2 py-0.5 text-[10px] rounded transition-colors ${config.sequenceLength === steps ? 'bg-white dark:bg-slate-600 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700'}`}
-                        >
-                            {steps}
-                        </button>
-                    ))}
-                </div>
-            </div>
-
-            <SliderControl 
+            <SliderControl
                 label="Ring Radius"
                 icon={Maximize2}
                 value={config.ringInnerRadius}
@@ -332,71 +361,28 @@ export const InnerSection: React.FC<SectionProps> = ({ config, update }) => (
 export const StyleSection: React.FC<SectionProps> = ({ config, update }) => (
     <div className="space-y-4">
         <div className="grid grid-cols-2 gap-2">
-            <SliderControl 
-                label="Lobe Opacity"
-                icon={Eye}
-                value={config.lobeOpacity ?? 0.7}
-                min={0.0} max={1.0} step={0.05}
-                onChange={(val) => update('lobeOpacity', val)}
-            />
-            <SliderControl 
-                label="Center Opacity"
-                icon={Eye}
-                value={config.centerOpacity ?? 0.1}
-                min={0.0} max={1.0} step={0.05}
-                onChange={(val) => update('centerOpacity', val)}
-            />
-        </div>
-
-        <div className="grid grid-cols-2 gap-2">
-            <SliderControl 
-                label="Shell Scale"
-                icon={Maximize2}
-                value={config.shellScale}
-                min={0.5} max={1.5} step={0.05}
-                onChange={(val) => update('shellScale', val)}
-            />
-            <SliderControl 
+            <SliderControl
                 label="Shell Stroke"
                 icon={PenLine}
                 value={config.shellStroke}
                 min={0.1} max={5.0} step={0.1}
                 onChange={(val) => update('shellStroke', val)}
             />
-        </div>
-        
-        <div className="grid grid-cols-2 gap-2">
-            <SliderControl 
+            <SliderControl
                 label="Ring Stroke"
                 icon={PenLine}
                 value={config.ringStroke}
                 min={0.1} max={5.0} step={0.1}
                 onChange={(val) => update('ringStroke', val)}
             />
-            <SliderControl 
-                label="Stripe Stroke"
-                icon={PenLine}
-                value={config.stripeStroke}
-                min={0.1} max={5.0} step={0.1}
-                onChange={(val) => update('stripeStroke', val)}
-            />
         </div>
-        
-         <div className="grid grid-cols-2 gap-2">
-            <SliderControl 
-                 label="Frame Stroke"
-                 icon={PenLine}
-                 value={config.frameStrokeWidth}
-                 min={0.5} max={5} step={0.1}
-                 onChange={(val) => update('frameStrokeWidth', val)}
-            />
-            <SliderControl 
-                 label="Tick Length"
-                 icon={MoveHorizontal}
-                 value={config.frameTickLength}
-                 min={0} max={100} step={1}
-                 onChange={(val) => update('frameTickLength', val)}
-            />
-       </div>
+
+        <SliderControl
+            label="Stripe Stroke"
+            icon={PenLine}
+            value={config.stripeStroke}
+            min={0.1} max={5.0} step={0.1}
+            onChange={(val) => update('stripeStroke', val)}
+        />
     </div>
 );

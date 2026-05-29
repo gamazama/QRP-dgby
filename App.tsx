@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useTheme } from './hooks/useTheme';
 import { useSequencer } from './hooks/useSequencer';
 import { compressConfig, decompressConfig } from './utils/compression';
-import { Flower, Anchor, Droplets } from 'lucide-react';
-import { SUNFLOWER_PRESET, DHARMA_PRESET, LOTUS_PRESET } from './constants';
 import { GeoConfig } from './types';
+import { useToast } from './components/ui/Toast';
 
 import Header from './components/Header';
 import FullScreenOverlay from './components/FullScreenOverlay';
@@ -17,10 +16,29 @@ import ImportModal from './components/ImportModal';
 const App: React.FC = () => {
   // --- Hooks & State ---
   const { isDarkMode, toggleTheme, setDarkMode } = useTheme();
-  
+  const { showToast } = useToast();
+
   const sequencer = useSequencer();
+
+  // Destructive actions get an inline Undo instead of being irreversible.
+  const handleDeleteSequence = (id: number) => {
+      sequencer.deleteSequence(id);
+      showToast('Card deleted', { type: 'info', action: { label: 'Undo', onClick: sequencer.undo } });
+  };
+  const handleResetSequences = () => {
+      sequencer.resetSequences();
+      showToast('All cards reset to defaults', { type: 'info', action: { label: 'Undo', onClick: sequencer.undo } });
+  };
   
-  const [showEditor, setShowEditor] = useState(false);
+  // Open the editor by default on a normal landing so the build/tune workflow
+  // is immediately visible; stay collapsed when arriving via a shared ?c= link
+  // (the mount effect also enforces this for ?c= loads).
+  const [showEditor, setShowEditor] = useState(() => {
+     if (typeof window !== 'undefined') {
+         return !new URLSearchParams(window.location.search).has('c');
+     }
+     return true;
+  });
   const [showImportModal, setShowImportModal] = useState(false);
 
   // Initialize View State from URL to prevent flash
@@ -89,22 +107,16 @@ const App: React.FC = () => {
     sequencer.updateSequence(activeId, { geoConfig: newConfig });
   };
 
-  const applyPreset = (preset: GeoConfig) => {
-      // Apply preset to active sequence
-      handleGeoConfigChange({ ...activeGeoConfig, ...preset });
-  };
-
   const handleShareUrl = () => {
-      // Version 3: Pass timingMs
       const encoded = compressConfig(activeGeoConfig, sequencer.sequences, sequencer.timingMs);
       const themeParam = isDarkMode ? '&t=dark' : '&t=light';
       const url = `${window.location.origin}${window.location.pathname}?c=${encoded}${themeParam}`;
       
       navigator.clipboard.writeText(url).then(() => {
-          alert("Share URL copied to clipboard!");
+          showToast('Share link copied to clipboard', { type: 'success' });
       }).catch(err => {
           console.error("Failed to copy", err);
-          alert("Failed to copy URL. Please try again.");
+          showToast('Could not copy the link — try again', { type: 'error' });
       });
   };
   
@@ -125,9 +137,10 @@ const App: React.FC = () => {
           a.click();
           document.body.removeChild(a);
           URL.revokeObjectURL(url);
+          showToast('Saved qrp_config.json', { type: 'success' });
       } catch (err) {
           console.error("Failed to save", err);
-          alert("Failed to save configuration.");
+          showToast('Could not save the configuration', { type: 'error' });
       }
   };
 
@@ -139,15 +152,13 @@ const App: React.FC = () => {
                  const data = JSON.parse(input);
                  // Support V2/V3 import (sequences have geoConfig)
                  if (data.sequences) {
-                     // If importing a single card (sequences array of 1), we might want to append?
-                     // For now, load replaces all, per previous behavior. 
-                     // TODO: In future, consider merge strategy.
+                     // Loading a config replaces the current deck.
                      sequencer.loadSequences(data.sequences);
                      if (data.timingMs) sequencer.setTimingMs(data.timingMs);
-                     setIsViewOnly(false); 
+                     setIsViewOnly(false);
+                     showToast(`Loaded ${data.sequences.length} card${data.sequences.length === 1 ? '' : 's'}`, { type: 'success' });
                      return;
                  }
-                 // Support legacy JSON import if needed (though structure changed)
              } catch (e) {
                  // Not valid JSON, fall through to URL
              }
@@ -181,17 +192,18 @@ const App: React.FC = () => {
                       sequencer.loadSequences(loaded.sequences);
                       if (loaded.timingMs) sequencer.setTimingMs(loaded.timingMs);
                       setIsViewOnly(false);
+                      showToast(`Loaded ${loaded.sequences.length} card${loaded.sequences.length === 1 ? '' : 's'}`, { type: 'success' });
                   } else {
-                      alert("Invalid configuration data found in URL.");
+                      showToast('That URL has invalid configuration data', { type: 'error' });
                   }
               } else {
-                  alert("No configuration parameter found in the URL.");
+                  showToast('No configuration found in that URL', { type: 'error' });
               }
           } else {
               throw new Error("Invalid Input");
           }
       } catch (e) {
-          alert("Invalid input format. Please paste a valid URL or JSON configuration object.");
+          showToast('Unrecognized input — paste a QRP link or JSON config', { type: 'error' });
       }
   };
 
@@ -230,10 +242,12 @@ const App: React.FC = () => {
           />
       )}
 
-      <main className="flex-1 w-full max-w-7xl mx-auto p-4 md:p-6 lg:p-10 flex flex-col lg:flex-row gap-6 lg:gap-8">
-        
-        {/* Left Column: Visualizer & Controls */}
-        <div className={`flex-1 flex flex-col gap-6 order-1 lg:order-none ${isViewOnly ? 'mx-auto max-w-3xl' : ''}`}>
+      <main className="flex-1 w-full max-w-7xl mx-auto p-4 md:p-6 lg:p-10 flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-8 lg:min-h-[calc(100vh-var(--header-h))]">
+
+        {/* Left Column: Visualizer & Controls.
+            On lg+ it stays pinned (sticky) as a fixed reference while the right
+            editor column scrolls; the max-h + overflow guard short screens. */}
+        <div className={`flex-1 flex flex-col gap-6 order-1 lg:order-none lg:sticky lg:top-[var(--header-h)] lg:self-start lg:max-h-[calc(100vh-var(--header-h))] lg:overflow-y-auto custom-scrollbar lg:transition-[flex-basis,max-width] lg:duration-300 ${isViewOnly ? 'mx-auto max-w-3xl' : ''}`}>
             <VisualizerStage
                 sequence={sequencer.activeSequence.data}
                 name={sequencer.activeSequence.name}
@@ -244,76 +258,46 @@ const App: React.FC = () => {
                 imageSrc={sequencer.activeSequence.imageSrc}
             />
 
-            <PlaybackControls 
+            <PlaybackControls
                 isPlaying={sequencer.isPlaying}
                 togglePlay={sequencer.togglePlay}
-                timingMs={sequencer.timingMs}
-                setTimingMs={sequencer.setTimingMs}
                 activeIndex={sequencer.activeIndex}
                 sequences={sequencer.sequences}
                 selectSequence={sequencer.selectSequence}
             />
         </div>
 
-        {/* Right Column: Editor & Tuner (Hidden in View Only Mode) */}
+        {/* Right Column: Editor & Tuner (Hidden in View Only Mode).
+            This column is the sole scroll region on lg+. Ordered to match the
+            workflow: build/edit cards first, geometry tuning (with its preset
+            switcher) below. */}
         {!isViewOnly && showEditor && (
-            <div className="lg:w-[400px] flex flex-col gap-6 animate-in slide-in-from-right-4 duration-300 order-2 lg:order-none">
-                
-                <GeometryTuner 
-                    config={activeGeoConfig}
-                    onChange={handleGeoConfigChange}
-                />
-                
-                {/* Mode Switcher - Updates Active Sequence Config */}
-                <div className="grid grid-cols-3 gap-2">
-                    <button
-                        onClick={() => applyPreset(SUNFLOWER_PRESET)}
-                        className={`flex items-center justify-center gap-2 py-3 rounded-lg border text-sm font-medium transition-colors ${
-                            activeGeoConfig.lobeType === 'sunflower'
-                            ? 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300'
-                            : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700'
-                        }`}
-                    >
-                        <Flower size={16} /> Sunflower
-                    </button>
-                    <button
-                        onClick={() => applyPreset(LOTUS_PRESET)}
-                        className={`flex items-center justify-center gap-2 py-3 rounded-lg border text-sm font-medium transition-colors ${
-                            activeGeoConfig.lobeType === 'lotus'
-                            ? 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300'
-                            : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700'
-                        }`}
-                    >
-                        <Droplets size={16} /> Lotus
-                    </button>
-                    <button
-                        onClick={() => applyPreset(DHARMA_PRESET)}
-                        className={`flex items-center justify-center gap-2 py-3 rounded-lg border text-sm font-medium transition-colors ${
-                            activeGeoConfig.lobeType === 'dharma'
-                            ? 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300'
-                            : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700'
-                        }`}
-                    >
-                        <Anchor size={16} /> Dharma
-                    </button>
-                </div>
+            <div className="lg:w-[400px] flex flex-col gap-6 animate-in order-2 lg:order-none lg:sticky lg:top-[var(--header-h)] lg:self-start lg:max-h-[calc(100vh-var(--header-h))] lg:overflow-y-auto custom-scrollbar lg:pr-1">
 
-                <hr className="border-slate-200 dark:border-slate-800" />
-
-                <SequenceManager 
+                <SequenceManager
                     sequences={sequencer.sequences}
                     activeId={sequencer.activeSequence.id}
                     isPlaying={sequencer.isPlaying}
                     timingMs={sequencer.timingMs}
+                    onSetTimingMs={sequencer.setTimingMs}
                     onUpdate={sequencer.updateSequence}
-                    onReset={sequencer.resetSequences}
+                    onReset={handleResetSequences}
                     onAdd={sequencer.addSequence}
                     onDuplicate={sequencer.duplicateSequence}
-                    onDelete={sequencer.deleteSequence}
+                    onDelete={handleDeleteSequence}
                     onSelect={sequencer.selectSequence}
                     onReorder={sequencer.reorderSequences}
                     isDarkMode={isDarkMode}
                     onImportSequence={sequencer.importSequence}
+                    onAddImageSequences={sequencer.addImageSequences}
+                    onSetSequenceLength={(length) => handleGeoConfigChange({ ...activeGeoConfig, sequenceLength: length })}
+                />
+
+                <hr className="border-slate-200 dark:border-slate-800" />
+
+                <GeometryTuner
+                    config={activeGeoConfig}
+                    onChange={handleGeoConfigChange}
                 />
             </div>
         )}

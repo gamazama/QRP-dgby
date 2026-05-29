@@ -18,75 +18,6 @@ interface VideoExportModalProps {
   isDarkMode: boolean;
 }
 
-// Intro Card Component - Shows sequence name
-const IntroCard: React.FC<{ 
-  name: string; 
-  backgroundColor: string;
-  textColor: string;
-}> = ({ name, backgroundColor, textColor }) => (
-  <div style={{
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor,
-    color: textColor,
-    fontFamily: 'Inter, system-ui, sans-serif',
-  }}>
-    <h1 style={{
-      fontSize: '48px',
-      fontWeight: 300,
-      letterSpacing: '0.1em',
-      textTransform: 'uppercase',
-      marginBottom: '16px',
-    }}>
-      {name || 'QRP Sequence'}
-    </h1>
-    <p style={{
-      fontSize: '16px',
-      opacity: 0.6,
-      letterSpacing: '0.2em',
-    }}>
-      QUANTUM RESONANCE PATTERN
-    </p>
-  </div>
-);
-
-// Outro Card Component - Prevents black screen dropout
-const OutroCard: React.FC<{ 
-  backgroundColor: string;
-  textColor: string;
-}> = ({ backgroundColor, textColor }) => (
-  <div style={{
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor,
-    color: textColor,
-    fontFamily: 'Inter, system-ui, sans-serif',
-  }}>
-    <div style={{
-      fontSize: '64px',
-      marginBottom: '24px',
-      opacity: 0.8,
-    }}>
-      ○
-    </div>
-    <p style={{
-      fontSize: '14px',
-      opacity: 0.5,
-      letterSpacing: '0.15em',
-    }}>
-      END OF SEQUENCE
-    </p>
-  </div>
-);
-
 const VideoExportModal: React.FC<VideoExportModalProps> = ({
   isOpen,
   onClose,
@@ -109,7 +40,6 @@ const VideoExportModal: React.FC<VideoExportModalProps> = ({
   const [isIntroFrame, setIsIntroFrame] = useState(false);
   const [isOutroFrame, setIsOutroFrame] = useState(false);
   const [animationRotation, setAnimationRotation] = useState(0);
-  const [frameCounter, setFrameCounter] = useState(0); // Force re-render on each frame
   const renderRef = useRef<HTMLDivElement>(null);
   const rotationRef = useRef(0); // Use ref for immediate rotation value
   const imageCacheRef = useRef<Map<string, HTMLImageElement>>(new Map()); // Decoded image-card bitmaps, keyed by data URL
@@ -245,7 +175,13 @@ const VideoExportModal: React.FC<VideoExportModalProps> = ({
         dH = boxH;
         dW = boxH * imgAspect;
       }
+      // Match the live dark-mode treatment: invert black-line image cards so
+      // their lines render as white in a dark-themed video.
+      if (isDarkMode) {
+        ctx.filter = 'invert(1) contrast(1.05)';
+      }
       ctx.drawImage(img, boxX + (boxW - dW) / 2, boxY + (boxH - dH) / 2, dW, dH);
+      ctx.filter = 'none';
       return;
     }
 
@@ -359,7 +295,9 @@ const VideoExportModal: React.FC<VideoExportModalProps> = ({
     // Create a custom export that renders each frame
     // Global frame counter for continuous rotation across all scenes
     let globalFrameIndex = 0;
-    
+    // Map scene id → original index once, instead of scanning every frame.
+    const indexById = new Map(sequences.map((s, i) => [s.id, i]));
+
     const blob = await exportVideo(
       expandedSequences,
       timingMs,
@@ -389,12 +327,10 @@ const VideoExportModal: React.FC<VideoExportModalProps> = ({
             // Update both ref (immediate) and state (for React re-render)
             rotationRef.current = currentRotation;
             setAnimationRotation(currentRotation);
-            setFrameCounter(globalFrameIndex); // Force re-render on each frame
 
             if (!isIntro && !isOutro) {
               // Update the current sequence index to trigger re-render
-              const index = sequences.findIndex(s => s.id === sequence.id);
-              setCurrentSequenceIndex(index >= 0 ? index : 0);
+              setCurrentSequenceIndex(indexById.get(sequence.id) ?? 0);
             }
           });
         }
@@ -430,6 +366,16 @@ const VideoExportModal: React.FC<VideoExportModalProps> = ({
     onClose();
   }, [isExporting, cancelExport, onClose]);
 
+  // Close on Escape while the modal is open.
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') handleClose();
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [isOpen, handleClose]);
+
   if (!isOpen) return null;
 
   const webCodecsSupported = isWebCodecsSupported();
@@ -440,18 +386,29 @@ const VideoExportModal: React.FC<VideoExportModalProps> = ({
   const totalDuration = (totalFrames * timingMs) / 1000;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-      <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-md mx-4 overflow-hidden border border-slate-200 dark:border-slate-800">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+      onClick={handleClose}
+    >
+      <div
+        className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-md mx-4 overflow-hidden border border-slate-200 dark:border-slate-800"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="video-export-title"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-800">
           <div className="flex items-center gap-2">
             <Film className="w-5 h-5 text-blue-500" />
-            <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-200">
+            <h2 id="video-export-title" className="text-lg font-semibold text-slate-800 dark:text-slate-200">
               Export Video
             </h2>
           </div>
           <button
             onClick={handleClose}
+            aria-label="Close"
+            title="Close (Esc)"
             className="p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           >
             <X className="w-5 h-5 text-slate-500" />
@@ -479,30 +436,33 @@ const VideoExportModal: React.FC<VideoExportModalProps> = ({
           <div className="space-y-3">
             {/* Video Name */}
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+              <label htmlFor="video-name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                 Video Name
               </label>
               <input
+                id="video-name"
                 type="text"
                 value={videoName}
                 onChange={(e) => setVideoName(e.target.value)}
                 className="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Enter video name..."
+                placeholder="Enter video name…"
               />
             </div>
 
             {/* Loop Count */}
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+              <label htmlFor="loop-count" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                 Loop Count
               </label>
               <div className="flex items-center gap-2">
                 <input
+                  id="loop-count"
                   type="range"
                   min="1"
                   max="10"
                   value={loopCount}
                   onChange={(e) => setLoopCount(parseInt(e.target.value))}
+                  aria-valuetext={`${loopCount} times`}
                   className="flex-1 h-2 bg-slate-100 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer"
                 />
                 <span className="text-sm font-medium text-slate-800 dark:text-slate-200 w-8 text-center">
@@ -520,7 +480,7 @@ const VideoExportModal: React.FC<VideoExportModalProps> = ({
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-slate-500 dark:text-slate-400">Frame Duration:</span>
-              <span className="text-slate-800 dark:text-slate-200 font-medium">{timingMs}ms</span>
+              <span className="text-slate-800 dark:text-slate-200 font-medium">{(timingMs / 1000).toFixed(1)}s</span>
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-slate-500 dark:text-slate-400">Total Frames:</span>
@@ -587,7 +547,7 @@ const VideoExportModal: React.FC<VideoExportModalProps> = ({
             onClick={handleClose}
             className="flex-1 px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
           >
-            Cancel
+            {isExporting ? 'Cancel Export' : 'Close'}
           </button>
 
           {!exportedBlob ? (
@@ -634,7 +594,6 @@ const VideoExportModal: React.FC<VideoExportModalProps> = ({
         >
           {!isIntroFrame && !isOutroFrame && currentSequence && (
             <QRPGenerator
-              key={`frame-${frameCounter}`}
               sequence={currentSequence.data}
               size={1000}
               showLabels={false}

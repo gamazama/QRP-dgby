@@ -1,7 +1,7 @@
 import React from 'react';
-import { Flower, Anchor, Droplets } from 'lucide-react';
 import { GeoConfig } from '../../types';
 import { SUNFLOWER_PRESET, DHARMA_PRESET, LOTUS_PRESET } from '../../constants';
+import { SunflowerIcon, LotusIcon, DharmaIcon } from '../icons/LobeIcons';
 
 interface PresetSelectorProps {
   currentType: 'sunflower' | 'lotus' | 'dharma';
@@ -11,9 +11,9 @@ interface PresetSelectorProps {
 const PresetSelector: React.FC<PresetSelectorProps> = ({ currentType, onSelect }) => {
   
   const presets = [
-    { id: 'sunflower', label: 'Sunflower', icon: Flower, preset: SUNFLOWER_PRESET, color: 'amber' },
-    { id: 'lotus', label: 'Lotus', icon: Droplets, preset: LOTUS_PRESET, color: 'emerald' },
-    { id: 'dharma', label: 'Dharma', icon: Anchor, preset: DHARMA_PRESET, color: 'blue' },
+    { id: 'sunflower', label: 'Sunflower', icon: SunflowerIcon, preset: SUNFLOWER_PRESET, color: 'amber' },
+    { id: 'lotus', label: 'Lotus', icon: LotusIcon, preset: LOTUS_PRESET, color: 'emerald' },
+    { id: 'dharma', label: 'Dharma', icon: DharmaIcon, preset: DHARMA_PRESET, color: 'blue' },
   ];
 
   return (
@@ -35,7 +35,8 @@ const PresetSelector: React.FC<PresetSelectorProps> = ({ currentType, onSelect }
             <button
                 key={item.id}
                 onClick={() => onSelect(item.preset)}
-                className={`flex flex-col items-center justify-center gap-1.5 py-3 rounded-xl border text-xs font-medium transition-all duration-200 ${activeClass}`}
+                aria-pressed={isActive}
+                className={`flex flex-col items-center justify-center gap-1.5 py-3 rounded-xl border text-xs font-medium transition-all duration-200 active:scale-95 ${activeClass}`}
             >
                 <Icon size={18} />
                 <span>{item.label}</span>

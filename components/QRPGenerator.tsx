@@ -1,13 +1,12 @@
 
 import React, { useMemo } from 'react';
-import { 
-    polarToCartesian, 
-    createScallopedHull, 
-    createMandalaHull, 
-    createLotusHull,
+import {
+    polarToCartesian,
+    createScallopedHull,
+    createMandalaHull,
     createLotusPetals,
     generateSunflowerPoints,
-    generateSunflowerLobePath 
+    generateSunflowerLobePath
 } from '../utils/geometry';
 import { GeoConfig } from '../types';
 import { CELTIC_PATHS, TRISKELION_PATH } from '../assets/shapes';
@@ -53,10 +52,10 @@ const QRPGenerator: React.FC<QRPGeneratorProps> = ({
   lobeCount = 10,
   lobeRadius = 36,
   lobeType = 'sunflower',
-  lobeDesign = 'seeds', // New prop with default
+  lobeDesign = 'seeds',
   designScale = 1.0,
   designOffset = 0,
-  centerDesign = 'seeds', // New prop
+  centerDesign = 'seeds',
   lobeOpacity = 0.7,
   centerOpacity = 0.1,
   geometryRotation = 0,
@@ -120,7 +119,8 @@ const QRPGenerator: React.FC<QRPGeneratorProps> = ({
       }
   };
 
-  const colors = getColors();
+  // Stable identity (only theme/mode matter) so memos that depend on it cache.
+  const colors = useMemo(getColors, [exportMode, exportTheme]);
 
   // -- Generated Paths --
   const hullPathInner = useMemo(() => {
@@ -346,8 +346,11 @@ const QRPGenerator: React.FC<QRPGeneratorProps> = ({
           height="100%"
           preserveAspectRatio="xMidYMid meet"
           xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-label={title ? `Image card: ${title}` : 'Image card'}
         >
           <image
+            className="qrp-card-image"
             href={imageSrc}
             xlinkHref={imageSrc}
             x={0}

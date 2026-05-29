@@ -1,5 +1,5 @@
 
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useId } from 'react';
 
 interface SliderControlProps {
   label: string;
@@ -26,6 +26,7 @@ const SliderControl: React.FC<SliderControlProps> = ({
   const [inputValue, setInputValue] = useState(value.toString());
   const inputRef = useRef<HTMLInputElement>(null);
   const displayRef = useRef<HTMLDivElement>(null);
+  const sliderId = useId();
   
   useEffect(() => {
     if (!isEditing) {
@@ -112,20 +113,22 @@ const SliderControl: React.FC<SliderControlProps> = ({
     <div className={`space-y-1.5 ${className}`}>
       <div className="flex items-center gap-1.5 text-xs font-medium text-slate-500 dark:text-slate-400 overflow-hidden">
         {Icon && <Icon size={12} className="flex-shrink-0 opacity-70" />}
-        <label className="truncate pr-1 cursor-help" title={label}>{label}</label>
+        <label htmlFor={sliderId} className="truncate pr-1 cursor-help" title={label}>{label}</label>
       </div>
       <div className="flex items-center gap-2">
         <input
+          id={sliderId}
           type="range"
           min={min}
           max={max}
           step={step}
           value={value}
           onChange={(e) => onChange(parseFloat(e.target.value))}
+          aria-label={label}
+          aria-valuetext={String(value)}
           className="flex-1 min-w-0 accent-slate-800 dark:accent-slate-400 cursor-pointer h-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none"
-          tabIndex={-1}
         />
-        <div className="relative w-10 flex-shrink-0">
+        <div className="relative w-14 flex-shrink-0">
             {isEditing ? (
                 <input
                     ref={inputRef}
@@ -139,10 +142,12 @@ const SliderControl: React.FC<SliderControlProps> = ({
                     className="w-full bg-white dark:bg-slate-700 border border-blue-500 rounded px-1 py-0.5 text-center text-[10px] font-mono text-slate-900 dark:text-white focus:outline-none leading-tight"
                 />
             ) : (
-                <div 
+                <div
                     ref={displayRef}
                     tabIndex={0}
                     onMouseDown={handleInputMouseDown}
+                    title="Click to type a value, drag to fine-tune"
+                    aria-label={`${label}: ${value}. Click to edit.`}
                     className="w-full bg-slate-100 dark:bg-slate-800 border border-transparent hover:border-slate-300 dark:hover:border-slate-600 focus:border-blue-500 focus:outline-none rounded px-1 py-0.5 text-center text-[10px] font-mono text-slate-700 dark:text-slate-300 cursor-ew-resize select-none transition-colors leading-tight truncate"
                 >
                     {value}

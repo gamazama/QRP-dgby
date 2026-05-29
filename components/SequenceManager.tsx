@@ -2,16 +2,19 @@ import React, { useRef, useEffect, useState } from 'react';
 import SequenceEditor from './SequenceEditor';
 import QRPGenerator from './QRPGenerator';
 import VideoExportModal from './VideoExportModal';
-import { RefreshCw, Plus, Trash2, List, GripVertical, Copy, ImageDown, ImageUp, Upload, Film } from 'lucide-react';
+import { RefreshCw, Plus, Trash2, List, GripVertical, ChevronUp, ChevronDown, Copy, ImageDown, Images, Image as ImageIcon, Upload, Film } from 'lucide-react';
 import { Sequence } from '../types';
 import { compressConfig, decompressConfig } from '../utils/compression';
 import { writePngMetadata, readPngMetadata } from '../utils/png';
+import { useToast } from './ui/Toast';
+import { lobeIcon, lobeColorClass } from './icons/LobeIcons';
 
 interface SequenceManagerProps {
   sequences: Sequence[];
   activeId: number;
   isPlaying: boolean;
   timingMs: number;
+  onSetTimingMs?: (ms: number) => void;
   onUpdate: (id: number, updates: Partial<Sequence>) => void;
   onReset: () => void;
   onAdd: () => void;
@@ -21,14 +24,17 @@ interface SequenceManagerProps {
   onReorder?: (from: number, to: number) => void;
   isDarkMode?: boolean;
   onImportSequence?: (seq: Sequence) => void;
+  onAddImageSequences?: (images: { src: string; name?: string }[]) => void;
+  onSetSequenceLength?: (length: number) => void;
 }
 
-const SequenceManager: React.FC<SequenceManagerProps> = ({ 
-  sequences, 
-  activeId, 
-  isPlaying, 
+const SequenceManager: React.FC<SequenceManagerProps> = ({
+  sequences,
+  activeId,
+  isPlaying,
   timingMs,
-  onUpdate, 
+  onSetTimingMs,
+  onUpdate,
   onReset,
   onAdd,
   onDuplicate,
@@ -36,25 +42,34 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
   onSelect,
   onReorder,
   isDarkMode = false,
-  onImportSequence
+  onImportSequence,
+  onAddImageSequences,
+  onSetSequenceLength
 }) => {
+  const { showToast } = useToast();
   const activeSequence = sequences.find(s => s.id === activeId);
   const listRef = useRef<HTMLDivElement>(null);
-  const previewRef = useRef<HTMLDivElement>(null);
   const exportRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const imageInputRef = useRef<HTMLInputElement>(null);
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
+  const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
   const [isExporting, setIsExporting] = useState(false);
+  const [isLoadingImages, setIsLoadingImages] = useState(false);
   const [showVideoExport, setShowVideoExport] = useState(false);
 
-  // Auto-scroll to active item in the list
+  // Auto-scroll to active item — only when it's actually outside the list's
+  // own viewport, so playback (which advances activeId every beat) doesn't
+  // smooth-scroll the panel on every card.
   useEffect(() => {
-    if (listRef.current) {
-        const activeEl = listRef.current.querySelector('[data-active="true"]');
-        if (activeEl) {
-            activeEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-        }
+    const list = listRef.current;
+    if (!list) return;
+    const activeEl = list.querySelector<HTMLElement>('[data-active="true"]');
+    if (!activeEl) return;
+    const above = activeEl.offsetTop < list.scrollTop;
+    const below = activeEl.offsetTop + activeEl.offsetHeight > list.scrollTop + list.clientHeight;
+    if (above || below) {
+        activeEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     }
   }, [activeId]);
 
@@ -66,6 +81,7 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
   const handleDragOver = (e: React.DragEvent, index: number) => {
     e.preventDefault();
     e.dataTransfer.dropEffect = "move";
+    setDragOverIndex(index);
   };
 
   const handleDrop = (e: React.DragEvent, index: number) => {
@@ -75,10 +91,12 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
         onReorder(draggedIndex, index);
     }
     setDraggedIndex(null);
+    setDragOverIndex(null);
   };
 
   const handleDragEnd = () => {
     setDraggedIndex(null);
+    setDragOverIndex(null);
   };
 
   const handleExportPng = async () => {
@@ -138,8 +156,15 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
             const xOffset = (EXPORT_SIZE - targetWidth) / 2;
             const yOffset = (EXPORT_SIZE - targetHeight) / 2;
 
+            // Match the live dark-mode treatment: invert black-line image cards
+            // so their lines export as white. CSS filters don't serialize into
+            // the SVG, so apply it on the canvas here.
+            if (isDarkMode && activeSequence.imageSrc) {
+                ctx.filter = 'invert(1) contrast(1.05)';
+            }
             ctx.drawImage(img, xOffset, yOffset, targetWidth, targetHeight);
-            
+            ctx.filter = 'none';
+
             // 5. Get PNG & Inject Metadata
             canvas.toBlob(async (blob) => {
                 if (!blob) return;
@@ -158,15 +183,16 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
                 URL.revokeObjectURL(downloadUrl);
                 URL.revokeObjectURL(url);
                 setIsExporting(false);
+                showToast('Card saved as PNG', { type: 'success' });
             }, 'image/png');
         };
-        
+
         // Trigger load
         img.src = url;
 
     } catch (e) {
         console.error("Export failed", e);
-        alert("Failed to create image.");
+        showToast('Could not create the image', { type: 'error' });
         setIsExporting(false);
     }
   };
@@ -179,21 +205,65 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
       imageInputRef.current?.click();
   };
 
+  // Unified image load. One image replaces the active card's geometry;
+  // multiple images are each added as a new card.
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (e.target.files && e.target.files[0] && activeSequence) {
-          const file = e.target.files[0];
-          const reader = new FileReader();
-          reader.onload = (ev) => {
-              if (typeof ev.target?.result === 'string') {
-                  // Store as a data URL on the active card; this replaces the
-                  // generated geometry wherever the card is rendered.
-                  onUpdate(activeSequence.id, { imageSrc: ev.target.result });
-              }
-          };
-          reader.readAsDataURL(file);
+      const target = e.target;
+      const files: File[] = target.files ? Array.from(target.files) : [];
+      if (files.length === 0) {
+          target.value = '';
+          return;
       }
-      // Reset input so re-selecting the same file fires onChange again
-      if (imageInputRef.current) imageInputRef.current.value = '';
+
+      const readFile = (file: File) =>
+          new Promise<{ src: string; name?: string } | null>((resolve) => {
+              const reader = new FileReader();
+              reader.onload = (ev) => {
+                  if (typeof ev.target?.result === 'string') {
+                      // Strip the extension to use the filename as the card name.
+                      const name = file.name.replace(/\.[^.]+$/, '');
+                      resolve({ src: ev.target.result, name });
+                  } else {
+                      resolve(null);
+                  }
+              };
+              reader.onerror = () => resolve(null);
+              reader.readAsDataURL(file);
+          });
+
+      // Reading data URLs (especially several large files) isn't instant —
+      // show a pending state so the click doesn't feel ignored.
+      setIsLoadingImages(true);
+      const done = () => {
+          setIsLoadingImages(false);
+          // Reset input so re-selecting the same file(s) fires onChange again.
+          target.value = '';
+      };
+
+      if (files.length === 1 && activeSequence) {
+          // Single image: replace the active card's image in place.
+          readFile(files[0]).then((img) => {
+              if (img) {
+                  onUpdate(activeSequence.id, { imageSrc: img.src });
+                  showToast('Image set on this card', { type: 'success' });
+              } else {
+                  showToast('Could not read the selected image', { type: 'error' });
+              }
+          }).finally(done);
+      } else if (onAddImageSequences) {
+          // Multiple images: add one new card each (selection order preserved).
+          Promise.all(files.map(readFile)).then((results) => {
+              const images = results.filter((r): r is { src: string; name?: string } => r !== null);
+              if (images.length > 0) {
+                  onAddImageSequences(images);
+                  showToast(`Added ${images.length} image card${images.length === 1 ? '' : 's'}`, { type: 'success' });
+              } else {
+                  showToast('Could not read the selected image(s)', { type: 'error' });
+              }
+          }).finally(done);
+      } else {
+          done();
+      }
   };
 
   const handleRemoveImage = () => {
@@ -215,11 +285,12 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
                           decoded.sequences.forEach(seq => {
                               onImportSequence(seq);
                           });
+                          showToast(`Imported ${decoded.sequences.length} card${decoded.sequences.length === 1 ? '' : 's'}`, { type: 'success' });
                       } else {
-                          alert("Invalid configuration found in image.");
+                          showToast('No valid configuration in that image', { type: 'error' });
                       }
                   } else {
-                      alert("No QRP configuration found in this image.");
+                      showToast('No QRP configuration found in this image', { type: 'error' });
                   }
               }
           };
@@ -247,13 +318,17 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
         </div>
 
         {/* Sequence List */}
-        <div 
+        <div
             ref={listRef}
-            className="flex flex-col gap-1 max-h-40 overflow-y-auto bg-slate-50 dark:bg-slate-900/30 rounded-lg border border-slate-200 dark:border-slate-800 p-1 custom-scrollbar"
+            className="flex flex-col gap-1 max-h-72 overflow-y-auto bg-slate-50 dark:bg-slate-900/30 rounded-lg border border-slate-200 dark:border-slate-800 p-1 custom-scrollbar"
         >
             {sequences.map((seq, index) => {
                 const isActive = seq.id === activeId;
                 const isDragging = draggedIndex === index;
+                const isDropTarget = dragOverIndex === index && draggedIndex !== null && draggedIndex !== index;
+                // Image cards show an image glyph; pattern cards show their lobe-type glyph.
+                const RowIcon = seq.imageSrc ? ImageIcon : lobeIcon(seq.geoConfig.lobeType);
+                const rowIconColor = seq.imageSrc ? 'text-slate-400 dark:text-slate-500' : lobeColorClass(seq.geoConfig.lobeType);
 
                 return (
                     <div
@@ -264,16 +339,24 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
                         onDragOver={(e) => handleDragOver(e, index)}
                         onDrop={(e) => handleDrop(e, index)}
                         onDragEnd={handleDragEnd}
-                        className={`flex items-center gap-1 p-1 pr-2 rounded-md transition-all border ${
-                            isActive 
-                            ? 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-sm' 
+                        className={`group relative flex items-center gap-1 p-1 pr-2 rounded-md transition-all border cursor-grab active:cursor-grabbing ${
+                            isActive
+                            ? 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-sm'
                             : 'border-transparent hover:bg-slate-100 dark:hover:bg-slate-800/50'
-                        } ${isDragging ? 'opacity-40 border-dashed border-slate-400' : ''}`}
+                        } ${isDragging ? 'opacity-70 scale-[1.02] shadow-lg ring-1 ring-blue-400/60 z-10 bg-white dark:bg-slate-800' : ''} ${
+                            isDropTarget ? 'before:absolute before:-top-0.5 before:inset-x-1 before:h-0.5 before:bg-blue-500 before:rounded-full' : ''
+                        }`}
                     >
                          {/* Drag Handle */}
-                         <div className="cursor-grab active:cursor-grabbing text-slate-300 dark:text-slate-600 hover:text-slate-500 dark:hover:text-slate-400 p-1 flex-shrink-0">
+                         <div className="cursor-grab active:cursor-grabbing text-slate-400 dark:text-slate-500 opacity-60 group-hover:opacity-100 transition-opacity p-1 flex-shrink-0" aria-hidden="true" title="Drag to reorder">
                             <GripVertical size={14} />
                          </div>
+
+                         {/* Index number — matches the numbered tabs in the player */}
+                         <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500 w-4 text-right flex-shrink-0 tabular-nums select-none">{index + 1}</span>
+
+                         {/* Type glyph — sunflower / lotus / dharma, or an image card */}
+                         <RowIcon size={15} className={`flex-shrink-0 ${rowIconColor}`} />
 
                          {/* Editable Card Name */}
                          <input
@@ -281,10 +364,36 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
                             value={seq.name}
                             onChange={(e) => onUpdate(seq.id, { name: e.target.value })}
                             onFocus={() => onSelect(index)}
+                            aria-label={`Card ${index + 1} name`}
+                            placeholder={`Card ${index + 1}`}
                             className={`flex-1 bg-transparent border-none outline-none text-xs font-medium truncate py-1 min-w-0 ${
                                 isActive ? 'text-blue-600 dark:text-blue-400' : 'text-slate-500 dark:text-slate-400'
                             }`}
                         />
+
+                        {/* Keyboard/touch reorder — works without drag-and-drop */}
+                        {onReorder && (
+                            <div className="flex flex-col flex-shrink-0 opacity-60 group-hover:opacity-100 transition-opacity">
+                                <button
+                                    onClick={() => onReorder(index, index - 1)}
+                                    disabled={index === 0}
+                                    aria-label={`Move card ${index + 1} up`}
+                                    title="Move up"
+                                    className="text-slate-400 hover:text-blue-500 disabled:opacity-30 disabled:hover:text-slate-400 transition-colors leading-none"
+                                >
+                                    <ChevronUp size={12} />
+                                </button>
+                                <button
+                                    onClick={() => onReorder(index, index + 1)}
+                                    disabled={index === sequences.length - 1}
+                                    aria-label={`Move card ${index + 1} down`}
+                                    title="Move down"
+                                    className="text-slate-400 hover:text-blue-500 disabled:opacity-30 disabled:hover:text-slate-400 transition-colors leading-none"
+                                >
+                                    <ChevronDown size={12} />
+                                </button>
+                            </div>
+                        )}
 
                         {isActive && <div className="w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0" />}
                     </div>
@@ -292,131 +401,157 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
             })}
         </div>
         
-        <button 
+        <button
             onClick={onAdd}
             className="w-full py-2 flex items-center justify-center gap-2 border border-dashed border-slate-300 dark:border-slate-700 rounded-lg text-slate-500 dark:text-slate-400 hover:border-blue-400 hover:text-blue-500 dark:hover:border-blue-500 dark:hover:text-blue-400 transition-colors text-xs font-medium"
         >
             <Plus size={14} /> Add New Card
         </button>
 
+        {/* Playback timing — co-located with the cards it sequences */}
+        {onSetTimingMs && (
+            <div className="flex items-center gap-3">
+                <label htmlFor="card-timing" className="text-xs font-medium text-slate-500 dark:text-slate-400 whitespace-nowrap">Each card</label>
+                <input
+                    id="card-timing"
+                    type="range"
+                    min={200}
+                    max={30000}
+                    step={100}
+                    value={timingMs}
+                    onChange={(e) => onSetTimingMs(Number(e.target.value))}
+                    aria-valuetext={`${(timingMs / 1000).toFixed(1)} seconds`}
+                    className="flex-1 min-w-0 accent-blue-600 dark:accent-blue-500"
+                />
+                <span className="text-xs font-mono text-slate-700 dark:text-slate-300 w-12 text-right tabular-nums">{(timingMs / 1000).toFixed(1)}s</span>
+            </div>
+        )}
+
         <hr className="border-slate-100 dark:border-slate-800" />
 
         {/* Active Editor */}
         {activeSequence && (
-            <div className="flex flex-col gap-2 animate-in fade-in slide-in-from-bottom-2 duration-300">
-                <SequenceEditor 
-                    id={activeSequence.id}
+            <div className="flex flex-col gap-2 animate-in">
+                <SequenceEditor
                     name={activeSequence.name}
                     description={activeSequence.description}
                     sequence={activeSequence.data}
                     onChange={(updates) => onUpdate(activeSequence.id, updates)}
+                    onSetLength={onSetSequenceLength}
                 />
                 
-                {/* Editor Footer Actions / Preview Tools */}
-                <div className="grid grid-cols-2 gap-3 mt-2 mb-2">
+                {/* Editor Footer Actions — grouped by intent (content / card / export)
+                    so related actions cluster and the layout never reflows. */}
+                <div className="flex flex-col gap-3 mt-2 mb-2">
+                    {/* Hidden file inputs */}
                     {onImportSequence && (
-                        <>
-                            <input 
-                                type="file" 
-                                ref={fileInputRef} 
-                                onChange={handleFileChange} 
-                                accept="image/png" 
-                                className="hidden" 
-                            />
-                            <button
-                                onClick={handleImportClick}
-                                className="flex items-center justify-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
-                                title="Import Card"
-                            >
-                                <Upload size={16} /> Import
-                            </button>
-                        </>
+                        <input
+                            type="file"
+                            ref={fileInputRef}
+                            onChange={handleFileChange}
+                            accept="image/png"
+                            className="hidden"
+                        />
                     )}
-
-                    {/* Image Card: upload / replace */}
                     <input
                         type="file"
                         ref={imageInputRef}
                         onChange={handleImageChange}
                         accept="image/*"
+                        multiple
                         className="hidden"
                     />
-                    <button
-                        onClick={handleImageClick}
-                        className="flex items-center justify-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
-                        title={activeSequence.imageSrc ? "Replace the card image" : "Replace this card with an image"}
-                    >
-                        <ImageUp size={16} /> {activeSequence.imageSrc ? "Replace Image" : "Use Image"}
-                    </button>
 
-                    {activeSequence.imageSrc && (
-                        <button
-                            onClick={handleRemoveImage}
-                            className="flex items-center justify-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-medium text-amber-600 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-900/20 transition-colors border-amber-100 dark:border-amber-900/30"
-                            title="Remove image and restore the generated geometry"
-                        >
-                            <RefreshCw size={16} /> Remove Image
-                        </button>
-                    )}
+                    {/* CONTENT: what fills this card */}
+                    <div>
+                        <p className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-slate-500 font-semibold mb-1.5">Content</p>
+                        <div className="grid grid-cols-2 gap-2">
+                            <button
+                                onClick={handleImageClick}
+                                disabled={isLoadingImages}
+                                className="flex items-center justify-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                                title="Pick one image to use for this card, or several to add as new cards"
+                            >
+                                {isLoadingImages ? (
+                                    <><RefreshCw size={16} className="animate-spin" /> Loading…</>
+                                ) : (
+                                    <><Images size={16} /> {activeSequence.imageSrc ? "Replace / Add Images" : "Use Images"}</>
+                                )}
+                            </button>
 
-                    <button
-                        onClick={handleExportPng}
-                        disabled={isExporting}
-                        className="flex items-center justify-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
-                        title="Save PNG"
-                    >
-                        <ImageDown size={16} /> Save Card
-                    </button>
+                            {activeSequence.imageSrc && (
+                                <button
+                                    onClick={handleRemoveImage}
+                                    className="flex items-center justify-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 border border-amber-100 dark:border-amber-900/30 rounded-lg text-xs font-medium text-amber-600 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-900/20 transition-colors"
+                                    title="Remove image and restore the generated geometry"
+                                >
+                                    <RefreshCw size={16} /> Remove Image
+                                </button>
+                            )}
 
-                    {/* Video Export Button */}
-                    <button
-                        onClick={() => setShowVideoExport(true)}
-                        className="flex items-center justify-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
-                        title="Export Video"
-                    >
-                        <Film size={16} /> Export Video
-                    </button>
+                            {onImportSequence && (
+                                <button
+                                    onClick={handleImportClick}
+                                    className="flex items-center justify-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
+                                    title="Import a card from a QRP PNG"
+                                >
+                                    <Upload size={16} /> Import Card
+                                </button>
+                            )}
+                        </div>
+                    </div>
 
-                    {onDuplicate && (
-                        <button
-                            onClick={() => onDuplicate(activeSequence.id)}
-                            className="flex items-center justify-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
-                        >
-                            <Copy size={16} /> Duplicate
-                        </button>
-                    )}
+                    {/* CARD: manage this card */}
+                    <div>
+                        <p className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-slate-500 font-semibold mb-1.5">Card</p>
+                        <div className="grid grid-cols-2 gap-2">
+                            {onDuplicate && (
+                                <button
+                                    onClick={() => onDuplicate(activeSequence.id)}
+                                    className="flex items-center justify-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
+                                >
+                                    <Copy size={16} /> Duplicate
+                                </button>
+                            )}
+                            <button
+                                onClick={() => onDelete(activeSequence.id)}
+                                disabled={sequences.length <= 1}
+                                title={sequences.length <= 1 ? "Can't delete the only card" : "Delete this card"}
+                                className="flex items-center justify-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 border border-red-100 dark:border-red-900/30 rounded-lg text-xs font-medium text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                <Trash2 size={16} /> Delete
+                            </button>
+                        </div>
+                    </div>
 
-                    {sequences.length > 1 && (
-                        <button 
-                            onClick={() => onDelete(activeSequence.id)}
-                            className="flex items-center justify-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-medium text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors border-red-100 dark:border-red-900/30"
-                        >
-                            <Trash2 size={16} /> Delete
-                        </button>
-                    )}
+                    {/* EXPORT: get this card / sequence out */}
+                    <div>
+                        <p className="text-[10px] uppercase tracking-wider text-slate-400 dark:text-slate-500 font-semibold mb-1.5">Export</p>
+                        <div className="grid grid-cols-2 gap-2">
+                            <button
+                                onClick={handleExportPng}
+                                disabled={isExporting}
+                                className="flex items-center justify-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                                title="Save this card as a PNG"
+                            >
+                                {isExporting ? (
+                                    <><RefreshCw size={16} className="animate-spin" /> Saving…</>
+                                ) : (
+                                    <><ImageDown size={16} /> Save Card</>
+                                )}
+                            </button>
+
+                            <button
+                                onClick={() => setShowVideoExport(true)}
+                                className="flex items-center justify-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
+                                title="Export the whole sequence as a video"
+                            >
+                                <Film size={16} /> Export Video
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
-                {/* Small Preview (Only for UI) */}
-                <div 
-                    ref={previewRef}
-                    className="bg-slate-100 dark:bg-slate-800 rounded-lg p-4 flex justify-center border border-slate-200/50 dark:border-slate-700/50 relative overflow-hidden"
-                >
-                     <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#444_1px,transparent_1px)] [background-size:8px_8px]" />
-                    <QRPGenerator
-                        sequence={activeSequence.data}
-                        size={220}
-                        className=""
-                        showLabels={false}
-                        active={isPlaying && activeSequence.id === activeId}
-                        title={activeSequence.name} // Pass Title
-                        description={activeSequence.description} // Pass Description
-                        // Spread active config directly!
-                        {...activeSequence.geoConfig}
-                        imageSrc={activeSequence.imageSrc}
-                        // Explicit override if needed for specific preview styling (none needed here as we want WYSIWYG)
-                    />
-                </div>
-                
                 {/* Hidden High-Res Export Generator */}
                 <div 
                     ref={exportRef} 

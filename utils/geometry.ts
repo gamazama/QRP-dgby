@@ -117,19 +117,6 @@ export const createScallopedHull = (
   return d;
 }
 
-// Generate a Pointed Lotus Hull (Continuous) - UNUSED but kept for compatibility
-export const createLotusHull = (
-    cx: number, 
-    cy: number, 
-    rLobeTip: number, 
-    numLobes: number,
-    valleyRadiusFactor: number = 0.8,
-    curvature: number = 0.5,
-    rotationOffset: number = 0 
-  ) => {
-    return "";
-}
-
 // Generate Individual Lotus Petals with Tapered Stroke
 export const createLotusPetals = (
     cx: number, 

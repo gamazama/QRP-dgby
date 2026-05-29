@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
+:root {
+  /* Sticky header height (Header: py-4 = 32px + 32px logo + 1px border ≈ 65px),
+     plus a small gap. Used to offset the sticky main/editor columns. */
+  --header-h: 72px;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   background-color: #f8fafc;
@@ -11,4 +17,87 @@ body {
 
 .font-mono {
   font-family: 'JetBrains Mono', monospace;
+}
+
+/* Image cards are black-line art on white. A light contrast bump crisps the
+   lines; in dark mode we invert so the lines read as white (the white ground
+   becomes near-black and blends into the dark app background). This is a
+   GPU-composited filter — no per-pixel JS — so it costs nothing per frame and
+   switches instantly with the theme. (Export parity is handled on the canvas,
+   since CSS filters don't serialize into the exported SVG.) */
+.qrp-card-image {
+  filter: contrast(1.05);
+}
+.dark .qrp-card-image {
+  filter: invert(1) contrast(1.05);
+}
+
+/* Visible keyboard focus across the app. Many controls set `focus:outline-none`
+   without a replacement; this guarantees keyboard users can always see where
+   they are, while staying invisible for mouse/touch users (:focus-visible). */
+:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Subtle entrance animation. The app sprinkles `animate-in fade-in slide-in-*`
+   classes (from tailwindcss-animate) everywhere, but the CDN Tailwind build
+   doesn't ship them, so the intended motion never played. This restores a
+   gentle, consistent enter without pulling in the full plugin. */
+@keyframes polish-enter {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+.animate-in {
+  animation: polish-enter 200ms ease-out both;
+}
+
+/* Hide the scrollbar while keeping scroll (the playback card row). */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Thin, theme-aware scrollbar for panels and lists. */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+.dark .custom-scrollbar {
+  scrollbar-color: #475569 transparent;
+}
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+/* Fade the trailing edge of the horizontally-scrolling card row, hinting at
+   more cards off-screen. */
+.mask-fade {
+  -webkit-mask-image: linear-gradient(to right, #000 90%, transparent);
+  mask-image: linear-gradient(to right, #000 90%, transparent);
+}
+
+/* Respect users who prefer reduced motion: neutralize the app's pervasive
+   spins, pulses, transitions, and entrance animations. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-in {
+    animation: none;
+  }
 }

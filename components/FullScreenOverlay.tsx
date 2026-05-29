@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import QRPGenerator from './QRPGenerator';
 import { X } from 'lucide-react';
 import { GeoConfig } from '../types';
@@ -25,19 +25,31 @@ const FullScreenOverlay: React.FC<FullScreenOverlayProps> = ({
   imageSrc
 }) => {
   
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
         if (e.key === 'Escape') onClose();
     }
     window.addEventListener('keydown', handleEsc);
+    // Move focus into the overlay so keyboard users aren't left on the page behind it.
+    closeButtonRef.current?.focus();
     return () => window.removeEventListener('keydown', handleEsc);
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md flex flex-col items-center justify-center p-4 animate-in fade-in duration-200 transition-colors">
+    <div
+        className="fixed inset-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md flex flex-col items-center justify-center p-4 animate-in transition-colors"
+        role="dialog"
+        aria-modal="true"
+        aria-label={sequenceName ? `Full screen view: ${sequenceName}` : 'Full screen view'}
+    >
         {!isViewOnly && (
-            <button 
+            <button
+            ref={closeButtonRef}
             onClick={onClose}
+            aria-label="Exit full screen"
+            title="Exit full screen (Esc)"
             className="absolute top-4 right-4 p-2 bg-slate-100 dark:bg-white/10 rounded-full text-slate-500 dark:text-white hover:bg-slate-200 dark:hover:bg-white/20 transition-colors"
             >
                 <X size={24} />
