@@ -26,6 +26,8 @@ interface QRPGeneratorProps extends Partial<GeoConfig> {
   exportTheme?: 'light' | 'dark';
   animationRotation?: number; // Manual rotation for video export (in degrees)
   imageSrc?: string; // When set, render this image instead of the generated geometry
+  imageInvert?: boolean; // Invert the image in dark mode (default true)
+  imageFrame?: boolean; // Draw a frame around the image card (default false)
 }
 
 const QRPGenerator: React.FC<QRPGeneratorProps> = ({ 
@@ -79,7 +81,9 @@ const QRPGenerator: React.FC<QRPGeneratorProps> = ({
   exportMode = false,
   exportTheme = 'light',
   animationRotation = 0, // Manual rotation for video export
-  imageSrc
+  imageSrc,
+  imageInvert = true,
+  imageFrame = false
 }) => {
   // Center coordinates in SVG space
   const cx = 200;
@@ -332,6 +336,12 @@ const QRPGenerator: React.FC<QRPGeneratorProps> = ({
   // Rendered as an <image> inside the same viewBox so PNG/MP4 export paths
   // (which serialize this <svg>) keep working unchanged.
   if (imageSrc) {
+    // Live inversion is a CSS filter on the <image> (theme via .dark). Export
+    // can't use CSS (the SVG is serialized to canvas), so it uses an inline
+    // feColorMatrix filter on the image only — the frame stays theme-correct.
+    const exportInvert = exportMode && exportTheme === 'dark' && imageInvert;
+    const imgPad = imageFrame ? 20 : 0; // inset the image so the frame sits around it
+    const tick = frameTickLength * frameScale;
     return (
       <div
         className={`relative mx-auto aspect-[4/7] ${className}`}
@@ -349,16 +359,36 @@ const QRPGenerator: React.FC<QRPGeneratorProps> = ({
           role="img"
           aria-label={title ? `Image card: ${title}` : 'Image card'}
         >
+          {exportInvert && (
+            <defs>
+              <filter id="qrpImgInvert" colorInterpolationFilters="sRGB">
+                <feColorMatrix type="matrix" values="-1 0 0 0 1  0 -1 0 0 1  0 0 -1 0 1  0 0 0 1 0" />
+              </filter>
+            </defs>
+          )}
           <image
-            className="qrp-card-image"
+            className={imageInvert ? 'qrp-card-image qrp-invert' : 'qrp-card-image'}
+            filter={exportInvert ? 'url(#qrpImgInvert)' : undefined}
             href={imageSrc}
             xlinkHref={imageSrc}
-            x={0}
-            y={-150}
-            width={400}
-            height={700}
+            x={imgPad}
+            y={-150 + imgPad}
+            width={400 - imgPad * 2}
+            height={700 - imgPad * 2}
             preserveAspectRatio="xMidYMid meet"
           />
+          {imageFrame && (
+            <g
+              className={exportMode ? '' : 'text-slate-400 dark:text-slate-600 transition-colors'}
+              style={exportMode ? { color: colors.secondary } : undefined}
+            >
+              <rect x={10} y={-140} width={380} height={680} fill="none" stroke="currentColor" strokeWidth={frameStrokeWidth} />
+              <line x1={200} y1={-140} x2={200} y2={-140 + tick} stroke="currentColor" strokeWidth={frameStrokeWidth} />
+              <line x1={200} y1={540} x2={200} y2={540 - tick} stroke="currentColor" strokeWidth={frameStrokeWidth} />
+              <line x1={10} y1={200} x2={10 + tick} y2={200} stroke="currentColor" strokeWidth={frameStrokeWidth} />
+              <line x1={390} y1={200} x2={390 - tick} y2={200} stroke="currentColor" strokeWidth={frameStrokeWidth} />
+            </g>
+          )}
         </svg>
       </div>
     );

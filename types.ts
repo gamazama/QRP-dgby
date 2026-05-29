@@ -59,4 +59,8 @@ export interface Sequence {
     // instead of the generated geometry. Not included in share URLs (too large);
     // persisted only via JSON save and exported PNG/MP4 frames.
     imageSrc?: string;
+    // Invert the image in dark mode (black-line art → white lines). Default on.
+    imageInvert?: boolean;
+    // Draw a frame around the image card. Default off.
+    imageFrame?: boolean;
 }

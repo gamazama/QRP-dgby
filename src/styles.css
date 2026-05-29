@@ -28,7 +28,8 @@ body {
 .qrp-card-image {
   filter: contrast(1.05);
 }
-.dark .qrp-card-image {
+/* Inversion is opt-in per card (.qrp-invert) so colour images can stay as-is. */
+.dark .qrp-card-image.qrp-invert {
   filter: invert(1) contrast(1.05);
 }
 

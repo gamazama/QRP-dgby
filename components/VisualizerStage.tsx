@@ -11,6 +11,8 @@ interface VisualizerStageProps {
   geoConfig: GeoConfig;
   onEnterFullScreen: () => void;
   imageSrc?: string;
+  imageInvert?: boolean;
+  imageFrame?: boolean;
 }
 
 const VisualizerStage: React.FC<VisualizerStageProps> = ({
@@ -20,7 +22,9 @@ const VisualizerStage: React.FC<VisualizerStageProps> = ({
   isPlaying,
   geoConfig,
   onEnterFullScreen,
-  imageSrc
+  imageSrc,
+  imageInvert,
+  imageFrame
 }) => {
   return (
     <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl p-4 sm:p-8 flex flex-col items-center justify-center min-h-[400px] lg:min-h-[500px] relative overflow-hidden group transition-colors duration-300">
@@ -55,6 +59,8 @@ const VisualizerStage: React.FC<VisualizerStageProps> = ({
                 description={description}
                 {...geoConfig}
                 imageSrc={imageSrc}
+                imageInvert={imageInvert}
+                imageFrame={imageFrame}
             />
         </div>
         

@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import SequenceEditor from './SequenceEditor';
 import QRPGenerator from './QRPGenerator';
 import VideoExportModal from './VideoExportModal';
-import { RefreshCw, Plus, Trash2, List, GripVertical, ChevronUp, ChevronDown, Copy, ImageDown, Images, Image as ImageIcon, Upload, Film } from 'lucide-react';
+import { RefreshCw, Plus, Trash2, List, GripVertical, ChevronUp, ChevronDown, Copy, ImageDown, Images, Image as ImageIcon, Upload, Film, Contrast, Frame } from 'lucide-react';
 import { Sequence } from '../types';
 import { compressConfig, decompressConfig } from '../utils/compression';
 import { writePngMetadata, readPngMetadata } from '../utils/png';
@@ -156,14 +156,10 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
             const xOffset = (EXPORT_SIZE - targetWidth) / 2;
             const yOffset = (EXPORT_SIZE - targetHeight) / 2;
 
-            // Match the live dark-mode treatment: invert black-line image cards
-            // so their lines export as white. CSS filters don't serialize into
-            // the SVG, so apply it on the canvas here.
-            if (isDarkMode && activeSequence.imageSrc) {
-                ctx.filter = 'invert(1) contrast(1.05)';
-            }
+            // Dark-mode image inversion is baked into the serialized SVG (an
+            // feColorMatrix filter on the <image> when exportTheme is dark and
+            // the card opts in), so no canvas filter is needed here.
             ctx.drawImage(img, xOffset, yOffset, targetWidth, targetHeight);
-            ctx.filter = 'none';
 
             // 5. Get PNG & Inject Metadata
             canvas.toBlob(async (blob) => {
@@ -499,6 +495,36 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
                                 </button>
                             )}
                         </div>
+
+                        {/* Image-card display options */}
+                        {activeSequence.imageSrc && (
+                            <div className="grid grid-cols-2 gap-2 mt-2">
+                                <button
+                                    onClick={() => onUpdate(activeSequence.id, { imageInvert: activeSequence.imageInvert === false })}
+                                    aria-pressed={activeSequence.imageInvert !== false}
+                                    title="Invert this image in dark mode (for black-line art)"
+                                    className={`flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-xs font-medium border transition-colors ${
+                                        activeSequence.imageInvert !== false
+                                            ? 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300'
+                                            : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
+                                    }`}
+                                >
+                                    <Contrast size={16} /> Invert (dark)
+                                </button>
+                                <button
+                                    onClick={() => onUpdate(activeSequence.id, { imageFrame: !activeSequence.imageFrame })}
+                                    aria-pressed={!!activeSequence.imageFrame}
+                                    title="Draw a frame around the image"
+                                    className={`flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-xs font-medium border transition-colors ${
+                                        activeSequence.imageFrame
+                                            ? 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300'
+                                            : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
+                                    }`}
+                                >
+                                    <Frame size={16} /> Frame
+                                </button>
+                            </div>
+                        )}
                     </div>
 
                     {/* CARD: manage this card */}
@@ -568,6 +594,8 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
                         exportTheme={isDarkMode ? 'dark' : 'light'} // Dynamic Export Theme
                         {...activeSequence.geoConfig}
                         imageSrc={activeSequence.imageSrc}
+                        imageInvert={activeSequence.imageInvert}
+                        imageFrame={activeSequence.imageFrame}
                     />
                 </div>
 

@@ -148,8 +148,9 @@ const VideoExportModal: React.FC<VideoExportModalProps> = ({
 
     // Image-card fast path: the image is identical on every frame of the scene,
     // so skip the per-frame SVG serialize + base64 decode and just draw the
-    // cached bitmap. Framing matches the live card's 4:7 viewBox (contain).
-    if (sequence?.imageSrc) {
+    // cached bitmap. Framed image cards fall through to the normal SVG path so
+    // QRPGenerator draws the frame (and the feColorMatrix invert).
+    if (sequence?.imageSrc && !sequence.imageFrame) {
       const img = await loadCachedImage(sequence.imageSrc);
       const boxAspect = 400 / 700; // QRPGenerator viewBox aspect
       const canvasAspect = canvas.width / canvas.height;
@@ -176,8 +177,8 @@ const VideoExportModal: React.FC<VideoExportModalProps> = ({
         dW = boxH * imgAspect;
       }
       // Match the live dark-mode treatment: invert black-line image cards so
-      // their lines render as white in a dark-themed video.
-      if (isDarkMode) {
+      // their lines render as white in a dark-themed video (unless opted out).
+      if (isDarkMode && sequence.imageInvert !== false) {
         ctx.filter = 'invert(1) contrast(1.05)';
       }
       ctx.drawImage(img, boxX + (boxW - dW) / 2, boxY + (boxH - dH) / 2, dW, dH);
@@ -313,11 +314,13 @@ const VideoExportModal: React.FC<VideoExportModalProps> = ({
         
         globalFrameIndex++;
 
-        // Image cards render straight from a cached bitmap and never read the
-        // hidden QRPGenerator, so skip the per-frame React re-render for them.
-        const isImageCard = !isIntro && !isOutro && !!sequence.imageSrc;
+        // Unframed image cards render straight from a cached bitmap and never
+        // read the hidden QRPGenerator, so skip the per-frame React re-render.
+        // Framed image cards DO use the hidden QRPGenerator (for the frame), so
+        // they still need the re-render below.
+        const usesFastPath = !isIntro && !isOutro && !!sequence.imageSrc && !sequence.imageFrame;
 
-        if (!isImageCard) {
+        if (!usesFastPath) {
           // Use flushSync to ensure state updates are applied synchronously
           flushSync(() => {
             // Update state for rendering
@@ -605,6 +608,8 @@ const VideoExportModal: React.FC<VideoExportModalProps> = ({
               animationRotation={animationRotation}
               {...currentSequence.geoConfig}
               imageSrc={currentSequence.imageSrc}
+              imageInvert={currentSequence.imageInvert}
+              imageFrame={currentSequence.imageFrame}
             />
           )}
         </div>

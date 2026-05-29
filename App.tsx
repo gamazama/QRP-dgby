@@ -232,6 +232,8 @@ const App: React.FC = () => {
              geoConfig={activeGeoConfig}
              isViewOnly={isViewOnly}
              imageSrc={sequencer.activeSequence.imageSrc}
+             imageInvert={sequencer.activeSequence.imageInvert}
+             imageFrame={sequencer.activeSequence.imageFrame}
           />
       )}
 
@@ -256,6 +258,8 @@ const App: React.FC = () => {
                 geoConfig={activeGeoConfig}
                 onEnterFullScreen={() => setIsFullScreen(true)}
                 imageSrc={sequencer.activeSequence.imageSrc}
+                imageInvert={sequencer.activeSequence.imageInvert}
+                imageFrame={sequencer.activeSequence.imageFrame}
             />
 
             <PlaybackControls

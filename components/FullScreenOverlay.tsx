@@ -12,6 +12,8 @@ interface FullScreenOverlayProps {
   geoConfig: GeoConfig;
   isViewOnly?: boolean;
   imageSrc?: string;
+  imageInvert?: boolean;
+  imageFrame?: boolean;
 }
 
 const FullScreenOverlay: React.FC<FullScreenOverlayProps> = ({
@@ -22,7 +24,9 @@ const FullScreenOverlay: React.FC<FullScreenOverlayProps> = ({
   isPlaying,
   geoConfig,
   isViewOnly = false,
-  imageSrc
+  imageSrc,
+  imageInvert,
+  imageFrame
 }) => {
   
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -66,6 +70,8 @@ const FullScreenOverlay: React.FC<FullScreenOverlayProps> = ({
                       description={sequenceDesc}
                       {...geoConfig}
                       imageSrc={imageSrc}
+                      imageInvert={imageInvert}
+                      imageFrame={imageFrame}
                   />
              </div>
              
