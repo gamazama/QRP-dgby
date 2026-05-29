@@ -28,9 +28,34 @@ body {
 .qrp-card-image {
   filter: contrast(1.05);
 }
-/* Inversion is opt-in per card (.qrp-invert) so colour images can stay as-is. */
+/* Baked line-art cards ship a light + dark layer (transparent paper, photo in
+   colour). Show the layer matching the theme — no filter, so edges stay clean
+   and the photo is never inverted. (Export picks the layer by exportTheme.) */
+.qrp-themed-dark { display: none; }
+.dark .qrp-themed-light { display: none; }
+.dark .qrp-themed-dark { display: inline; }
+
+/* Inversion is opt-in per card (.qrp-invert) so colour images can stay as-is.
+   Luminance-preserving invert: invert(1) flips lightness, hue-rotate(180deg)
+   flips the hue back — the white ground goes dark and black lines go light while
+   photo/colour content keeps (roughly) its true hues. */
 .dark .qrp-card-image.qrp-invert {
-  filter: invert(1) contrast(1.05);
+  filter: invert(1) hue-rotate(180deg) contrast(1.05);
+}
+
+/* Center image (a library mandala used as the inner pattern). A circular crop
+   (applied in QRPGenerator) removes the source square. Invert is opt-in via
+   .qrp-invert and acts only in dark mode, as a luminosity-preserving invert
+   (matches the card invert). The blend modes are a best-effort tint against the
+   card ground. Export parity is handled inline in QRPGenerator. */
+.qrp-center-image {
+  mix-blend-mode: multiply;
+}
+.dark .qrp-center-image {
+  mix-blend-mode: screen;
+}
+.dark .qrp-center-image.qrp-invert {
+  filter: invert(1) hue-rotate(180deg);
 }
 
 /* Visible keyboard focus across the app. Many controls set `focus:outline-none`

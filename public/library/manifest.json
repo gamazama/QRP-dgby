@@ -1,0 +1,827 @@
+{
+  "generatedAt": "2026-05-29T15:14:37.381Z",
+  "categories": [
+    {
+      "id": "bach-flowers",
+      "label": "Bach Flowers",
+      "kind": "card",
+      "cards": [
+        {
+          "id": "bach-flowers/agrimony",
+          "name": "Agrimony",
+          "file": "library/bach-flowers/agrimony.webp",
+          "fileDark": "library/bach-flowers/agrimony.dark.webp"
+        },
+        {
+          "id": "bach-flowers/aspen",
+          "name": "Aspen",
+          "file": "library/bach-flowers/aspen.webp",
+          "fileDark": "library/bach-flowers/aspen.dark.webp"
+        },
+        {
+          "id": "bach-flowers/beech",
+          "name": "Beech",
+          "file": "library/bach-flowers/beech.webp",
+          "fileDark": "library/bach-flowers/beech.dark.webp"
+        },
+        {
+          "id": "bach-flowers/centaury",
+          "name": "Centaury",
+          "file": "library/bach-flowers/centaury.webp",
+          "fileDark": "library/bach-flowers/centaury.dark.webp"
+        },
+        {
+          "id": "bach-flowers/cerato",
+          "name": "Cerato",
+          "file": "library/bach-flowers/cerato.webp",
+          "fileDark": "library/bach-flowers/cerato.dark.webp"
+        },
+        {
+          "id": "bach-flowers/cherry-plum",
+          "name": "Cherry Plum",
+          "file": "library/bach-flowers/cherry-plum.webp",
+          "fileDark": "library/bach-flowers/cherry-plum.dark.webp"
+        },
+        {
+          "id": "bach-flowers/chestnut-bud",
+          "name": "Chestnut Bud",
+          "file": "library/bach-flowers/chestnut-bud.webp",
+          "fileDark": "library/bach-flowers/chestnut-bud.dark.webp"
+        },
+        {
+          "id": "bach-flowers/chicory",
+          "name": "Chicory",
+          "file": "library/bach-flowers/chicory.webp",
+          "fileDark": "library/bach-flowers/chicory.dark.webp"
+        },
+        {
+          "id": "bach-flowers/clematis",
+          "name": "Clematis",
+          "file": "library/bach-flowers/clematis.webp",
+          "fileDark": "library/bach-flowers/clematis.dark.webp"
+        },
+        {
+          "id": "bach-flowers/crab-apple",
+          "name": "Crab Apple",
+          "file": "library/bach-flowers/crab-apple.webp",
+          "fileDark": "library/bach-flowers/crab-apple.dark.webp"
+        },
+        {
+          "id": "bach-flowers/elm",
+          "name": "Elm",
+          "file": "library/bach-flowers/elm.webp",
+          "fileDark": "library/bach-flowers/elm.dark.webp"
+        },
+        {
+          "id": "bach-flowers/gentian",
+          "name": "Gentian",
+          "file": "library/bach-flowers/gentian.webp",
+          "fileDark": "library/bach-flowers/gentian.dark.webp"
+        },
+        {
+          "id": "bach-flowers/gorse",
+          "name": "Gorse",
+          "file": "library/bach-flowers/gorse.webp",
+          "fileDark": "library/bach-flowers/gorse.dark.webp"
+        },
+        {
+          "id": "bach-flowers/heather",
+          "name": "Heather",
+          "file": "library/bach-flowers/heather.webp",
+          "fileDark": "library/bach-flowers/heather.dark.webp"
+        },
+        {
+          "id": "bach-flowers/holly",
+          "name": "Holly",
+          "file": "library/bach-flowers/holly.webp",
+          "fileDark": "library/bach-flowers/holly.dark.webp"
+        },
+        {
+          "id": "bach-flowers/honeysuckle",
+          "name": "Honeysuckle",
+          "file": "library/bach-flowers/honeysuckle.webp",
+          "fileDark": "library/bach-flowers/honeysuckle.dark.webp"
+        },
+        {
+          "id": "bach-flowers/honeysuckle-orange",
+          "name": "Honeysuckle Orange",
+          "file": "library/bach-flowers/honeysuckle-orange.webp",
+          "fileDark": "library/bach-flowers/honeysuckle-orange.dark.webp"
+        },
+        {
+          "id": "bach-flowers/hornbeam",
+          "name": "Hornbeam",
+          "file": "library/bach-flowers/hornbeam.webp",
+          "fileDark": "library/bach-flowers/hornbeam.dark.webp"
+        },
+        {
+          "id": "bach-flowers/impatiens",
+          "name": "Impatiens",
+          "file": "library/bach-flowers/impatiens.webp",
+          "fileDark": "library/bach-flowers/impatiens.dark.webp"
+        },
+        {
+          "id": "bach-flowers/larch",
+          "name": "Larch",
+          "file": "library/bach-flowers/larch.webp",
+          "fileDark": "library/bach-flowers/larch.dark.webp"
+        },
+        {
+          "id": "bach-flowers/mimulus",
+          "name": "Mimulus",
+          "file": "library/bach-flowers/mimulus.webp",
+          "fileDark": "library/bach-flowers/mimulus.dark.webp"
+        },
+        {
+          "id": "bach-flowers/mustard",
+          "name": "Mustard",
+          "file": "library/bach-flowers/mustard.webp",
+          "fileDark": "library/bach-flowers/mustard.dark.webp"
+        },
+        {
+          "id": "bach-flowers/oak",
+          "name": "Oak",
+          "file": "library/bach-flowers/oak.webp",
+          "fileDark": "library/bach-flowers/oak.dark.webp"
+        },
+        {
+          "id": "bach-flowers/olive",
+          "name": "Olive",
+          "file": "library/bach-flowers/olive.webp",
+          "fileDark": "library/bach-flowers/olive.dark.webp"
+        },
+        {
+          "id": "bach-flowers/pine",
+          "name": "Pine",
+          "file": "library/bach-flowers/pine.webp",
+          "fileDark": "library/bach-flowers/pine.dark.webp"
+        },
+        {
+          "id": "bach-flowers/plantain-l",
+          "name": "Plantain L",
+          "file": "library/bach-flowers/plantain-l.webp",
+          "fileDark": "library/bach-flowers/plantain-l.dark.webp"
+        },
+        {
+          "id": "bach-flowers/red-chestnut",
+          "name": "Red Chestnut",
+          "file": "library/bach-flowers/red-chestnut.webp",
+          "fileDark": "library/bach-flowers/red-chestnut.dark.webp"
+        },
+        {
+          "id": "bach-flowers/rescue-remedy",
+          "name": "Rescue Remedy",
+          "file": "library/bach-flowers/rescue-remedy.webp",
+          "fileDark": "library/bach-flowers/rescue-remedy.dark.webp"
+        },
+        {
+          "id": "bach-flowers/rock-rose",
+          "name": "Rock Rose",
+          "file": "library/bach-flowers/rock-rose.webp",
+          "fileDark": "library/bach-flowers/rock-rose.dark.webp"
+        },
+        {
+          "id": "bach-flowers/rock-water",
+          "name": "Rock Water",
+          "file": "library/bach-flowers/rock-water.webp",
+          "fileDark": "library/bach-flowers/rock-water.dark.webp"
+        },
+        {
+          "id": "bach-flowers/scleranthus",
+          "name": "Scleranthus",
+          "file": "library/bach-flowers/scleranthus.webp",
+          "fileDark": "library/bach-flowers/scleranthus.dark.webp"
+        },
+        {
+          "id": "bach-flowers/star-of-bethlehem",
+          "name": "Star Of Bethlehem",
+          "file": "library/bach-flowers/star-of-bethlehem.webp",
+          "fileDark": "library/bach-flowers/star-of-bethlehem.dark.webp"
+        },
+        {
+          "id": "bach-flowers/sweet-chestnut",
+          "name": "Sweet Chestnut",
+          "file": "library/bach-flowers/sweet-chestnut.webp",
+          "fileDark": "library/bach-flowers/sweet-chestnut.dark.webp"
+        },
+        {
+          "id": "bach-flowers/vervain",
+          "name": "Vervain",
+          "file": "library/bach-flowers/vervain.webp",
+          "fileDark": "library/bach-flowers/vervain.dark.webp"
+        },
+        {
+          "id": "bach-flowers/vine",
+          "name": "Vine",
+          "file": "library/bach-flowers/vine.webp",
+          "fileDark": "library/bach-flowers/vine.dark.webp"
+        },
+        {
+          "id": "bach-flowers/walnut",
+          "name": "Walnut",
+          "file": "library/bach-flowers/walnut.webp",
+          "fileDark": "library/bach-flowers/walnut.dark.webp"
+        },
+        {
+          "id": "bach-flowers/water-violet",
+          "name": "Water Violet",
+          "file": "library/bach-flowers/water-violet.webp",
+          "fileDark": "library/bach-flowers/water-violet.dark.webp"
+        },
+        {
+          "id": "bach-flowers/white-chestnut",
+          "name": "White Chestnut",
+          "file": "library/bach-flowers/white-chestnut.webp",
+          "fileDark": "library/bach-flowers/white-chestnut.dark.webp"
+        }
+      ]
+    },
+    {
+      "id": "astrological",
+      "label": "Astrological",
+      "kind": "card",
+      "cards": [
+        {
+          "id": "astrological/aquarius",
+          "name": "Aquarius",
+          "file": "library/astrological/aquarius.webp",
+          "fileDark": "library/astrological/aquarius.dark.webp"
+        },
+        {
+          "id": "astrological/aries",
+          "name": "Aries",
+          "file": "library/astrological/aries.webp",
+          "fileDark": "library/astrological/aries.dark.webp"
+        },
+        {
+          "id": "astrological/cancer",
+          "name": "Cancer",
+          "file": "library/astrological/cancer.webp",
+          "fileDark": "library/astrological/cancer.dark.webp"
+        },
+        {
+          "id": "astrological/capricorn",
+          "name": "Capricorn",
+          "file": "library/astrological/capricorn.webp",
+          "fileDark": "library/astrological/capricorn.dark.webp"
+        },
+        {
+          "id": "astrological/ini",
+          "name": "Ini",
+          "file": "library/astrological/ini.webp",
+          "fileDark": "library/astrological/ini.dark.webp"
+        },
+        {
+          "id": "astrological/leo",
+          "name": "Leo",
+          "file": "library/astrological/leo.webp",
+          "fileDark": "library/astrological/leo.dark.webp"
+        },
+        {
+          "id": "astrological/pisces",
+          "name": "Pisces",
+          "file": "library/astrological/pisces.webp",
+          "fileDark": "library/astrological/pisces.dark.webp"
+        },
+        {
+          "id": "astrological/sagittarius",
+          "name": "Sagittarius",
+          "file": "library/astrological/sagittarius.webp",
+          "fileDark": "library/astrological/sagittarius.dark.webp"
+        },
+        {
+          "id": "astrological/scorpion",
+          "name": "Scorpion",
+          "file": "library/astrological/scorpion.webp",
+          "fileDark": "library/astrological/scorpion.dark.webp"
+        },
+        {
+          "id": "astrological/taurus",
+          "name": "Taurus",
+          "file": "library/astrological/taurus.webp",
+          "fileDark": "library/astrological/taurus.dark.webp"
+        },
+        {
+          "id": "astrological/virgo",
+          "name": "Virgo",
+          "file": "library/astrological/virgo.webp",
+          "fileDark": "library/astrological/virgo.dark.webp"
+        }
+      ]
+    },
+    {
+      "id": "chakras",
+      "label": "Chakras",
+      "kind": "card",
+      "cards": [
+        {
+          "id": "chakras/ajna-brow-chakra-sulis",
+          "name": "Ajna (Brow) Chakra (SULIS)",
+          "file": "library/chakras/ajna-brow-chakra-sulis.webp",
+          "fileDark": "library/chakras/ajna-brow-chakra-sulis.dark.webp"
+        },
+        {
+          "id": "chakras/ajna-chakra",
+          "name": "Ajna Chakra",
+          "file": "library/chakras/ajna-chakra.webp",
+          "fileDark": "library/chakras/ajna-chakra.dark.webp"
+        },
+        {
+          "id": "chakras/ajna-chakra-astral-body",
+          "name": "Ajna Chakra Astral Body",
+          "file": "library/chakras/ajna-chakra-astral-body.webp",
+          "fileDark": "library/chakras/ajna-chakra-astral-body.dark.webp"
+        },
+        {
+          "id": "chakras/altar-major-chakra-sulis",
+          "name": "Altar Major Chakra (SULIS)",
+          "file": "library/chakras/altar-major-chakra-sulis.webp",
+          "fileDark": "library/chakras/altar-major-chakra-sulis.dark.webp"
+        },
+        {
+          "id": "chakras/base-chakra",
+          "name": "Base Chakra",
+          "file": "library/chakras/base-chakra.webp",
+          "fileDark": "library/chakras/base-chakra.dark.webp"
+        },
+        {
+          "id": "chakras/base-of-spine-chakra-sulis",
+          "name": "Base Of Spine Chakra (SULIS)",
+          "file": "library/chakras/base-of-spine-chakra-sulis.webp",
+          "fileDark": "library/chakras/base-of-spine-chakra-sulis.dark.webp"
+        },
+        {
+          "id": "chakras/crown-chakra",
+          "name": "Crown Chakra",
+          "file": "library/chakras/crown-chakra.webp",
+          "fileDark": "library/chakras/crown-chakra.dark.webp"
+        },
+        {
+          "id": "chakras/crown-chakra-sulis",
+          "name": "Crown Chakra (SULIS)",
+          "file": "library/chakras/crown-chakra-sulis.webp",
+          "fileDark": "library/chakras/crown-chakra-sulis.dark.webp"
+        },
+        {
+          "id": "chakras/heart-chakra",
+          "name": "Heart Chakra",
+          "file": "library/chakras/heart-chakra.webp",
+          "fileDark": "library/chakras/heart-chakra.dark.webp"
+        },
+        {
+          "id": "chakras/heart-chakra-sulis",
+          "name": "Heart Chakra (SULIS)",
+          "file": "library/chakras/heart-chakra-sulis.webp",
+          "fileDark": "library/chakras/heart-chakra-sulis.dark.webp"
+        },
+        {
+          "id": "chakras/sacral-chakra",
+          "name": "Sacral Chakra",
+          "file": "library/chakras/sacral-chakra.webp",
+          "fileDark": "library/chakras/sacral-chakra.dark.webp"
+        },
+        {
+          "id": "chakras/sacral-chakra-sulis",
+          "name": "Sacral Chakra (SULIS)",
+          "file": "library/chakras/sacral-chakra-sulis.webp",
+          "fileDark": "library/chakras/sacral-chakra-sulis.dark.webp"
+        },
+        {
+          "id": "chakras/solar-plexus-chakra",
+          "name": "Solar Plexus Chakra",
+          "file": "library/chakras/solar-plexus-chakra.webp",
+          "fileDark": "library/chakras/solar-plexus-chakra.dark.webp"
+        },
+        {
+          "id": "chakras/solar-plexus-chakra-sulis",
+          "name": "Solar Plexus Chakra (SULIS)",
+          "file": "library/chakras/solar-plexus-chakra-sulis.webp",
+          "fileDark": "library/chakras/solar-plexus-chakra-sulis.dark.webp"
+        },
+        {
+          "id": "chakras/spleen-chakra-sulis",
+          "name": "Spleen Chakra (SULIS)",
+          "file": "library/chakras/spleen-chakra-sulis.webp",
+          "fileDark": "library/chakras/spleen-chakra-sulis.dark.webp"
+        },
+        {
+          "id": "chakras/throat-chakra",
+          "name": "Throat Chakra",
+          "file": "library/chakras/throat-chakra.webp",
+          "fileDark": "library/chakras/throat-chakra.dark.webp"
+        },
+        {
+          "id": "chakras/throat-chakra-sulis",
+          "name": "Throat Chakra (SULIS)",
+          "file": "library/chakras/throat-chakra-sulis.webp",
+          "fileDark": "library/chakras/throat-chakra-sulis.dark.webp"
+        }
+      ]
+    },
+    {
+      "id": "chakra-mandalas",
+      "label": "Chakra Mandalas",
+      "kind": "center",
+      "cards": [
+        {
+          "id": "chakra-mandalas/ajna",
+          "name": "Ajna",
+          "file": "library/chakra-mandalas/ajna.webp"
+        },
+        {
+          "id": "chakra-mandalas/anahata",
+          "name": "Anahata",
+          "file": "library/chakra-mandalas/anahata.webp"
+        },
+        {
+          "id": "chakra-mandalas/manipura",
+          "name": "Manipura",
+          "file": "library/chakra-mandalas/manipura.webp"
+        },
+        {
+          "id": "chakra-mandalas/muladhara",
+          "name": "Muladhara",
+          "file": "library/chakra-mandalas/muladhara.webp"
+        },
+        {
+          "id": "chakra-mandalas/sahasrara",
+          "name": "Sahasrara",
+          "file": "library/chakra-mandalas/sahasrara.webp"
+        },
+        {
+          "id": "chakra-mandalas/svahdisthana",
+          "name": "Svahdisthana",
+          "file": "library/chakra-mandalas/svahdisthana.webp"
+        },
+        {
+          "id": "chakra-mandalas/vishudha",
+          "name": "Vishudha",
+          "file": "library/chakra-mandalas/vishudha.webp"
+        }
+      ]
+    },
+    {
+      "id": "gems",
+      "label": "Gems",
+      "kind": "card",
+      "cards": [
+        {
+          "id": "gems/amethyst",
+          "name": "Amethyst",
+          "file": "library/gems/amethyst.webp",
+          "fileDark": "library/gems/amethyst.dark.webp"
+        },
+        {
+          "id": "gems/aquamarine",
+          "name": "Aquamarine",
+          "file": "library/gems/aquamarine.webp",
+          "fileDark": "library/gems/aquamarine.dark.webp"
+        },
+        {
+          "id": "gems/bloodstone",
+          "name": "Bloodstone",
+          "file": "library/gems/bloodstone.webp",
+          "fileDark": "library/gems/bloodstone.dark.webp"
+        },
+        {
+          "id": "gems/citrine",
+          "name": "Citrine",
+          "file": "library/gems/citrine.webp",
+          "fileDark": "library/gems/citrine.dark.webp"
+        },
+        {
+          "id": "gems/diamond",
+          "name": "Diamond",
+          "file": "library/gems/diamond.webp",
+          "fileDark": "library/gems/diamond.dark.webp"
+        },
+        {
+          "id": "gems/emerald",
+          "name": "Emerald",
+          "file": "library/gems/emerald.webp",
+          "fileDark": "library/gems/emerald.dark.webp"
+        },
+        {
+          "id": "gems/haematite",
+          "name": "Haematite",
+          "file": "library/gems/haematite.webp",
+          "fileDark": "library/gems/haematite.dark.webp"
+        },
+        {
+          "id": "gems/jade",
+          "name": "Jade",
+          "file": "library/gems/jade.webp",
+          "fileDark": "library/gems/jade.dark.webp"
+        },
+        {
+          "id": "gems/lapis-lazuli",
+          "name": "Lapis Lazuli",
+          "file": "library/gems/lapis-lazuli.webp",
+          "fileDark": "library/gems/lapis-lazuli.dark.webp"
+        },
+        {
+          "id": "gems/moonstone",
+          "name": "Moonstone",
+          "file": "library/gems/moonstone.webp",
+          "fileDark": "library/gems/moonstone.dark.webp"
+        },
+        {
+          "id": "gems/onyx",
+          "name": "Onyx",
+          "file": "library/gems/onyx.webp",
+          "fileDark": "library/gems/onyx.dark.webp"
+        },
+        {
+          "id": "gems/opal",
+          "name": "Opal",
+          "file": "library/gems/opal.webp",
+          "fileDark": "library/gems/opal.dark.webp"
+        },
+        {
+          "id": "gems/rose-quartz",
+          "name": "Rose Quartz",
+          "file": "library/gems/rose-quartz.webp",
+          "fileDark": "library/gems/rose-quartz.dark.webp"
+        },
+        {
+          "id": "gems/ruby",
+          "name": "Ruby",
+          "file": "library/gems/ruby.webp",
+          "fileDark": "library/gems/ruby.dark.webp"
+        },
+        {
+          "id": "gems/sapphire",
+          "name": "Sapphire",
+          "file": "library/gems/sapphire.webp",
+          "fileDark": "library/gems/sapphire.dark.webp"
+        },
+        {
+          "id": "gems/turquoise",
+          "name": "Turquoise",
+          "file": "library/gems/turquoise.webp",
+          "fileDark": "library/gems/turquoise.dark.webp"
+        }
+      ]
+    },
+    {
+      "id": "homeopathic",
+      "label": "Homeopathic",
+      "kind": "card",
+      "cards": [
+        {
+          "id": "homeopathic/aconitum-napellus",
+          "name": "Aconitum Napellus",
+          "file": "library/homeopathic/aconitum-napellus.webp",
+          "fileDark": "library/homeopathic/aconitum-napellus.dark.webp"
+        },
+        {
+          "id": "homeopathic/anacardium-occidentale",
+          "name": "Anacardium Occidentale",
+          "file": "library/homeopathic/anacardium-occidentale.webp",
+          "fileDark": "library/homeopathic/anacardium-occidentale.dark.webp"
+        },
+        {
+          "id": "homeopathic/antimonium-crudum",
+          "name": "Antimonium Crudum",
+          "file": "library/homeopathic/antimonium-crudum.webp",
+          "fileDark": "library/homeopathic/antimonium-crudum.dark.webp"
+        },
+        {
+          "id": "homeopathic/apis-mellifica",
+          "name": "Apis Mellifica",
+          "file": "library/homeopathic/apis-mellifica.webp",
+          "fileDark": "library/homeopathic/apis-mellifica.dark.webp"
+        },
+        {
+          "id": "homeopathic/arsen-iod",
+          "name": "Arsen Iod",
+          "file": "library/homeopathic/arsen-iod.webp",
+          "fileDark": "library/homeopathic/arsen-iod.dark.webp"
+        },
+        {
+          "id": "homeopathic/arsenicum-album",
+          "name": "Arsenicum Album",
+          "file": "library/homeopathic/arsenicum-album.webp",
+          "fileDark": "library/homeopathic/arsenicum-album.dark.webp"
+        },
+        {
+          "id": "homeopathic/arsenicum-sulphuratum-flavum",
+          "name": "Arsenicum Sulphuratum Flavum",
+          "file": "library/homeopathic/arsenicum-sulphuratum-flavum.webp",
+          "fileDark": "library/homeopathic/arsenicum-sulphuratum-flavum.dark.webp"
+        },
+        {
+          "id": "homeopathic/bacillinum",
+          "name": "Bacillinum",
+          "file": "library/homeopathic/bacillinum.webp",
+          "fileDark": "library/homeopathic/bacillinum.dark.webp"
+        },
+        {
+          "id": "homeopathic/belladonna-flower",
+          "name": "Belladonna (Flower)",
+          "file": "library/homeopathic/belladonna-flower.webp",
+          "fileDark": "library/homeopathic/belladonna-flower.dark.webp"
+        },
+        {
+          "id": "homeopathic/carcinosinum",
+          "name": "Carcinosinum",
+          "file": "library/homeopathic/carcinosinum.webp",
+          "fileDark": "library/homeopathic/carcinosinum.dark.webp"
+        },
+        {
+          "id": "homeopathic/causticum",
+          "name": "Causticum",
+          "file": "library/homeopathic/causticum.webp",
+          "fileDark": "library/homeopathic/causticum.dark.webp"
+        },
+        {
+          "id": "homeopathic/cina",
+          "name": "Cina",
+          "file": "library/homeopathic/cina.webp",
+          "fileDark": "library/homeopathic/cina.dark.webp"
+        },
+        {
+          "id": "homeopathic/crotalus-horridus",
+          "name": "Crotalus Horridus",
+          "file": "library/homeopathic/crotalus-horridus.webp",
+          "fileDark": "library/homeopathic/crotalus-horridus.dark.webp"
+        },
+        {
+          "id": "homeopathic/graphites",
+          "name": "Graphites",
+          "file": "library/homeopathic/graphites.webp",
+          "fileDark": "library/homeopathic/graphites.dark.webp"
+        },
+        {
+          "id": "homeopathic/hyoscyamus-niger",
+          "name": "Hyoscyamus Niger",
+          "file": "library/homeopathic/hyoscyamus-niger.webp",
+          "fileDark": "library/homeopathic/hyoscyamus-niger.dark.webp"
+        },
+        {
+          "id": "homeopathic/ignatia-amara",
+          "name": "Ignatia Amara",
+          "file": "library/homeopathic/ignatia-amara.webp",
+          "fileDark": "library/homeopathic/ignatia-amara.dark.webp"
+        },
+        {
+          "id": "homeopathic/iodum",
+          "name": "Iodum",
+          "file": "library/homeopathic/iodum.webp",
+          "fileDark": "library/homeopathic/iodum.dark.webp"
+        },
+        {
+          "id": "homeopathic/kalium-sulphuricum",
+          "name": "Kalium Sulphuricum",
+          "file": "library/homeopathic/kalium-sulphuricum.webp",
+          "fileDark": "library/homeopathic/kalium-sulphuricum.dark.webp"
+        },
+        {
+          "id": "homeopathic/lachesis",
+          "name": "Lachesis",
+          "file": "library/homeopathic/lachesis.webp",
+          "fileDark": "library/homeopathic/lachesis.dark.webp"
+        },
+        {
+          "id": "homeopathic/lycopodium-clavatum",
+          "name": "Lycopodium Clavatum",
+          "file": "library/homeopathic/lycopodium-clavatum.webp",
+          "fileDark": "library/homeopathic/lycopodium-clavatum.dark.webp"
+        },
+        {
+          "id": "homeopathic/medorrhinum",
+          "name": "Medorrhinum",
+          "file": "library/homeopathic/medorrhinum.webp",
+          "fileDark": "library/homeopathic/medorrhinum.dark.webp"
+        },
+        {
+          "id": "homeopathic/mercurius-solubilis",
+          "name": "Mercurius Solubilis",
+          "file": "library/homeopathic/mercurius-solubilis.webp",
+          "fileDark": "library/homeopathic/mercurius-solubilis.dark.webp"
+        },
+        {
+          "id": "homeopathic/natmur-natrum-muriaticum",
+          "name": "Natmur Natrum Muriaticum",
+          "file": "library/homeopathic/natmur-natrum-muriaticum.webp",
+          "fileDark": "library/homeopathic/natmur-natrum-muriaticum.dark.webp"
+        },
+        {
+          "id": "homeopathic/nux-vomica",
+          "name": "Nux Vomica",
+          "file": "library/homeopathic/nux-vomica.webp",
+          "fileDark": "library/homeopathic/nux-vomica.dark.webp"
+        },
+        {
+          "id": "homeopathic/phosphorus",
+          "name": "Phosphorus",
+          "file": "library/homeopathic/phosphorus.webp",
+          "fileDark": "library/homeopathic/phosphorus.dark.webp"
+        },
+        {
+          "id": "homeopathic/psorinum",
+          "name": "Psorinum",
+          "file": "library/homeopathic/psorinum.webp",
+          "fileDark": "library/homeopathic/psorinum.dark.webp"
+        },
+        {
+          "id": "homeopathic/sepia",
+          "name": "Sepia",
+          "file": "library/homeopathic/sepia.webp",
+          "fileDark": "library/homeopathic/sepia.dark.webp"
+        },
+        {
+          "id": "homeopathic/spigelia-anthelmintica",
+          "name": "Spigelia Anthelmintica",
+          "file": "library/homeopathic/spigelia-anthelmintica.webp",
+          "fileDark": "library/homeopathic/spigelia-anthelmintica.dark.webp"
+        },
+        {
+          "id": "homeopathic/spongia-tosta",
+          "name": "Spongia Tosta",
+          "file": "library/homeopathic/spongia-tosta.webp",
+          "fileDark": "library/homeopathic/spongia-tosta.dark.webp"
+        },
+        {
+          "id": "homeopathic/staphisagria",
+          "name": "Staphisagria",
+          "file": "library/homeopathic/staphisagria.webp",
+          "fileDark": "library/homeopathic/staphisagria.dark.webp"
+        },
+        {
+          "id": "homeopathic/stramonium",
+          "name": "Stramonium",
+          "file": "library/homeopathic/stramonium.webp",
+          "fileDark": "library/homeopathic/stramonium.dark.webp"
+        },
+        {
+          "id": "homeopathic/sulphur",
+          "name": "Sulphur",
+          "file": "library/homeopathic/sulphur.webp",
+          "fileDark": "library/homeopathic/sulphur.dark.webp"
+        },
+        {
+          "id": "homeopathic/syphilinum",
+          "name": "Syphilinum",
+          "file": "library/homeopathic/syphilinum.webp",
+          "fileDark": "library/homeopathic/syphilinum.dark.webp"
+        },
+        {
+          "id": "homeopathic/thuja-thuya-occidentalis",
+          "name": "Thuja (Thuya Occidentalis)",
+          "file": "library/homeopathic/thuja-thuya-occidentalis.webp",
+          "fileDark": "library/homeopathic/thuja-thuya-occidentalis.dark.webp"
+        },
+        {
+          "id": "homeopathic/tuberculinum",
+          "name": "Tuberculinum",
+          "file": "library/homeopathic/tuberculinum.webp",
+          "fileDark": "library/homeopathic/tuberculinum.dark.webp"
+        },
+        {
+          "id": "homeopathic/veratrum-album",
+          "name": "Veratrum Album",
+          "file": "library/homeopathic/veratrum-album.webp",
+          "fileDark": "library/homeopathic/veratrum-album.dark.webp"
+        }
+      ]
+    },
+    {
+      "id": "other",
+      "label": "Other",
+      "kind": "card",
+      "cards": [
+        {
+          "id": "other/kidney-glomeruli",
+          "name": "Kidney Glomeruli",
+          "file": "library/other/kidney-glomeruli.webp",
+          "fileDark": "library/other/kidney-glomeruli.dark.webp"
+        },
+        {
+          "id": "other/luke-grabovoi-maney",
+          "name": "Luke Grabovoi Maney",
+          "file": "library/other/luke-grabovoi-maney.webp",
+          "fileDark": "library/other/luke-grabovoi-maney.dark.webp"
+        },
+        {
+          "id": "other/prostate-gland",
+          "name": "Prostate Gland",
+          "file": "library/other/prostate-gland.webp",
+          "fileDark": "library/other/prostate-gland.dark.webp"
+        },
+        {
+          "id": "other/radium",
+          "name": "Radium",
+          "file": "library/other/radium.webp",
+          "fileDark": "library/other/radium.dark.webp"
+        },
+        {
+          "id": "other/radium-brom",
+          "name": "Radium Brom",
+          "file": "library/other/radium-brom.webp",
+          "fileDark": "library/other/radium-brom.dark.webp"
+        }
+      ]
+    }
+  ]
+}

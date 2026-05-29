@@ -12,6 +12,18 @@ import { GeoConfig } from '../types';
 import { CELTIC_PATHS, TRISKELION_PATH } from '../assets/shapes';
 import { UranusGeometry } from './planets/UranusGeometry';
 
+// Luminance-preserving invert for dark-mode image export (PNG/MP4). CSS can't be
+// serialized into the rasterized SVG, so export uses this inline filter: an RGB
+// negate followed by a 180° hue rotation — net effect is inverted lightness with
+// hue roughly preserved (matches the live `invert(1) hue-rotate(180deg)` CSS).
+// Used by both full-card images and the optional center image.
+const InvertFilterDef: React.FC = () => (
+  <filter id="qrpImgInvert" colorInterpolationFilters="sRGB">
+    <feColorMatrix type="matrix" values="-1 0 0 0 1  0 -1 0 0 1  0 0 -1 0 1  0 0 0 1 0" />
+    <feColorMatrix type="hueRotate" values="180" />
+  </filter>
+);
+
 // We extend GeoConfig partial so we can just spread it in.
 // We omit specific non-visual or logic-only keys if necessary, but Partial<GeoConfig> is safe.
 interface QRPGeneratorProps extends Partial<GeoConfig> {
@@ -26,7 +38,8 @@ interface QRPGeneratorProps extends Partial<GeoConfig> {
   exportTheme?: 'light' | 'dark';
   animationRotation?: number; // Manual rotation for video export (in degrees)
   imageSrc?: string; // When set, render this image instead of the generated geometry
-  imageInvert?: boolean; // Invert the image in dark mode (default true)
+  imageSrcDark?: string; // Dark-theme layer for baked line-art cards (swaps with imageSrc by theme)
+  imageInvert?: boolean; // Invert the image in dark mode (default true). Ignored when imageSrcDark is set.
   imageFrame?: boolean; // Draw a frame around the image card (default false)
 }
 
@@ -58,6 +71,10 @@ const QRPGenerator: React.FC<QRPGeneratorProps> = ({
   designScale = 1.0,
   designOffset = 0,
   centerDesign = 'seeds',
+  centerImageSrc,
+  centerImageScale = 1,
+  centerImageCircle = true,
+  centerImageInvert = false,
   lobeOpacity = 0.7,
   centerOpacity = 0.1,
   geometryRotation = 0,
@@ -82,6 +99,7 @@ const QRPGenerator: React.FC<QRPGeneratorProps> = ({
   exportTheme = 'light',
   animationRotation = 0, // Manual rotation for video export
   imageSrc,
+  imageSrcDark,
   imageInvert = true,
   imageFrame = false
 }) => {
@@ -339,9 +357,18 @@ const QRPGenerator: React.FC<QRPGeneratorProps> = ({
     // Live inversion is a CSS filter on the <image> (theme via .dark). Export
     // can't use CSS (the SVG is serialized to canvas), so it uses an inline
     // feColorMatrix filter on the image only — the frame stays theme-correct.
-    const exportInvert = exportMode && exportTheme === 'dark' && imageInvert;
+    const hasThemePair = !!imageSrcDark; // baked light/dark line-art layers
+    const exportInvert = exportMode && exportTheme === 'dark' && imageInvert && !hasThemePair;
     const imgPad = imageFrame ? 20 : 0; // inset the image so the frame sits around it
     const tick = frameTickLength * frameScale;
+    // Shared <image> geometry within the viewBox.
+    const imgRect = {
+      x: imgPad,
+      y: -150 + imgPad,
+      width: 400 - imgPad * 2,
+      height: 700 - imgPad * 2,
+      preserveAspectRatio: 'xMidYMid meet' as const,
+    };
     return (
       <div
         className={`relative mx-auto aspect-[4/7] ${className}`}
@@ -361,22 +388,33 @@ const QRPGenerator: React.FC<QRPGeneratorProps> = ({
         >
           {exportInvert && (
             <defs>
-              <filter id="qrpImgInvert" colorInterpolationFilters="sRGB">
-                <feColorMatrix type="matrix" values="-1 0 0 0 1  0 -1 0 0 1  0 0 -1 0 1  0 0 0 1 0" />
-              </filter>
+              <InvertFilterDef />
             </defs>
           )}
-          <image
-            className={imageInvert ? 'qrp-card-image qrp-invert' : 'qrp-card-image'}
-            filter={exportInvert ? 'url(#qrpImgInvert)' : undefined}
-            href={imageSrc}
-            xlinkHref={imageSrc}
-            x={imgPad}
-            y={-150 + imgPad}
-            width={400 - imgPad * 2}
-            height={700 - imgPad * 2}
-            preserveAspectRatio="xMidYMid meet"
-          />
+          {hasThemePair ? (
+            // Baked theme pair: white paper already transparent, photo in colour.
+            // No filter — just pick/swap the layer by theme.
+            exportMode ? (
+              <image
+                {...imgRect}
+                href={exportTheme === 'dark' ? imageSrcDark : imageSrc}
+                xlinkHref={exportTheme === 'dark' ? imageSrcDark : imageSrc}
+              />
+            ) : (
+              <>
+                <image className="qrp-themed-light" {...imgRect} href={imageSrc} xlinkHref={imageSrc} />
+                <image className="qrp-themed-dark" {...imgRect} href={imageSrcDark} xlinkHref={imageSrcDark} />
+              </>
+            )
+          ) : (
+            <image
+              className={imageInvert ? 'qrp-card-image qrp-invert' : 'qrp-card-image'}
+              filter={exportInvert ? 'url(#qrpImgInvert)' : undefined}
+              {...imgRect}
+              href={imageSrc}
+              xlinkHref={imageSrc}
+            />
+          )}
           {imageFrame && (
             <g
               className={exportMode ? '' : 'text-slate-400 dark:text-slate-600 transition-colors'}
@@ -416,6 +454,8 @@ const QRPGenerator: React.FC<QRPGeneratorProps> = ({
             <feGaussianBlur stdDeviation="1.5" result="blur" />
             <feComposite in="SourceGraphic" in2="blur" operator="over" />
           </filter>
+          {/* Center-image dark-mode invert (export only — live uses CSS). */}
+          {exportMode && exportTheme === 'dark' && <InvertFilterDef />}
         </defs>
 
         <g transform={`translate(${cx}, ${cy}) scale(${overallScale}) translate(${-cx}, ${-cy})`}>
@@ -565,7 +605,45 @@ const QRPGenerator: React.FC<QRPGeneratorProps> = ({
                 </g>
                 ))}
 
-                {/* --- 2b. Central Ghost Sunflower OR SVG --- */}
+                {/* --- 2b. Central Ghost Sunflower / SVG / Image --- */}
+                {centerDesign === 'image' && centerImageSrc ? (
+                  /* Center image (e.g. a library chakra mandala). Full opacity
+                     (bypasses the faint centerOpacity ghost). Optional circular
+                     crop removes the source image's square corners. Invert is
+                     opt-in (default off); when on it's a luminosity-preserving
+                     invert in dark mode — live via the .qrp-invert class, export
+                     via the inline #qrpImgInvert filter. */
+                  <g transform={`translate(${cx}, ${cy})`} className="pointer-events-none">
+                    {(() => {
+                      const sz = R_RING_INNER * 2 * (centerImageScale || 1);
+                      const r = sz / 2;
+                      const exportInvert = exportMode && exportTheme === 'dark' && centerImageInvert;
+                      const clipId = 'qrpCenterClip';
+                      return (
+                        <>
+                          {centerImageCircle && (
+                            <clipPath id={clipId}>
+                              <circle cx={0} cy={0} r={r} />
+                            </clipPath>
+                          )}
+                          <image
+                            className={exportMode ? undefined : `qrp-center-image${centerImageInvert ? ' qrp-invert' : ''}`}
+                            href={centerImageSrc}
+                            xlinkHref={centerImageSrc}
+                            x={-r}
+                            y={-r}
+                            width={sz}
+                            height={sz}
+                            preserveAspectRatio="xMidYMid meet"
+                            clipPath={centerImageCircle ? `url(#${clipId})` : undefined}
+                            filter={exportInvert ? 'url(#qrpImgInvert)' : undefined}
+                            style={exportMode ? { mixBlendMode: exportTheme === 'dark' ? 'screen' : 'multiply' } : undefined}
+                          />
+                        </>
+                      );
+                    })()}
+                  </g>
+                ) : (
                 <g transform={`translate(${cx}, ${cy})`} className="pointer-events-none" style={{ opacity: centerOpacity }}>
                     <g
                         className={exportMode ? undefined : "animate-spin-reverse-slow"}
@@ -595,6 +673,7 @@ const QRPGenerator: React.FC<QRPGeneratorProps> = ({
                         )}
                     </g>
                 </g>
+                )}
 
                 {/* --- 3. Data Stripes --- */}
                 <g className={exportMode ? "" : "text-slate-900 dark:text-white transition-colors"} style={exportMode ? { color: colors.svgText } : undefined}>

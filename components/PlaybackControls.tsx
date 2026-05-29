@@ -40,7 +40,7 @@ const PlaybackControls: React.FC<PlaybackControlsProps> = ({
                     onClick={() => selectSequence(idx)}
                     aria-label={`Show card ${idx + 1}`}
                     aria-current={activeIndex === idx}
-                    className={`px-3 py-2 min-w-[36px] rounded-lg text-xs font-medium transition-all active:scale-95 border flex-shrink-0 ${
+                    className={`px-3 py-2 min-w-[44px] sm:min-w-[36px] rounded-lg text-xs font-medium transition-all active:scale-95 border flex-shrink-0 ${
                         activeIndex === idx
                         ? 'bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-700 text-blue-700 dark:text-blue-300 ring-1 ring-blue-300 dark:ring-blue-700'
                         : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-750'

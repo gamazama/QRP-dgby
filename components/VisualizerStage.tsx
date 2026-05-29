@@ -11,6 +11,7 @@ interface VisualizerStageProps {
   geoConfig: GeoConfig;
   onEnterFullScreen: () => void;
   imageSrc?: string;
+  imageSrcDark?: string;
   imageInvert?: boolean;
   imageFrame?: boolean;
 }
@@ -23,6 +24,7 @@ const VisualizerStage: React.FC<VisualizerStageProps> = ({
   geoConfig,
   onEnterFullScreen,
   imageSrc,
+  imageSrcDark,
   imageInvert,
   imageFrame
 }) => {
@@ -48,20 +50,28 @@ const VisualizerStage: React.FC<VisualizerStageProps> = ({
             </span>
         </div>
 
-        {/* The Shape */}
+        {/* The Shape — grows with available height (the card is portrait 4:7,
+            so height is the limit) instead of a fixed 420px cap, while never
+            exceeding the column width or shrinking below the old size. */}
         <div className="relative z-0 transform transition-transform duration-700 ease-out w-full flex justify-center">
-            <QRPGenerator
-                sequence={sequence}
-                size={420}
-                active={isPlaying}
-                showLabels={false}
-                title={name}
-                description={description}
-                {...geoConfig}
-                imageSrc={imageSrc}
-                imageInvert={imageInvert}
-                imageFrame={imageFrame}
-            />
+            <div
+                className="w-full"
+                style={{ maxWidth: 'min(100%, max(420px, (100vh - 300px) * 4 / 7))' }}
+            >
+                <QRPGenerator
+                    sequence={sequence}
+                    size="100%"
+                    active={isPlaying}
+                    showLabels={false}
+                    title={name}
+                    description={description}
+                    {...geoConfig}
+                    imageSrc={imageSrc}
+                    imageSrcDark={imageSrcDark}
+                    imageInvert={imageInvert}
+                    imageFrame={imageFrame}
+                />
+            </div>
         </div>
         
         {/* Only show title below if frame is NOT showing it (image cards never show the frame) */}

@@ -18,7 +18,12 @@ const GeometryTuner: React.FC<GeometryTunerProps> = ({ config, onChange }) => {
   const updateConfig = (key: keyof GeoConfig, value: any) => {
     onChange({ ...config, [key]: value });
   };
-  
+
+  // Atomic multi-key update (sections that set several keys at once).
+  const updateMany = (partial: Partial<GeoConfig>) => {
+    onChange({ ...config, ...partial });
+  };
+
   // Helper for bulk update (Presets)
   const applyPreset = (preset: GeoConfig) => {
       onChange({ ...config, ...preset });
@@ -53,7 +58,7 @@ const GeometryTuner: React.FC<GeometryTunerProps> = ({ config, onChange }) => {
                   </AccordionItem>
 
                   <AccordionItem title="Inner Pattern" icon={Component} defaultOpen={false}>
-                      <InnerSection config={config} update={updateConfig} />
+                      <InnerSection config={config} update={updateConfig} updateMany={updateMany} />
                   </AccordionItem>
 
                   <AccordionItem title="Style & Stroke" icon={Palette} defaultOpen={false}>

@@ -4,7 +4,7 @@
  */
 
 import React, { useEffect, useCallback, useRef, useState } from 'react';
-import { flushSync } from 'react-dom';
+import { flushSync, createPortal } from 'react-dom';
 import { X, Film, Download, Loader2, AlertCircle, CheckCircle } from 'lucide-react';
 import { Sequence } from '../types';
 import { useVideoExport, isWebCodecsSupported, downloadVideo } from '../hooks/useVideoExport';
@@ -151,7 +151,9 @@ const VideoExportModal: React.FC<VideoExportModalProps> = ({
     // cached bitmap. Framed image cards fall through to the normal SVG path so
     // QRPGenerator draws the frame (and the feColorMatrix invert).
     if (sequence?.imageSrc && !sequence.imageFrame) {
-      const img = await loadCachedImage(sequence.imageSrc);
+      // Baked theme-pair cards: draw the layer matching the theme, no filter.
+      const src = sequence.imageSrcDark && isDarkMode ? sequence.imageSrcDark : sequence.imageSrc;
+      const img = await loadCachedImage(src);
       const boxAspect = 400 / 700; // QRPGenerator viewBox aspect
       const canvasAspect = canvas.width / canvas.height;
       let boxW: number;
@@ -178,8 +180,10 @@ const VideoExportModal: React.FC<VideoExportModalProps> = ({
       }
       // Match the live dark-mode treatment: invert black-line image cards so
       // their lines render as white in a dark-themed video (unless opted out).
-      if (isDarkMode && sequence.imageInvert !== false) {
-        ctx.filter = 'invert(1) contrast(1.05)';
+      // Theme-pair cards skip this — their dark layer is already white-on-clear.
+      if (!sequence.imageSrcDark && isDarkMode && sequence.imageInvert !== false) {
+        // Luminance-preserving invert — matches the live `.qrp-invert` CSS.
+        ctx.filter = 'invert(1) hue-rotate(180deg) contrast(1.05)';
       }
       ctx.drawImage(img, boxX + (boxW - dW) / 2, boxY + (boxH - dH) / 2, dW, dH);
       ctx.filter = 'none';
@@ -388,7 +392,9 @@ const VideoExportModal: React.FC<VideoExportModalProps> = ({
   const totalFrames = 1 + (sequences.length * loopCount) + 1; // intro + loops + outro
   const totalDuration = (totalFrames * timingMs) / 1000;
 
-  return (
+  // Portal to <body> so the fixed overlay isn't trapped inside the editor
+  // column's containing block (it's rendered from within that scrolling panel).
+  return createPortal(
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
       onClick={handleClose}
@@ -608,13 +614,15 @@ const VideoExportModal: React.FC<VideoExportModalProps> = ({
               animationRotation={animationRotation}
               {...currentSequence.geoConfig}
               imageSrc={currentSequence.imageSrc}
+              imageSrcDark={currentSequence.imageSrcDark}
               imageInvert={currentSequence.imageInvert}
               imageFrame={currentSequence.imageFrame}
             />
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 

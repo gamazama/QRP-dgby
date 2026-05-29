@@ -12,6 +12,7 @@ interface FullScreenOverlayProps {
   geoConfig: GeoConfig;
   isViewOnly?: boolean;
   imageSrc?: string;
+  imageSrcDark?: string;
   imageInvert?: boolean;
   imageFrame?: boolean;
 }
@@ -25,6 +26,7 @@ const FullScreenOverlay: React.FC<FullScreenOverlayProps> = ({
   geoConfig,
   isViewOnly = false,
   imageSrc,
+  imageSrcDark,
   imageInvert,
   imageFrame
 }) => {
@@ -60,16 +62,23 @@ const FullScreenOverlay: React.FC<FullScreenOverlayProps> = ({
             </button>
         )}
         
-        <div className="w-full max-w-2xl bg-transparent flex flex-col items-center justify-center h-full">
-             <div className="w-full h-full relative flex items-center justify-center">
+        <div className="w-full bg-transparent flex flex-col items-center justify-center h-full">
+             {/* Size the portrait 4:7 card to the viewport: as wide as fits by
+                 height, capped at 92vw so it never overflows on narrow windows. */}
+             <div
+                 className="relative flex items-center justify-center"
+                 style={{ width: 'min(92vw, (100vh - 96px) * 4 / 7)' }}
+             >
                   <QRPGenerator
                       sequence={sequence}
+                      size="100%"
                       active={isPlaying}
                       showLabels={false}
                       title={sequenceName}
                       description={sequenceDesc}
                       {...geoConfig}
                       imageSrc={imageSrc}
+                      imageSrcDark={imageSrcDark}
                       imageInvert={imageInvert}
                       imageFrame={imageFrame}
                   />

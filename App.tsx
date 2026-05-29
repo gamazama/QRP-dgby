@@ -232,6 +232,7 @@ const App: React.FC = () => {
              geoConfig={activeGeoConfig}
              isViewOnly={isViewOnly}
              imageSrc={sequencer.activeSequence.imageSrc}
+             imageSrcDark={sequencer.activeSequence.imageSrcDark}
              imageInvert={sequencer.activeSequence.imageInvert}
              imageFrame={sequencer.activeSequence.imageFrame}
           />
@@ -244,7 +245,7 @@ const App: React.FC = () => {
           />
       )}
 
-      <main className="flex-1 w-full max-w-7xl mx-auto p-4 md:p-6 lg:p-10 flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-8 lg:min-h-[calc(100vh-var(--header-h))]">
+      <main className="flex-1 w-full max-w-[1600px] mx-auto p-4 md:p-6 lg:p-10 flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-8 lg:min-h-[calc(100vh-var(--header-h))]">
 
         {/* Left Column: Visualizer & Controls.
             On lg+ it stays pinned (sticky) as a fixed reference while the right
@@ -258,6 +259,7 @@ const App: React.FC = () => {
                 geoConfig={activeGeoConfig}
                 onEnterFullScreen={() => setIsFullScreen(true)}
                 imageSrc={sequencer.activeSequence.imageSrc}
+                imageSrcDark={sequencer.activeSequence.imageSrcDark}
                 imageInvert={sequencer.activeSequence.imageInvert}
                 imageFrame={sequencer.activeSequence.imageFrame}
             />
@@ -276,7 +278,7 @@ const App: React.FC = () => {
             workflow: build/edit cards first, geometry tuning (with its preset
             switcher) below. */}
         {!isViewOnly && showEditor && (
-            <div className="lg:w-[400px] flex flex-col gap-6 animate-in order-2 lg:order-none lg:sticky lg:top-[var(--header-h)] lg:self-start lg:max-h-[calc(100vh-var(--header-h))] lg:overflow-y-auto custom-scrollbar lg:pr-1">
+            <div className="lg:w-[400px] xl:w-[460px] flex-shrink-0 flex flex-col gap-6 animate-in order-2 lg:order-none lg:sticky lg:top-[var(--header-h)] lg:self-start lg:max-h-[calc(100vh-var(--header-h))] lg:overflow-y-auto custom-scrollbar lg:pr-1">
 
                 <SequenceManager
                     sequences={sequencer.sequences}

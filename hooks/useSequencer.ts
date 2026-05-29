@@ -1,18 +1,56 @@
 import { useState, useEffect, useRef } from 'react';
 import { DEFAULT_SEQUENCES, SUNFLOWER_PRESET } from '../constants';
 import { Sequence, GeoConfig } from '../types';
+import { isPersistenceEnabled, loadStored, saveStored, STORAGE_KEYS } from '../utils/storage';
 
 // Next free card id (max existing + 1).
 const nextSeqId = (seqs: Sequence[]) =>
   seqs.length > 0 ? Math.max(...seqs.map(s => s.id)) + 1 : 1;
 
 export const useSequencer = () => {
-  const [sequences, setSequences] = useState<Sequence[]>(DEFAULT_SEQUENCES);
-  const [activeIndex, setActiveIndex] = useState(0);
+  // Restore the previous session's deck/timing from localStorage so the user
+  // doesn't have to save/load each time. Skipped for shared ?c= links (view-only).
+  const persist = isPersistenceEnabled();
+
+  const [sequences, setSequences] = useState<Sequence[]>(() => {
+    if (!persist) return DEFAULT_SEQUENCES;
+    const stored = loadStored<Sequence[]>(STORAGE_KEYS.sequences, DEFAULT_SEQUENCES);
+    // Guard against a corrupted/empty deck (every action assumes >= 1 card).
+    return Array.isArray(stored) && stored.length > 0 ? stored : DEFAULT_SEQUENCES;
+  });
+  const [activeIndex, setActiveIndex] = useState(() => {
+    if (!persist) return 0;
+    const stored = loadStored<number>(STORAGE_KEYS.activeIndex, 0);
+    // Clamp to the restored deck (it may have fewer cards than last session).
+    if (Number.isInteger(stored) && stored >= 0 && stored < sequences.length) return stored;
+    return 0;
+  });
   const [isPlaying, setIsPlaying] = useState(false);
-  const [timingMs, setTimingMs] = useState(1500);
-  
+  const [timingMs, setTimingMs] = useState(() =>
+    persist ? loadStored<number>(STORAGE_KEYS.timingMs, 1500) : 1500
+  );
+
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // --- Persistence ---
+  // Deck + timing are slider/edit driven and can fire many updates in quick
+  // succession, so writes are debounced to avoid serialising the whole deck on
+  // every keystroke. Active-card index is tiny but also debounced to skip churn
+  // during playback (it advances every tick).
+  useEffect(() => {
+    if (!persist) return;
+    const t = setTimeout(() => {
+      saveStored(STORAGE_KEYS.sequences, sequences);
+      saveStored(STORAGE_KEYS.timingMs, timingMs);
+    }, 300);
+    return () => clearTimeout(t);
+  }, [persist, sequences, timingMs]);
+
+  useEffect(() => {
+    if (!persist) return;
+    const t = setTimeout(() => saveStored(STORAGE_KEYS.activeIndex, activeIndex), 300);
+    return () => clearTimeout(t);
+  }, [persist, activeIndex]);
 
   // Undo history for destructive actions (delete / reset). Snapshot is taken
   // before the mutation; undo() restores the most recent one.
@@ -111,7 +149,7 @@ export const useSequencer = () => {
   // image instead of generated geometry. Cloned geoConfig from the active
   // sequence keeps frame/length consistent for export. Appended in a single
   // state update (a forEach over importSequence would read stale `sequences`).
-  const addImageSequences = (images: { src: string; name?: string }[]) => {
+  const addImageSequences = (images: { src: string; name?: string; srcDark?: string }[]) => {
       if (images.length === 0) return;
 
       setSequences(prev => {
@@ -120,13 +158,14 @@ export const useSequencer = () => {
           const baseConfig = activeSeq ? { ...activeSeq.geoConfig } : { ...SUNFLOWER_PRESET };
           const seqLength = baseConfig.sequenceLength;
 
-          const newCards: Sequence[] = images.map(({ src, name }) => ({
+          const newCards: Sequence[] = images.map(({ src, name, srcDark }) => ({
               id: nextId++,
               name: name && name.trim() ? name : `Card ${nextId - 1}`,
               description: 'Image card',
               data: new Array(seqLength).fill(0),
               geoConfig: { ...baseConfig },
               imageSrc: src,
+              imageSrcDark: srcDark,
           }));
 
           const merged = [...prev, ...newCards];

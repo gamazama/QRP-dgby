@@ -2,12 +2,14 @@ import React, { useRef, useEffect, useState } from 'react';
 import SequenceEditor from './SequenceEditor';
 import QRPGenerator from './QRPGenerator';
 import VideoExportModal from './VideoExportModal';
-import { RefreshCw, Plus, Trash2, List, GripVertical, ChevronUp, ChevronDown, Copy, ImageDown, Images, Image as ImageIcon, Upload, Film, Contrast, Frame } from 'lucide-react';
+import { RefreshCw, Plus, Trash2, List, GripVertical, ChevronUp, ChevronDown, Copy, ImageDown, Images, Image as ImageIcon, Upload, Film, Contrast, Frame, LayoutGrid } from 'lucide-react';
 import { Sequence } from '../types';
 import { compressConfig, decompressConfig } from '../utils/compression';
 import { writePngMetadata, readPngMetadata } from '../utils/png';
 import { useToast } from './ui/Toast';
 import { lobeIcon, lobeColorClass } from './icons/LobeIcons';
+import LibraryModal from './LibraryModal';
+import { libraryImageUrl } from '../utils/library';
 
 interface SequenceManagerProps {
   sequences: Sequence[];
@@ -57,6 +59,7 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
   const [isExporting, setIsExporting] = useState(false);
   const [isLoadingImages, setIsLoadingImages] = useState(false);
   const [showVideoExport, setShowVideoExport] = useState(false);
+  const [showLibrary, setShowLibrary] = useState(false);
 
   // Auto-scroll to active item — only when it's actually outside the list's
   // own viewport, so playback (which advances activeId every beat) doesn't
@@ -344,7 +347,7 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
                         }`}
                     >
                          {/* Drag Handle */}
-                         <div className="cursor-grab active:cursor-grabbing text-slate-400 dark:text-slate-500 opacity-60 group-hover:opacity-100 transition-opacity p-1 flex-shrink-0" aria-hidden="true" title="Drag to reorder">
+                         <div className="cursor-grab active:cursor-grabbing text-slate-400 dark:text-slate-500 opacity-80 group-hover:opacity-100 transition-opacity p-1 flex-shrink-0" aria-hidden="true" title="Drag to reorder">
                             <GripVertical size={14} />
                          </div>
 
@@ -475,6 +478,14 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
                                 )}
                             </button>
 
+                            <button
+                                onClick={() => setShowLibrary(true)}
+                                className="flex items-center justify-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
+                                title="Add cards from the curated resource library"
+                            >
+                                <LayoutGrid size={16} /> Browse Library
+                            </button>
+
                             {activeSequence.imageSrc && (
                                 <button
                                     onClick={handleRemoveImage}
@@ -499,18 +510,21 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
                         {/* Image-card display options */}
                         {activeSequence.imageSrc && (
                             <div className="grid grid-cols-2 gap-2 mt-2">
-                                <button
-                                    onClick={() => onUpdate(activeSequence.id, { imageInvert: activeSequence.imageInvert === false })}
-                                    aria-pressed={activeSequence.imageInvert !== false}
-                                    title="Invert this image in dark mode (for black-line art)"
-                                    className={`flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-xs font-medium border transition-colors ${
-                                        activeSequence.imageInvert !== false
-                                            ? 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300'
-                                            : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
-                                    }`}
-                                >
-                                    <Contrast size={16} /> Invert (dark)
-                                </button>
+                                {/* Baked theme-pair cards handle dark mode themselves. */}
+                                {!activeSequence.imageSrcDark && (
+                                    <button
+                                        onClick={() => onUpdate(activeSequence.id, { imageInvert: activeSequence.imageInvert === false })}
+                                        aria-pressed={activeSequence.imageInvert !== false}
+                                        title="Invert this image in dark mode (for black-line art)"
+                                        className={`flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-xs font-medium border transition-colors ${
+                                            activeSequence.imageInvert !== false
+                                                ? 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300'
+                                                : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
+                                        }`}
+                                    >
+                                        <Contrast size={16} /> Invert (dark)
+                                    </button>
+                                )}
                                 <button
                                     onClick={() => onUpdate(activeSequence.id, { imageFrame: !activeSequence.imageFrame })}
                                     aria-pressed={!!activeSequence.imageFrame}
@@ -594,6 +608,7 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
                         exportTheme={isDarkMode ? 'dark' : 'light'} // Dynamic Export Theme
                         {...activeSequence.geoConfig}
                         imageSrc={activeSequence.imageSrc}
+                        imageSrcDark={activeSequence.imageSrcDark}
                         imageInvert={activeSequence.imageInvert}
                         imageFrame={activeSequence.imageFrame}
                     />
@@ -610,6 +625,21 @@ const SequenceManager: React.FC<SequenceManagerProps> = ({
             timingMs={timingMs}
             isDarkMode={isDarkMode}
         />
+
+        {/* Resource Library — add curated cards as image cards */}
+        {showLibrary && (
+            <LibraryModal
+                mode="cards"
+                onClose={() => setShowLibrary(false)}
+                onAddCards={(cards) =>
+                    onAddImageSequences?.(cards.map(c => ({
+                        src: libraryImageUrl(c.file),
+                        srcDark: c.fileDark ? libraryImageUrl(c.fileDark) : undefined,
+                        name: c.name,
+                    })))
+                }
+            />
+        )}
     </div>
   );
 };

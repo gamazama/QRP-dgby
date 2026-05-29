@@ -41,7 +41,11 @@ const GEO_KEY_MAP: Record<keyof GeoConfig, string> = {
   ringStroke: 'A',
   stripeStroke: 'B',
   uiFont: 'C',
-  frameSquareHeader: 'H'
+  frameSquareHeader: 'H',
+  centerImageSrc: 'I',
+  centerImageScale: 'J',
+  centerImageCircle: 'N',
+  centerImageInvert: 'P'
 };
 
 const REV_GEO_KEY_MAP = Object.entries(GEO_KEY_MAP).reduce((acc, [k, v]) => ({...acc, [v]: k}), {} as Record<string, keyof GeoConfig>);

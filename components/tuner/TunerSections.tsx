@@ -1,17 +1,21 @@
 
-import React from 'react';
-import { 
-  Maximize2, PenLine, Eye, Hash, Circle, 
-  ArrowUpFromLine, AlignJustify, Type, Activity, 
+import React, { useState } from 'react';
+import {
+  Maximize2, PenLine, Eye, Hash, Circle,
+  ArrowUpFromLine, AlignJustify, Type, Activity,
   MoveHorizontal, Sun, RotateCw, Sparkles, Move, Hexagon,
-  Globe
+  Globe, Image as ImageIcon, Contrast
 } from 'lucide-react';
 import SliderControl from '../ui/SliderControl';
 import { GeoConfig } from '../../types';
+import LibraryModal from '../LibraryModal';
+import { libraryImageUrl } from '../../utils/library';
 
 interface SectionProps {
   config: GeoConfig;
   update: (key: keyof GeoConfig, value: any) => void;
+  // Atomic multi-key update (avoids the stale-config race of two update() calls).
+  updateMany?: (partial: Partial<GeoConfig>) => void;
 }
 
 export const LayoutSection: React.FC<SectionProps> = ({ config, update }) => (
@@ -208,7 +212,15 @@ export const GeometrySection: React.FC<SectionProps> = ({ config, update }) => (
     </div>
 );
 
-export const InnerSection: React.FC<SectionProps> = ({ config, update }) => (
+export const InnerSection: React.FC<SectionProps> = ({ config, update, updateMany }) => {
+  const [showLibrary, setShowLibrary] = useState(false);
+  // Set both keys atomically so the center renders immediately on pick.
+  const setCenterImage = (src: string) =>
+    updateMany
+      ? updateMany({ centerDesign: 'image', centerImageSrc: src })
+      : update('centerImageSrc', src);
+  return (
+    <>
     <div className="space-y-4">
         {/* Lobe Design Selector */}
         <div className="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg space-y-2">
@@ -239,24 +251,77 @@ export const InnerSection: React.FC<SectionProps> = ({ config, update }) => (
                 <Hexagon size={12} />
                 <span>Center Pattern</span>
             </div>
-            <div className="grid grid-cols-4 gap-1">
-                {(['seeds', 'celtic', 'triskelion', 'uranus'] as const).map(design => (
+            <div className="grid grid-cols-3 gap-1">
+                {(['seeds', 'celtic', 'triskelion', 'uranus', 'image'] as const).map(design => {
+                    const label = design === 'image' ? 'Mandala' : design;
+                    return (
                     <button
                         key={design}
                         onClick={() => update('centerDesign', design)}
-                        className={`py-1.5 px-1 rounded-md text-[10px] sm:text-xs font-medium capitalize transition-all flex items-center justify-center gap-1 ${
+                        className={`py-1.5 px-2 rounded-md text-xs font-medium capitalize transition-all flex items-center justify-center gap-1 ${
                             (config.centerDesign || 'seeds') === design
                             ? 'bg-white dark:bg-slate-600 text-blue-600 dark:text-blue-200 shadow-sm border border-slate-200 dark:border-slate-500'
                             : 'text-slate-500 dark:text-slate-400 hover:bg-white/50 dark:hover:bg-slate-700'
                         }`}
-                        title={design}
+                        title={label}
                     >
-                        {design === 'uranus' ? <Globe size={10} /> : null}
-                        <span className="truncate">{design}</span>
+                        {design === 'uranus' ? <Globe size={10} /> : design === 'image' ? <ImageIcon size={10} /> : null}
+                        <span className="truncate">{label}</span>
                     </button>
-                ))}
+                    );
+                })}
             </div>
         </div>
+
+        {/* Center image (library mandala) controls */}
+        {config.centerDesign === 'image' && (
+            <div className="bg-fuchsia-50 dark:bg-fuchsia-900/20 p-3 rounded-lg space-y-3">
+                <p className="text-[10px] font-bold text-fuchsia-600 dark:text-fuchsia-400 uppercase tracking-wider">Center Image</p>
+                <button
+                    onClick={() => setShowLibrary(true)}
+                    className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
+                >
+                    <ImageIcon size={14} /> {config.centerImageSrc ? 'Change mandala' : 'Choose mandala'}
+                </button>
+                {config.centerImageSrc && (
+                    <>
+                        <div className="grid grid-cols-2 gap-2">
+                            <button
+                                onClick={() => update('centerImageCircle', !(config.centerImageCircle ?? true))}
+                                aria-pressed={config.centerImageCircle ?? true}
+                                title="Crop the center image to a circle"
+                                className={`flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-xs font-medium border transition-colors ${
+                                    (config.centerImageCircle ?? true)
+                                        ? 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300'
+                                        : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
+                                }`}
+                            >
+                                <Circle size={14} /> Circle crop
+                            </button>
+                            <button
+                                onClick={() => update('centerImageInvert', !config.centerImageInvert)}
+                                aria-pressed={!!config.centerImageInvert}
+                                title="Luminosity-invert the image in dark mode (keeps colour)"
+                                className={`flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-xs font-medium border transition-colors ${
+                                    config.centerImageInvert
+                                        ? 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300'
+                                        : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
+                                }`}
+                            >
+                                <Contrast size={14} /> Invert (dark)
+                            </button>
+                        </div>
+                        <SliderControl
+                            label="Image Size"
+                            icon={Maximize2}
+                            value={config.centerImageScale ?? 1}
+                            min={0.3} max={2.0} step={0.05}
+                            onChange={(val) => update('centerImageScale', val)}
+                        />
+                    </>
+                )}
+            </div>
+        )}
 
         {/* Fill opacity for the lobe & center patterns above */}
         <div className="grid grid-cols-2 gap-2">
@@ -356,7 +421,16 @@ export const InnerSection: React.FC<SectionProps> = ({ config, update }) => (
             </div>
         </div>
     </div>
-);
+    {showLibrary && (
+      <LibraryModal
+        mode="centers"
+        onClose={() => setShowLibrary(false)}
+        onPickCenter={(card) => setCenterImage(libraryImageUrl(card.file))}
+      />
+    )}
+    </>
+  );
+};
 
 export const StyleSection: React.FC<SectionProps> = ({ config, update }) => (
     <div className="space-y-4">
