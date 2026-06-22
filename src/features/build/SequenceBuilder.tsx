@@ -31,6 +31,65 @@ const numInput =
 const resize = (seq: number[], len: number) =>
   len <= seq.length ? seq.slice(0, len) : [...seq, ...new Array<number>(len - seq.length).fill(0)];
 
+// "1.5s" / "21s" / "2:05" — compact human duration.
+function fmtDuration(ms: number): string {
+  const s = ms / 1000;
+  if (s < 60) return `${Number.isInteger(s) ? s : s.toFixed(1)}s`;
+  const m = Math.floor(s / 60);
+  return `${m}:${String(Math.round(s % 60)).padStart(2, '0')}`;
+}
+
+const cardDurationMs = (card: { content: { kind: string; durationMs?: number } }, perCardMs: number) =>
+  card.content.kind === 'transition' ? (card.content.durationMs ?? perCardMs) : perCardMs;
+
+// A horizontal bar visualising the whole sequence: one segment per card, width
+// proportional to its play duration; click to jump. Total duration sits beside.
+function SequenceTimeline({
+  cards,
+  perCardMs,
+  activeIndex,
+  onSelect,
+}: {
+  cards: { id: string; title: string; content: { kind: string; durationMs?: number } }[];
+  perCardMs: number;
+  activeIndex: number;
+  onSelect: (i: number) => void;
+}) {
+  if (cards.length === 0) return null;
+  const durations = cards.map((c) => cardDurationMs(c, perCardMs));
+  const total = durations.reduce((a, b) => a + b, 0);
+  return (
+    <div className="flex items-center gap-2" aria-label="Sequence timeline">
+      <div className="flex h-2.5 min-w-0 flex-1 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+        {cards.map((card, i) => {
+          const isTransition = card.content.kind === 'transition';
+          return (
+            <button
+              key={card.id}
+              type="button"
+              onClick={() => onSelect(i)}
+              title={`${i + 1}. ${card.title} — ${fmtDuration(durations[i] ?? perCardMs)}`}
+              aria-label={`${i + 1}. ${card.title}, ${fmtDuration(durations[i] ?? perCardMs)}`}
+              style={{ width: `${((durations[i] ?? perCardMs) / total) * 100}%` }}
+              className={cn(
+                'h-full border-r border-white/80 transition-colors last:border-r-0 dark:border-slate-950/50',
+                i === activeIndex
+                  ? 'bg-blue-500'
+                  : isTransition
+                    ? 'bg-slate-300 hover:bg-slate-400 dark:bg-slate-600 dark:hover:bg-slate-500'
+                    : 'bg-blue-300 hover:bg-blue-400 dark:bg-blue-700 dark:hover:bg-blue-600',
+              )}
+            />
+          );
+        })}
+      </div>
+      <span className="shrink-0 text-xs tabular-nums text-slate-500 dark:text-slate-400" title="Total duration">
+        {fmtDuration(total)}
+      </span>
+    </div>
+  );
+}
+
 function DataCardEditor({ id, base, sequence }: { id: string; base: RateBase; sequence: number[] }) {
   const update = useSequencerStore.getState().updateCard;
   return (
@@ -302,6 +361,13 @@ export function SequenceBuilder({
             </>
           )}
         </div>
+
+        <SequenceTimeline
+          cards={cards}
+          perCardMs={timing.perCardMs}
+          activeIndex={activeIndex}
+          onSelect={(i) => store().selectCard(i)}
+        />
       </div>
 
       {/* Card list */}
