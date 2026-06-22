@@ -15,8 +15,9 @@ describe('buildCardGeometry — rate flow', () => {
     expect(geo.stripes.length).toBe(0);
   });
 
-  it('puts the rate length in the info line as the numeric base', () => {
-    const geo = buildCardGeometry({ style: SUNFLOWER_STYLE, sequence: [2, 12, 17, 34, 40] });
-    expect(geo.infoLine.baseLabel).toBe('Base 5');
+  it('shows the real rate system and the actual rate numbers (not repeated indices)', () => {
+    const geo = buildCardGeometry({ style: SUNFLOWER_STYLE, sequence: [2, 12, 17, 34, 40], base: 44 });
+    expect(geo.infoLine.baseLabel).toBe('Base 44');
+    expect(geo.infoLine.seqStr).toBe('2 12 17 34 40');
   });
 });

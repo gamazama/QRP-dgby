@@ -2,6 +2,7 @@ import { memo } from 'react';
 import type { Card } from '@/domain/card';
 import type { StyleConfig } from '@/domain/style';
 import type { RenderTier } from '@/engine/constants';
+import { resolveCardImage } from '@/lib/assets';
 import { CardSurface } from './CardSurface';
 import { TransitionSurface } from './TransitionSurface';
 
@@ -33,6 +34,7 @@ export const CardView = memo(function CardView({
       <CardSurface
         style={style}
         sequence={c.sequence}
+        base={c.base}
         title={card.title}
         description={card.description ?? ''}
         size={size}
@@ -56,12 +58,31 @@ export const CardView = memo(function CardView({
       />
     );
   }
-  // Image cards render in Phase 6+ once a creation path exists.
+  // Image card: the printed card artwork (light/dark WebP layers swap by theme).
+  const wrapperStyle = {
+    aspectRatio: '4 / 7',
+    width: typeof size === 'number' ? size : '100%',
+    maxWidth: typeof size === 'number' ? size : '100%',
+  };
   return (
-    <div
-      className={`flex aspect-[4/7] w-full items-center justify-center rounded-md border border-dashed border-slate-300 text-xs text-slate-400 dark:border-slate-700 ${className}`}
-    >
-      Image
+    <div className={`relative mx-auto ${className}`} style={wrapperStyle}>
+      <img
+        src={resolveCardImage(c.light)}
+        alt={card.title}
+        loading="lazy"
+        decoding="async"
+        className={`h-full w-full object-contain ${c.dark ? 'dark:hidden' : ''}`}
+      />
+      {c.dark && (
+        <img
+          src={resolveCardImage(c.dark)}
+          alt=""
+          aria-hidden
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 hidden h-full w-full object-contain dark:block"
+        />
+      )}
     </div>
   );
 });

@@ -4,6 +4,7 @@ import { buildCardGeometry } from '@/engine/buildCardGeometry';
 import { CELTIC_PATHS, TRISKELION_PATH } from '@/engine/shapes';
 import { CX, CY, FULL_BLEED_VIEWBOX } from '@/engine/frame';
 import { transitionSeedDiscPath } from '@/engine/transition';
+import { resolveCardImage } from '@/lib/assets';
 
 // Pure, React-free SVG string builder for export (PNG/MP4). Inline colors (CSS
 // classes don't survive serialization to canvas) and a numeric `rotation` so a
@@ -34,8 +35,10 @@ function geometryCardSvg(card: Card, style: StyleConfig, opts: ExportSvgOptions)
   const t = THEMES[opts.theme ?? 'light'];
   const rot = opts.rotation ?? 0;
   const c = card.content;
-  const sequence = c.kind === 'remedy' || c.kind === 'data' ? c.sequence : [];
-  const geo = buildCardGeometry({ style, sequence, title: card.title, description: card.description ?? '' });
+  const hasRate = c.kind === 'remedy' || c.kind === 'data';
+  const sequence = hasRate ? c.sequence : [];
+  const base = hasRate ? c.base : undefined;
+  const geo = buildCardGeometry({ style, sequence, base, title: card.title, description: card.description ?? '' });
   const f = geo.frame;
   const [vx, vy, vw, vh] = geo.viewBox.split(' ').map(Number) as [number, number, number, number];
   const font = (size: number) => `font-family:${style.uiFont};font-size:${size}px`;
@@ -121,8 +124,17 @@ function transitionCardSvg(card: Card, opts: ExportSvgOptions): string {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${FULL_BLEED_VIEWBOX}" preserveAspectRatio="xMidYMid meet"><g transform="translate(${CX},${CY}) rotate(${rot})">${inner}</g></svg>`;
 }
 
+function imageCardSvg(card: Card, opts: ExportSvgOptions): string {
+  const c = card.content;
+  if (c.kind !== 'image') return '';
+  const rel = opts.theme === 'dark' && c.dark ? c.dark : c.light;
+  // Absolute URL so the nested <image> resolves when the SVG is rasterized.
+  const href = new URL(resolveCardImage(rel), document.baseURI).href;
+  return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="${FULL_BLEED_VIEWBOX}" preserveAspectRatio="xMidYMid meet"><image href="${href}" xlink:href="${href}" x="0" y="-150" width="400" height="700" preserveAspectRatio="xMidYMid meet"/></svg>`;
+}
+
 export function cardToSvg(card: Card, style: StyleConfig, opts: ExportSvgOptions = {}): string {
-  return card.content.kind === 'transition'
-    ? transitionCardSvg(card, opts)
-    : geometryCardSvg(card, style, opts);
+  if (card.content.kind === 'transition') return transitionCardSvg(card, opts);
+  if (card.content.kind === 'image') return imageCardSvg(card, opts);
+  return geometryCardSvg(card, style, opts);
 }

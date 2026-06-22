@@ -1,13 +1,12 @@
-import { useRef, useState } from 'react';
-import { Download, Film, Maximize, Pause, Play, SkipBack, SkipForward } from 'lucide-react';
+import { useRef } from 'react';
+import { Maximize, Pause, Play, SkipBack, SkipForward } from 'lucide-react';
 import { useSequencerStore } from '@/store/sequencerStore';
 import { usePlaybackClock } from '@/hooks/usePlaybackClock';
 import { useRenderTier } from '@/hooks/useRenderTier';
 import { buildStylesMap, resolveStyleConfig, useStyles } from '@/features/styles/useStyles';
+import { ExportControls } from '@/features/export/ExportControls';
 import { CardView } from '@/render/CardView';
 import { CardCrossfade } from '@/render/CardCrossfade';
-import { exportCardPng } from '@/render/exportPng';
-import { downloadBlob, exportSequenceVideo } from '@/render/exportVideo';
 
 export function PresentPage() {
   usePlaybackClock();
@@ -24,25 +23,6 @@ export function PresentPage() {
   const stageRef = useRef<HTMLDivElement>(null);
   const store = useSequencerStore.getState;
   const tier = useRenderTier();
-  const [exporting, setExporting] = useState<number | null>(null);
-
-  const theme = () => (document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-
-  const onExportVideo = async () => {
-    if (cards.length === 0 || exporting !== null) return;
-    setExporting(0);
-    try {
-      const blob = await exportSequenceVideo(sequence, stylesById, {
-        theme: theme(),
-        onProgress: (f) => setExporting(f),
-      });
-      downloadBlob(blob, `${sequence.name || 'prescription'}.mp4`);
-    } catch (err) {
-      console.error('MP4 export failed', err);
-    } finally {
-      setExporting(null);
-    }
-  };
   const iconBtn =
     'rounded-md border border-slate-300 p-2 hover:bg-slate-50 disabled:opacity-30 dark:border-slate-700 dark:hover:bg-slate-900';
 
@@ -63,7 +43,7 @@ export function PresentPage() {
         </div>
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center justify-center gap-2">
         <button
           type="button"
           aria-label="Previous"
@@ -102,33 +82,8 @@ export function PresentPage() {
         >
           <Maximize className="h-5 w-5" />
         </button>
-        <button
-          type="button"
-          aria-label="Export PNG"
-          className={iconBtn}
-          disabled={!activeCard}
-          onClick={() => {
-            if (!activeCard) return;
-            void exportCardPng(activeCard, resolveStyleConfig(activeCard, stylesById), { theme: theme() });
-          }}
-        >
-          <Download className="h-5 w-5" />
-        </button>
-        <button
-          type="button"
-          aria-label="Export MP4"
-          className={iconBtn}
-          disabled={cards.length === 0 || exporting !== null}
-          onClick={() => void onExportVideo()}
-        >
-          <Film className="h-5 w-5" />
-        </button>
+        <ExportControls activeCard={activeCard} sequence={sequence} stylesById={stylesById} />
       </div>
-      {exporting !== null && (
-        <p className="text-xs text-slate-500 dark:text-slate-400">
-          Exporting MP4… {Math.round(exporting * 100)}%
-        </p>
-      )}
     </div>
   );
 }

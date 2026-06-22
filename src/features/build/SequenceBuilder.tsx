@@ -1,4 +1,5 @@
-import { ChevronDown, ChevronUp, Copy, FilePlus2, Sparkles, Trash2 } from 'lucide-react';
+import { useRef } from 'react';
+import { ChevronDown, ChevronUp, Copy, FilePlus2, GripVertical, Sparkles, Trash2 } from 'lucide-react';
 import type { Style } from '@/domain/style';
 import type { StyleId } from '@/domain/ids';
 import { useSequencerStore } from '@/store/sequencerStore';
@@ -44,6 +45,7 @@ export function SequenceBuilder({
   const selectedIds = useSequencerStore((s) => s.selectedIds);
 
   const store = useSequencerStore.getState;
+  const dragIndex = useRef<number | null>(null);
 
   return (
     <div className="flex h-full flex-col">
@@ -123,6 +125,16 @@ export function SequenceBuilder({
           return (
             <div
               key={card.id}
+              draggable
+              onDragStart={() => {
+                dragIndex.current = i;
+              }}
+              onDragOver={(e) => e.preventDefault()}
+              onDrop={() => {
+                const from = dragIndex.current;
+                if (from !== null && from !== i) store().reorderCards(from, i);
+                dragIndex.current = null;
+              }}
               className={cn(
                 'rounded-md border p-2',
                 active
@@ -133,6 +145,7 @@ export function SequenceBuilder({
               )}
             >
               <div className="flex items-center gap-2">
+                <GripVertical className="h-4 w-4 shrink-0 cursor-grab text-slate-300 dark:text-slate-600" />
                 <button
                   type="button"
                   onClick={(e) => {

@@ -42,6 +42,7 @@ interface SequencerState {
   setTiming: (t: Partial<SequenceTiming>) => void;
 
   addRemedyCards: (remedies: Remedy[], styleId: StyleId) => void;
+  addImageCards: (remedies: Remedy[], styleId: StyleId) => void;
   addDataCard: (styleId: StyleId) => void;
   addTransitionCard: (styleId: StyleId) => void;
   duplicateCard: (id: CardId) => void;
@@ -134,6 +135,18 @@ export const useSequencerStore = create<SequencerState>()(
             styleId,
             content: { kind: 'remedy' as const, ref: r.ref, sequence: r.sequence, base: r.base },
           })),
+        ),
+
+      addImageCards: (remedies, styleId) =>
+        append(
+          remedies.flatMap((r) => {
+            if (!r.image) return [];
+            const light = `packs/${r.packId}/${r.image.light}`;
+            const content = r.image.dark
+              ? { kind: 'image' as const, light, dark: `packs/${r.packId}/${r.image.dark}` }
+              : { kind: 'image' as const, light };
+            return [{ id: newCardId(), title: r.name, styleId, content }];
+          }),
         ),
 
       addDataCard: (styleId) =>

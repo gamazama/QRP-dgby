@@ -16,7 +16,7 @@ import {
   R_RING_OUTER,
   RING_COUNT,
 } from './frame';
-import { MAX_VALUE_PER_DIVISION, type RenderTier } from './constants';
+import type { RenderTier } from './constants';
 
 // Pure assembly of a card's geometry into a structured, serializable model. This
 // extracts the prototype QRPGenerator's useMemo math into a React-free function,
@@ -72,6 +72,8 @@ export interface CardInfoLine {
 export interface BuildCardGeometryInput {
   style: StyleConfig;
   sequence: number[];
+  /** The rate system (9/10/44). Shown as "Base N" in the info line. */
+  base?: number | undefined;
   title?: string;
   description?: string;
   tier?: RenderTier;
@@ -123,7 +125,7 @@ const centralSeedCount = (tier: RenderTier): number =>
   tier === 'lite' ? 60 : tier === 'balanced' ? 160 : 300;
 
 export function buildCardGeometry(input: BuildCardGeometryInput): CardGeometry {
-  const { style: s, sequence, title = '', description = '', tier = 'high' } = input;
+  const { style: s, sequence, base, title = '', description = '', tier = 'high' } = input;
 
   const { viewBox, aspect } = cardFrame(s);
 
@@ -271,12 +273,9 @@ export function buildCardGeometry(input: BuildCardGeometryInput): CardGeometry {
   const titleY = description ? headerCenterY - s.uiFontSize * 0.4 : headerCenterY;
   const descY = headerCenterY + s.uiFontSize * 0.65;
 
-  // --- Info line ---
+  // --- Info line: the rate system (left) + the actual rate numbers (right). ---
   const inset = 14;
-  const maxLevel = sequence.length > 20 ? 3 : MAX_VALUE_PER_DIVISION;
-  const seqStr = sequence
-    .flatMap((lvl, i) => Array<number>(Math.min(Math.max(lvl, 0), maxLevel)).fill(i + 1))
-    .join(' ');
+  const seqStr = sequence.join(' ');
 
   return {
     viewBox,
@@ -326,7 +325,7 @@ export function buildCardGeometry(input: BuildCardGeometryInput): CardGeometry {
       right: fRight - inset,
       y: fBottom - inset,
       fontSize: s.uiFontSize * 0.7,
-      baseLabel: `Base ${sequence.length}`,
+      baseLabel: `Base ${base ?? sequence.length}`,
       seqStr,
       long: seqStr.length > 26,
     },

@@ -8,6 +8,7 @@ import type { RenderTier } from '@/engine/constants';
 export interface CardSurfaceProps {
   style: StyleConfig;
   sequence: number[];
+  base?: number;
   title?: string;
   description?: string;
   tier?: RenderTier;
@@ -37,6 +38,7 @@ function Motif({ design }: { design: 'celtic' | 'triskelion' }) {
 function CardSurfaceImpl({
   style,
   sequence,
+  base,
   title = '',
   description = '',
   tier = 'high',
@@ -47,8 +49,8 @@ function CardSurfaceImpl({
   rotation = 0,
 }: CardSurfaceProps) {
   const geo = useMemo(
-    () => buildCardGeometryCached({ style, sequence, title, description, tier }),
-    [style, sequence, title, description, tier],
+    () => buildCardGeometryCached({ style, sequence, base, title, description, tier }),
+    [style, sequence, base, title, description, tier],
   );
 
   const f = geo.frame;

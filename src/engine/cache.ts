@@ -15,6 +15,7 @@ function keyOf(input: BuildCardGeometryInput): string {
   return JSON.stringify({
     s: input.style,
     q: input.sequence,
+    b: input.base ?? null,
     t: input.title ?? '',
     d: input.description ?? '',
     r: input.tier ?? 'high',
