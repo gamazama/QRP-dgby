@@ -243,17 +243,23 @@ export function buildCardGeometry(input: BuildCardGeometryInput): CardGeometry {
     (_, i) => rRingInner + i * ((R_RING_OUTER - rRingInner) / (RING_COUNT - 1)),
   );
 
-  // --- Data stripes ---
+  // --- Data stripes (dial-position model) ---
+  // The rate is a set of positions on a `base`-division dial: each rate number
+  // draws one radial stripe at that position's angle; a number repeated N times
+  // draws N stripes clustered at that position. (0 = no stripe.)
   const stripes: CardStripe[] = [];
-  const segments = sequence.length > 0 ? sequence.length : 10;
-  const anglePerSegment = 360 / segments;
-  for (let i = 0; i < segments; i++) {
-    const value = sequence[i] || 0;
-    if (value === 0) continue;
-    const sectorMidAngle = i * anglePerSegment;
-    const startOffset = -((value - 1) * s.stripeSep) / 2;
-    for (let j = 0; j < value; j++) {
-      const lineAngle = sectorMidAngle + startOffset + j * s.stripeSep;
+  const dialBase = base && base > 0 ? base : sequence.length || 10;
+  const counts = new Map<number, number>();
+  for (const raw of sequence) {
+    const n = Math.round(raw);
+    if (!Number.isFinite(n) || n === 0) continue;
+    counts.set(n, (counts.get(n) ?? 0) + 1);
+  }
+  for (const [pos, count] of counts) {
+    const positionAngle = (pos / dialBase) * 360;
+    const startOffset = -((count - 1) * s.stripeSep) / 2;
+    for (let j = 0; j < count; j++) {
+      const lineAngle = positionAngle + startOffset + j * s.stripeSep;
       const start = polarToCartesian(CX, CY, s.stripeStart, lineAngle);
       const end = polarToCartesian(CX, CY, rRingInner, lineAngle);
       stripes.push({ x1: start.x, y1: start.y, x2: end.x, y2: end.y });

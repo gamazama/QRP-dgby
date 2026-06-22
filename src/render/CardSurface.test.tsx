@@ -22,10 +22,10 @@ describe('CardSurface', () => {
     expect(container.innerHTML).toMatchSnapshot();
   });
 
-  it('renders data stripes only for non-zero rate values', () => {
-    const { container } = render(<CardSurface style={SUNFLOWER_STYLE} sequence={[0, 2, 0, 1]} />);
-    // value 2 -> 2 lines, value 1 -> 1 line = 3 stripe lines.
+  it('renders one stripe per non-zero rate number (dial positions)', () => {
+    const { container } = render(<CardSurface style={SUNFLOWER_STYLE} sequence={[0, 2, 0, 1]} base={9} />);
+    // positions 2 and 1 -> 2 stripes (0s are skipped).
     const stripeGroup = container.querySelector('.text-slate-900');
-    expect(stripeGroup?.querySelectorAll('line').length).toBe(3);
+    expect(stripeGroup?.querySelectorAll('line').length).toBe(2);
   });
 });
