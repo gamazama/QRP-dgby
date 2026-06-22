@@ -9,6 +9,8 @@ import { loadCardRaster, type CardRaster } from './cardRaster';
 export interface VideoExportOptions {
   theme?: 'light' | 'dark';
   size?: number;
+  /** How many times to repeat the whole sequence (>=1). */
+  loops?: number;
   onProgress?: (fraction: number, message: string) => void;
   signal?: AbortSignal;
 }
@@ -27,8 +29,13 @@ export async function exportSequenceVideo(
   stylesById: Map<StyleId, Style>,
   opts: VideoExportOptions = {},
 ): Promise<Blob> {
-  const cards = sequence.cards;
-  if (cards.length === 0) throw new Error('No cards to export');
+  if (sequence.cards.length === 0) throw new Error('No cards to export');
+
+  // Repeat the deck `loops` times into a flat slot list; consecutive slots
+  // (including across loop boundaries) crossfade via the same dissolve path.
+  const loops = Math.max(1, Math.floor(opts.loops ?? 1));
+  const cards: Card[] = [];
+  for (let l = 0; l < loops; l++) cards.push(...sequence.cards);
 
   const size = opts.size ?? 1000;
   const theme = opts.theme ?? 'light';
