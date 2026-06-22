@@ -30,10 +30,10 @@ export function PresentPage() {
     <div className="flex h-full flex-col items-center gap-4 p-4">
       <div
         ref={stageRef}
-        className="flex min-h-0 w-full flex-1 items-center justify-center bg-white p-2 dark:bg-slate-950"
+        className="relative flex min-h-0 w-full flex-1 items-center justify-center bg-white p-2 dark:bg-slate-950"
       >
         {activeCard ? (
-          <CardCrossfade cardKey={activeCard.id} durationMs={crossfadeMs} className="h-full w-full">
+          <CardCrossfade cardKey={activeCard.id} durationMs={crossfadeMs} className="absolute inset-2">
             <CardView card={activeCard} style={resolveStyleConfig(activeCard, stylesById)} tier={tier} spin active fill="height" />
           </CardCrossfade>
         ) : (

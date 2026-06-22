@@ -31,7 +31,7 @@ export function AppLayout() {
     return () => window.removeEventListener('keydown', onKey);
   }, []);
   return (
-    <div className="flex min-h-screen flex-col bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+    <div className="flex h-screen flex-col overflow-hidden bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
       <header className="flex h-14 items-center gap-4 border-b border-slate-200 px-4 dark:border-slate-800">
         <span className="font-semibold tracking-tight">QRP</span>
         <nav className="flex gap-1">

@@ -48,7 +48,7 @@ await shot('02-build-with-cards');
 
 // Add an image card (toggle to Image then add one).
 try {
-  await page.getByRole('button', { name: 'image', exact: true }).click();
+  await page.getByRole('button', { name: 'Artwork', exact: true }).click();
   await page.waitForTimeout(200);
   await results.first().click();
   await page.waitForTimeout(900);

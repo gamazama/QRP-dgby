@@ -46,7 +46,7 @@ export const TransitionSurface = memo(function TransitionSurface({
       className={`relative mx-auto ${className}`}
       style={
         fill === 'height'
-          ? { aspectRatio: `${FULL_BLEED_ASPECT}`, height: '100%', width: 'auto', maxWidth: '100%' }
+          ? { width: '100%', height: '100%' }
           : {
               aspectRatio: `${FULL_BLEED_ASPECT}`,
               width: typeof size === 'number' ? size : '100%',

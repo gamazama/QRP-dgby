@@ -67,7 +67,7 @@ function CardSurfaceImpl({
 
   const wrapperStyle: CSSProperties =
     fill === 'height'
-      ? { aspectRatio: `${geo.aspect}`, height: '100%', width: 'auto', maxWidth: '100%' }
+      ? { width: '100%', height: '100%' } // fill the stage; the SVG's preserveAspectRatio fits the card
       : {
           aspectRatio: `${geo.aspect}`,
           maxWidth: typeof size === 'number' ? size : '100%',

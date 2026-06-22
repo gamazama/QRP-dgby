@@ -65,7 +65,7 @@ export const CardView = memo(function CardView({
   // Image card: the printed card artwork (light/dark WebP layers swap by theme).
   const wrapperStyle =
     fill === 'height'
-      ? { aspectRatio: '4 / 7', height: '100%', width: 'auto', maxWidth: '100%' }
+      ? { width: '100%', height: '100%' }
       : {
           aspectRatio: '4 / 7',
           width: typeof size === 'number' ? size : '100%',

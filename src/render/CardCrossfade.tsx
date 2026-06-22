@@ -39,12 +39,14 @@ export function CardCrossfade({
     return undefined;
   }, [cardKey, durationMs]);
 
+  // Layers are absolutely positioned within the (sized) container so the card's
+  // fill sizing has a definite box — no fragile height:100% chain through flex.
   return (
-    <div className={`relative ${className}`}>
+    <div className={className || 'relative'}>
       {outgoing && (
         <div
           key={outgoing.key}
-          className="qrp-fade-out absolute inset-0"
+          className="qrp-fade-out absolute inset-0 flex items-center justify-center"
           style={{ animationDuration: `${durationMs}ms` }}
         >
           {outgoing.node}
@@ -52,7 +54,7 @@ export function CardCrossfade({
       )}
       <div
         key={String(cardKey)}
-        className={outgoing ? 'qrp-fade-in' : undefined}
+        className={`absolute inset-0 flex items-center justify-center ${outgoing ? 'qrp-fade-in' : ''}`}
         style={outgoing ? { animationDuration: `${durationMs}ms` } : undefined}
       >
         {children}
