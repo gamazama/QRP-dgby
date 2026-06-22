@@ -43,8 +43,22 @@ function fmtDuration(ms: number): string {
 const cardDurationMs = (card: { content: { kind: string; durationMs?: number } }, perCardMs: number) =>
   card.content.kind === 'transition' ? (card.content.durationMs ?? perCardMs) : perCardMs;
 
-// A horizontal bar visualising the whole sequence: one segment per card, width
-// proportional to its play duration; click to jump. Total duration sits beside.
+// One colour per card kind, shared by the timeline bar and its legend.
+const CARD_TYPE_META: Record<string, { label: string; bar: string; dot: string }> = {
+  remedy: { label: 'Remedy', bar: 'bg-sky-400 hover:bg-sky-500 dark:bg-sky-500 dark:hover:bg-sky-400', dot: 'bg-sky-400 dark:bg-sky-500' },
+  data: { label: 'Custom rate', bar: 'bg-violet-400 hover:bg-violet-500 dark:bg-violet-500 dark:hover:bg-violet-400', dot: 'bg-violet-400 dark:bg-violet-500' },
+  image: { label: 'Artwork', bar: 'bg-emerald-400 hover:bg-emerald-500 dark:bg-emerald-500 dark:hover:bg-emerald-400', dot: 'bg-emerald-400 dark:bg-emerald-500' },
+  transition: { label: 'Transition', bar: 'bg-amber-400 hover:bg-amber-500 dark:bg-amber-500 dark:hover:bg-amber-400', dot: 'bg-amber-400 dark:bg-amber-500' },
+};
+const FALLBACK_META = { label: 'Card', bar: 'bg-slate-400 hover:bg-slate-500 dark:bg-slate-500', dot: 'bg-slate-400 dark:bg-slate-500' };
+const cardTypeMeta = (kind: string) => CARD_TYPE_META[kind] ?? FALLBACK_META;
+const KIND_ORDER = ['remedy', 'data', 'image', 'transition'];
+
+// A horizontal bar visualising the whole sequence: one segment per card, sized
+// by its play duration (flex-grow, with a min width so brief cards stay
+// clickable) and coloured by card type. Click a segment to jump; the active
+// card keeps its type colour and gains a ring. Total duration sits beside, and
+// a legend names the colours of the types present.
 function SequenceTimeline({
   cards,
   perCardMs,
@@ -59,34 +73,49 @@ function SequenceTimeline({
   if (cards.length === 0) return null;
   const durations = cards.map((c) => cardDurationMs(c, perCardMs));
   const total = durations.reduce((a, b) => a + b, 0);
+  const kindsPresent = KIND_ORDER.filter((k) => cards.some((c) => c.content.kind === k));
   return (
-    <div className="flex items-center gap-2" aria-label="Sequence timeline">
-      <div className="flex h-2.5 min-w-0 flex-1 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
-        {cards.map((card, i) => {
-          const isTransition = card.content.kind === 'transition';
-          return (
-            <button
-              key={card.id}
-              type="button"
-              onClick={() => onSelect(i)}
-              title={`${i + 1}. ${card.title} — ${fmtDuration(durations[i] ?? perCardMs)}`}
-              aria-label={`${i + 1}. ${card.title}, ${fmtDuration(durations[i] ?? perCardMs)}`}
-              style={{ width: `${((durations[i] ?? perCardMs) / total) * 100}%` }}
-              className={cn(
-                'h-full border-r border-white/80 transition-colors last:border-r-0 dark:border-slate-950/50',
-                i === activeIndex
-                  ? 'bg-blue-500'
-                  : isTransition
-                    ? 'bg-slate-300 hover:bg-slate-400 dark:bg-slate-600 dark:hover:bg-slate-500'
-                    : 'bg-blue-300 hover:bg-blue-400 dark:bg-blue-700 dark:hover:bg-blue-600',
-              )}
-            />
-          );
-        })}
+    <div className="space-y-1" aria-label="Sequence timeline">
+      <div className="flex items-center gap-2">
+        <div className="flex h-3 min-w-0 flex-1 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+          {cards.map((card, i) => {
+            const meta = cardTypeMeta(card.content.kind);
+            const dur = durations[i] ?? perCardMs;
+            const active = i === activeIndex;
+            return (
+              <button
+                key={card.id}
+                type="button"
+                onClick={() => onSelect(i)}
+                title={`${i + 1}. ${card.title} · ${meta.label} · ${fmtDuration(dur)}`}
+                aria-label={`${i + 1}. ${card.title}, ${meta.label}, ${fmtDuration(dur)}`}
+                style={{ flexGrow: dur, flexBasis: 0, minWidth: '4px' }}
+                className={cn(
+                  'h-full border-r border-white/80 transition-colors last:border-r-0 dark:border-slate-950/50',
+                  meta.bar,
+                  active && 'z-10 ring-2 ring-inset ring-slate-900/80 dark:ring-white',
+                )}
+              />
+            );
+          })}
+        </div>
+        <span className="shrink-0 text-xs tabular-nums text-slate-500 dark:text-slate-400" title="Total duration">
+          {fmtDuration(total)}
+        </span>
       </div>
-      <span className="shrink-0 text-xs tabular-nums text-slate-500 dark:text-slate-400" title="Total duration">
-        {fmtDuration(total)}
-      </span>
+      {kindsPresent.length > 1 && (
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-[10px] text-slate-400">
+          {kindsPresent.map((k) => {
+            const meta = cardTypeMeta(k);
+            return (
+              <span key={k} className="flex items-center gap-1">
+                <span className={`h-2 w-2 rounded-full ${meta.dot}`} />
+                {meta.label}
+              </span>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
