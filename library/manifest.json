@@ -1,0 +1,2183 @@
+{
+  "generatedAt": "2026-05-29T15:38:40.949Z",
+  "categories": [
+    {
+      "id": "bach-flowers",
+      "label": "Bach Flowers",
+      "kind": "card",
+      "cards": [
+        {
+          "id": "bach-flowers/agrimony",
+          "name": "Agrimony",
+          "file": "library/bach-flowers/agrimony.webp",
+          "fileDark": "library/bach-flowers/agrimony.dark.webp",
+          "heading": "Agrimony",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "021217 34 40",
+          "sequence": [
+            2,
+            12,
+            17,
+            34,
+            40
+          ]
+        },
+        {
+          "id": "bach-flowers/aspen",
+          "name": "Aspen",
+          "file": "library/bach-flowers/aspen.webp",
+          "fileDark": "library/bach-flowers/aspen.dark.webp",
+          "heading": "Aspen",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "04 11 23 34 39",
+          "sequence": [
+            4,
+            11,
+            23,
+            34,
+            39
+          ]
+        },
+        {
+          "id": "bach-flowers/beech",
+          "name": "Beech",
+          "file": "library/bach-flowers/beech.webp",
+          "fileDark": "library/bach-flowers/beech.dark.webp",
+          "heading": "Beech",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "03 07 20 30 37",
+          "sequence": [
+            3,
+            7,
+            20,
+            30,
+            37
+          ]
+        },
+        {
+          "id": "bach-flowers/centaury",
+          "name": "Centaury",
+          "file": "library/bach-flowers/centaury.webp",
+          "fileDark": "library/bach-flowers/centaury.dark.webp",
+          "heading": "Centaury",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "06 17 27 30 40",
+          "sequence": [
+            6,
+            17,
+            27,
+            30,
+            40
+          ]
+        },
+        {
+          "id": "bach-flowers/cerato",
+          "name": "Cerato",
+          "file": "library/bach-flowers/cerato.webp",
+          "fileDark": "library/bach-flowers/cerato.dark.webp",
+          "heading": "Cerato",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "07 09 23 29 42",
+          "sequence": [
+            7,
+            9,
+            23,
+            29,
+            42
+          ]
+        },
+        {
+          "id": "bach-flowers/cherry-plum",
+          "name": "Cherry Plum",
+          "file": "library/bach-flowers/cherry-plum.webp",
+          "fileDark": "library/bach-flowers/cherry-plum.dark.webp",
+          "heading": "Cherry Plum",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base44 Rate (Combe)",
+          "rateRaw": "0212 24 33 39",
+          "sequence": [
+            2,
+            12,
+            24,
+            33,
+            39
+          ]
+        },
+        {
+          "id": "bach-flowers/chestnut-bud",
+          "name": "Chestnut Bud",
+          "file": "library/bach-flowers/chestnut-bud.webp",
+          "fileDark": "library/bach-flowers/chestnut-bud.dark.webp",
+          "heading": "Chestnut Bud",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base44 Rate (Combe)",
+          "rateRaw": "06 11 29 34 39",
+          "sequence": [
+            6,
+            11,
+            29,
+            34,
+            39
+          ]
+        },
+        {
+          "id": "bach-flowers/chicory",
+          "name": "Chicory",
+          "file": "library/bach-flowers/chicory.webp",
+          "fileDark": "library/bach-flowers/chicory.dark.webp",
+          "heading": "Chicory",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base44 Rate (Combe)",
+          "rateRaw": "051117 31 0",
+          "sequence": [
+            5,
+            11,
+            17,
+            31
+          ]
+        },
+        {
+          "id": "bach-flowers/clematis",
+          "name": "Clematis",
+          "file": "library/bach-flowers/clematis.webp",
+          "fileDark": "library/bach-flowers/clematis.dark.webp",
+          "heading": "Clematis",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "03 09 12 30 41",
+          "sequence": [
+            3,
+            9,
+            12,
+            30,
+            41
+          ]
+        },
+        {
+          "id": "bach-flowers/crab-apple",
+          "name": "Crab Apple",
+          "file": "library/bach-flowers/crab-apple.webp",
+          "fileDark": "library/bach-flowers/crab-apple.dark.webp",
+          "heading": "Crab Apple",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base44 Rate (Combe)",
+          "rateRaw": "10 20 24 33 41",
+          "sequence": [
+            10,
+            20,
+            24,
+            33,
+            41
+          ]
+        },
+        {
+          "id": "bach-flowers/elm",
+          "name": "Elm",
+          "file": "library/bach-flowers/elm.webp",
+          "fileDark": "library/bach-flowers/elm.dark.webp",
+          "heading": "Elm",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "0512 27 36 41",
+          "sequence": [
+            5,
+            12,
+            27,
+            36,
+            41
+          ]
+        },
+        {
+          "id": "bach-flowers/gentian",
+          "name": "Gentian",
+          "file": "library/bach-flowers/gentian.webp",
+          "fileDark": "library/bach-flowers/gentian.dark.webp",
+          "heading": "Gentian",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "01 08 20 33 40",
+          "sequence": [
+            1,
+            8,
+            20,
+            33,
+            40
+          ]
+        },
+        {
+          "id": "bach-flowers/gorse",
+          "name": "Gorse",
+          "file": "library/bach-flowers/gorse.webp",
+          "fileDark": "library/bach-flowers/gorse.dark.webp",
+          "heading": "Gorse",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "01 08 20 33 40",
+          "sequence": [
+            1,
+            8,
+            20,
+            33,
+            40
+          ]
+        },
+        {
+          "id": "bach-flowers/heather",
+          "name": "Heather",
+          "file": "library/bach-flowers/heather.webp",
+          "fileDark": "library/bach-flowers/heather.dark.webp",
+          "heading": "Heather",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base44 Rate (Combe)",
+          "rateRaw": "07 16 22 33 40",
+          "sequence": [
+            7,
+            16,
+            22,
+            33,
+            40
+          ]
+        },
+        {
+          "id": "bach-flowers/holly",
+          "name": "Holly",
+          "file": "library/bach-flowers/holly.webp",
+          "fileDark": "library/bach-flowers/holly.dark.webp",
+          "heading": "Holly",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "02 20 30 35 42",
+          "sequence": [
+            2,
+            20,
+            30,
+            35,
+            42
+          ]
+        },
+        {
+          "id": "bach-flowers/honeysuckle",
+          "name": "Honeysuckle",
+          "file": "library/bach-flowers/honeysuckle.webp",
+          "fileDark": "library/bach-flowers/honeysuckle.dark.webp",
+          "heading": "Honeysuckle",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base44 Rate (Combe)",
+          "rateRaw": "09 12 20 29 34",
+          "sequence": [
+            9,
+            12,
+            20,
+            29,
+            34
+          ]
+        },
+        {
+          "id": "bach-flowers/honeysuckle-orange",
+          "name": "Honeysuckle Orange",
+          "file": "library/bach-flowers/honeysuckle-orange.webp",
+          "fileDark": "library/bach-flowers/honeysuckle-orange.dark.webp",
+          "heading": "Honeysuckle",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base44 Rate (Combe)",
+          "rateRaw": "09 12 20 29 34",
+          "sequence": [
+            9,
+            12,
+            20,
+            29,
+            34
+          ]
+        },
+        {
+          "id": "bach-flowers/hornbeam",
+          "name": "Hornbeam",
+          "file": "library/bach-flowers/hornbeam.webp",
+          "fileDark": "library/bach-flowers/hornbeam.dark.webp",
+          "heading": "Hornbeam",
+          "subheading": "F.E (Flower Essence)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "33470",
+          "sequence": [
+            33,
+            47
+          ]
+        },
+        {
+          "id": "bach-flowers/impatiens",
+          "name": "Impatiens",
+          "file": "library/bach-flowers/impatiens.webp",
+          "fileDark": "library/bach-flowers/impatiens.dark.webp",
+          "heading": "Impatiens",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "0109123135",
+          "sequence": [
+            1,
+            9,
+            12,
+            31,
+            35
+          ]
+        },
+        {
+          "id": "bach-flowers/larch",
+          "name": "Larch",
+          "file": "library/bach-flowers/larch.webp",
+          "fileDark": "library/bach-flowers/larch.dark.webp",
+          "heading": "Larch",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "09 21 31 34 39",
+          "sequence": [
+            9,
+            21,
+            31,
+            34,
+            39
+          ]
+        },
+        {
+          "id": "bach-flowers/mimulus",
+          "name": "Mimulus",
+          "file": "library/bach-flowers/mimulus.webp",
+          "fileDark": "library/bach-flowers/mimulus.dark.webp",
+          "heading": "Mimulus",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "05 16 23 29 41",
+          "sequence": [
+            5,
+            16,
+            23,
+            29,
+            41
+          ]
+        },
+        {
+          "id": "bach-flowers/mustard",
+          "name": "Mustard",
+          "file": "library/bach-flowers/mustard.webp",
+          "fileDark": "library/bach-flowers/mustard.dark.webp",
+          "heading": "Mustard",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "04 11 22 32 40",
+          "sequence": [
+            4,
+            11,
+            22,
+            32,
+            40
+          ]
+        },
+        {
+          "id": "bach-flowers/oak",
+          "name": "Oak",
+          "file": "library/bach-flowers/oak.webp",
+          "fileDark": "library/bach-flowers/oak.dark.webp",
+          "heading": "Oak",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "06 12 18 30 37",
+          "sequence": [
+            6,
+            12,
+            18,
+            30,
+            37
+          ]
+        },
+        {
+          "id": "bach-flowers/olive",
+          "name": "Olive",
+          "file": "library/bach-flowers/olive.webp",
+          "fileDark": "library/bach-flowers/olive.dark.webp",
+          "heading": "Olive",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "08 14 21 31 42",
+          "sequence": [
+            8,
+            14,
+            21,
+            31,
+            42
+          ]
+        },
+        {
+          "id": "bach-flowers/pine",
+          "name": "Pine",
+          "file": "library/bach-flowers/pine.webp",
+          "fileDark": "library/bach-flowers/pine.dark.webp",
+          "heading": "Pine",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "09 12 22 31 39",
+          "sequence": [
+            9,
+            12,
+            22,
+            31,
+            39
+          ]
+        },
+        {
+          "id": "bach-flowers/plantain-l",
+          "name": "Plantain L",
+          "file": "library/bach-flowers/plantain-l.webp",
+          "fileDark": "library/bach-flowers/plantain-l.dark.webp",
+          "heading": "Plantain Lanceolata",
+          "subheading": "F.E (Flower Essence)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "11 17 26 37 42",
+          "sequence": [
+            11,
+            17,
+            26,
+            37,
+            42
+          ]
+        },
+        {
+          "id": "bach-flowers/red-chestnut",
+          "name": "Red Chestnut",
+          "file": "library/bach-flowers/red-chestnut.webp",
+          "fileDark": "library/bach-flowers/red-chestnut.dark.webp",
+          "heading": "Red Chestnut",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "04 10 21 34 42",
+          "sequence": [
+            4,
+            10,
+            21,
+            34,
+            42
+          ]
+        },
+        {
+          "id": "bach-flowers/rescue-remedy",
+          "name": "Rescue Remedy",
+          "file": "library/bach-flowers/rescue-remedy.webp",
+          "fileDark": "library/bach-flowers/rescue-remedy.dark.webp",
+          "heading": "Rescue Remedy",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "0511 21 33 41",
+          "sequence": [
+            5,
+            11,
+            21,
+            33,
+            41
+          ]
+        },
+        {
+          "id": "bach-flowers/rock-rose",
+          "name": "Rock Rose",
+          "file": "library/bach-flowers/rock-rose.webp",
+          "fileDark": "library/bach-flowers/rock-rose.dark.webp",
+          "heading": "Rock Rose",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "01 06 25 31 38",
+          "sequence": [
+            1,
+            6,
+            25,
+            31,
+            38
+          ]
+        },
+        {
+          "id": "bach-flowers/rock-water",
+          "name": "Rock Water",
+          "file": "library/bach-flowers/rock-water.webp",
+          "fileDark": "library/bach-flowers/rock-water.dark.webp",
+          "heading": "Rock Water",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "06 11 22 31 42",
+          "sequence": [
+            6,
+            11,
+            22,
+            31,
+            42
+          ]
+        },
+        {
+          "id": "bach-flowers/scleranthus",
+          "name": "Scleranthus",
+          "file": "library/bach-flowers/scleranthus.webp",
+          "fileDark": "library/bach-flowers/scleranthus.dark.webp",
+          "heading": "Scleranthus",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "04 10 28 35 42",
+          "sequence": [
+            4,
+            10,
+            28,
+            35,
+            42
+          ]
+        },
+        {
+          "id": "bach-flowers/star-of-bethlehem",
+          "name": "Star Of Bethlehem",
+          "file": "library/bach-flowers/star-of-bethlehem.webp",
+          "fileDark": "library/bach-flowers/star-of-bethlehem.dark.webp",
+          "heading": "Star of Bethlehem",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "02 09 16 31 40",
+          "sequence": [
+            2,
+            9,
+            16,
+            31,
+            40
+          ]
+        },
+        {
+          "id": "bach-flowers/sweet-chestnut",
+          "name": "Sweet Chestnut",
+          "file": "library/bach-flowers/sweet-chestnut.webp",
+          "fileDark": "library/bach-flowers/sweet-chestnut.dark.webp",
+          "heading": "Sweet Chestnut",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "011319 34 42",
+          "sequence": [
+            1,
+            13,
+            19,
+            34,
+            42
+          ]
+        },
+        {
+          "id": "bach-flowers/vervain",
+          "name": "Vervain",
+          "file": "library/bach-flowers/vervain.webp",
+          "fileDark": "library/bach-flowers/vervain.dark.webp",
+          "heading": "Vervain",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "07 20 25 32 43",
+          "sequence": [
+            7,
+            20,
+            25,
+            32,
+            43
+          ]
+        },
+        {
+          "id": "bach-flowers/vine",
+          "name": "Vine",
+          "file": "library/bach-flowers/vine.webp",
+          "fileDark": "library/bach-flowers/vine.dark.webp",
+          "heading": "Vine",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "0508 21 31 36",
+          "sequence": [
+            5,
+            8,
+            21,
+            31,
+            36
+          ]
+        },
+        {
+          "id": "bach-flowers/walnut",
+          "name": "Walnut",
+          "file": "library/bach-flowers/walnut.webp",
+          "fileDark": "library/bach-flowers/walnut.dark.webp",
+          "heading": "Walnut",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "01112029 44",
+          "sequence": [
+            1,
+            11,
+            20,
+            29,
+            44
+          ]
+        },
+        {
+          "id": "bach-flowers/water-violet",
+          "name": "Water Violet",
+          "file": "library/bach-flowers/water-violet.webp",
+          "fileDark": "library/bach-flowers/water-violet.dark.webp",
+          "heading": "WATER VIOLET",
+          "subheading": "Flowers: Bach",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "12 21 33 40",
+          "sequence": [
+            12,
+            21,
+            33,
+            40
+          ]
+        },
+        {
+          "id": "bach-flowers/white-chestnut",
+          "name": "White Chestnut",
+          "file": "library/bach-flowers/white-chestnut.webp",
+          "fileDark": "library/bach-flowers/white-chestnut.dark.webp",
+          "heading": "White Chestnut",
+          "subheading": "Bach: (flowers)",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "02 10 25 33 39",
+          "sequence": [
+            2,
+            10,
+            25,
+            33,
+            39
+          ]
+        }
+      ]
+    },
+    {
+      "id": "astrological",
+      "label": "Astrological",
+      "kind": "card",
+      "cards": [
+        {
+          "id": "astrological/aquarius",
+          "name": "Aquarius",
+          "file": "library/astrological/aquarius.webp",
+          "fileDark": "library/astrological/aquarius.dark.webp",
+          "heading": "AQUARIUS MIX",
+          "subheading": "Astrological Sign",
+          "base": 44,
+          "rateType": "TT",
+          "rateRaw": "",
+          "sequence": []
+        },
+        {
+          "id": "astrological/aries",
+          "name": "Aries",
+          "file": "library/astrological/aries.webp",
+          "fileDark": "library/astrological/aries.dark.webp",
+          "heading": "ARIES MIX",
+          "subheading": "Astrological Sign",
+          "base": 44,
+          "rateType": "TT",
+          "rateRaw": "",
+          "sequence": []
+        },
+        {
+          "id": "astrological/cancer",
+          "name": "Cancer",
+          "file": "library/astrological/cancer.webp",
+          "fileDark": "library/astrological/cancer.dark.webp",
+          "heading": "CANCER MIX",
+          "subheading": "Astrological Sign",
+          "base": 44,
+          "rateType": "TT",
+          "rateRaw": "",
+          "sequence": []
+        },
+        {
+          "id": "astrological/capricorn",
+          "name": "Capricorn",
+          "file": "library/astrological/capricorn.webp",
+          "fileDark": "library/astrological/capricorn.dark.webp",
+          "heading": "CAPRICORN MIX",
+          "subheading": "Astrological Sign",
+          "base": 44,
+          "rateType": "TT",
+          "rateRaw": "",
+          "sequence": []
+        },
+        {
+          "id": "astrological/ini",
+          "name": "Ini",
+          "file": "library/astrological/ini.webp",
+          "fileDark": "library/astrological/ini.dark.webp",
+          "heading": "GEMINI",
+          "subheading": "Astrological Sign",
+          "base": 44,
+          "rateType": "TT",
+          "rateRaw": "",
+          "sequence": []
+        },
+        {
+          "id": "astrological/leo",
+          "name": "Leo",
+          "file": "library/astrological/leo.webp",
+          "fileDark": "library/astrological/leo.dark.webp",
+          "heading": "LEO",
+          "subheading": "Astrological Sign",
+          "base": 44,
+          "rateType": "TT",
+          "rateRaw": "",
+          "sequence": []
+        },
+        {
+          "id": "astrological/pisces",
+          "name": "Pisces",
+          "file": "library/astrological/pisces.webp",
+          "fileDark": "library/astrological/pisces.dark.webp",
+          "heading": "PISCES",
+          "subheading": "Astrological Sign",
+          "base": 44,
+          "rateType": "TT",
+          "rateRaw": "",
+          "sequence": []
+        },
+        {
+          "id": "astrological/sagittarius",
+          "name": "Sagittarius",
+          "file": "library/astrological/sagittarius.webp",
+          "fileDark": "library/astrological/sagittarius.dark.webp",
+          "heading": "SAGITTARIUS",
+          "subheading": "Astrological Sign",
+          "base": 44,
+          "rateType": "TT",
+          "rateRaw": "",
+          "sequence": []
+        },
+        {
+          "id": "astrological/scorpion",
+          "name": "Scorpion",
+          "file": "library/astrological/scorpion.webp",
+          "fileDark": "library/astrological/scorpion.dark.webp",
+          "heading": "SCORPIO",
+          "subheading": "Astrological Sign",
+          "base": 44,
+          "rateType": "TT",
+          "rateRaw": "",
+          "sequence": []
+        },
+        {
+          "id": "astrological/taurus",
+          "name": "Taurus",
+          "file": "library/astrological/taurus.webp",
+          "fileDark": "library/astrological/taurus.dark.webp",
+          "heading": "TAURUS",
+          "subheading": "Astrological Sign",
+          "base": 44,
+          "rateType": "TT",
+          "rateRaw": "",
+          "sequence": []
+        },
+        {
+          "id": "astrological/virgo",
+          "name": "Virgo",
+          "file": "library/astrological/virgo.webp",
+          "fileDark": "library/astrological/virgo.dark.webp",
+          "heading": "VIRGO",
+          "subheading": "Astrological Sign",
+          "base": 44,
+          "rateType": "TT",
+          "rateRaw": "",
+          "sequence": []
+        }
+      ]
+    },
+    {
+      "id": "chakras",
+      "label": "Chakras",
+      "kind": "card",
+      "cards": [
+        {
+          "id": "chakras/ajna-brow-chakra-sulis",
+          "name": "Ajna (Brow) Chakra (SULIS)",
+          "file": "library/chakras/ajna-brow-chakra-sulis.webp",
+          "fileDark": "library/chakras/ajna-brow-chakra-sulis.dark.webp",
+          "heading": "Ajna (Brow) Chakra - Soul",
+          "subheading": "Subtle Body",
+          "base": 9,
+          "rateType": "Sulis Rates",
+          "rateRaw": "871653",
+          "sequence": [
+            8,
+            7,
+            1,
+            6,
+            5,
+            3
+          ]
+        },
+        {
+          "id": "chakras/ajna-chakra",
+          "name": "Ajna Chakra",
+          "file": "library/chakras/ajna-chakra.webp",
+          "fileDark": "library/chakras/ajna-chakra.dark.webp",
+          "heading": "Ajna Chakra",
+          "subheading": "Chakra",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "05 25 33 44",
+          "sequence": [
+            5,
+            25,
+            33,
+            44
+          ]
+        },
+        {
+          "id": "chakras/ajna-chakra-astral-body",
+          "name": "Ajna Chakra Astral Body",
+          "file": "library/chakras/ajna-chakra-astral-body.webp",
+          "fileDark": "library/chakras/ajna-chakra-astral-body.dark.webp",
+          "heading": "Ajna Chakra Astral Body",
+          "subheading": "Chakra",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "02 04 05 08 10",
+          "sequence": [
+            2,
+            4,
+            5,
+            8,
+            10
+          ]
+        },
+        {
+          "id": "chakras/altar-major-chakra-sulis",
+          "name": "Altar Major Chakra (SULIS)",
+          "file": "library/chakras/altar-major-chakra-sulis.webp",
+          "fileDark": "library/chakras/altar-major-chakra-sulis.dark.webp",
+          "heading": "Altar Major Chakra - Ether",
+          "subheading": "Subtle Body",
+          "base": 9,
+          "rateType": "Sulis Rates",
+          "rateRaw": "226188",
+          "sequence": [
+            2,
+            2,
+            6,
+            1,
+            8,
+            8
+          ]
+        },
+        {
+          "id": "chakras/base-chakra",
+          "name": "Base Chakra",
+          "file": "library/chakras/base-chakra.webp",
+          "fileDark": "library/chakras/base-chakra.dark.webp",
+          "heading": "Base Chakra",
+          "subheading": "Chakra",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "06 32 33 44",
+          "sequence": [
+            6,
+            32,
+            33,
+            44
+          ]
+        },
+        {
+          "id": "chakras/base-of-spine-chakra-sulis",
+          "name": "Base Of Spine Chakra (SULIS)",
+          "file": "library/chakras/base-of-spine-chakra-sulis.webp",
+          "fileDark": "library/chakras/base-of-spine-chakra-sulis.dark.webp",
+          "heading": "Base Of Spine Chakra - Earth",
+          "subheading": "Subtle Body",
+          "base": 9,
+          "rateType": "Sulis Rates",
+          "rateRaw": "42165",
+          "sequence": [
+            4,
+            2,
+            1,
+            6,
+            5
+          ]
+        },
+        {
+          "id": "chakras/crown-chakra",
+          "name": "Crown Chakra",
+          "file": "library/chakras/crown-chakra.webp",
+          "fileDark": "library/chakras/crown-chakra.dark.webp",
+          "heading": "Crown Chakra",
+          "subheading": "Chakra",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "06 22 33 44",
+          "sequence": [
+            6,
+            22,
+            33,
+            44
+          ]
+        },
+        {
+          "id": "chakras/crown-chakra-sulis",
+          "name": "Crown Chakra (SULIS)",
+          "file": "library/chakras/crown-chakra-sulis.webp",
+          "fileDark": "library/chakras/crown-chakra-sulis.dark.webp",
+          "heading": "Crown Chakra - Spirit",
+          "subheading": "Subtle Body",
+          "base": 9,
+          "rateType": "Sulis Rates",
+          "rateRaw": "552389",
+          "sequence": [
+            5,
+            5,
+            2,
+            3,
+            8,
+            9
+          ]
+        },
+        {
+          "id": "chakras/heart-chakra",
+          "name": "Heart Chakra",
+          "file": "library/chakras/heart-chakra.webp",
+          "fileDark": "library/chakras/heart-chakra.dark.webp",
+          "heading": "Heart Chakra",
+          "subheading": "Chakra",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "05 29 33 44",
+          "sequence": [
+            5,
+            29,
+            33,
+            44
+          ]
+        },
+        {
+          "id": "chakras/heart-chakra-sulis",
+          "name": "Heart Chakra (SULIS)",
+          "file": "library/chakras/heart-chakra-sulis.webp",
+          "fileDark": "library/chakras/heart-chakra-sulis.dark.webp",
+          "heading": "Heart Chakra- Air",
+          "subheading": "Subtle Body",
+          "base": 9,
+          "rateType": "Sulis Rates",
+          "rateRaw": "699235",
+          "sequence": [
+            6,
+            9,
+            9,
+            2,
+            3,
+            5
+          ]
+        },
+        {
+          "id": "chakras/sacral-chakra",
+          "name": "Sacral Chakra",
+          "file": "library/chakras/sacral-chakra.webp",
+          "fileDark": "library/chakras/sacral-chakra.dark.webp",
+          "heading": "Sacral Chakra",
+          "subheading": "Chakra",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "06 31 33 44",
+          "sequence": [
+            6,
+            31,
+            33,
+            44
+          ]
+        },
+        {
+          "id": "chakras/sacral-chakra-sulis",
+          "name": "Sacral Chakra (SULIS)",
+          "file": "library/chakras/sacral-chakra-sulis.webp",
+          "fileDark": "library/chakras/sacral-chakra-sulis.dark.webp",
+          "heading": "Sacral Chakra - Water",
+          "subheading": "Subtle Body",
+          "base": 9,
+          "rateType": "Sulis Rates",
+          "rateRaw": "471131",
+          "sequence": [
+            4,
+            7,
+            1,
+            1,
+            3,
+            1
+          ]
+        },
+        {
+          "id": "chakras/solar-plexus-chakra",
+          "name": "Solar Plexus Chakra",
+          "file": "library/chakras/solar-plexus-chakra.webp",
+          "fileDark": "library/chakras/solar-plexus-chakra.dark.webp",
+          "heading": "Solar Plexus Chakra",
+          "subheading": "Chakra",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "06 31 33 44",
+          "sequence": [
+            6,
+            31,
+            33,
+            44
+          ]
+        },
+        {
+          "id": "chakras/solar-plexus-chakra-sulis",
+          "name": "Solar Plexus Chakra (SULIS)",
+          "file": "library/chakras/solar-plexus-chakra-sulis.webp",
+          "fileDark": "library/chakras/solar-plexus-chakra-sulis.dark.webp",
+          "heading": "Solar Plexus Chakra - Fire",
+          "subheading": "Subtle Body",
+          "base": 9,
+          "rateType": "Sulis Rates",
+          "rateRaw": "91665",
+          "sequence": [
+            9,
+            1,
+            6,
+            6,
+            5
+          ]
+        },
+        {
+          "id": "chakras/spleen-chakra-sulis",
+          "name": "Spleen Chakra (SULIS)",
+          "file": "library/chakras/spleen-chakra-sulis.webp",
+          "fileDark": "library/chakras/spleen-chakra-sulis.dark.webp",
+          "heading": "Spleen Chakra - Earth",
+          "subheading": "Subtle Body",
+          "base": 9,
+          "rateType": "Sulis Rates",
+          "rateRaw": "237422",
+          "sequence": [
+            2,
+            3,
+            7,
+            4,
+            2,
+            2
+          ]
+        },
+        {
+          "id": "chakras/throat-chakra",
+          "name": "Throat Chakra",
+          "file": "library/chakras/throat-chakra.webp",
+          "fileDark": "library/chakras/throat-chakra.dark.webp",
+          "heading": "Throat Chakra",
+          "subheading": "Chakra",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "06 28 33 44",
+          "sequence": [
+            6,
+            28,
+            33,
+            44
+          ]
+        },
+        {
+          "id": "chakras/throat-chakra-sulis",
+          "name": "Throat Chakra (SULIS)",
+          "file": "library/chakras/throat-chakra-sulis.webp",
+          "fileDark": "library/chakras/throat-chakra-sulis.dark.webp",
+          "heading": "Throat Chakra - Ether",
+          "subheading": "Subtle Body",
+          "base": 9,
+          "rateType": "Sulis Rates",
+          "rateRaw": "46552",
+          "sequence": [
+            4,
+            6,
+            5,
+            5,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chakra-mandalas",
+      "label": "Chakra Mandalas",
+      "kind": "center",
+      "cards": [
+        {
+          "id": "chakra-mandalas/ajna",
+          "name": "Ajna",
+          "file": "library/chakra-mandalas/ajna.webp"
+        },
+        {
+          "id": "chakra-mandalas/anahata",
+          "name": "Anahata",
+          "file": "library/chakra-mandalas/anahata.webp"
+        },
+        {
+          "id": "chakra-mandalas/manipura",
+          "name": "Manipura",
+          "file": "library/chakra-mandalas/manipura.webp"
+        },
+        {
+          "id": "chakra-mandalas/muladhara",
+          "name": "Muladhara",
+          "file": "library/chakra-mandalas/muladhara.webp"
+        },
+        {
+          "id": "chakra-mandalas/sahasrara",
+          "name": "Sahasrara",
+          "file": "library/chakra-mandalas/sahasrara.webp"
+        },
+        {
+          "id": "chakra-mandalas/svahdisthana",
+          "name": "Svahdisthana",
+          "file": "library/chakra-mandalas/svahdisthana.webp"
+        },
+        {
+          "id": "chakra-mandalas/vishudha",
+          "name": "Vishudha",
+          "file": "library/chakra-mandalas/vishudha.webp"
+        }
+      ]
+    },
+    {
+      "id": "gems",
+      "label": "Gems",
+      "kind": "card",
+      "cards": [
+        {
+          "id": "gems/amethyst",
+          "name": "Amethyst",
+          "file": "library/gems/amethyst.webp",
+          "fileDark": "library/gems/amethyst.dark.webp",
+          "heading": "AMETHYST",
+          "subheading": "Gem Stones",
+          "base": 10,
+          "rateType": "Base 10 Rate",
+          "rateRaw": "9773",
+          "sequence": [
+            9,
+            7,
+            7,
+            3
+          ]
+        },
+        {
+          "id": "gems/aquamarine",
+          "name": "Aquamarine",
+          "file": "library/gems/aquamarine.webp",
+          "fileDark": "library/gems/aquamarine.dark.webp",
+          "heading": "AQUAMARINE",
+          "subheading": "Gem Stones",
+          "base": 10,
+          "rateType": "Base 10 Rate",
+          "rateRaw": "3242",
+          "sequence": [
+            3,
+            2,
+            4,
+            2
+          ]
+        },
+        {
+          "id": "gems/bloodstone",
+          "name": "Bloodstone",
+          "file": "library/gems/bloodstone.webp",
+          "fileDark": "library/gems/bloodstone.dark.webp",
+          "heading": "BLOODSTONE",
+          "subheading": "Gem Stones",
+          "base": 10,
+          "rateType": "Base 10 Rate",
+          "rateRaw": "7162",
+          "sequence": [
+            7,
+            1,
+            6,
+            2
+          ]
+        },
+        {
+          "id": "gems/citrine",
+          "name": "Citrine",
+          "file": "library/gems/citrine.webp",
+          "fileDark": "library/gems/citrine.dark.webp",
+          "heading": "CITRINE",
+          "subheading": "Gem Stones",
+          "base": 10,
+          "rateType": "Base 10 Rate",
+          "rateRaw": "352",
+          "sequence": [
+            3,
+            5,
+            2
+          ]
+        },
+        {
+          "id": "gems/diamond",
+          "name": "Diamond",
+          "file": "library/gems/diamond.webp",
+          "fileDark": "library/gems/diamond.dark.webp",
+          "heading": "DIAMOND",
+          "subheading": "Gems",
+          "base": 44,
+          "rateType": "TT",
+          "rateRaw": "",
+          "sequence": []
+        },
+        {
+          "id": "gems/emerald",
+          "name": "Emerald",
+          "file": "library/gems/emerald.webp",
+          "fileDark": "library/gems/emerald.dark.webp",
+          "heading": "EMERALD",
+          "subheading": "Gems",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "0104 14 23 32",
+          "sequence": [
+            1,
+            4,
+            14,
+            23,
+            32
+          ]
+        },
+        {
+          "id": "gems/haematite",
+          "name": "Haematite",
+          "file": "library/gems/haematite.webp",
+          "fileDark": "library/gems/haematite.dark.webp",
+          "heading": "HAEMATITE",
+          "subheading": "Gem Stones",
+          "base": 10,
+          "rateType": "Base 10 Rate",
+          "rateRaw": "8881",
+          "sequence": [
+            8,
+            8,
+            8,
+            1
+          ]
+        },
+        {
+          "id": "gems/jade",
+          "name": "Jade",
+          "file": "library/gems/jade.webp",
+          "fileDark": "library/gems/jade.dark.webp",
+          "heading": "JADE",
+          "subheading": "Gem Stone",
+          "base": 10,
+          "rateType": "Base 10 Rate",
+          "rateRaw": "13303",
+          "sequence": [
+            1,
+            3,
+            3,
+            0,
+            3
+          ]
+        },
+        {
+          "id": "gems/lapis-lazuli",
+          "name": "Lapis Lazuli",
+          "file": "library/gems/lapis-lazuli.webp",
+          "fileDark": "library/gems/lapis-lazuli.dark.webp",
+          "heading": "LAPIS LAZULI",
+          "subheading": "Gem Stones",
+          "base": 10,
+          "rateType": "Base 10 Rate",
+          "rateRaw": "6759",
+          "sequence": [
+            6,
+            7,
+            5,
+            9
+          ]
+        },
+        {
+          "id": "gems/moonstone",
+          "name": "Moonstone",
+          "file": "library/gems/moonstone.webp",
+          "fileDark": "library/gems/moonstone.dark.webp",
+          "heading": "MOONSTONE",
+          "subheading": "Gem Stones",
+          "base": 10,
+          "rateType": "Base 10 Rate",
+          "rateRaw": "7684",
+          "sequence": [
+            7,
+            6,
+            8,
+            4
+          ]
+        },
+        {
+          "id": "gems/onyx",
+          "name": "Onyx",
+          "file": "library/gems/onyx.webp",
+          "fileDark": "library/gems/onyx.dark.webp",
+          "heading": "ONYX",
+          "subheading": "Gem Stones",
+          "base": 10,
+          "rateType": "Base 10 Rate",
+          "rateRaw": "3893",
+          "sequence": [
+            3,
+            8,
+            9,
+            3
+          ]
+        },
+        {
+          "id": "gems/opal",
+          "name": "Opal",
+          "file": "library/gems/opal.webp",
+          "fileDark": "library/gems/opal.dark.webp",
+          "heading": "OPAL",
+          "subheading": "Gem Stones",
+          "base": 10,
+          "rateType": "Base 10 Rate",
+          "rateRaw": "5654",
+          "sequence": [
+            5,
+            6,
+            5,
+            4
+          ]
+        },
+        {
+          "id": "gems/rose-quartz",
+          "name": "Rose Quartz",
+          "file": "library/gems/rose-quartz.webp",
+          "fileDark": "library/gems/rose-quartz.dark.webp",
+          "heading": "ROSE QUARTZ",
+          "subheading": "Gem Stones",
+          "base": 10,
+          "rateType": "Base 10 Rate",
+          "rateRaw": "5148",
+          "sequence": [
+            5,
+            1,
+            4,
+            8
+          ]
+        },
+        {
+          "id": "gems/ruby",
+          "name": "Ruby",
+          "file": "library/gems/ruby.webp",
+          "fileDark": "library/gems/ruby.dark.webp",
+          "heading": "RUBY",
+          "subheading": "Gem Stones",
+          "base": 10,
+          "rateType": "Base 10 Rate",
+          "rateRaw": "32",
+          "sequence": [
+            3,
+            2
+          ]
+        },
+        {
+          "id": "gems/sapphire",
+          "name": "Sapphire",
+          "file": "library/gems/sapphire.webp",
+          "fileDark": "library/gems/sapphire.dark.webp",
+          "heading": "SAPPHIRE",
+          "subheading": "Gem Stones",
+          "base": 10,
+          "rateType": "Base 10 Rate",
+          "rateRaw": "5547",
+          "sequence": [
+            5,
+            5,
+            4,
+            7
+          ]
+        },
+        {
+          "id": "gems/turquoise",
+          "name": "Turquoise",
+          "file": "library/gems/turquoise.webp",
+          "fileDark": "library/gems/turquoise.dark.webp",
+          "heading": "TURQUOISE",
+          "subheading": "Gem Stones",
+          "base": 10,
+          "rateType": "Base 10 Rate",
+          "rateRaw": "8984",
+          "sequence": [
+            8,
+            9,
+            8,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "id": "homeopathic",
+      "label": "Homeopathic",
+      "kind": "card",
+      "cards": [
+        {
+          "id": "homeopathic/aconitum-napellus",
+          "name": "Aconitum Napellus",
+          "file": "library/homeopathic/aconitum-napellus.webp",
+          "fileDark": "library/homeopathic/aconitum-napellus.dark.webp",
+          "heading": "Aconitum Napellus",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "0510 21",
+          "sequence": [
+            5,
+            10,
+            21
+          ]
+        },
+        {
+          "id": "homeopathic/anacardium-occidentale",
+          "name": "Anacardium Occidentale",
+          "file": "library/homeopathic/anacardium-occidentale.webp",
+          "fileDark": "library/homeopathic/anacardium-occidentale.dark.webp",
+          "heading": "Anacardium Occidentale",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "14 23 30 3",
+          "sequence": [
+            14,
+            23,
+            30
+          ]
+        },
+        {
+          "id": "homeopathic/antimonium-crudum",
+          "name": "Antimonium Crudum",
+          "file": "library/homeopathic/antimonium-crudum.webp",
+          "fileDark": "library/homeopathic/antimonium-crudum.dark.webp",
+          "heading": "Antimonium Crudum",
+          "subheading": "Homeopathy",
+          "base": 9,
+          "rateType": "Base 9 Rate (336 - Combe)",
+          "rateRaw": "26785",
+          "sequence": [
+            2,
+            6,
+            7,
+            8,
+            5
+          ]
+        },
+        {
+          "id": "homeopathic/apis-mellifica",
+          "name": "Apis Mellifica",
+          "file": "library/homeopathic/apis-mellifica.webp",
+          "fileDark": "library/homeopathic/apis-mellifica.dark.webp",
+          "heading": "APIS MELLIFICA",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "04 11 35 40",
+          "sequence": [
+            4,
+            11,
+            35,
+            40
+          ]
+        },
+        {
+          "id": "homeopathic/arsen-iod",
+          "name": "Arsen Iod",
+          "file": "library/homeopathic/arsen-iod.webp",
+          "fileDark": "library/homeopathic/arsen-iod.dark.webp",
+          "heading": "ARSENICUM IOD",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "06 22 28 35 38",
+          "sequence": [
+            6,
+            22,
+            28,
+            35,
+            38
+          ]
+        },
+        {
+          "id": "homeopathic/arsenicum-album",
+          "name": "Arsenicum Album",
+          "file": "library/homeopathic/arsenicum-album.webp",
+          "fileDark": "library/homeopathic/arsenicum-album.dark.webp",
+          "heading": "ARSENICUM ALBUM",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "0116 22 28 38",
+          "sequence": [
+            1,
+            16,
+            22,
+            28,
+            38
+          ]
+        },
+        {
+          "id": "homeopathic/arsenicum-sulphuratum-flavum",
+          "name": "Arsenicum Sulphuratum Flavum",
+          "file": "library/homeopathic/arsenicum-sulphuratum-flavum.webp",
+          "fileDark": "library/homeopathic/arsenicum-sulphuratum-flavum.dark.webp",
+          "heading": "ARSENICUM",
+          "subheading": "SULPHURATUM F LAVUM",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "10 17 23 30 40",
+          "sequence": [
+            10,
+            17,
+            23,
+            30,
+            40
+          ]
+        },
+        {
+          "id": "homeopathic/bacillinum",
+          "name": "Bacillinum",
+          "file": "library/homeopathic/bacillinum.webp",
+          "fileDark": "library/homeopathic/bacillinum.dark.webp",
+          "heading": "BACILLINUM",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "06 15 23 32 39",
+          "sequence": [
+            6,
+            15,
+            23,
+            32,
+            39
+          ]
+        },
+        {
+          "id": "homeopathic/belladonna-flower",
+          "name": "Belladonna (Flower)",
+          "file": "library/homeopathic/belladonna-flower.webp",
+          "fileDark": "library/homeopathic/belladonna-flower.dark.webp",
+          "heading": "Belladonna",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "05 18 28 38",
+          "sequence": [
+            5,
+            18,
+            28,
+            38
+          ]
+        },
+        {
+          "id": "homeopathic/carcinosinum",
+          "name": "Carcinosinum",
+          "file": "library/homeopathic/carcinosinum.webp",
+          "fileDark": "library/homeopathic/carcinosinum.dark.webp",
+          "heading": "CARCINOSINUM",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "06 17 23 34 40",
+          "sequence": [
+            6,
+            17,
+            23,
+            34,
+            40
+          ]
+        },
+        {
+          "id": "homeopathic/causticum",
+          "name": "Causticum",
+          "file": "library/homeopathic/causticum.webp",
+          "fileDark": "library/homeopathic/causticum.dark.webp",
+          "heading": "Causticum",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "011925 37",
+          "sequence": [
+            1,
+            19,
+            25,
+            37
+          ]
+        },
+        {
+          "id": "homeopathic/cina",
+          "name": "Cina",
+          "file": "library/homeopathic/cina.webp",
+          "fileDark": "library/homeopathic/cina.dark.webp",
+          "heading": "CHINA OFFICINALIS",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "07 19 28 3",
+          "sequence": [
+            7,
+            19,
+            28
+          ]
+        },
+        {
+          "id": "homeopathic/crotalus-horridus",
+          "name": "Crotalus Horridus",
+          "file": "library/homeopathic/crotalus-horridus.webp",
+          "fileDark": "library/homeopathic/crotalus-horridus.dark.webp",
+          "heading": "CROTALUS",
+          "subheading": "HORRIDUSName",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "02 10 21 35 41",
+          "sequence": [
+            2,
+            10,
+            21,
+            35,
+            41
+          ]
+        },
+        {
+          "id": "homeopathic/graphites",
+          "name": "Graphites",
+          "file": "library/homeopathic/graphites.webp",
+          "fileDark": "library/homeopathic/graphites.dark.webp",
+          "heading": "GRAPHITES",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "TT",
+          "rateRaw": "",
+          "sequence": []
+        },
+        {
+          "id": "homeopathic/hyoscyamus-niger",
+          "name": "Hyoscyamus Niger",
+          "file": "library/homeopathic/hyoscyamus-niger.webp",
+          "fileDark": "library/homeopathic/hyoscyamus-niger.dark.webp",
+          "heading": "Hyoscyamus Niger",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "06 21 29 38",
+          "sequence": [
+            6,
+            21,
+            29,
+            38
+          ]
+        },
+        {
+          "id": "homeopathic/ignatia-amara",
+          "name": "Ignatia Amara",
+          "file": "library/homeopathic/ignatia-amara.webp",
+          "fileDark": "library/homeopathic/ignatia-amara.dark.webp",
+          "heading": "Ignatia Amara",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "13 23 33 36 2",
+          "sequence": [
+            13,
+            23,
+            33,
+            36
+          ]
+        },
+        {
+          "id": "homeopathic/iodum",
+          "name": "Iodum",
+          "file": "library/homeopathic/iodum.webp",
+          "fileDark": "library/homeopathic/iodum.dark.webp",
+          "heading": "ODUM",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "01213139",
+          "sequence": [
+            1,
+            21,
+            31,
+            39
+          ]
+        },
+        {
+          "id": "homeopathic/kalium-sulphuricum",
+          "name": "Kalium Sulphuricum",
+          "file": "library/homeopathic/kalium-sulphuricum.webp",
+          "fileDark": "library/homeopathic/kalium-sulphuricum.dark.webp",
+          "heading": "KALIUM SULPHURICUM",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "0513 3337 43",
+          "sequence": [
+            5,
+            13,
+            33,
+            37,
+            43
+          ]
+        },
+        {
+          "id": "homeopathic/lachesis",
+          "name": "Lachesis",
+          "file": "library/homeopathic/lachesis.webp",
+          "fileDark": "library/homeopathic/lachesis.dark.webp",
+          "heading": "Lachesis Muta",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "13 20 32 30",
+          "sequence": [
+            13,
+            20,
+            32,
+            30
+          ]
+        },
+        {
+          "id": "homeopathic/lycopodium-clavatum",
+          "name": "Lycopodium Clavatum",
+          "file": "library/homeopathic/lycopodium-clavatum.webp",
+          "fileDark": "library/homeopathic/lycopodium-clavatum.dark.webp",
+          "heading": "Lycopodium Clavatum",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "03 14 32 38 41",
+          "sequence": [
+            3,
+            14,
+            32,
+            38,
+            41
+          ]
+        },
+        {
+          "id": "homeopathic/medorrhinum",
+          "name": "Medorrhinum",
+          "file": "library/homeopathic/medorrhinum.webp",
+          "fileDark": "library/homeopathic/medorrhinum.dark.webp",
+          "heading": "MEDORRHINUM",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "06 112134 42",
+          "sequence": [
+            6,
+            11,
+            21,
+            34,
+            42
+          ]
+        },
+        {
+          "id": "homeopathic/mercurius-solubilis",
+          "name": "Mercurius Solubilis",
+          "file": "library/homeopathic/mercurius-solubilis.webp",
+          "fileDark": "library/homeopathic/mercurius-solubilis.dark.webp",
+          "heading": "MERCURIUS SOLUBILIS",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "10 13 22 28 42",
+          "sequence": [
+            10,
+            13,
+            22,
+            28,
+            42
+          ]
+        },
+        {
+          "id": "homeopathic/natmur-natrum-muriaticum",
+          "name": "Natmur Natrum Muriaticum",
+          "file": "library/homeopathic/natmur-natrum-muriaticum.webp",
+          "fileDark": "library/homeopathic/natmur-natrum-muriaticum.dark.webp",
+          "heading": "Nartum Muriaticum",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "08 20 33 2",
+          "sequence": [
+            8,
+            20,
+            33
+          ]
+        },
+        {
+          "id": "homeopathic/nux-vomica",
+          "name": "Nux Vomica",
+          "file": "library/homeopathic/nux-vomica.webp",
+          "fileDark": "library/homeopathic/nux-vomica.dark.webp",
+          "heading": "Nux Vomica",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "08 15 31 3",
+          "sequence": [
+            8,
+            15,
+            31
+          ]
+        },
+        {
+          "id": "homeopathic/phosphorus",
+          "name": "Phosphorus",
+          "file": "library/homeopathic/phosphorus.webp",
+          "fileDark": "library/homeopathic/phosphorus.dark.webp",
+          "heading": "PHOSPHORUS",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "01 15 27 41",
+          "sequence": [
+            1,
+            15,
+            27,
+            41
+          ]
+        },
+        {
+          "id": "homeopathic/psorinum",
+          "name": "Psorinum",
+          "file": "library/homeopathic/psorinum.webp",
+          "fileDark": "library/homeopathic/psorinum.dark.webp",
+          "heading": "PSORINUM",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "14 20 33 44",
+          "sequence": [
+            14,
+            20,
+            33,
+            44
+          ]
+        },
+        {
+          "id": "homeopathic/sepia",
+          "name": "Sepia",
+          "file": "library/homeopathic/sepia.webp",
+          "fileDark": "library/homeopathic/sepia.dark.webp",
+          "heading": "Sepia",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "09 11 25 33 41",
+          "sequence": [
+            9,
+            11,
+            25,
+            33,
+            41
+          ]
+        },
+        {
+          "id": "homeopathic/spigelia-anthelmintica",
+          "name": "Spigelia Anthelmintica",
+          "file": "library/homeopathic/spigelia-anthelmintica.webp",
+          "fileDark": "library/homeopathic/spigelia-anthelmintica.dark.webp",
+          "heading": "SPIGELIA",
+          "subheading": "ANTHELMINTICA",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "04 15 24 35 44",
+          "sequence": [
+            4,
+            15,
+            24,
+            35,
+            44
+          ]
+        },
+        {
+          "id": "homeopathic/spongia-tosta",
+          "name": "Spongia Tosta",
+          "file": "library/homeopathic/spongia-tosta.webp",
+          "fileDark": "library/homeopathic/spongia-tosta.dark.webp",
+          "heading": "SPONGIA TOSTA",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "09 12 19 29 41",
+          "sequence": [
+            9,
+            12,
+            19,
+            29,
+            41
+          ]
+        },
+        {
+          "id": "homeopathic/staphisagria",
+          "name": "Staphisagria",
+          "file": "library/homeopathic/staphisagria.webp",
+          "fileDark": "library/homeopathic/staphisagria.dark.webp",
+          "heading": "Staphisagria",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "12 18 28 40",
+          "sequence": [
+            12,
+            18,
+            28,
+            40
+          ]
+        },
+        {
+          "id": "homeopathic/stramonium",
+          "name": "Stramonium",
+          "file": "library/homeopathic/stramonium.webp",
+          "fileDark": "library/homeopathic/stramonium.dark.webp",
+          "heading": "Stramonium",
+          "subheading": "Plant - Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "04 15 22 32 20",
+          "sequence": [
+            4,
+            15,
+            22,
+            32,
+            20
+          ]
+        },
+        {
+          "id": "homeopathic/sulphur",
+          "name": "Sulphur",
+          "file": "library/homeopathic/sulphur.webp",
+          "fileDark": "library/homeopathic/sulphur.dark.webp",
+          "heading": "Sulphur",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "09 20 23 33 2",
+          "sequence": [
+            9,
+            20,
+            23,
+            33
+          ]
+        },
+        {
+          "id": "homeopathic/syphilinum",
+          "name": "Syphilinum",
+          "file": "library/homeopathic/syphilinum.webp",
+          "fileDark": "library/homeopathic/syphilinum.dark.webp",
+          "heading": "SYPHILINUM",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "12 24 32 34 41",
+          "sequence": [
+            12,
+            24,
+            32,
+            34,
+            41
+          ]
+        },
+        {
+          "id": "homeopathic/thuja-thuya-occidentalis",
+          "name": "Thuja (Thuya Occidentalis)",
+          "file": "library/homeopathic/thuja-thuya-occidentalis.webp",
+          "fileDark": "library/homeopathic/thuja-thuya-occidentalis.dark.webp",
+          "heading": "THUYA OCCIDENTALIS",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "09 18 28 34 42",
+          "sequence": [
+            9,
+            18,
+            28,
+            34,
+            42
+          ]
+        },
+        {
+          "id": "homeopathic/tuberculinum",
+          "name": "Tuberculinum",
+          "file": "library/homeopathic/tuberculinum.webp",
+          "fileDark": "library/homeopathic/tuberculinum.dark.webp",
+          "heading": "TUBERCULINUM",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "09 22 35 40",
+          "sequence": [
+            9,
+            22,
+            35,
+            40
+          ]
+        },
+        {
+          "id": "homeopathic/veratrum-album",
+          "name": "Veratrum Album",
+          "file": "library/homeopathic/veratrum-album.webp",
+          "fileDark": "library/homeopathic/veratrum-album.dark.webp",
+          "heading": "Veratrum Album",
+          "subheading": "Plant - Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "0919 31 34",
+          "sequence": [
+            9,
+            19,
+            31,
+            34
+          ]
+        }
+      ]
+    },
+    {
+      "id": "other",
+      "label": "Other",
+      "kind": "card",
+      "cards": [
+        {
+          "id": "other/kidney-glomeruli",
+          "name": "Kidney Glomeruli",
+          "file": "library/other/kidney-glomeruli.webp",
+          "fileDark": "library/other/kidney-glomeruli.dark.webp",
+          "heading": "Kidney Glomeruli",
+          "subheading": "Organ /Tissue",
+          "base": 10,
+          "rateType": "Base 10 Rate",
+          "rateRaw": "1348 10",
+          "sequence": [
+            1,
+            3,
+            4,
+            8,
+            1,
+            0
+          ]
+        },
+        {
+          "id": "other/luke-grabovoi-maney",
+          "name": "Luke Grabovoi Maney",
+          "file": "library/other/luke-grabovoi-maney.webp",
+          "fileDark": "library/other/luke-grabovoi-maney.dark.webp",
+          "heading": "MONEY FLOW",
+          "subheading": "Grabovoi",
+          "base": 9,
+          "rateType": "Base 9 Rate (336 - Combe)",
+          "rateRaw": "426499",
+          "sequence": [
+            4,
+            2,
+            6,
+            4,
+            9,
+            9
+          ]
+        },
+        {
+          "id": "other/prostate-gland",
+          "name": "Prostate Gland",
+          "file": "library/other/prostate-gland.webp",
+          "fileDark": "library/other/prostate-gland.dark.webp",
+          "heading": "PROSTATE GLAND",
+          "subheading": "Body Organs",
+          "base": 9,
+          "rateType": "Base 9 Rate (336 - Combe)",
+          "rateRaw": "824128",
+          "sequence": [
+            8,
+            2,
+            4,
+            1,
+            2,
+            8
+          ]
+        },
+        {
+          "id": "other/radium",
+          "name": "Radium",
+          "file": "library/other/radium.webp",
+          "fileDark": "library/other/radium.dark.webp",
+          "heading": "RADIUM",
+          "subheading": "Homeopathic",
+          "base": 44,
+          "rateType": "Base 44 Rate (Combe)",
+          "rateRaw": "02 12 22 35 43",
+          "sequence": [
+            2,
+            12,
+            22,
+            35,
+            43
+          ]
+        },
+        {
+          "id": "other/radium-brom",
+          "name": "Radium Brom",
+          "file": "library/other/radium-brom.webp",
+          "fileDark": "library/other/radium-brom.dark.webp",
+          "heading": "Radium Brom",
+          "subheading": "Homeopathic",
+          "base": 9,
+          "rateType": "Base 9 Rate (336 - Combe)",
+          "rateRaw": "52389",
+          "sequence": [
+            5,
+            2,
+            3,
+            8,
+            9
+          ]
+        }
+      ]
+    }
+  ]
+}
