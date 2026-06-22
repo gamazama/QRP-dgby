@@ -54,9 +54,21 @@ export function RemedySearchPanel({ onAdd }: { onAdd: (r: Remedy, mode: AddMode)
         />
       </div>
 
+      {packsQuery.isError && (
+        <div className="mb-2 flex items-center justify-between gap-2 rounded-md border border-red-300 bg-red-50 px-2 py-1.5 text-xs text-red-700 dark:border-red-900 dark:bg-red-950/40 dark:text-red-300">
+          <span>Couldn't load remedy packs.</span>
+          <button type="button" onClick={() => void packsQuery.refetch()} className="font-medium underline">
+            Retry
+          </button>
+        </div>
+      )}
       <div className="mb-2 flex items-center justify-between gap-2">
         <span className="text-xs text-slate-500 dark:text-slate-400">
-          {packsQuery.isLoading ? 'Loading…' : `${searchQuery.data?.total ?? 0} remedies`}
+          {packsQuery.isLoading
+            ? 'Loading…'
+            : packsQuery.isError
+              ? 'Unavailable'
+              : `${searchQuery.data?.total ?? 0} remedies`}
         </span>
         <div className="flex overflow-hidden rounded-md border border-slate-300 text-xs dark:border-slate-700">
           {(['rate', 'image'] as const).map((m) => (

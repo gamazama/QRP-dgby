@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Copy, Plus, Trash2 } from 'lucide-react';
 import type { Style, StyleConfig } from '@/domain/style';
 import type { StyleId } from '@/domain/ids';
@@ -22,18 +22,41 @@ export function StylesPage() {
   const [name, setName] = useState('');
   const syncedId = useRef<StyleId | null>(null);
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pending = useRef<{ style: Style; name: string; config: StyleConfig } | null>(null);
+  const saveRef = useRef(save);
+  saveRef.current = save;
 
+  // Persist the most recent edit immediately (used before switching styles + on
+  // unmount) so a debounced edit is never silently dropped. Stable identity.
+  const flush = useCallback(() => {
+    if (saveTimer.current) {
+      clearTimeout(saveTimer.current);
+      saveTimer.current = null;
+    }
+    const p = pending.current;
+    if (p) {
+      pending.current = null;
+      void saveRef.current({ ...p.style, name: p.name, config: p.config });
+    }
+  }, []);
+
+  // Flush any pending edit before syncing to a newly-selected style.
   useEffect(() => {
     if (selected && selected.id !== syncedId.current) {
+      flush();
       setDraft(selected.config);
       setName(selected.name);
       syncedId.current = selected.id;
     }
-  }, [selected]);
+  }, [selected, flush]);
+
+  // Flush on unmount.
+  useEffect(() => () => flush(), [flush]);
 
   const scheduleSave = (style: Style, nextName: string, config: StyleConfig) => {
+    pending.current = { style, name: nextName, config };
     if (saveTimer.current) clearTimeout(saveTimer.current);
-    saveTimer.current = setTimeout(() => void save({ ...style, name: nextName, config }), 400);
+    saveTimer.current = setTimeout(flush, 400);
   };
 
   const onChangeConfig = (config: StyleConfig) => {

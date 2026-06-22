@@ -37,6 +37,16 @@ describe('sequencerStore', () => {
     expect(get().sequence.cards.length).toBe(2);
   });
 
+  it('makes reorder undoable (snapshots non-delete mutations too)', () => {
+    get().addDataCard('preset:sunflower');
+    get().addDataCard('preset:lotus');
+    const firstId = get().sequence.cards[0]!.id;
+    get().reorderCards(0, 1);
+    expect(get().sequence.cards[1]!.id).toBe(firstId);
+    get().undo();
+    expect(get().sequence.cards[0]!.id).toBe(firstId);
+  });
+
   it('keeps the active card selected after reorder', () => {
     get().addDataCard('preset:sunflower');
     get().addDataCard('preset:lotus');

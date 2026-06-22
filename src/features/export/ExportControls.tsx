@@ -25,9 +25,13 @@ export function ExportControls({
 }) {
   const [progress, setProgress] = useState<number | null>(null);
 
-  const onPng = () => {
+  const onPng = async () => {
     if (!activeCard) return;
-    void exportCardPng(activeCard, resolveStyleConfig(activeCard, stylesById), { theme: currentTheme() });
+    try {
+      await exportCardPng(activeCard, resolveStyleConfig(activeCard, stylesById), { theme: currentTheme() });
+    } catch (err) {
+      console.error('PNG export failed', err);
+    }
   };
 
   const onMp4 = async () => {
@@ -48,7 +52,7 @@ export function ExportControls({
 
   return (
     <div className="flex items-center gap-2">
-      <button type="button" className={btn} onClick={onPng} disabled={!activeCard} title="Export the current card as PNG">
+      <button type="button" className={btn} onClick={() => void onPng()} disabled={!activeCard} title="Export the current card as PNG">
         <Download className="h-3.5 w-3.5" /> PNG
       </button>
       <button

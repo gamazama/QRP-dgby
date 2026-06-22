@@ -15,7 +15,12 @@ export function useSequencePersistence() {
       const lastId = await settings.get<string | null>('lastSequenceId', null);
       const existing = lastId ? await sequences.getById(lastId) : null;
       if (cancelled) return;
-      if (existing) {
+      const current = useSequencerStore.getState().sequence;
+      if (current.cards.length > 0) {
+        // The user already started a deck before load resolved — keep it, don't clobber.
+        await sequences.save(current);
+        await settings.set('lastSequenceId', current.id);
+      } else if (existing) {
         useSequencerStore.getState().loadSequence(existing);
       } else {
         const seq = createEmptySequence();

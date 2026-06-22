@@ -74,7 +74,7 @@ export function SequenceBuilder({
               min={200}
               step={100}
               value={timing.perCardMs}
-              onChange={(e) => store().setTiming({ perCardMs: Number(e.target.value) || 1500 })}
+              onChange={(e) => store().setTiming({ perCardMs: Math.max(200, Number(e.target.value) || 1500) })}
               className="w-20 rounded border border-slate-300 bg-white px-1 py-0.5 dark:border-slate-700 dark:bg-slate-900"
             />
             ms
@@ -86,7 +86,7 @@ export function SequenceBuilder({
               min={0}
               step={100}
               value={timing.crossfadeMs}
-              onChange={(e) => store().setTiming({ crossfadeMs: Number(e.target.value) || 0 })}
+              onChange={(e) => store().setTiming({ crossfadeMs: Math.max(0, Number(e.target.value) || 0) })}
               className="w-20 rounded border border-slate-300 bg-white px-1 py-0.5 dark:border-slate-700 dark:bg-slate-900"
             />
             ms

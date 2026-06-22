@@ -88,9 +88,10 @@ export const useSequencerStore = create<SequencerState>()(
     };
 
     // Append cards and select the first newly-added one.
-    const append = (newCards: Card[]) =>
+    const append = (newCards: Card[]) => {
+      if (newCards.length === 0) return;
+      snapshot();
       set((s) => {
-        if (newCards.length === 0) return s;
         const firstNew = s.sequence.cards.length;
         const cards = [...s.sequence.cards, ...newCards];
         return {
@@ -100,6 +101,7 @@ export const useSequencerStore = create<SequencerState>()(
           isPlaying: false,
         };
       });
+    };
 
     return {
       sequence: createEmptySequence(),
@@ -169,7 +171,8 @@ export const useSequencerStore = create<SequencerState>()(
           { id: newCardId(), title: 'Transition', styleId, content: { kind: 'transition', ...DEFAULT_TRANSITION } },
         ]),
 
-      duplicateCard: (id) =>
+      duplicateCard: (id) => {
+        snapshot();
         set((s) => {
           const idx = s.sequence.cards.findIndex((c) => c.id === id);
           if (idx === -1) return s;
@@ -183,7 +186,8 @@ export const useSequencerStore = create<SequencerState>()(
             selectedIds: [copy.id],
             isPlaying: false,
           };
-        }),
+        });
+      },
 
       deleteCard: (id) => {
         snapshot();
@@ -214,9 +218,10 @@ export const useSequencerStore = create<SequencerState>()(
         });
       },
 
-      reorderCards: (from, to) =>
+      reorderCards: (from, to) => {
+        if (from === to) return;
+        snapshot();
         set((s) => {
-          if (from === to) return s;
           const cards = [...s.sequence.cards];
           const moved = cards[from];
           if (!moved) return s;
@@ -225,7 +230,8 @@ export const useSequencerStore = create<SequencerState>()(
           const activeId = s.sequence.cards[s.activeIndex]?.id;
           const activeIndex = activeId ? cards.findIndex((c) => c.id === activeId) : s.activeIndex;
           return { sequence: { ...s.sequence, cards, updatedAt: ts() }, activeIndex: clampIndex(activeIndex, cards.length) };
-        }),
+        });
+      },
 
       updateCard: (id, patch) =>
         set((s) => ({
@@ -249,7 +255,8 @@ export const useSequencerStore = create<SequencerState>()(
           },
         })),
 
-      applyStyleToSelection: (styleId) =>
+      applyStyleToSelection: (styleId) => {
+        snapshot();
         set((s) => {
           const idSet = new Set(s.selectedIds);
           return {
@@ -259,9 +266,11 @@ export const useSequencerStore = create<SequencerState>()(
               updatedAt: ts(),
             },
           };
-        }),
+        });
+      },
 
-      setTransition: (id, on) =>
+      setTransition: (id, on) => {
+        snapshot();
         set((s) => ({
           sequence: {
             ...s.sequence,
@@ -279,7 +288,8 @@ export const useSequencerStore = create<SequencerState>()(
             }),
             updatedAt: ts(),
           },
-        })),
+        }));
+      },
 
       selectCard: (index) =>
         set((s) => {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { Remedy } from '@/domain/remedy';
 import type { StyleId } from '@/domain/ids';
 import { useSequencerStore } from '@/store/sequencerStore';
@@ -14,6 +14,14 @@ export function BuildPage() {
   const { data: styles } = useStyles();
   const stylesById = buildStylesMap(styles);
   const [currentStyleId, setCurrentStyleId] = useState<StyleId>('preset:sunflower');
+
+  // If the current style was deleted, fall back to the first available one so new
+  // cards never reference a ghost style id.
+  useEffect(() => {
+    if (styles && styles.length > 0 && !styles.some((s) => s.id === currentStyleId)) {
+      setCurrentStyleId(styles[0]!.id);
+    }
+  }, [styles, currentStyleId]);
 
   const sequence = useSequencerStore((s) => s.sequence);
   const cards = sequence.cards;

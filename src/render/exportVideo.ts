@@ -4,7 +4,7 @@ import type { Sequence } from '@/domain/sequence';
 import type { Style, StyleConfig } from '@/domain/style';
 import type { StyleId } from '@/domain/ids';
 import { DEFAULT_STYLE_CONFIG } from '@/engine/presets';
-import { cardToSvg } from './exportSvg';
+import { loadCardRaster, type CardRaster } from './cardRaster';
 
 export interface VideoExportOptions {
   theme?: 'light' | 'dark';
@@ -13,37 +13,10 @@ export interface VideoExportOptions {
   signal?: AbortSignal;
 }
 
-interface Raster {
-  img: HTMLImageElement;
-  dw: number;
-  dh: number;
-}
-
 const resolve = (card: Card, stylesById: Map<StyleId, Style>): StyleConfig => {
   const base = stylesById.get(card.styleId)?.config ?? DEFAULT_STYLE_CONFIG;
   return card.overrides ? { ...base, ...card.overrides } : base;
 };
-
-async function rasterize(svg: string, size: number): Promise<Raster> {
-  const vb = svg.match(/viewBox="([^"]+)"/)?.[1] ?? '0 0 400 700';
-  const [, , w, h] = vb.split(' ').map(Number) as [number, number, number, number];
-  const scale = Math.min(size / w, size / h);
-  const dw = w * scale;
-  const dh = h * scale;
-  const sized = svg.replace('<svg ', `<svg width="${dw}" height="${dh}" `);
-  const url = URL.createObjectURL(new Blob([sized], { type: 'image/svg+xml' }));
-  try {
-    const img = new Image();
-    await new Promise<void>((res, rej) => {
-      img.onload = () => res();
-      img.onerror = () => rej(new Error('Frame rasterize failed'));
-      img.src = url;
-    });
-    return { img, dw, dh };
-  } finally {
-    URL.revokeObjectURL(url);
-  }
-}
 
 // Render a prescription to an MP4. mediabunny/WebCodecs is dynamically imported so
 // it's only fetched when a user actually exports. Spin uses a numeric rotation per
@@ -96,7 +69,7 @@ export async function exportSequenceVideo(
   output.addVideoTrack(source, { frameRate: fps, name: 'QRP Sequence' });
   await output.start();
 
-  const drawFit = (r: Raster, alpha: number) => {
+  const drawFit = (r: CardRaster, alpha: number) => {
     ctx.globalAlpha = alpha;
     ctx.drawImage(r.img, (size - r.dw) / 2, (size - r.dh) / 2, r.dw, r.dh);
     ctx.globalAlpha = 1;
@@ -105,7 +78,7 @@ export async function exportSequenceVideo(
   let ts = 0;
   let elapsed = 0;
   let frameIdx = 0;
-  let prev: Raster | null = null;
+  let prev: CardRaster | null = null;
   try {
     for (let i = 0; i < cards.length; i++) {
       const card = cards[i]!;
@@ -117,7 +90,7 @@ export async function exportSequenceVideo(
           throw new Error('Export cancelled');
         }
         const rotation = -(elapsed / 24) * 360; // 24s per full turn, anti-clockwise
-        const cur = await rasterize(cardToSvg(card, style, { theme, rotation }), size);
+        const cur = await loadCardRaster(card, style, { theme, rotation, size });
 
         ctx.fillStyle = paper;
         ctx.fillRect(0, 0, size, size);

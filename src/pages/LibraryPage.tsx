@@ -50,8 +50,21 @@ export function LibraryPage() {
           />
         </div>
         <span className="text-xs text-slate-500 dark:text-slate-400">
-          {packsQuery.isLoading ? 'Loading…' : `${searchQuery.data?.total ?? 0} remedies`}
+          {packsQuery.isLoading
+            ? 'Loading…'
+            : packsQuery.isError
+              ? 'Packs unavailable'
+              : `${searchQuery.data?.total ?? 0} remedies`}
         </span>
+        {packsQuery.isError && (
+          <button
+            type="button"
+            onClick={() => void packsQuery.refetch()}
+            className="rounded-md border border-red-300 px-2 py-1 text-xs font-medium text-red-700 hover:bg-red-50 dark:border-red-900 dark:text-red-300"
+          >
+            Retry
+          </button>
+        )}
       </div>
 
       <div className="custom-scrollbar min-h-0 flex-1 overflow-y-auto">
@@ -87,10 +100,13 @@ export function LibraryPage() {
             );
           })}
         </div>
-        {!packsQuery.isLoading && items.length === 0 && (
-          <p className="py-12 text-center text-sm text-slate-400">
-            No remedies. Run <code>npm run build:packs</code> to generate the packs.
+        {packsQuery.isError && (
+          <p className="py-12 text-center text-sm text-red-600 dark:text-red-400">
+            Couldn't load remedy packs. Check your connection and Retry.
           </p>
+        )}
+        {!packsQuery.isLoading && !packsQuery.isError && items.length === 0 && (
+          <p className="py-12 text-center text-sm text-slate-400">No remedies found.</p>
         )}
       </div>
     </div>

@@ -28,7 +28,7 @@ const motifPaths = (design: 'celtic' | 'triskelion', fill: string) =>
 
 export interface ExportSvgOptions {
   theme?: 'light' | 'dark';
-  rotation?: number;
+  rotation?: number | undefined;
 }
 
 function geometryCardSvg(card: Card, style: StyleConfig, opts: ExportSvgOptions): string {
