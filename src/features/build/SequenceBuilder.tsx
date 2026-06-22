@@ -20,6 +20,7 @@ import { useToast } from '@/components/ui/toastContext';
 import { CardView } from '@/render/CardView';
 import { resolveStyleConfig } from '@/features/styles/useStyles';
 import { exportSequenceJson, importSequenceJson } from './deckIO';
+import { SharePrescription } from './SharePrescription';
 import { cn } from '@/lib/cn';
 
 const BASES: RateBase[] = [9, 10, 44];
@@ -268,6 +269,7 @@ export function SequenceBuilder({
           <button type="button" onClick={() => fileRef.current?.click()} title="Import prescription (JSON)" aria-label="Import" className={iconBtn}>
             <Upload className="h-4 w-4" />
           </button>
+          <SharePrescription sequence={store().sequence} stylesById={stylesById} />
           <button
             type="button"
             onClick={() => store().newSequence()}
