@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useSequencerStore } from '@/store/sequencerStore';
+import { cardDurationMs } from '@/domain/timing';
 
 // Advances the active card while playing. Keyed on the active card's id + its
 // duration (NOT the whole cards array) so editing an off-screen card or an
@@ -11,8 +12,7 @@ export function usePlaybackClock() {
   const activeCard = useSequencerStore((s) => s.sequence.cards[s.activeIndex]);
   const perCardMs = useSequencerStore((s) => s.sequence.timing.perCardMs);
 
-  const duration =
-    activeCard?.content.kind === 'transition' ? activeCard.content.durationMs : perCardMs;
+  const duration = activeCard ? cardDurationMs(activeCard, perCardMs) : perCardMs;
   const activeId = activeCard?.id;
 
   useEffect(() => {

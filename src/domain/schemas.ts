@@ -115,6 +115,7 @@ export const CardSchema = z.object({
       invert: z.boolean().optional(),
     })
     .optional(),
+  durationMs: z.number().optional(),
 });
 
 export const SequenceSchema = z.object({

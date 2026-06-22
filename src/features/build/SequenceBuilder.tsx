@@ -14,7 +14,8 @@ import {
 import type { Style } from '@/domain/style';
 import type { StyleId } from '@/domain/ids';
 import type { RateBase } from '@/domain/remedy';
-import type { TransitionShape, TransitionSpin } from '@/domain/card';
+import type { Card, CardContent, TransitionShape, TransitionSpin } from '@/domain/card';
+import { cardDurationMs } from '@/domain/timing';
 import { useSequencerStore } from '@/store/sequencerStore';
 import { useToast } from '@/components/ui/toastContext';
 import { CardView } from '@/render/CardView';
@@ -40,9 +41,6 @@ function fmtDuration(ms: number): string {
   return `${m}:${String(Math.round(s % 60)).padStart(2, '0')}`;
 }
 
-const cardDurationMs = (card: { content: { kind: string; durationMs?: number } }, perCardMs: number) =>
-  card.content.kind === 'transition' ? (card.content.durationMs ?? perCardMs) : perCardMs;
-
 // One colour per card kind, shared by the timeline bar and its legend.
 const CARD_TYPE_META: Record<string, { label: string; bar: string; dot: string }> = {
   remedy: { label: 'Remedy', bar: 'bg-sky-400 hover:bg-sky-500 dark:bg-sky-500 dark:hover:bg-sky-400', dot: 'bg-sky-400 dark:bg-sky-500' },
@@ -65,7 +63,7 @@ function SequenceTimeline({
   activeIndex,
   onSelect,
 }: {
-  cards: { id: string; title: string; content: { kind: string; durationMs?: number } }[];
+  cards: Card[];
   perCardMs: number;
   activeIndex: number;
   onSelect: (i: number) => void;
@@ -120,20 +118,29 @@ function SequenceTimeline({
   );
 }
 
-function DataCardEditor({ id, base, sequence }: { id: string; base: RateBase; sequence: number[] }) {
+// Edit the number sequence + base of any rate-bearing card (remedy OR data),
+// like the old app. A remedy keeps its `ref` (provenance) while its rate is
+// overridden in place.
+function RateEditor({ card }: { card: Card }) {
   const update = useSequencerStore.getState().updateCard;
+  const c = card.content;
+  if (c.kind !== 'remedy' && c.kind !== 'data') return null;
+  const { base, sequence } = c;
+
+  const apply = (nextBase: RateBase, nextSeq: number[]) => {
+    const content: CardContent =
+      c.kind === 'remedy'
+        ? { kind: 'remedy', ref: c.ref, base: nextBase, sequence: nextSeq }
+        : { kind: 'data', base: nextBase, sequence: nextSeq };
+    update(card.id, { content });
+  };
+
   return (
-    <div className="mt-2 space-y-2">
+    <div className="space-y-2">
       <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
         <label className="flex items-center gap-1">
           Base
-          <select
-            value={base}
-            onChange={(e) =>
-              update(id, { content: { kind: 'data', base: Number(e.target.value) as RateBase, sequence } })
-            }
-            className={numInput}
-          >
+          <select value={base} onChange={(e) => apply(Number(e.target.value) as RateBase, sequence)} className={numInput}>
             {BASES.map((b) => (
               <option key={b} value={b}>
                 {b}
@@ -148,10 +155,7 @@ function DataCardEditor({ id, base, sequence }: { id: string; base: RateBase; se
             min={1}
             max={44}
             value={sequence.length}
-            onChange={(e) => {
-              const len = Math.max(1, Math.min(44, Number(e.target.value) || 1));
-              update(id, { content: { kind: 'data', base, sequence: resize(sequence, len) } });
-            }}
+            onChange={(e) => apply(base, resize(sequence, Math.max(1, Math.min(44, Number(e.target.value) || 1))))}
             className={`w-14 ${numInput}`}
           />
         </label>
@@ -168,7 +172,7 @@ function DataCardEditor({ id, base, sequence }: { id: string; base: RateBase; se
             onChange={(e) => {
               const next = [...sequence];
               next[i] = Math.max(0, Math.min(99, Number(e.target.value) || 0));
-              update(id, { content: { kind: 'data', base, sequence: next } });
+              apply(base, next);
             }}
             className={`w-12 text-center ${numInput}`}
           />
@@ -178,27 +182,84 @@ function DataCardEditor({ id, base, sequence }: { id: string; base: RateBase; se
   );
 }
 
-function TransitionEditor({
-  id,
-  shape,
-  spin,
-  spinSeconds,
-  durationMs,
-}: {
-  id: string;
-  shape: TransitionShape;
-  spin: TransitionSpin;
-  spinSeconds: number;
-  durationMs: number;
-}) {
-  const update = useSequencerStore.getState().updateCard;
-  const patch = (p: Partial<{ shape: TransitionShape; spin: TransitionSpin; spinSeconds: number; durationMs: number }>) =>
-    update(id, { content: { kind: 'transition', shape, spin, spinSeconds, durationMs, ...p } });
+// Per-card dwell time. Transition cards write content.durationMs; every other
+// card writes the top-level override (blank = inherits the sequence default).
+function DurationControl({ card, perCardMs }: { card: Card; perCardMs: number }) {
+  const setCardDuration = useSequencerStore.getState().setCardDuration;
+  const isTransition = card.content.kind === 'transition';
+  const value =
+    card.content.kind === 'transition' ? card.content.durationMs : (card.durationMs ?? perCardMs);
+  const usesDefault = !isTransition && card.durationMs === undefined;
+
   return (
-    <div className="mt-2 grid grid-cols-2 gap-2 text-xs text-slate-500 dark:text-slate-400">
+    <div className="flex items-center gap-2 border-t border-slate-200/70 pt-2 text-xs text-slate-500 dark:border-slate-700/60 dark:text-slate-400">
+      <label className="flex items-center gap-1">
+        Duration
+        <input
+          type="number"
+          min={200}
+          step={100}
+          value={value}
+          onChange={(e) => setCardDuration(card.id, Math.max(200, Number(e.target.value) || perCardMs))}
+          className={`w-20 ${numInput}`}
+        />
+        ms
+      </label>
+      {usesDefault ? (
+        <span className="text-[10px] text-slate-400">default</span>
+      ) : (
+        !isTransition && (
+          <button
+            type="button"
+            onClick={() => setCardDuration(card.id, undefined)}
+            className="text-[10px] text-blue-600 hover:underline dark:text-blue-400"
+          >
+            reset
+          </button>
+        )
+      )}
+    </div>
+  );
+}
+
+// Image cards: artwork is fixed once added; show what it is so the panel isn't
+// empty (Duration is added by the shared options wrapper).
+function ImageOptions({ card }: { card: Card }) {
+  if (card.content.kind !== 'image') return null;
+  const file = card.content.light.split('/').pop() ?? card.content.light;
+  return (
+    <p className="truncate text-xs text-slate-500 dark:text-slate-400" title={card.content.light}>
+      Artwork: <span className="font-mono">{file}</span>
+    </p>
+  );
+}
+
+// One inline panel shown for EVERY selected card, so all card types are
+// consistent: kind-specific controls on top, per-card Duration underneath.
+function CardOptions({ card, perCardMs }: { card: Card; perCardMs: number }) {
+  const c = card.content;
+  return (
+    <div className="mt-2 space-y-2 rounded-md border border-slate-200 bg-slate-50/70 p-2 dark:border-slate-800 dark:bg-slate-900/40">
+      {(c.kind === 'remedy' || c.kind === 'data') && <RateEditor card={card} />}
+      {c.kind === 'transition' && <TransitionEditor card={card} />}
+      {c.kind === 'image' && <ImageOptions card={card} />}
+      <DurationControl card={card} perCardMs={perCardMs} />
+    </div>
+  );
+}
+
+function TransitionEditor({ card }: { card: Card }) {
+  const update = useSequencerStore.getState().updateCard;
+  const c = card.content;
+  if (c.kind !== 'transition') return null;
+  // Spread existing content so durationMs (managed by DurationControl) survives.
+  const patch = (p: Partial<{ shape: TransitionShape; spin: TransitionSpin; spinSeconds: number }>) =>
+    update(card.id, { content: { ...c, ...p } });
+  return (
+    <div className="grid grid-cols-2 gap-2 text-xs text-slate-500 dark:text-slate-400">
       <label className="flex items-center justify-between gap-1">
         Shape
-        <select value={shape} onChange={(e) => patch({ shape: e.target.value as TransitionShape })} className={numInput}>
+        <select value={c.shape} onChange={(e) => patch({ shape: e.target.value as TransitionShape })} className={numInput}>
           {SHAPES.map((s) => (
             <option key={s} value={s}>
               {s}
@@ -208,7 +269,7 @@ function TransitionEditor({
       </label>
       <label className="flex items-center justify-between gap-1">
         Spin
-        <select value={spin} onChange={(e) => patch({ spin: e.target.value as TransitionSpin })} className={numInput}>
+        <select value={c.spin} onChange={(e) => patch({ spin: e.target.value as TransitionSpin })} className={numInput}>
           {SPINS.map((s) => (
             <option key={s} value={s}>
               {s}
@@ -216,25 +277,14 @@ function TransitionEditor({
           ))}
         </select>
       </label>
-      <label className="flex items-center justify-between gap-1">
+      <label className="col-span-2 flex items-center gap-1">
         Spin secs
         <input
           type="number"
           min={2}
           max={60}
-          value={spinSeconds}
+          value={c.spinSeconds}
           onChange={(e) => patch({ spinSeconds: Math.max(2, Number(e.target.value) || 24) })}
-          className={`w-16 ${numInput}`}
-        />
-      </label>
-      <label className="flex items-center justify-between gap-1">
-        Hold ms
-        <input
-          type="number"
-          min={200}
-          step={100}
-          value={durationMs}
-          onChange={(e) => patch({ durationMs: Math.max(200, Number(e.target.value) || 2500) })}
           className={`w-16 ${numInput}`}
         />
       </label>
@@ -329,8 +379,8 @@ export function SequenceBuilder({
         </details>
 
         <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
-          <label className="flex items-center gap-1">
-            Card
+          <label className="flex items-center gap-1" title="Default dwell for cards that don't set their own Duration">
+            Default
             <input
               type="number"
               min={200}
@@ -477,10 +527,7 @@ export function SequenceBuilder({
                   </button>
                 </div>
               </div>
-              {active && c.kind === 'data' && <DataCardEditor id={card.id} base={c.base} sequence={c.sequence} />}
-              {active && c.kind === 'transition' && (
-                <TransitionEditor id={card.id} shape={c.shape} spin={c.spin} spinSeconds={c.spinSeconds} durationMs={c.durationMs} />
-              )}
+              {active && <CardOptions card={card} perCardMs={timing.perCardMs} />}
             </div>
           );
         })}

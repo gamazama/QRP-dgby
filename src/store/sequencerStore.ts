@@ -51,6 +51,8 @@ interface SequencerState {
   reorderCards: (from: number, to: number) => void;
   updateCard: (id: CardId, patch: Partial<Card>) => void;
   setCardRate: (id: CardId, sequence: number[]) => void;
+  /** Per-card dwell. `undefined` clears the override (back to the default). */
+  setCardDuration: (id: CardId, ms: number | undefined) => void;
   applyStyleToSelection: (styleId: StyleId) => void;
   setTransition: (id: CardId, on: boolean) => void;
 
@@ -250,6 +252,27 @@ export const useSequencerStore = create<SequencerState>()(
               if (c.id !== id) return c;
               if (c.content.kind !== 'remedy' && c.content.kind !== 'data') return c;
               return { ...c, content: { ...c.content, sequence } };
+            }),
+            updatedAt: ts(),
+          },
+        })),
+
+      setCardDuration: (id, ms) =>
+        set((s) => ({
+          sequence: {
+            ...s.sequence,
+            cards: s.sequence.cards.map((c) => {
+              if (c.id !== id) return c;
+              // Transitions hold their dwell in content; everyone else on the card.
+              if (c.content.kind === 'transition') {
+                return ms === undefined ? c : { ...c, content: { ...c.content, durationMs: ms } };
+              }
+              if (ms === undefined) {
+                const next = { ...c };
+                delete next.durationMs;
+                return next;
+              }
+              return { ...c, durationMs: ms };
             }),
             updatedAt: ts(),
           },

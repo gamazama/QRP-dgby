@@ -1,17 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Pause, Play } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
-import type { Card } from '@/domain/card';
 import type { Style } from '@/domain/style';
 import type { StyleId } from '@/domain/ids';
+import { cardDurationMs } from '@/domain/timing';
 import { buildStylesMap, resolveStyleConfig } from '@/features/styles/useStyles';
 import { decodeShare, type SharePayload } from '@/features/build/shareLink';
 import { useRenderTier } from '@/hooks/useRenderTier';
 import { CardView } from '@/render/CardView';
 import { CardCrossfade } from '@/render/CardCrossfade';
-
-const cardDuration = (card: Card | undefined, perCardMs: number) =>
-  card?.content.kind === 'transition' ? card.content.durationMs : perCardMs;
 
 // Patient playback-only view. Decodes a self-contained share payload from the
 // hash, renders the prescription fullscreen on an infinite loop. No editor, no
@@ -67,7 +64,7 @@ export function ViewPage() {
     if (!playing || cards.length === 0) return;
     const t = window.setTimeout(
       () => setIdx((i) => (i + 1) % cards.length),
-      Math.max(200, cardDuration(activeCard, perCardMs)),
+      Math.max(200, activeCard ? cardDurationMs(activeCard, perCardMs) : perCardMs),
     );
     return () => window.clearTimeout(t);
   }, [playing, idx, cards.length, activeCard, perCardMs]);

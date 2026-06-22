@@ -4,6 +4,7 @@ import type { Sequence } from '@/domain/sequence';
 import type { Style, StyleConfig } from '@/domain/style';
 import type { StyleId } from '@/domain/ids';
 import { DEFAULT_STYLE_CONFIG } from '@/engine/presets';
+import { cardDurationMs } from '@/domain/timing';
 import { loadCardRaster, type CardRaster } from './cardRaster';
 
 export interface VideoExportOptions {
@@ -45,7 +46,7 @@ export async function exportSequenceVideo(
   const crossfadeFrames = Math.round((sequence.timing.crossfadeMs / 1000) * fps);
 
   const framesPer = cards.map((c) => {
-    const ms = c.content.kind === 'transition' ? c.content.durationMs : sequence.timing.perCardMs;
+    const ms = cardDurationMs(c, sequence.timing.perCardMs);
     return Math.max(1, Math.round((ms / 1000) * fps));
   });
   const total = framesPer.reduce((a, b) => a + b, 0);

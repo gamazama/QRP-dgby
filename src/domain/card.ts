@@ -39,4 +39,10 @@ export interface Card {
   overrides?: Partial<StyleConfig>;
   content: CardContent;
   centerImage?: CardCenterImage;
+  /**
+   * Per-card dwell time (ms). When unset, the card uses the sequence's default
+   * `timing.perCardMs`. Transition cards carry their own `content.durationMs`
+   * instead — see `cardDurationMs`.
+   */
+  durationMs?: number;
 }
