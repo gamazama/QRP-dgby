@@ -19,12 +19,21 @@ export interface PackCacheRecord {
   cachedAt: number;
 }
 
+// Practitioner note overlaid on any remedy (shipped-pack OR user), keyed by ref.
+// Kept separate from the remedy record so notes attach to read-only pack cards.
+export interface RemedyNoteRecord {
+  ref: string;
+  notes: string;
+  updatedAt: number;
+}
+
 export class QrpDatabase extends Dexie {
   sequences!: Table<Sequence, string>;
   styles!: Table<Style, string>;
   userRemedies!: Table<Remedy, string>;
   userImages!: Table<UserImageRecord, string>;
   packCache!: Table<PackCacheRecord, string>;
+  remedyNotes!: Table<RemedyNoteRecord, string>;
 
   constructor() {
     super('qrp');
@@ -34,6 +43,10 @@ export class QrpDatabase extends Dexie {
       userRemedies: 'ref, packId, category, name',
       userImages: 'hash, createdAt',
       packCache: 'id, version',
+    });
+    // v2: notes overlay (unlisted tables are inherited from v1).
+    this.version(2).stores({
+      remedyNotes: 'ref, updatedAt',
     });
   }
 }

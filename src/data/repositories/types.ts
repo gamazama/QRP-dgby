@@ -15,6 +15,8 @@ export interface RemedyQuery {
   packIds?: PackId[];
   category?: string;
   base?: RateBase;
+  /** Only the practitioner's own (user-added) cards. */
+  userOnly?: boolean;
   limit: number;
   offset: number;
 }
@@ -29,7 +31,12 @@ export interface RemedyRepository {
   loadPack(id: PackId): Promise<void>;
   search(q: RemedyQuery): Promise<Page<Remedy>>;
   getByRef(ref: RemedyRef): Promise<Remedy | null>;
+  /** Create or update a user remedy (same id+pack overwrites). */
   addUserRemedy(r: Omit<Remedy, 'ref' | 'packId'> & { packId?: PackId }): Promise<Remedy>;
+  /** Delete a user remedy (and any note overlay) by ref. */
+  removeUserRemedy(ref: RemedyRef): Promise<void>;
+  /** Set/clear the practitioner note on any remedy (empty clears it). */
+  setNotes(ref: RemedyRef, notes: string): Promise<void>;
 }
 
 export interface StyleRepository {

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { ImageIcon, Search, Sparkles } from 'lucide-react';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { ImageIcon, Pencil, Plus, Search, Sparkles, StickyNote } from 'lucide-react';
 import type { Remedy } from '@/domain/remedy';
 import type { PackId } from '@/domain/ids';
 import type { RemedyQuery } from '@/data/repositories/types';
@@ -8,6 +8,7 @@ import { useRepositories } from '@/data/repository-context';
 import { useSequencerStore } from '@/store/sequencerStore';
 import { useToast } from '@/components/ui/toastContext';
 import { RemedyThumb } from '@/features/remedy-search/RemedyThumb';
+import { RemedyEditor } from '@/features/library/RemedyEditor';
 
 const DEFAULT_STYLE = 'preset:sunflower';
 const chip =
@@ -16,8 +17,11 @@ const chip =
 export function LibraryPage() {
   const { remedies } = useRepositories();
   const toast = useToast();
+  const queryClient = useQueryClient();
   const [text, setText] = useState('');
   const [packId, setPackId] = useState<PackId | 'all'>('all');
+  const [userOnly, setUserOnly] = useState(false);
+  const [editing, setEditing] = useState<Remedy | 'new' | null>(null);
 
   const packsQuery = useQuery({
     queryKey: ['packs'],
@@ -28,17 +32,19 @@ export function LibraryPage() {
     },
   });
   const searchQuery = useQuery({
-    queryKey: ['remedy-search', text, packId],
+    queryKey: ['remedy-search', text, packId, userOnly],
     queryFn: () => {
       const q: RemedyQuery = { limit: 500, offset: 0 };
       const t = text.trim();
       if (t) q.text = t;
       if (packId !== 'all') q.packIds = [packId];
+      if (userOnly) q.userOnly = true;
       return remedies.search(q);
     },
     enabled: packsQuery.isSuccess,
   });
 
+  const onSaved = () => void queryClient.invalidateQueries({ queryKey: ['remedy-search'] });
   const items = searchQuery.data?.items ?? [];
   const addPattern = (r: Remedy) => {
     useSequencerStore.getState().addRemedyCards([r], DEFAULT_STYLE);
@@ -76,6 +82,25 @@ export function LibraryPage() {
             </option>
           ))}
         </select>
+        <button
+          type="button"
+          onClick={() => setUserOnly((v) => !v)}
+          aria-pressed={userOnly}
+          className={`rounded-md border px-2 py-1.5 text-xs ${
+            userOnly
+              ? 'border-blue-500 bg-blue-50 text-blue-700 dark:bg-blue-950/40 dark:text-blue-300'
+              : 'border-slate-300 hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-900'
+          }`}
+        >
+          My cards
+        </button>
+        <button
+          type="button"
+          onClick={() => setEditing('new')}
+          className="flex items-center gap-1 rounded-md bg-blue-600 px-2.5 py-1.5 text-xs font-medium text-white hover:bg-blue-700"
+        >
+          <Plus className="h-3.5 w-3.5" /> New card
+        </button>
         <span className="text-xs text-slate-500 dark:text-slate-400">
           {packsQuery.isLoading ? 'Loading…' : packsQuery.isError ? 'Packs unavailable' : `${searchQuery.data?.total ?? 0} remedies`}
         </span>
@@ -94,20 +119,37 @@ export function LibraryPage() {
       <div className="custom-scrollbar min-h-0 flex-1 overflow-y-auto">
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           {items.map((r) => (
-            <div key={r.ref} className="flex flex-col overflow-hidden rounded-md border border-slate-200 dark:border-slate-800">
+            <div key={r.ref} className="relative flex flex-col overflow-hidden rounded-md border border-slate-200 dark:border-slate-800">
+              <div className="absolute right-1 top-1 z-10 flex gap-1">
+                {r.notes && (
+                  <span className="rounded bg-amber-100 p-1 text-amber-700 dark:bg-amber-900/60 dark:text-amber-300" title={r.notes}>
+                    <StickyNote className="h-3 w-3" />
+                  </span>
+                )}
+                <button
+                  type="button"
+                  onClick={() => setEditing(r)}
+                  title={r.packId === 'user' ? 'Edit card' : 'Add a note'}
+                  aria-label={`Edit ${r.name}`}
+                  className="rounded bg-white/90 p-1 text-slate-500 shadow-sm hover:bg-white hover:text-slate-700 dark:bg-slate-800/90 dark:text-slate-300 dark:hover:bg-slate-800"
+                >
+                  <Pencil className="h-3 w-3" />
+                </button>
+              </div>
               <button
                 type="button"
                 onClick={() => addPattern(r)}
                 title={`Add ${r.name} as a pattern`}
                 className="flex flex-1 flex-col text-left hover:bg-slate-50 dark:hover:bg-slate-900"
               >
-                <RemedyThumb remedy={r} className="aspect-[4/7] w-full bg-white dark:bg-slate-900" />
+                <RemedyThumb remedy={r} className="aspect-4/7 w-full bg-white dark:bg-slate-900" />
                 <div className="p-1.5">
                   <p className="truncate text-xs text-slate-800 dark:text-slate-200" title={r.name}>
                     {r.name}
                   </p>
                   <p className="truncate text-[10px] text-slate-400">
                     {r.category} · Base {r.base}
+                    {r.packId === 'user' && ' · mine'}
                   </p>
                   {r.sequence.length > 0 && (
                     <p className="truncate font-mono text-[10px] text-slate-400">{r.sequence.join(' ')}</p>
@@ -131,9 +173,19 @@ export function LibraryPage() {
           </p>
         )}
         {!packsQuery.isLoading && !packsQuery.isError && items.length === 0 && (
-          <p className="py-12 text-center text-sm text-slate-400">No remedies found.</p>
+          <p className="py-12 text-center text-sm text-slate-400">
+            {userOnly ? 'No cards of your own yet — use “New card” to add one.' : 'No remedies found.'}
+          </p>
         )}
       </div>
+
+      {editing !== null && (
+        <RemedyEditor
+          {...(editing !== 'new' ? { remedy: editing } : {})}
+          onClose={() => setEditing(null)}
+          onSaved={onSaved}
+        />
+      )}
     </div>
   );
 }

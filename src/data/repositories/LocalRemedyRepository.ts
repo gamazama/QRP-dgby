@@ -53,21 +53,32 @@ export class LocalRemedyRepository implements RemedyRepository {
     this.loadedPacks.set(id, remedies);
   }
 
+  private async noteMap(): Promise<Map<string, string>> {
+    const notes = await db.remedyNotes.toArray();
+    return new Map(notes.map((n) => [n.ref, n.notes]));
+  }
+
   private async allRemedies(): Promise<Remedy[]> {
     const fromPacks = [...this.loadedPacks.values()].flat();
     const fromUser = await db.userRemedies.toArray();
-    return [...fromPacks, ...fromUser];
+    const notes = await this.noteMap();
+    // The notes overlay is authoritative — it attaches to read-only pack cards too.
+    return [...fromPacks, ...fromUser].map((r) =>
+      notes.has(r.ref) ? { ...r, notes: notes.get(r.ref) ?? '' } : r,
+    );
   }
 
   async search(q: RemedyQuery): Promise<Page<Remedy>> {
     const all = await this.allRemedies();
     const text = q.text?.trim().toLowerCase();
     const filtered = all.filter((r) => {
+      if (q.userOnly && r.packId !== 'user') return false;
       if (q.packIds && !q.packIds.includes(r.packId)) return false;
       if (q.category && r.category !== q.category) return false;
       if (q.base && r.base !== q.base) return false;
       if (text) {
-        const hay = `${r.name} ${r.subheading ?? ''} ${r.category} ${r.rateType ?? ''}`.toLowerCase();
+        // Match across all metadata, including the practitioner note and rate.
+        const hay = `${r.name} ${r.subheading ?? ''} ${r.category} ${r.rateType ?? ''} ${r.notes ?? ''} ${r.sequence.join(' ')}`.toLowerCase();
         if (!hay.includes(text)) return false;
       }
       return true;
@@ -78,11 +89,14 @@ export class LocalRemedyRepository implements RemedyRepository {
   }
 
   async getByRef(ref: RemedyRef): Promise<Remedy | null> {
+    const note = await db.remedyNotes.get(ref);
+    const withNote = (r: Remedy): Remedy => (note ? { ...r, notes: note.notes } : r);
     for (const remedies of this.loadedPacks.values()) {
       const hit = remedies.find((r) => r.ref === ref);
-      if (hit) return hit;
+      if (hit) return withNote(hit);
     }
-    return (await db.userRemedies.get(ref)) ?? null;
+    const user = await db.userRemedies.get(ref);
+    return user ? withNote(user) : null;
   }
 
   async addUserRemedy(
@@ -92,5 +106,19 @@ export class LocalRemedyRepository implements RemedyRepository {
     const remedy: Remedy = { ...r, packId, ref: `${packId}:${r.id}` as RemedyRef };
     await db.userRemedies.put(remedy);
     return remedy;
+  }
+
+  async removeUserRemedy(ref: RemedyRef): Promise<void> {
+    await db.userRemedies.delete(ref);
+    await db.remedyNotes.delete(ref);
+  }
+
+  async setNotes(ref: RemedyRef, notes: string): Promise<void> {
+    const trimmed = notes.trim();
+    if (!trimmed) {
+      await db.remedyNotes.delete(ref);
+      return;
+    }
+    await db.remedyNotes.put({ ref, notes: trimmed, updatedAt: Date.now() });
   }
 }

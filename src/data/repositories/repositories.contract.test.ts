@@ -9,7 +9,7 @@ import { newSequenceId, newStyleId } from '@/lib/id';
 import type { Sequence } from '@/domain/sequence';
 
 beforeEach(async () => {
-  await Promise.all([db.styles.clear(), db.sequences.clear(), db.userRemedies.clear()]);
+  await Promise.all([db.styles.clear(), db.sequences.clear(), db.userRemedies.clear(), db.remedyNotes.clear()]);
   localStorage.clear();
 });
 
@@ -85,6 +85,33 @@ describe('LocalRemedyRepository', () => {
   it('reports no shipped packs when none are bundled', async () => {
     const repo = new LocalRemedyRepository('/');
     expect(await repo.listPacks()).toEqual([]);
+  });
+
+  it('attaches a searchable note overlay and clears it when emptied', async () => {
+    const repo = new LocalRemedyRepository('/');
+    await repo.addUserRemedy({ id: 'arnica', name: 'Arnica', category: 'homeopathic', base: 44, sequence: [1, 2, 3] });
+
+    await repo.setNotes('user:arnica', 'bruising — patient responds well');
+    expect((await repo.getByRef('user:arnica'))?.notes).toContain('bruising');
+    // Search matches on the note text (metadata search).
+    expect((await repo.search({ text: 'bruising', limit: 10, offset: 0 })).total).toBe(1);
+
+    await repo.setNotes('user:arnica', '   ');
+    expect((await repo.getByRef('user:arnica'))?.notes).toBeUndefined();
+  });
+
+  it('filters to user-only cards and deletes them with their notes', async () => {
+    const repo = new LocalRemedyRepository('/');
+    await repo.addUserRemedy({ id: 'mine', name: 'My Card', category: 'custom', base: 9, sequence: [5] });
+    await repo.setNotes('user:mine', 'keep me');
+
+    expect((await repo.search({ userOnly: true, limit: 10, offset: 0 })).total).toBe(1);
+
+    await repo.removeUserRemedy('user:mine');
+    expect(await repo.getByRef('user:mine')).toBeNull();
+    expect((await repo.search({ userOnly: true, limit: 10, offset: 0 })).total).toBe(0);
+    // The note overlay is gone too (no orphan).
+    expect(await db.remedyNotes.get('user:mine')).toBeUndefined();
   });
 });
 
