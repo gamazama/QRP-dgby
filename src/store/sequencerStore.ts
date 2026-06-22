@@ -156,7 +156,7 @@ export const useSequencerStore = create<SequencerState>()(
         append([
           {
             id: newCardId(),
-            title: 'New card',
+            title: 'Custom rate',
             styleId,
             content: {
               kind: 'data' as const,
