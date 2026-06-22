@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { Download, Film, Maximize, Pause, Play, SkipBack, SkipForward } from 'lucide-react';
 import { useSequencerStore } from '@/store/sequencerStore';
 import { usePlaybackClock } from '@/hooks/usePlaybackClock';
+import { useRenderTier } from '@/hooks/useRenderTier';
 import { buildStylesMap, resolveStyleConfig, useStyles } from '@/features/styles/useStyles';
 import { CardView } from '@/render/CardView';
 import { CardCrossfade } from '@/render/CardCrossfade';
@@ -22,6 +23,7 @@ export function PresentPage() {
 
   const stageRef = useRef<HTMLDivElement>(null);
   const store = useSequencerStore.getState;
+  const tier = useRenderTier();
   const [exporting, setExporting] = useState<number | null>(null);
 
   const theme = () => (document.documentElement.classList.contains('dark') ? 'dark' : 'light');
@@ -53,7 +55,7 @@ export function PresentPage() {
         <div className="w-[min(90vw,460px)]">
           {activeCard ? (
             <CardCrossfade cardKey={activeCard.id} durationMs={crossfadeMs}>
-              <CardView card={activeCard} style={resolveStyleConfig(activeCard, stylesById)} spin active />
+              <CardView card={activeCard} style={resolveStyleConfig(activeCard, stylesById)} tier={tier} spin active />
             </CardCrossfade>
           ) : (
             <p className="text-center text-sm text-slate-400">No cards — build a prescription first.</p>

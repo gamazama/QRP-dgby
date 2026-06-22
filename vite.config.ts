@@ -12,4 +12,22 @@ export default defineConfig({
     alias: { '@': path.resolve(import.meta.dirname, 'src') },
   },
   server: { port: 3000, host: true },
+  build: {
+    rollupOptions: {
+      output: {
+        // Split vendors into cacheable chunks (mediabunny is already lazy via
+        // dynamic import). Keeps the initial app payload small for mobile.
+        manualChunks: {
+          vendor: [
+            'react',
+            'react-dom',
+            'react-router-dom',
+            '@tanstack/react-query',
+            '@tanstack/react-virtual',
+          ],
+          data: ['dexie', 'dexie-react-hooks', 'zod', 'minisearch'],
+        },
+      },
+    },
+  },
 });

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { Remedy } from '@/domain/remedy';
 import type { StyleId } from '@/domain/ids';
 import { useSequencerStore } from '@/store/sequencerStore';
+import { useRenderTier } from '@/hooks/useRenderTier';
 import { buildStylesMap, resolveStyleConfig, useStyles } from '@/features/styles/useStyles';
 import { RemedySearchPanel } from '@/features/remedy-search/RemedySearchPanel';
 import { SequenceBuilder } from '@/features/build/SequenceBuilder';
@@ -16,6 +17,7 @@ export function BuildPage() {
   const cards = useSequencerStore((s) => s.sequence.cards);
   const activeIndex = useSequencerStore((s) => s.activeIndex);
   const activeCard = cards[activeIndex];
+  const tier = useRenderTier();
 
   const onAddRemedy = (r: Remedy) =>
     useSequencerStore.getState().addRemedyCards([r], currentStyleId);
@@ -44,6 +46,7 @@ export function BuildPage() {
               <CardView
                 card={activeCard}
                 style={resolveStyleConfig(activeCard, stylesById)}
+                tier={tier}
                 spin
                 active
               />
