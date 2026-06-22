@@ -112,6 +112,7 @@ export const CardSchema = z.object({
     .object({
       src: z.string(),
       scale: z.number().optional(),
+      zoom: z.number().optional(),
       circle: z.boolean().optional(),
       invert: z.boolean().optional(),
     })

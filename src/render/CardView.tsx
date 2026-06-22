@@ -2,7 +2,7 @@ import { memo, type CSSProperties } from 'react';
 import type { Card } from '@/domain/card';
 import type { StyleConfig } from '@/domain/style';
 import type { RenderTier } from '@/engine/constants';
-import { cardFrame, FULL_BLEED_VIEWBOX } from '@/engine/frame';
+import { cardFrame } from '@/engine/frame';
 import { resolveCardImage } from '@/lib/assets';
 import { CardSurface } from './CardSurface';
 import { TransitionSurface } from './TransitionSurface';
@@ -65,9 +65,10 @@ export const CardView = memo(function CardView({
     );
   }
   // Image card: the printed card artwork (light/dark WebP layers swap by theme).
-  // Rendered in the SAME coordinate frame as geometry — a full-bleed viewBox
-  // inside a frame-aspect box — so it shares the exact footprint and centre and
-  // never jumps/offsets when crossfading to a pattern card.
+  // The wrapper takes the geometry frame's aspect so the card shares a pattern's
+  // footprint (no jump on crossfade); the photo fills it with object-contain
+  // (the printed cards are ~0.85 aspect, so they nearly fill a framed box —
+  // rendering into the 4:7 full-bleed viewBox instead left them tiny).
   const frame = cardFrame(style);
   const wrapperStyle: CSSProperties =
     fill === 'height'
@@ -79,36 +80,23 @@ export const CardView = memo(function CardView({
         };
   return (
     <div className={`relative mx-auto ${className}`} style={wrapperStyle}>
-      <svg
-        viewBox={FULL_BLEED_VIEWBOX}
-        width="100%"
-        height="100%"
-        preserveAspectRatio="xMidYMid meet"
-        role="img"
-        aria-label={card.title}
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <image
-          href={resolveCardImage(c.light)}
-          x={0}
-          y={-150}
-          width={400}
-          height={700}
-          preserveAspectRatio="xMidYMid meet"
-          className={c.dark ? 'dark:hidden' : ''}
+      <img
+        src={resolveCardImage(c.light)}
+        alt={card.title}
+        loading="lazy"
+        decoding="async"
+        className={`absolute inset-0 h-full w-full object-contain ${c.dark ? 'dark:hidden' : ''}`}
+      />
+      {c.dark && (
+        <img
+          src={resolveCardImage(c.dark)}
+          alt=""
+          aria-hidden
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 hidden h-full w-full object-contain dark:block"
         />
-        {c.dark && (
-          <image
-            href={resolveCardImage(c.dark)}
-            x={0}
-            y={-150}
-            width={400}
-            height={700}
-            preserveAspectRatio="xMidYMid meet"
-            className="hidden dark:block"
-          />
-        )}
-      </svg>
+      )}
     </div>
   );
 });

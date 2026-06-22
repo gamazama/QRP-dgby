@@ -187,14 +187,16 @@ function CardSurfaceImpl({
               </g>
             ))}
 
-            {/* Center motif — or a circular photo when the card carries one */}
-            <g transform={`translate(${CX}, ${CY})`} className="pointer-events-none" style={{ opacity: geo.centerOpacity }}>
-              {centerImage ? (
-                (() => {
+            {/* A circular photo centre (full opacity — it's a photo, not the
+                faint motif) zoomed into the source's middle to isolate it... */}
+            {centerImage
+              ? (() => {
                   const r = geo.rRingInner * (centerImage.scale ?? 1);
+                  const z = centerImage.zoom && centerImage.zoom > 0 ? centerImage.zoom : 1;
+                  const d = 2 * r * z; // render bigger, clip to circle r → zooms into the centre
                   const circle = centerImage.circle !== false;
                   return (
-                    <>
+                    <g transform={`translate(${CX}, ${CY})`} className="pointer-events-none">
                       {circle && (
                         <clipPath id={clipId}>
                           <circle cx={0} cy={0} r={r} />
@@ -202,29 +204,37 @@ function CardSurfaceImpl({
                       )}
                       <image
                         href={resolveCardImage(centerImage.src)}
-                        x={-r}
-                        y={-r}
-                        width={r * 2}
-                        height={r * 2}
+                        x={-d / 2}
+                        y={-d / 2}
+                        width={d}
+                        height={d}
                         preserveAspectRatio="xMidYMid slice"
                         clipPath={circle ? `url(#${clipId})` : undefined}
                         className={centerImage.invert ? 'qrp-img-invert' : undefined}
                       />
-                    </>
+                    </g>
                   );
                 })()
-              ) : (
-                <g className={centerClass} style={spinStyle} transform={centerTransform}>
-                  {geo.centerDesign === 'seeds' ? (
-                    <path d={geo.centralSeedsPath} fill="currentColor" />
-                  ) : geo.centerDesign === 'celtic' || geo.centerDesign === 'triskelion' ? (
-                    <g transform={`scale(${geo.centerSvgScale}) translate(-150, -150)`}>
-                      <Motif design={geo.centerDesign} />
+              : /* ...otherwise the geometric centre motif, dimmed by centerOpacity. */
+                (geo.centerDesign === 'seeds' ||
+                  geo.centerDesign === 'celtic' ||
+                  geo.centerDesign === 'triskelion') && (
+                  <g
+                    transform={`translate(${CX}, ${CY})`}
+                    className="pointer-events-none"
+                    style={{ opacity: geo.centerOpacity }}
+                  >
+                    <g className={centerClass} style={spinStyle} transform={centerTransform}>
+                      {geo.centerDesign === 'seeds' ? (
+                        <path d={geo.centralSeedsPath} fill="currentColor" />
+                      ) : (
+                        <g transform={`scale(${geo.centerSvgScale}) translate(-150, -150)`}>
+                          <Motif design={geo.centerDesign} />
+                        </g>
+                      )}
                     </g>
-                  ) : null}
-                </g>
-              )}
-            </g>
+                  </g>
+                )}
 
             {/* Data stripes */}
             <g className="text-slate-900 transition-colors dark:text-white">
