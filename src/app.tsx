@@ -1,6 +1,8 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider } from 'react-router-dom';
 import { RepositoryProvider } from './data/RepositoryProvider';
+import { ErrorBoundary } from './components/ErrorBoundary';
+import { ToastProvider } from './components/ui/Toast';
 import { router } from './routes';
 
 const queryClient = new QueryClient({
@@ -9,10 +11,14 @@ const queryClient = new QueryClient({
 
 export function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <RepositoryProvider>
-        <RouterProvider router={router} />
-      </RepositoryProvider>
-    </QueryClientProvider>
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <RepositoryProvider>
+          <ToastProvider>
+            <RouterProvider router={router} />
+          </ToastProvider>
+        </RepositoryProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 }

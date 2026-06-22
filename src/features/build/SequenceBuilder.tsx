@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { ChevronDown, ChevronUp, Copy, FilePlus2, GripVertical, Sparkles, Trash2 } from 'lucide-react';
+import { ChevronDown, ChevronUp, Copy, FilePlus2, GripVertical, Sparkles, Trash2, Undo2 } from 'lucide-react';
 import type { Style } from '@/domain/style';
 import type { StyleId } from '@/domain/ids';
 import { useSequencerStore } from '@/store/sequencerStore';
@@ -58,6 +58,15 @@ export function SequenceBuilder({
             aria-label="Prescription name"
             className="min-w-0 flex-1 rounded-md border border-slate-300 bg-white px-2 py-1.5 text-sm font-medium dark:border-slate-700 dark:bg-slate-900"
           />
+          <button
+            type="button"
+            onClick={() => store().undo()}
+            title="Undo (Ctrl/Cmd+Z)"
+            aria-label="Undo"
+            className="rounded-md border border-slate-300 p-1.5 hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-900"
+          >
+            <Undo2 className="h-4 w-4" />
+          </button>
           <button
             type="button"
             onClick={() => store().newSequence()}

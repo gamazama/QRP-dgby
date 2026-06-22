@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RepositoryProvider } from '@/data/RepositoryProvider';
+import { ToastProvider } from '@/components/ui/Toast';
 import { BuildPage } from './BuildPage';
 
 describe('BuildPage', () => {
@@ -10,7 +11,9 @@ describe('BuildPage', () => {
     render(
       <QueryClientProvider client={qc}>
         <RepositoryProvider>
-          <BuildPage />
+          <ToastProvider>
+            <BuildPage />
+          </ToastProvider>
         </RepositoryProvider>
       </QueryClientProvider>,
     );

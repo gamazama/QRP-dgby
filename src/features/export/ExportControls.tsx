@@ -5,6 +5,7 @@ import type { Sequence } from '@/domain/sequence';
 import type { Style } from '@/domain/style';
 import type { StyleId } from '@/domain/ids';
 import { resolveStyleConfig } from '@/features/styles/useStyles';
+import { useToast } from '@/components/ui/toastContext';
 import { exportCardPng } from '@/render/exportPng';
 import { downloadBlob, exportSequenceVideo } from '@/render/exportVideo';
 
@@ -24,13 +25,16 @@ export function ExportControls({
   stylesById: Map<StyleId, Style>;
 }) {
   const [progress, setProgress] = useState<number | null>(null);
+  const toast = useToast();
 
   const onPng = async () => {
     if (!activeCard) return;
     try {
       await exportCardPng(activeCard, resolveStyleConfig(activeCard, stylesById), { theme: currentTheme() });
+      toast.show('PNG exported', 'success');
     } catch (err) {
       console.error('PNG export failed', err);
+      toast.show('PNG export failed', 'error');
     }
   };
 
@@ -43,8 +47,10 @@ export function ExportControls({
         onProgress: setProgress,
       });
       downloadBlob(blob, `${sequence.name || 'prescription'}.mp4`);
+      toast.show('MP4 exported', 'success');
     } catch (err) {
       console.error('MP4 export failed', err);
+      toast.show('MP4 export failed', 'error');
     } finally {
       setProgress(null);
     }

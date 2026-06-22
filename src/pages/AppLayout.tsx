@@ -1,8 +1,10 @@
+import { useEffect } from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { cn } from '@/lib/cn';
 import { useSequencePersistence } from '@/hooks/useSequencePersistence';
 import { useTheme } from '@/hooks/useTheme';
+import { useSequencerStore } from '@/store/sequencerStore';
 
 const LINKS = [
   { to: '/build', label: 'Build' },
@@ -15,6 +17,19 @@ export function AppLayout() {
   // App-level: load/restore the working prescription once, shared across routes.
   useSequencePersistence();
   const { theme, toggle } = useTheme();
+
+  // Cmd/Ctrl+Z undo (ignored while typing in a field).
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (!(e.ctrlKey || e.metaKey) || e.shiftKey || e.key.toLowerCase() !== 'z') return;
+      const el = e.target as HTMLElement | null;
+      if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable)) return;
+      e.preventDefault();
+      useSequencerStore.getState().undo();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
   return (
     <div className="flex min-h-screen flex-col bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
       <header className="flex h-14 items-center gap-4 border-b border-slate-200 px-4 dark:border-slate-800">
