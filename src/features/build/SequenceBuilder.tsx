@@ -1,4 +1,4 @@
-import { useRef, type ChangeEvent } from 'react';
+import { useRef, useState, type ChangeEvent } from 'react';
 import {
   ChevronDown,
   ChevronUp,
@@ -17,6 +17,7 @@ import type { RateBase } from '@/domain/remedy';
 import type { Card, CardContent, TransitionShape, TransitionSpin } from '@/domain/card';
 import { cardDurationMs } from '@/domain/timing';
 import { useSequencerStore } from '@/store/sequencerStore';
+import { useRepositories } from '@/data/repository-context';
 import { useToast } from '@/components/ui/toastContext';
 import { CardView } from '@/render/CardView';
 import { resolveStyleConfig } from '@/features/styles/useStyles';
@@ -30,8 +31,13 @@ const SPINS: TransitionSpin[] = ['off', 'cw', 'ccw', 'alternate'];
 const numInput =
   'rounded border border-slate-300 bg-white px-1 py-0.5 text-xs dark:border-slate-700 dark:bg-slate-900';
 
-const resize = (seq: number[], len: number) =>
-  len <= seq.length ? seq.slice(0, len) : [...seq, ...new Array<number>(len - seq.length).fill(0)];
+// Parse a free-typed rate ("5 10 21" / "5,10,21") into clamped dial positions.
+const parseRate = (text: string, base: number): number[] =>
+  text
+    .split(/[\s,]+/)
+    .filter((t) => t !== '')
+    .map((t) => Math.max(0, Math.min(base, Math.round(Number(t)))))
+    .filter((n) => Number.isFinite(n));
 
 // "1.5s" / "21s" / "2:05" — compact human duration.
 function fmtDuration(ms: number): string {
@@ -118,16 +124,42 @@ function SequenceTimeline({
   );
 }
 
+// Edit a card's name + description inline, like the old app. Works for any card.
+function CardHeaderEditor({ card }: { card: Card }) {
+  const update = useSequencerStore.getState().updateCard;
+  return (
+    <div className="space-y-1.5">
+      <input
+        value={card.title}
+        onChange={(e) => update(card.id, { title: e.target.value })}
+        placeholder="Card name"
+        aria-label="Card name"
+        className="w-full rounded border border-slate-300 bg-white px-2 py-1 text-sm font-medium dark:border-slate-700 dark:bg-slate-900"
+      />
+      <input
+        value={card.description ?? ''}
+        onChange={(e) => update(card.id, { description: e.target.value })}
+        placeholder="Description"
+        aria-label="Card description"
+        className="w-full rounded border border-slate-300 bg-white px-2 py-1 text-xs dark:border-slate-700 dark:bg-slate-900"
+      />
+    </div>
+  );
+}
+
 // Edit the number sequence + base of any rate-bearing card (remedy OR data),
-// like the old app. A remedy keeps its `ref` (provenance) while its rate is
-// overridden in place.
+// like the old app: type the rate freely ("5 10 21"). A remedy keeps its `ref`
+// (provenance) while its rate is overridden in place. Local text state so you
+// can type spaces/new positions without the field fighting you; remounts per
+// card (the panel is keyed by card id).
 function RateEditor({ card }: { card: Card }) {
   const update = useSequencerStore.getState().updateCard;
   const c = card.content;
+  const initial = c.kind === 'remedy' || c.kind === 'data' ? c.sequence.join(' ') : '';
+  const [text, setText] = useState(initial);
   if (c.kind !== 'remedy' && c.kind !== 'data') return null;
-  const { base, sequence } = c;
 
-  const apply = (nextBase: RateBase, nextSeq: number[]) => {
+  const write = (nextBase: RateBase, nextSeq: number[]) => {
     const content: CardContent =
       c.kind === 'remedy'
         ? { kind: 'remedy', ref: c.ref, base: nextBase, sequence: nextSeq }
@@ -136,11 +168,15 @@ function RateEditor({ card }: { card: Card }) {
   };
 
   return (
-    <div className="space-y-2">
-      <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
+    <div className="space-y-2 text-xs text-slate-500 dark:text-slate-400">
+      <div className="flex items-center gap-3">
         <label className="flex items-center gap-1">
           Base
-          <select value={base} onChange={(e) => apply(Number(e.target.value) as RateBase, sequence)} className={numInput}>
+          <select
+            value={c.base}
+            onChange={(e) => write(Number(e.target.value) as RateBase, parseRate(text, Number(e.target.value)))}
+            className={numInput}
+          >
             {BASES.map((b) => (
               <option key={b} value={b}>
                 {b}
@@ -148,37 +184,62 @@ function RateEditor({ card }: { card: Card }) {
             ))}
           </select>
         </label>
-        <label className="flex items-center gap-1">
-          Steps
-          <input
-            type="number"
-            min={1}
-            max={44}
-            value={sequence.length}
-            onChange={(e) => apply(base, resize(sequence, Math.max(1, Math.min(44, Number(e.target.value) || 1))))}
-            className={`w-14 ${numInput}`}
-          />
-        </label>
+        <span className="text-slate-400">{c.sequence.length} positions</span>
       </div>
-      <div className="flex flex-wrap gap-1">
-        {sequence.map((v, i) => (
-          <input
-            key={i}
-            type="number"
-            min={0}
-            max={99}
-            value={v}
-            aria-label={`Position ${i + 1}`}
-            onChange={(e) => {
-              const next = [...sequence];
-              next[i] = Math.max(0, Math.min(99, Number(e.target.value) || 0));
-              apply(base, next);
-            }}
-            className={`w-12 text-center ${numInput}`}
-          />
-        ))}
-      </div>
+      <label className="block">
+        <span className="mb-1 block">Rate (dial positions)</span>
+        <input
+          value={text}
+          onChange={(e) => {
+            setText(e.target.value);
+            write(c.base, parseRate(e.target.value, c.base));
+          }}
+          inputMode="numeric"
+          placeholder="e.g. 5 10 21"
+          aria-label="Rate sequence"
+          className={`w-full font-mono ${numInput} px-2 py-1`}
+        />
+      </label>
     </div>
+  );
+}
+
+// Pull a remedy's printed picture into the card centre as a circular photo (and
+// clear it). Only remedy cards can fetch artwork; any card with one can clear it.
+function PhotoCentreToggle({ card }: { card: Card }) {
+  const { remedies } = useRepositories();
+  const setCardCenterImage = useSequencerStore.getState().setCardCenterImage;
+  const toast = useToast();
+  const [busy, setBusy] = useState(false);
+  const c = card.content;
+  const has = !!card.centerImage;
+  const canFetch = c.kind === 'remedy';
+  if (!has && !canFetch) return null;
+
+  const onToggle = async (checked: boolean) => {
+    if (!checked) {
+      setCardCenterImage(card.id, undefined);
+      return;
+    }
+    if (c.kind !== 'remedy') return;
+    setBusy(true);
+    try {
+      const r = await remedies.getByRef(c.ref);
+      if (r?.image) setCardCenterImage(card.id, { src: `packs/${r.packId}/${r.image.light}`, circle: true });
+      else toast.show('No artwork for this card', 'info');
+    } catch (err) {
+      console.error('Center image fetch failed', err);
+      toast.show('Could not load artwork', 'error');
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <label className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+      <input type="checkbox" checked={has} disabled={busy} onChange={(e) => void onToggle(e.target.checked)} />
+      Photo centre {busy && <span className="text-[10px] text-slate-400">loading…</span>}
+    </label>
   );
 }
 
@@ -235,14 +296,17 @@ function ImageOptions({ card }: { card: Card }) {
 }
 
 // One inline panel shown for EVERY selected card, so all card types are
-// consistent: kind-specific controls on top, per-card Duration underneath.
+// consistent: name/description, kind-specific controls, then per-card Duration.
 function CardOptions({ card, perCardMs }: { card: Card; perCardMs: number }) {
   const c = card.content;
+  const isRate = c.kind === 'remedy' || c.kind === 'data';
   return (
-    <div className="mt-2 space-y-2 rounded-md border border-slate-200 bg-slate-50/70 p-2 dark:border-slate-800 dark:bg-slate-900/40">
-      {(c.kind === 'remedy' || c.kind === 'data') && <RateEditor card={card} />}
+    <div className="mt-2 space-y-2.5 rounded-md border border-slate-200 bg-slate-50/70 p-2.5 dark:border-slate-800 dark:bg-slate-900/40">
+      <CardHeaderEditor card={card} />
+      {isRate && <RateEditor card={card} />}
       {c.kind === 'transition' && <TransitionEditor card={card} />}
       {c.kind === 'image' && <ImageOptions card={card} />}
+      {isRate && <PhotoCentreToggle card={card} />}
       <DurationControl card={card} perCardMs={perCardMs} />
     </div>
   );
@@ -527,7 +591,7 @@ export function SequenceBuilder({
                   </button>
                 </div>
               </div>
-              {active && <CardOptions card={card} perCardMs={timing.perCardMs} />}
+              {active && <CardOptions key={card.id} card={card} perCardMs={timing.perCardMs} />}
             </div>
           );
         })}
