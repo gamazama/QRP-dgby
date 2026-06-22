@@ -6,6 +6,9 @@ import { CardSurface } from '@/render/CardSurface';
 import { useStyles } from '@/features/styles/useStyles';
 import { useStyleMutations } from '@/features/styles/useStyleMutations';
 import { StyleEditor } from '@/features/styles/StyleEditor';
+import { useResizableWidth } from '@/hooks/useResizableWidth';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
+import { ResizeHandle } from '@/components/ui/ResizeHandle';
 import { cn } from '@/lib/cn';
 
 const SAMPLE = [0, 1, 0, 3, 0, 1, 0, 2, 0];
@@ -82,6 +85,15 @@ export function StylesPage() {
 
   const previewConfig = draft ?? selected?.config;
 
+  // Resizable preview column (desktop only; persisted).
+  const isWide = useMediaQuery('(min-width: 768px)');
+  const { width: previewWidth, paneRef, startDrag, reset } = useResizableWidth<HTMLDivElement>(
+    'qrp.styles.previewW',
+    300,
+    220,
+    600,
+  );
+
   return (
     <div className="grid h-full grid-cols-1 gap-4 p-4 lg:grid-cols-[260px_minmax(0,1fr)]">
       <aside className="custom-scrollbar min-h-0 overflow-y-auto">
@@ -120,7 +132,10 @@ export function StylesPage() {
         </div>
       </aside>
 
-      <section className="grid min-h-0 grid-cols-1 gap-4 md:grid-cols-[minmax(0,1fr)_260px]">
+      <section
+        className="grid min-h-0 grid-cols-1 gap-4"
+        style={isWide ? { gridTemplateColumns: `minmax(0,1fr) ${previewWidth}px` } : undefined}
+      >
         <div className="custom-scrollbar min-h-0 overflow-y-auto">
           {selected ? (
             <>
@@ -152,11 +167,12 @@ export function StylesPage() {
             <p className="text-sm text-slate-400">No styles yet — create one.</p>
           )}
         </div>
-        <div className="md:sticky md:top-0 md:self-start">
+        <div ref={paneRef} className="relative md:sticky md:top-0 md:self-start">
+          {isWide && <ResizeHandle onPointerDown={startDrag} onDoubleClick={reset} />}
           <h2 className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
             Preview
           </h2>
-          <div className="mx-auto max-w-[240px]">
+          <div className="mx-auto w-full">
             {previewConfig && <CardSurface style={previewConfig} sequence={SAMPLE} title={name} spin />}
           </div>
         </div>
