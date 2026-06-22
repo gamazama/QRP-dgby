@@ -24,6 +24,11 @@ export default tseslint.config(
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
     },
   },
+  // Node scripts (offline pipeline, capture utilities) run under Node globals.
+  {
+    files: ['**/*.{js,mjs,cjs}', 'scripts/**/*'],
+    languageOptions: { globals: globals.node },
+  },
   // The render engine and the offline pipeline must stay framework-agnostic.
   {
     files: ['src/engine/**/*.{ts,tsx}'],
