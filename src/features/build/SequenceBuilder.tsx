@@ -225,9 +225,8 @@ function PhotoCentreToggle({ card }: { card: Card }) {
     setBusy(true);
     try {
       const r = await remedies.getByRef(c.ref);
-      // zoom > 1 crops into the card's middle so the circle shows the photo, not
-      // the whole printed mandala around it.
-      if (r?.image) setCardCenterImage(card.id, { src: `packs/${r.packId}/${r.image.light}`, circle: true, zoom: 2.4 });
+      // The engine crops the printed card's photo circle out of the artwork.
+      if (r?.image) setCardCenterImage(card.id, { src: `packs/${r.packId}/${r.image.light}`, circle: true });
       else toast.show('No artwork for this card', 'info');
     } catch (err) {
       console.error('Center image fetch failed', err);

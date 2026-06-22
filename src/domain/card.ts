@@ -23,10 +23,8 @@ export type CardContent =
 
 export interface CardCenterImage {
   src: string;
-  /** Circle radius scale relative to the inner ring (default 1). */
+  /** Circle radius scale relative to the inner ring (default ~0.78). */
   scale?: number;
-  /** Zoom INTO the source's centre to isolate a circular photo (default 1). */
-  zoom?: number;
   circle?: boolean;
   invert?: boolean;
 }

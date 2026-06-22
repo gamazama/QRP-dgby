@@ -187,14 +187,22 @@ function CardSurfaceImpl({
               </g>
             ))}
 
-            {/* A circular photo centre (full opacity — it's a photo, not the
-                faint motif) zoomed into the source's middle to isolate it... */}
+            {/* A circular photo centre, at full opacity (it's a photo, not the
+                faint motif). The bundled card art places the remedy photo in a
+                circle at a fixed fraction of the source; map that source circle
+                directly onto the display circle so the photo is centred + sized
+                exactly — no zoom-and-recentre that would magnify the offset. */}
             {centerImage
               ? (() => {
-                  const r = geo.rRingInner * (centerImage.scale ?? 1);
-                  const z = centerImage.zoom && centerImage.zoom > 0 ? centerImage.zoom : 1;
-                  const d = 2 * r * z; // render bigger, clip to circle r → zooms into the centre
+                  const r = geo.rRingInner * (centerImage.scale ?? 0.78);
                   const circle = centerImage.circle !== false;
+                  // Source photo: centre at (PCX, PCY), radius PR (of width); source ~PWH wide:tall.
+                  const PCX = 0.505;
+                  const PCY = 0.582;
+                  const PR = 0.15;
+                  const PWH = 0.853;
+                  const wd = r / PR; // scale source so its photo radius == display radius r
+                  const hd = wd / PWH;
                   return (
                     <g transform={`translate(${CX}, ${CY})`} className="pointer-events-none">
                       {circle && (
@@ -204,11 +212,11 @@ function CardSurfaceImpl({
                       )}
                       <image
                         href={resolveCardImage(centerImage.src)}
-                        x={-d / 2}
-                        y={-d / 2}
-                        width={d}
-                        height={d}
-                        preserveAspectRatio="xMidYMid slice"
+                        x={-PCX * wd}
+                        y={-PCY * hd}
+                        width={wd}
+                        height={hd}
+                        preserveAspectRatio="none"
                         clipPath={circle ? `url(#${clipId})` : undefined}
                         className={centerImage.invert ? 'qrp-img-invert' : undefined}
                       />
