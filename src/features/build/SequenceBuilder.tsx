@@ -121,7 +121,13 @@ export function SequenceBuilder({
           const selected = selectedIds.includes(card.id);
           const active = i === activeIndex;
           const style = resolveStyleConfig(card, stylesById);
-          const rate = card.content.kind === 'remedy' || card.content.kind === 'data' ? card.content.sequence : null;
+          const c = card.content;
+          const subtitle =
+            c.kind === 'transition'
+              ? 'Transition'
+              : c.kind === 'image'
+                ? 'Image card'
+                : `Base ${c.base} · ${stylesById.get(card.styleId)?.name ?? 'style'}`;
           return (
             <div
               key={card.id}
@@ -162,13 +168,7 @@ export function SequenceBuilder({
                     <span className="block truncate text-sm text-slate-800 dark:text-slate-200">
                       {i + 1}. {card.title}
                     </span>
-                    <span className="block truncate text-xs text-slate-400">
-                      {card.content.kind === 'transition'
-                        ? 'transition'
-                        : rate
-                          ? `Base ${rate.length} · ${stylesById.get(card.styleId)?.name ?? 'style'}`
-                          : card.content.kind}
-                    </span>
+                    <span className="block truncate text-xs text-slate-400">{subtitle}</span>
                   </span>
                 </button>
                 <div className="flex shrink-0 items-center gap-0.5 text-slate-400">

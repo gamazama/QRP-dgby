@@ -85,6 +85,7 @@ export function RemedySearchPanel({ onAdd }: { onAdd: (r: Remedy, mode: AddMode)
               <button
                 key={r.ref}
                 type="button"
+                data-remedy={r.ref}
                 onClick={() => onAdd(r, mode)}
                 title={`Add ${r.name}`}
                 style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: v.size, transform: `translateY(${v.start}px)` }}

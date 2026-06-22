@@ -132,6 +132,7 @@ export const useSequencerStore = create<SequencerState>()(
           remedies.map((r) => ({
             id: newCardId(),
             title: r.name,
+            ...(r.subheading ? { description: r.subheading } : {}),
             styleId,
             content: { kind: 'remedy' as const, ref: r.ref, sequence: r.sequence, base: r.base },
           })),

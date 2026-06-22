@@ -32,7 +32,7 @@ export function PresentPage() {
         ref={stageRef}
         className="flex min-h-0 w-full flex-1 items-center justify-center bg-white dark:bg-slate-950"
       >
-        <div className="w-[min(90vw,460px)]">
+        <div className="w-[min(90vw,44vh)]">
           {activeCard ? (
             <CardCrossfade cardKey={activeCard.id} durationMs={crossfadeMs}>
               <CardView card={activeCard} style={resolveStyleConfig(activeCard, stylesById)} tier={tier} spin active />
