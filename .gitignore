@@ -11,6 +11,7 @@ public/packs/
 # test artifacts
 playwright-report/
 test-results/
+screenshots/
 
 # OCR model + review artifacts (Phase 3 pipeline)
 *.traineddata
