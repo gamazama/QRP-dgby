@@ -57,6 +57,11 @@
   animation-fill-mode: both;
 }
 
+/* Centre-image inversion in dark mode (line-art photos read as white-on-dark). */
+.dark .qrp-img-invert {
+  filter: invert(1) hue-rotate(180deg);
+}
+
 /* Visible keyboard focus on every interactive element (a11y). */
 :focus-visible {
   outline: 2px solid #3b82f6;

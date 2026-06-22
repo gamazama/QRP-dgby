@@ -101,6 +101,8 @@ export interface CardGeometry {
   svgBaseScale: number;
   centerSvgScale: number;
   rLobeInnerCircle: number;
+  /** Inner radius of the data annulus — the central disc a centre image fills. */
+  rRingInner: number;
 
   hullOuter: string;
   hullInner: string;
@@ -301,6 +303,7 @@ export function buildCardGeometry(input: BuildCardGeometryInput): CardGeometry {
     svgBaseScale,
     centerSvgScale,
     rLobeInnerCircle,
+    rRingInner,
     hullOuter,
     hullInner,
     lotusPetals,

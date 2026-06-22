@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
 import type { Sequence, SequenceTiming } from '@/domain/sequence';
-import type { Card, TransitionShape, TransitionSpin } from '@/domain/card';
+import type { Card, CardCenterImage, TransitionShape, TransitionSpin } from '@/domain/card';
 import type { CardId, StyleId } from '@/domain/ids';
 import type { Remedy } from '@/domain/remedy';
 import { newCardId, newSequenceId } from '@/lib/id';
@@ -53,6 +53,8 @@ interface SequencerState {
   setCardRate: (id: CardId, sequence: number[]) => void;
   /** Per-card dwell. `undefined` clears the override (back to the default). */
   setCardDuration: (id: CardId, ms: number | undefined) => void;
+  /** Set/clear a card's circular centre photo. */
+  setCardCenterImage: (id: CardId, centerImage: CardCenterImage | undefined) => void;
   applyStyleToSelection: (styleId: StyleId) => void;
   setTransition: (id: CardId, on: boolean) => void;
 
@@ -273,6 +275,23 @@ export const useSequencerStore = create<SequencerState>()(
                 return next;
               }
               return { ...c, durationMs: ms };
+            }),
+            updatedAt: ts(),
+          },
+        })),
+
+      setCardCenterImage: (id, centerImage) =>
+        set((s) => ({
+          sequence: {
+            ...s.sequence,
+            cards: s.sequence.cards.map((c) => {
+              if (c.id !== id) return c;
+              if (centerImage === undefined) {
+                const next = { ...c };
+                delete next.centerImage;
+                return next;
+              }
+              return { ...c, centerImage };
             }),
             updatedAt: ts(),
           },

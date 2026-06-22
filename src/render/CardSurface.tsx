@@ -1,8 +1,10 @@
-import { memo, useMemo, type CSSProperties } from 'react';
+import { memo, useId, useMemo, type CSSProperties } from 'react';
 import type { StyleConfig } from '@/domain/style';
+import type { CardCenterImage } from '@/domain/card';
 import { buildCardGeometryCached } from '@/engine/cache';
 import { CX, CY } from '@/engine/frame';
 import { CELTIC_PATHS, TRISKELION_PATH } from '@/engine/shapes';
+import { resolveCardImage } from '@/lib/assets';
 import type { RenderTier } from '@/engine/constants';
 
 export interface CardSurfaceProps {
@@ -22,6 +24,8 @@ export interface CardSurfaceProps {
   rotation?: number;
   /** 'width' fills the container width (default); 'height' fills its height (present/fullscreen). */
   fill?: 'width' | 'height';
+  /** Optional circular photo in the card's centre (e.g. a remedy's printed picture). */
+  centerImage?: CardCenterImage;
 }
 
 function Motif({ design }: { design: 'celtic' | 'triskelion' }) {
@@ -50,11 +54,13 @@ function CardSurfaceImpl({
   spin = false,
   rotation = 0,
   fill = 'width',
+  centerImage,
 }: CardSurfaceProps) {
   const geo = useMemo(
     () => buildCardGeometryCached({ style, sequence, base, title, description, tier }),
     [style, sequence, base, title, description, tier],
   );
+  const clipId = useId();
 
   const f = geo.frame;
   const seedsClass = spin ? 'animate-spin-reverse' : undefined;
@@ -181,17 +187,43 @@ function CardSurfaceImpl({
               </g>
             ))}
 
-            {/* Center motif */}
+            {/* Center motif — or a circular photo when the card carries one */}
             <g transform={`translate(${CX}, ${CY})`} className="pointer-events-none" style={{ opacity: geo.centerOpacity }}>
-              <g className={centerClass} style={spinStyle} transform={centerTransform}>
-                {geo.centerDesign === 'seeds' ? (
-                  <path d={geo.centralSeedsPath} fill="currentColor" />
-                ) : geo.centerDesign === 'celtic' || geo.centerDesign === 'triskelion' ? (
-                  <g transform={`scale(${geo.centerSvgScale}) translate(-150, -150)`}>
-                    <Motif design={geo.centerDesign} />
-                  </g>
-                ) : null}
-              </g>
+              {centerImage ? (
+                (() => {
+                  const r = geo.rRingInner * (centerImage.scale ?? 1);
+                  const circle = centerImage.circle !== false;
+                  return (
+                    <>
+                      {circle && (
+                        <clipPath id={clipId}>
+                          <circle cx={0} cy={0} r={r} />
+                        </clipPath>
+                      )}
+                      <image
+                        href={resolveCardImage(centerImage.src)}
+                        x={-r}
+                        y={-r}
+                        width={r * 2}
+                        height={r * 2}
+                        preserveAspectRatio="xMidYMid slice"
+                        clipPath={circle ? `url(#${clipId})` : undefined}
+                        className={centerImage.invert ? 'qrp-img-invert' : undefined}
+                      />
+                    </>
+                  );
+                })()
+              ) : (
+                <g className={centerClass} style={spinStyle} transform={centerTransform}>
+                  {geo.centerDesign === 'seeds' ? (
+                    <path d={geo.centralSeedsPath} fill="currentColor" />
+                  ) : geo.centerDesign === 'celtic' || geo.centerDesign === 'triskelion' ? (
+                    <g transform={`scale(${geo.centerSvgScale}) translate(-150, -150)`}>
+                      <Motif design={geo.centerDesign} />
+                    </g>
+                  ) : null}
+                </g>
+              )}
             </g>
 
             {/* Data stripes */}

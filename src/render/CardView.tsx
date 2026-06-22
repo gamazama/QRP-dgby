@@ -1,7 +1,8 @@
-import { memo } from 'react';
+import { memo, type CSSProperties } from 'react';
 import type { Card } from '@/domain/card';
 import type { StyleConfig } from '@/domain/style';
 import type { RenderTier } from '@/engine/constants';
+import { cardFrame, FULL_BLEED_VIEWBOX } from '@/engine/frame';
 import { resolveCardImage } from '@/lib/assets';
 import { CardSurface } from './CardSurface';
 import { TransitionSurface } from './TransitionSurface';
@@ -45,6 +46,7 @@ export const CardView = memo(function CardView({
         spin={spin}
         className={className}
         fill={fill}
+        {...(card.centerImage ? { centerImage: card.centerImage } : {})}
       />
     );
   }
@@ -63,33 +65,50 @@ export const CardView = memo(function CardView({
     );
   }
   // Image card: the printed card artwork (light/dark WebP layers swap by theme).
-  const wrapperStyle =
+  // Rendered in the SAME coordinate frame as geometry — a full-bleed viewBox
+  // inside a frame-aspect box — so it shares the exact footprint and centre and
+  // never jumps/offsets when crossfading to a pattern card.
+  const frame = cardFrame(style);
+  const wrapperStyle: CSSProperties =
     fill === 'height'
       ? { width: '100%', height: '100%' }
       : {
-          aspectRatio: '4 / 7',
+          aspectRatio: `${frame.aspect}`,
           width: typeof size === 'number' ? size : '100%',
           maxWidth: typeof size === 'number' ? size : '100%',
         };
   return (
     <div className={`relative mx-auto ${className}`} style={wrapperStyle}>
-      <img
-        src={resolveCardImage(c.light)}
-        alt={card.title}
-        loading="lazy"
-        decoding="async"
-        className={`h-full w-full object-contain ${c.dark ? 'dark:hidden' : ''}`}
-      />
-      {c.dark && (
-        <img
-          src={resolveCardImage(c.dark)}
-          alt=""
-          aria-hidden
-          loading="lazy"
-          decoding="async"
-          className="absolute inset-0 hidden h-full w-full object-contain dark:block"
+      <svg
+        viewBox={FULL_BLEED_VIEWBOX}
+        width="100%"
+        height="100%"
+        preserveAspectRatio="xMidYMid meet"
+        role="img"
+        aria-label={card.title}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <image
+          href={resolveCardImage(c.light)}
+          x={0}
+          y={-150}
+          width={400}
+          height={700}
+          preserveAspectRatio="xMidYMid meet"
+          className={c.dark ? 'dark:hidden' : ''}
         />
-      )}
+        {c.dark && (
+          <image
+            href={resolveCardImage(c.dark)}
+            x={0}
+            y={-150}
+            width={400}
+            height={700}
+            preserveAspectRatio="xMidYMid meet"
+            className="hidden dark:block"
+          />
+        )}
+      </svg>
     </div>
   );
 });
