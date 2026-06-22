@@ -1,0 +1,34 @@
+@import 'tailwindcss';
+
+/* Class-based dark mode (matches the prototype's toggle-a-class approach). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Custom slate shades ported from the prototype's inline Tailwind config. */
+  --color-slate-750: #293548;
+  --color-slate-850: #172033;
+
+  /* Spin animations ported from the prototype (counter-clockwise full turns). */
+  --animate-spin-reverse: spin-reverse 24s linear infinite;
+  --animate-spin-reverse-slow: spin-reverse 48s linear infinite;
+}
+
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/* Respect reduced-motion globally (ported UX win + a low-end perf lever). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
