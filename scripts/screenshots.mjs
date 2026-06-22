@@ -57,6 +57,23 @@ try {
   console.log('  image-card step skipped:', e.message);
 }
 
+// Blank data card (shows base/steps + rate editor).
+try {
+  await page.getByRole('button', { name: 'Blank card' }).click();
+  await page.waitForTimeout(500);
+  await shot('09-data-card-editor');
+} catch (e) {
+  console.log('  data-card step skipped:', e.message);
+}
+// Transition card (shows transition editor).
+try {
+  await page.getByRole('button', { name: 'Transition' }).click();
+  await page.waitForTimeout(500);
+  await shot('10-transition-editor');
+} catch (e) {
+  console.log('  transition step skipped:', e.message);
+}
+
 await goto('library');
 await page.waitForTimeout(1200);
 await shot('04-library');
