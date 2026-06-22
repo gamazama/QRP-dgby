@@ -1,21 +1,10 @@
 import { memo, type CSSProperties } from 'react';
 import type { TransitionShape, TransitionSpin } from '@/domain/card';
-import { generateSunflowerPoints } from '@/engine/geometry';
 import { CELTIC_PATHS, TRISKELION_PATH } from '@/engine/shapes';
 import { CX, CY, FULL_BLEED_ASPECT, FULL_BLEED_VIEWBOX } from '@/engine/frame';
+import { transitionSeedDiscPath } from '@/engine/transition';
 
-function seedDiscPath(): string {
-  const seeds = generateSunflowerPoints(0, 0, 135, 260);
-  let d = '';
-  for (const s of seeds) {
-    const rr = 1.2 + (s.r / 135) * 2.6;
-    const r = rr.toFixed(2);
-    const d2 = (rr * 2).toFixed(2);
-    d += `M ${s.x.toFixed(2)} ${s.y.toFixed(2)} m -${r},0 a ${r},${r} 0 1,0 ${d2},0 a ${r},${r} 0 1,0 -${d2},0 `;
-  }
-  return d;
-}
-const SEED_DISC = seedDiscPath();
+const SEED_DISC = transitionSeedDiscPath();
 
 export interface TransitionSurfaceProps {
   shape: TransitionShape;

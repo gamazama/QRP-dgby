@@ -1,10 +1,11 @@
 import { useRef } from 'react';
-import { Maximize, Pause, Play, SkipBack, SkipForward } from 'lucide-react';
+import { Download, Maximize, Pause, Play, SkipBack, SkipForward } from 'lucide-react';
 import { useSequencerStore } from '@/store/sequencerStore';
 import { usePlaybackClock } from '@/hooks/usePlaybackClock';
 import { buildStylesMap, resolveStyleConfig, useStyles } from '@/features/styles/useStyles';
 import { CardView } from '@/render/CardView';
 import { CardCrossfade } from '@/render/CardCrossfade';
+import { exportCardPng } from '@/render/exportPng';
 
 export function PresentPage() {
   usePlaybackClock();
@@ -77,6 +78,19 @@ export function PresentPage() {
           onClick={() => void stageRef.current?.requestFullscreen?.()}
         >
           <Maximize className="h-5 w-5" />
+        </button>
+        <button
+          type="button"
+          aria-label="Export PNG"
+          className={iconBtn}
+          disabled={!activeCard}
+          onClick={() => {
+            if (!activeCard) return;
+            const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+            void exportCardPng(activeCard, resolveStyleConfig(activeCard, stylesById), { theme });
+          }}
+        >
+          <Download className="h-5 w-5" />
         </button>
       </div>
     </div>
