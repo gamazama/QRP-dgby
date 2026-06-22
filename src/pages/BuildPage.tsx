@@ -31,7 +31,7 @@ export function BuildPage() {
 
   const onAdd = (r: Remedy, mode: AddMode) => {
     const s = useSequencerStore.getState();
-    if (mode === 'image') s.addImageCards([r], currentStyleId);
+    if (mode === 'artwork') s.addImageCards([r], currentStyleId);
     else s.addRemedyCards([r], currentStyleId);
   };
   const onPickStyle = (id: StyleId) => {
@@ -40,7 +40,7 @@ export function BuildPage() {
   };
 
   return (
-    <div className="grid h-full grid-cols-1 gap-4 p-4 lg:grid-cols-[300px_minmax(0,1fr)_320px]">
+    <div className="grid h-full grid-cols-1 gap-4 p-4 lg:grid-cols-[300px_minmax(0,1fr)_320px] lg:grid-rows-[minmax(0,1fr)]">
       <aside className="h-[45vh] min-h-0 rounded-lg border border-slate-200 p-3 lg:h-auto dark:border-slate-800">
         <RemedySearchPanel onAdd={onAdd} />
       </aside>

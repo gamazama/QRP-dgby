@@ -30,17 +30,15 @@ export function PresentPage() {
     <div className="flex h-full flex-col items-center gap-4 p-4">
       <div
         ref={stageRef}
-        className="flex min-h-0 w-full flex-1 items-center justify-center bg-white dark:bg-slate-950"
+        className="flex min-h-0 w-full flex-1 items-center justify-center bg-white p-2 dark:bg-slate-950"
       >
-        <div className="w-[min(90vw,44vh)]">
-          {activeCard ? (
-            <CardCrossfade cardKey={activeCard.id} durationMs={crossfadeMs}>
-              <CardView card={activeCard} style={resolveStyleConfig(activeCard, stylesById)} tier={tier} spin active />
-            </CardCrossfade>
-          ) : (
-            <p className="text-center text-sm text-slate-400">No cards — build a prescription first.</p>
-          )}
-        </div>
+        {activeCard ? (
+          <CardCrossfade cardKey={activeCard.id} durationMs={crossfadeMs} className="h-full w-full">
+            <CardView card={activeCard} style={resolveStyleConfig(activeCard, stylesById)} tier={tier} spin active fill="height" />
+          </CardCrossfade>
+        ) : (
+          <p className="text-center text-sm text-slate-400">No cards — build a prescription first.</p>
+        )}
       </div>
 
       <div className="flex flex-wrap items-center justify-center gap-2">

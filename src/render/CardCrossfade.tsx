@@ -10,10 +10,12 @@ export function CardCrossfade({
   cardKey,
   durationMs,
   children,
+  className = '',
 }: {
   cardKey: string | number;
   durationMs: number;
   children: ReactNode;
+  className?: string;
 }) {
   const [outgoing, setOutgoing] = useState<{ key: string; node: ReactNode } | null>(null);
   const prev = useRef<{ key: string; node: ReactNode }>({ key: String(cardKey), node: children });
@@ -38,7 +40,7 @@ export function CardCrossfade({
   }, [cardKey, durationMs]);
 
   return (
-    <div className="relative">
+    <div className={`relative ${className}`}>
       {outgoing && (
         <div
           key={outgoing.key}

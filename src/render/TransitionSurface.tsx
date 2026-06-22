@@ -14,6 +14,7 @@ export interface TransitionSurfaceProps {
   enabled?: boolean;
   size?: number | string;
   className?: string;
+  fill?: 'width' | 'height';
 }
 
 // A transition "breather" card: a bare centered motif that spins. Same viewBox
@@ -26,6 +27,7 @@ export const TransitionSurface = memo(function TransitionSurface({
   enabled = true,
   size = '100%',
   className = '',
+  fill = 'width',
 }: TransitionSurfaceProps) {
   const spins = mode !== 'off';
   const dir = mode === 'ccw' ? 'reverse' : mode === 'alternate' ? 'alternate' : 'normal';
@@ -42,11 +44,15 @@ export const TransitionSurface = memo(function TransitionSurface({
   return (
     <div
       className={`relative mx-auto ${className}`}
-      style={{
-        aspectRatio: `${FULL_BLEED_ASPECT}`,
-        width: typeof size === 'number' ? size : '100%',
-        maxWidth: typeof size === 'number' ? size : '100%',
-      }}
+      style={
+        fill === 'height'
+          ? { aspectRatio: `${FULL_BLEED_ASPECT}`, height: '100%', width: 'auto', maxWidth: '100%' }
+          : {
+              aspectRatio: `${FULL_BLEED_ASPECT}`,
+              width: typeof size === 'number' ? size : '100%',
+              maxWidth: typeof size === 'number' ? size : '100%',
+            }
+      }
     >
       <svg
         viewBox={FULL_BLEED_VIEWBOX}

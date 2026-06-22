@@ -14,6 +14,7 @@ export interface CardViewProps {
   active?: boolean;
   spin?: boolean;
   className?: string;
+  fill?: 'width' | 'height';
 }
 
 // Dispatches a Card to the right renderer. Geometry (remedy/data) uses
@@ -27,6 +28,7 @@ export const CardView = memo(function CardView({
   active = false,
   spin = false,
   className = '',
+  fill = 'width',
 }: CardViewProps) {
   const c = card.content;
   if (c.kind === 'remedy' || c.kind === 'data') {
@@ -42,6 +44,7 @@ export const CardView = memo(function CardView({
         active={active}
         spin={spin}
         className={className}
+        fill={fill}
       />
     );
   }
@@ -55,15 +58,19 @@ export const CardView = memo(function CardView({
         enabled={spin}
         size={size}
         className={className}
+        fill={fill}
       />
     );
   }
   // Image card: the printed card artwork (light/dark WebP layers swap by theme).
-  const wrapperStyle = {
-    aspectRatio: '4 / 7',
-    width: typeof size === 'number' ? size : '100%',
-    maxWidth: typeof size === 'number' ? size : '100%',
-  };
+  const wrapperStyle =
+    fill === 'height'
+      ? { aspectRatio: '4 / 7', height: '100%', width: 'auto', maxWidth: '100%' }
+      : {
+          aspectRatio: '4 / 7',
+          width: typeof size === 'number' ? size : '100%',
+          maxWidth: typeof size === 'number' ? size : '100%',
+        };
   return (
     <div className={`relative mx-auto ${className}`} style={wrapperStyle}>
       <img

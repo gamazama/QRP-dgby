@@ -20,6 +20,8 @@ export interface CardSurfaceProps {
   spin?: boolean;
   /** Static rotation in degrees (export/thumbnail), used when spin is off. */
   rotation?: number;
+  /** 'width' fills the container width (default); 'height' fills its height (present/fullscreen). */
+  fill?: 'width' | 'height';
 }
 
 function Motif({ design }: { design: 'celtic' | 'triskelion' }) {
@@ -47,6 +49,7 @@ function CardSurfaceImpl({
   active = false,
   spin = false,
   rotation = 0,
+  fill = 'width',
 }: CardSurfaceProps) {
   const geo = useMemo(
     () => buildCardGeometryCached({ style, sequence, base, title, description, tier }),
@@ -62,11 +65,14 @@ function CardSurfaceImpl({
   const seedsTransform = !spin && rotation ? `rotate(${rotation})` : undefined;
   const centerTransform = !spin && rotation ? `rotate(${rotation * 0.5})` : undefined;
 
-  const wrapperStyle: CSSProperties = {
-    aspectRatio: `${geo.aspect}`,
-    maxWidth: typeof size === 'number' ? size : '100%',
-    width: typeof size === 'number' ? size : '100%',
-  };
+  const wrapperStyle: CSSProperties =
+    fill === 'height'
+      ? { aspectRatio: `${geo.aspect}`, height: '100%', width: 'auto', maxWidth: '100%' }
+      : {
+          aspectRatio: `${geo.aspect}`,
+          maxWidth: typeof size === 'number' ? size : '100%',
+          width: typeof size === 'number' ? size : '100%',
+        };
 
   return (
     <div className={`relative mx-auto ${className}`} style={wrapperStyle}>
