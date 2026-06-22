@@ -2,7 +2,6 @@ import { useState } from 'react';
 import type { Remedy } from '@/domain/remedy';
 import type { StyleId } from '@/domain/ids';
 import { useSequencerStore } from '@/store/sequencerStore';
-import { useSequencePersistence } from '@/hooks/useSequencePersistence';
 import { buildStylesMap, resolveStyleConfig, useStyles } from '@/features/styles/useStyles';
 import { RemedySearchPanel } from '@/features/remedy-search/RemedySearchPanel';
 import { SequenceBuilder } from '@/features/build/SequenceBuilder';
@@ -10,7 +9,6 @@ import { StylePicker } from '@/features/build/StylePicker';
 import { CardView } from '@/render/CardView';
 
 export function BuildPage() {
-  useSequencePersistence();
   const { data: styles } = useStyles();
   const stylesById = buildStylesMap(styles);
   const [currentStyleId, setCurrentStyleId] = useState<StyleId>('preset:sunflower');

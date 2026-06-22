@@ -22,6 +22,41 @@
   }
 }
 
+/* Clockwise spin for transition cards (direction set inline per card). */
+@keyframes qrp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Card-to-card crossfade (driven by CardCrossfade; duration set inline). */
+@keyframes qrp-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes qrp-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.qrp-fade-in {
+  animation-name: qrp-fade-in;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+}
+.qrp-fade-out {
+  animation-name: qrp-fade-out;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+}
+
 /* Respect reduced-motion globally (ported UX win + a low-end perf lever). */
 @media (prefers-reduced-motion: reduce) {
   *,
