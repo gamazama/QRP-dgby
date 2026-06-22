@@ -25,6 +25,7 @@
     "dexie": "^4.0.10",
     "dexie-react-hooks": "^1.1.7",
     "lucide-react": "^0.468.0",
+    "mediabunny": "^1.49.0",
     "minisearch": "^7.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
