@@ -57,7 +57,7 @@ export const STYLE_SCHEMA: StyleFieldGroup[] = [
   {
     title: 'Center',
     fields: [
-      { kind: 'select', key: 'centerDesign', label: 'Center', options: ['seeds', 'celtic', 'triskelion', 'uranus', 'image'] },
+      { kind: 'select', key: 'centerDesign', label: 'Center', options: ['seeds', 'celtic', 'triskelion'] },
       slider('centerOpacity', 'Center opacity', 0, 1, 0.01),
     ],
   },
