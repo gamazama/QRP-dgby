@@ -25,4 +25,6 @@ export interface Remedy {
   image?: RemedyImage;
   /** Practitioner's free-text note. Editable on any card via a notes overlay. */
   notes?: string;
+  /** Transient: true when a shipped pack card has practitioner edits applied. */
+  modified?: boolean;
 }

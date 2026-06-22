@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Copy, Trash2, X } from 'lucide-react';
+import { Copy, RotateCcw, Trash2, X } from 'lucide-react';
 import type { Remedy, RateBase } from '@/domain/remedy';
 import type { RemedyRef } from '@/domain/ids';
 import { useRepositories } from '@/data/repository-context';
@@ -20,9 +20,10 @@ const field =
   'w-full rounded-md border border-slate-300 bg-white px-2 py-1.5 text-sm disabled:bg-slate-50 disabled:text-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:disabled:bg-slate-900';
 const label = 'mb-1 block text-xs font-medium text-slate-500 dark:text-slate-400';
 
-// Create / edit a library card, or annotate a shipped one. Shipped (pack) cards
-// are read-only except for the practitioner note; "Duplicate to My Cards" forks
-// an editable copy. The note overlay attaches to any card by ref.
+// Create or edit a card. Shipped (pack) cards are editable IN PLACE — fixes
+// (e.g. a wrong OCR rate) are stored as a local, reversible overlay, so the
+// doctor never has to duplicate a card just to correct it. "Duplicate to My
+// Cards" remains available for making a separate variant.
 export function RemedyEditor({
   remedy,
   onClose,
@@ -48,12 +49,12 @@ export function RemedyEditor({
   const [notes, setNotes] = useState(remedy?.notes ?? '');
   const [busy, setBusy] = useState(false);
 
-  const title = isNew ? 'New card' : isPack ? 'Card notes' : 'Edit card';
+  const title = isNew ? 'New card' : 'Edit card';
 
-  const saveUser = async (id: string): Promise<RemedyRef> => {
+  // The editable fields, shared by create / in-place edit / duplicate.
+  const fields = () => {
     const image = light.trim() ? { light: light.trim(), ...(dark.trim() ? { dark: dark.trim() } : {}) } : undefined;
-    const saved = await remedies.addUserRemedy({
-      id,
+    return {
       name: name.trim() || 'Untitled card',
       category: category.trim() || 'custom',
       base,
@@ -61,7 +62,11 @@ export function RemedyEditor({
       ...(subheading.trim() ? { subheading: subheading.trim() } : {}),
       ...(rateType.trim() ? { rateType: rateType.trim() } : {}),
       ...(image ? { image } : {}),
-    });
+    };
+  };
+
+  const saveUser = async (id: string): Promise<RemedyRef> => {
+    const saved = await remedies.addUserRemedy({ id, ...fields() });
     return saved.ref;
   };
 
@@ -69,18 +74,36 @@ export function RemedyEditor({
     setBusy(true);
     try {
       if (isPack && remedy) {
+        // Edit the shipped card in place (overlay, reversible) — no duplicate needed.
+        await remedies.editRemedy(remedy.ref, fields());
         await remedies.setNotes(remedy.ref, notes);
       } else {
         const id = remedy && remedy.packId === 'user' ? remedy.id : `${slug(name)}-${Date.now().toString(36)}`;
         const ref = await saveUser(id);
         await remedies.setNotes(ref, notes);
       }
-      toast.show(isPack ? 'Note saved' : isNew ? 'Card added' : 'Card updated', 'success');
+      toast.show(isNew ? 'Card added' : 'Card updated', 'success');
       onSaved();
       onClose();
     } catch (err) {
       console.error('Save card failed', err);
       toast.show('Could not save card', 'error');
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const onRevert = async () => {
+    if (!remedy || remedy.packId === 'user') return;
+    setBusy(true);
+    try {
+      await remedies.revertRemedy(remedy.ref);
+      toast.show('Reverted to original', 'info');
+      onSaved();
+      onClose();
+    } catch (err) {
+      console.error('Revert failed', err);
+      toast.show('Could not revert', 'error');
     } finally {
       setBusy(false);
     }
@@ -137,24 +160,25 @@ export function RemedyEditor({
         </div>
 
         {isPack && (
-          <p className="mb-3 rounded-md bg-slate-50 px-2 py-1.5 text-xs text-slate-500 dark:bg-slate-800 dark:text-slate-400">
-            This is a library card — only the note is editable. Use “Duplicate to My Cards” to make a fully editable copy.
+          <p className="mb-3 rounded-md bg-amber-50 px-2 py-1.5 text-xs text-amber-700 dark:bg-amber-950/40 dark:text-amber-300">
+            {remedy?.modified ? 'This library card has your edits. ' : 'Editing a library card. '}
+            Changes are saved on this device and can be reverted to the shipped original.
           </p>
         )}
 
         <div className="space-y-3">
           <div>
             <label className={label}>Name</label>
-            <input className={field} value={name} disabled={isPack} onChange={(e) => setName(e.target.value)} />
+            <input className={field} value={name} onChange={(e) => setName(e.target.value)} />
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className={label}>Category</label>
-              <input className={field} value={category} disabled={isPack} onChange={(e) => setCategory(e.target.value)} />
+              <input className={field} value={category} onChange={(e) => setCategory(e.target.value)} />
             </div>
             <div>
               <label className={label}>Base</label>
-              <select className={field} value={base} disabled={isPack} onChange={(e) => setBase(Number(e.target.value) as RateBase)}>
+              <select className={field} value={base} onChange={(e) => setBase(Number(e.target.value) as RateBase)}>
                 {BASES.map((b) => (
                   <option key={b} value={b}>
                     {b}
@@ -165,26 +189,26 @@ export function RemedyEditor({
           </div>
           <div>
             <label className={label}>Rate (space-separated)</label>
-            <input className={`${field} font-mono`} value={rate} disabled={isPack} placeholder="5 10 21" onChange={(e) => setRate(e.target.value)} />
+            <input className={`${field} font-mono`} value={rate} placeholder="5 10 21" onChange={(e) => setRate(e.target.value)} />
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className={label}>Subheading</label>
-              <input className={field} value={subheading} disabled={isPack} onChange={(e) => setSubheading(e.target.value)} />
+              <input className={field} value={subheading} onChange={(e) => setSubheading(e.target.value)} />
             </div>
             <div>
               <label className={label}>Rate type</label>
-              <input className={field} value={rateType} disabled={isPack} onChange={(e) => setRateType(e.target.value)} />
+              <input className={field} value={rateType} onChange={(e) => setRateType(e.target.value)} />
             </div>
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className={label}>Artwork path (light)</label>
-              <input className={field} value={light} disabled={isPack} placeholder="img/card.webp" onChange={(e) => setLight(e.target.value)} />
+              <input className={field} value={light} placeholder="img/card.webp" onChange={(e) => setLight(e.target.value)} />
             </div>
             <div>
               <label className={label}>Artwork path (dark)</label>
-              <input className={field} value={dark} disabled={isPack} placeholder="optional" onChange={(e) => setDark(e.target.value)} />
+              <input className={field} value={dark} placeholder="optional" onChange={(e) => setDark(e.target.value)} />
             </div>
           </div>
           <div>
@@ -204,14 +228,26 @@ export function RemedyEditor({
               <Trash2 className="h-3.5 w-3.5" /> Delete
             </button>
           )}
+          {remedy?.modified && (
+            <button
+              type="button"
+              onClick={() => void onRevert()}
+              disabled={busy}
+              title="Discard your edits and restore the shipped card"
+              className="flex items-center gap-1 rounded-md px-2 py-1.5 text-xs text-amber-700 hover:bg-amber-50 disabled:opacity-50 dark:text-amber-300 dark:hover:bg-amber-950/40"
+            >
+              <RotateCcw className="h-3.5 w-3.5" /> Revert
+            </button>
+          )}
           {isPack && (
             <button
               type="button"
               onClick={() => void onDuplicate()}
               disabled={busy}
+              title="Save a separate copy in My Cards"
               className="flex items-center gap-1 rounded-md border border-slate-300 px-2 py-1.5 text-xs hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:hover:bg-slate-800"
             >
-              <Copy className="h-3.5 w-3.5" /> Duplicate to My Cards
+              <Copy className="h-3.5 w-3.5" /> Duplicate
             </button>
           )}
           <div className="ml-auto flex items-center gap-2">

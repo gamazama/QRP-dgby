@@ -9,7 +9,13 @@ import { newSequenceId, newStyleId } from '@/lib/id';
 import type { Sequence } from '@/domain/sequence';
 
 beforeEach(async () => {
-  await Promise.all([db.styles.clear(), db.sequences.clear(), db.userRemedies.clear(), db.remedyNotes.clear()]);
+  await Promise.all([
+    db.styles.clear(),
+    db.sequences.clear(),
+    db.userRemedies.clear(),
+    db.remedyNotes.clear(),
+    db.remedyEdits.clear(),
+  ]);
   localStorage.clear();
 });
 
@@ -98,6 +104,30 @@ describe('LocalRemedyRepository', () => {
 
     await repo.setNotes('user:arnica', '   ');
     expect((await repo.getByRef('user:arnica'))?.notes).toBeUndefined();
+  });
+
+  it('edits a shipped pack card in place and reverts it', async () => {
+    // A tiny fake pack so we have a "shipped" (non-user) remedy to edit.
+    const repo = new LocalRemedyRepository('/');
+    const loaded = repo as unknown as { loadedPacks: Map<string, unknown[]> };
+    loaded.loadedPacks.set('bach', [
+      { id: 'agrimony', packId: 'bach', ref: 'bach:agrimony', name: 'Agrimony', category: 'bach', base: 44, sequence: [1, 2, 3] },
+    ]);
+
+    await repo.editRemedy('bach:agrimony', { name: 'Agrimony (fixed)', sequence: [9, 9, 9] });
+    const edited = await repo.getByRef('bach:agrimony');
+    expect(edited?.name).toBe('Agrimony (fixed)');
+    expect(edited?.sequence).toEqual([9, 9, 9]);
+    expect(edited?.modified).toBe(true);
+    // Search reflects the edit and marks it modified.
+    const page = await repo.search({ text: 'fixed', limit: 10, offset: 0 });
+    expect(page.items[0]?.modified).toBe(true);
+
+    await repo.revertRemedy('bach:agrimony');
+    const reverted = await repo.getByRef('bach:agrimony');
+    expect(reverted?.name).toBe('Agrimony');
+    expect(reverted?.sequence).toEqual([1, 2, 3]);
+    expect(reverted?.modified).toBeUndefined();
   });
 
   it('filters to user-only cards and deletes them with their notes', async () => {

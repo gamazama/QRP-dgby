@@ -3,6 +3,7 @@ import type { RateBase, Remedy } from '@/domain/remedy';
 import type { PackSummary } from '@/domain/pack';
 import type { Style } from '@/domain/style';
 import type { Sequence } from '@/domain/sequence';
+import type { RemedyEditPatch } from '@/data/db/db';
 
 export interface Page<T> {
   items: T[];
@@ -37,6 +38,10 @@ export interface RemedyRepository {
   removeUserRemedy(ref: RemedyRef): Promise<void>;
   /** Set/clear the practitioner note on any remedy (empty clears it). */
   setNotes(ref: RemedyRef, notes: string): Promise<void>;
+  /** Apply an in-place edit to a SHIPPED pack card (fix a wrong rate, rename…). */
+  editRemedy(ref: RemedyRef, patch: RemedyEditPatch): Promise<void>;
+  /** Drop a pack card's edits, restoring the shipped original. */
+  revertRemedy(ref: RemedyRef): Promise<void>;
 }
 
 export interface StyleRepository {

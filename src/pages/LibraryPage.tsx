@@ -129,9 +129,13 @@ export function LibraryPage() {
                 <button
                   type="button"
                   onClick={() => setEditing(r)}
-                  title={r.packId === 'user' ? 'Edit card' : 'Add a note'}
+                  title="Edit card"
                   aria-label={`Edit ${r.name}`}
-                  className="rounded bg-white/90 p-1 text-slate-500 shadow-sm hover:bg-white hover:text-slate-700 dark:bg-slate-800/90 dark:text-slate-300 dark:hover:bg-slate-800"
+                  className={`rounded p-1 shadow-sm ${
+                    r.modified
+                      ? 'bg-amber-100 text-amber-700 hover:bg-amber-200 dark:bg-amber-900/60 dark:text-amber-300'
+                      : 'bg-white/90 text-slate-500 hover:bg-white hover:text-slate-700 dark:bg-slate-800/90 dark:text-slate-300 dark:hover:bg-slate-800'
+                  }`}
                 >
                   <Pencil className="h-3 w-3" />
                 </button>
@@ -149,7 +153,7 @@ export function LibraryPage() {
                   </p>
                   <p className="truncate text-[10px] text-slate-400">
                     {r.category} · Base {r.base}
-                    {r.packId === 'user' && ' · mine'}
+                    {r.packId === 'user' ? ' · mine' : r.modified ? ' · edited' : ''}
                   </p>
                   {r.sequence.length > 0 && (
                     <p className="truncate font-mono text-[10px] text-slate-400">{r.sequence.join(' ')}</p>

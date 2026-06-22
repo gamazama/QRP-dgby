@@ -1,4 +1,4 @@
-import { db } from '../db/db';
+import { db, type RemedyEditPatch } from '../db/db';
 import { PackIndexSchema, PackManifestSchema } from '@/domain/schemas';
 import type { Remedy } from '@/domain/remedy';
 import type { PackId, RemedyRef } from '@/domain/ids';
@@ -58,14 +58,24 @@ export class LocalRemedyRepository implements RemedyRepository {
     return new Map(notes.map((n) => [n.ref, n.notes]));
   }
 
+  private async editMap(): Promise<Map<string, RemedyEditPatch>> {
+    const edits = await db.remedyEdits.toArray();
+    return new Map(edits.map((e) => [e.ref, e.patch]));
+  }
+
   private async allRemedies(): Promise<Remedy[]> {
     const fromPacks = [...this.loadedPacks.values()].flat();
     const fromUser = await db.userRemedies.toArray();
     const notes = await this.noteMap();
-    // The notes overlay is authoritative — it attaches to read-only pack cards too.
-    return [...fromPacks, ...fromUser].map((r) =>
-      notes.has(r.ref) ? { ...r, notes: notes.get(r.ref) ?? '' } : r,
-    );
+    const edits = await this.editMap();
+    // Overlays are authoritative and attach to read-only pack cards: in-place
+    // edits first (marking the card modified), then the practitioner note.
+    return [...fromPacks, ...fromUser].map((r) => {
+      const patch = edits.get(r.ref);
+      let out = patch ? { ...r, ...patch, modified: true } : r;
+      if (notes.has(r.ref)) out = { ...out, notes: notes.get(r.ref) ?? '' };
+      return out;
+    });
   }
 
   async search(q: RemedyQuery): Promise<Page<Remedy>> {
@@ -90,13 +100,18 @@ export class LocalRemedyRepository implements RemedyRepository {
 
   async getByRef(ref: RemedyRef): Promise<Remedy | null> {
     const note = await db.remedyNotes.get(ref);
-    const withNote = (r: Remedy): Remedy => (note ? { ...r, notes: note.notes } : r);
+    const edit = await db.remedyEdits.get(ref);
+    const overlay = (r: Remedy): Remedy => {
+      let out = edit ? { ...r, ...edit.patch, modified: true } : r;
+      if (note) out = { ...out, notes: note.notes };
+      return out;
+    };
     for (const remedies of this.loadedPacks.values()) {
       const hit = remedies.find((r) => r.ref === ref);
-      if (hit) return withNote(hit);
+      if (hit) return overlay(hit);
     }
     const user = await db.userRemedies.get(ref);
-    return user ? withNote(user) : null;
+    return user ? overlay(user) : null;
   }
 
   async addUserRemedy(
@@ -111,6 +126,7 @@ export class LocalRemedyRepository implements RemedyRepository {
   async removeUserRemedy(ref: RemedyRef): Promise<void> {
     await db.userRemedies.delete(ref);
     await db.remedyNotes.delete(ref);
+    await db.remedyEdits.delete(ref);
   }
 
   async setNotes(ref: RemedyRef, notes: string): Promise<void> {
@@ -120,5 +136,14 @@ export class LocalRemedyRepository implements RemedyRepository {
       return;
     }
     await db.remedyNotes.put({ ref, notes: trimmed, updatedAt: Date.now() });
+  }
+
+  async editRemedy(ref: RemedyRef, patch: RemedyEditPatch): Promise<void> {
+    const existing = await db.remedyEdits.get(ref);
+    await db.remedyEdits.put({ ref, patch: { ...existing?.patch, ...patch }, updatedAt: Date.now() });
+  }
+
+  async revertRemedy(ref: RemedyRef): Promise<void> {
+    await db.remedyEdits.delete(ref);
   }
 }

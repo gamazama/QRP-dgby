@@ -74,6 +74,7 @@ export const RemedySchema = z.object({
   rateType: z.string().optional(),
   image: RemedyImageSchema.optional(),
   notes: z.string().optional(),
+  modified: z.boolean().optional(),
 });
 
 export const CardContentSchema = z.discriminatedUnion('kind', [
