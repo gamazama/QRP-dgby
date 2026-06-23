@@ -139,6 +139,7 @@ export const useSequencerStore = create<SequencerState>()(
             id: newCardId(),
             title: r.name,
             ...(r.subheading ? { description: r.subheading } : {}),
+            ...(r.notes ? { notes: r.notes } : {}),
             styleId,
             content: { kind: 'remedy' as const, ref: r.ref, sequence: r.sequence, base: r.base },
           })),

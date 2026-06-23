@@ -1,4 +1,5 @@
 import { useRef, useState, type ChangeEvent } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 import {
   ChevronDown,
   ChevronUp,
@@ -23,6 +24,7 @@ import { CardView } from '@/render/CardView';
 import { resolveStyleConfig } from '@/features/styles/useStyles';
 import { exportSequenceJson, importSequenceJson } from './deckIO';
 import { SharePrescription } from './SharePrescription';
+import { PrescriptionPicker } from './PrescriptionPicker';
 import { cn } from '@/lib/cn';
 
 const BASES: RateBase[] = [9, 10, 44];
@@ -125,8 +127,21 @@ function SequenceTimeline({
 }
 
 // Edit a card's name + description inline, like the old app. Works for any card.
+// For a remedy card, its note is written through to the library remedy (by ref)
+// so practitioner notes propagate back to the database.
 function CardHeaderEditor({ card }: { card: Card }) {
   const update = useSequencerStore.getState().updateCard;
+  const { remedies } = useRepositories();
+  const qc = useQueryClient();
+  const content = card.content;
+  const propagateNotes = () => {
+    if (content.kind === 'remedy') {
+      void remedies
+        .setNotes(content.ref, card.notes ?? '')
+        .then(() => qc.invalidateQueries({ queryKey: ['remedy-search'] }))
+        .catch((err) => console.error('Propagate note failed', err));
+    }
+  };
   return (
     <div className="space-y-1.5">
       <input
@@ -146,7 +161,8 @@ function CardHeaderEditor({ card }: { card: Card }) {
       <textarea
         value={card.notes ?? ''}
         onChange={(e) => update(card.id, { notes: e.target.value })}
-        placeholder="Notes (not shown on the card)"
+        onBlur={propagateNotes}
+        placeholder={content.kind === 'remedy' ? 'Notes (saved to the library card)' : 'Notes (not shown on the card)'}
         aria-label="Card notes"
         rows={2}
         className="w-full resize-y rounded border border-slate-300 bg-white px-2 py-1 text-xs dark:border-slate-700 dark:bg-slate-900"
@@ -405,6 +421,7 @@ export function SequenceBuilder({
     <div className="flex h-full flex-col">
       {/* Header */}
       <div className="mb-3 flex flex-col gap-2">
+        <PrescriptionPicker />
         <div className="flex items-center gap-1.5">
           <input
             value={name}
@@ -422,13 +439,6 @@ export function SequenceBuilder({
             <Upload className="h-4 w-4" />
           </button>
           <SharePrescription sequence={store().sequence} stylesById={stylesById} />
-          <button
-            type="button"
-            onClick={() => store().newSequence()}
-            className="rounded-md border border-slate-300 px-2 py-1.5 text-xs hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-900"
-          >
-            New
-          </button>
           <input ref={fileRef} type="file" accept="application/json,.json" className="hidden" onChange={(e) => void onImport(e)} />
         </div>
 
