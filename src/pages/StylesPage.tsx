@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Copy, Plus, RotateCcw, Trash2 } from 'lucide-react';
 import type { Style, StyleConfig } from '@/domain/style';
 import type { StyleId } from '@/domain/ids';
@@ -35,11 +35,24 @@ const sameConfig = (a: StyleConfig, b: StyleConfig): boolean => {
 
 export function StylesPage() {
   const { data: styles } = useStyles();
-  const list = styles ?? [];
+  // STABLE display order — builtins first, then by createdAt — so editing a
+  // style (which bumps updatedAt) never reorders the tiles or shifts selection.
+  const list = useMemo(
+    () =>
+      [...(styles ?? [])].sort((a, b) =>
+        a.builtin === b.builtin ? a.createdAt - b.createdAt : a.builtin ? -1 : 1,
+      ),
+    [styles],
+  );
   const { create, duplicate, remove, save } = useStyleMutations();
 
   const [selectedId, setSelectedId] = useState<StyleId | null>(null);
   const selected = list.find((s) => s.id === selectedId) ?? list[0] ?? null;
+
+  // Pin the selection by id once loaded (so it's never positional).
+  useEffect(() => {
+    if (selectedId === null && selected) setSelectedId(selected.id);
+  }, [selectedId, selected]);
 
   const [draft, setDraft] = useState<StyleConfig | null>(null);
   const [name, setName] = useState('');
