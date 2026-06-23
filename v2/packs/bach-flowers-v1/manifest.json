@@ -1,0 +1,730 @@
+{
+  "id": "bach-flowers-v1",
+  "name": "Bach Flowers",
+  "version": "1",
+  "taxonomy": [
+    {
+      "id": "bach-flowers",
+      "label": "Bach Flowers"
+    }
+  ],
+  "remedies": [
+    {
+      "id": "agrimony",
+      "name": "Agrimony",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        2,
+        12,
+        17,
+        34,
+        40
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/agrimony.webp",
+        "dark": "img/agrimony.dark.webp"
+      }
+    },
+    {
+      "id": "aspen",
+      "name": "Aspen",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        4,
+        11,
+        23,
+        34,
+        39
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/aspen.webp",
+        "dark": "img/aspen.dark.webp"
+      }
+    },
+    {
+      "id": "beech",
+      "name": "Beech",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        3,
+        7,
+        20,
+        30,
+        37
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/beech.webp",
+        "dark": "img/beech.dark.webp"
+      }
+    },
+    {
+      "id": "centaury",
+      "name": "Centaury",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        6,
+        17,
+        27,
+        30,
+        40
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/centaury.webp",
+        "dark": "img/centaury.dark.webp"
+      }
+    },
+    {
+      "id": "cerato",
+      "name": "Cerato",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        7,
+        9,
+        23,
+        29,
+        42
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/cerato.webp",
+        "dark": "img/cerato.dark.webp"
+      }
+    },
+    {
+      "id": "cherry-plum",
+      "name": "Cherry Plum",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        2,
+        12,
+        24,
+        33,
+        39
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base44 Rate (Combe)",
+      "image": {
+        "light": "img/cherry-plum.webp",
+        "dark": "img/cherry-plum.dark.webp"
+      }
+    },
+    {
+      "id": "chestnut-bud",
+      "name": "Chestnut Bud",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        6,
+        11,
+        29,
+        34,
+        39
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base44 Rate (Combe)",
+      "image": {
+        "light": "img/chestnut-bud.webp",
+        "dark": "img/chestnut-bud.dark.webp"
+      }
+    },
+    {
+      "id": "chicory",
+      "name": "Chicory",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        5,
+        11,
+        17,
+        31
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base44 Rate (Combe)",
+      "image": {
+        "light": "img/chicory.webp",
+        "dark": "img/chicory.dark.webp"
+      }
+    },
+    {
+      "id": "clematis",
+      "name": "Clematis",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        3,
+        9,
+        12,
+        30,
+        41
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/clematis.webp",
+        "dark": "img/clematis.dark.webp"
+      }
+    },
+    {
+      "id": "crab-apple",
+      "name": "Crab Apple",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        10,
+        20,
+        24,
+        33,
+        41
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base44 Rate (Combe)",
+      "image": {
+        "light": "img/crab-apple.webp",
+        "dark": "img/crab-apple.dark.webp"
+      }
+    },
+    {
+      "id": "elm",
+      "name": "Elm",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        5,
+        12,
+        27,
+        36,
+        41
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/elm.webp",
+        "dark": "img/elm.dark.webp"
+      }
+    },
+    {
+      "id": "gentian",
+      "name": "Gentian",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        1,
+        8,
+        20,
+        33,
+        40
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/gentian.webp",
+        "dark": "img/gentian.dark.webp"
+      }
+    },
+    {
+      "id": "gorse",
+      "name": "Gorse",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        1,
+        8,
+        20,
+        33,
+        40
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/gorse.webp",
+        "dark": "img/gorse.dark.webp"
+      }
+    },
+    {
+      "id": "heather",
+      "name": "Heather",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        7,
+        16,
+        22,
+        33,
+        40
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base44 Rate (Combe)",
+      "image": {
+        "light": "img/heather.webp",
+        "dark": "img/heather.dark.webp"
+      }
+    },
+    {
+      "id": "holly",
+      "name": "Holly",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        2,
+        20,
+        30,
+        35,
+        42
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/holly.webp",
+        "dark": "img/holly.dark.webp"
+      }
+    },
+    {
+      "id": "honeysuckle",
+      "name": "Honeysuckle",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        9,
+        12,
+        20,
+        29,
+        34
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base44 Rate (Combe)",
+      "image": {
+        "light": "img/honeysuckle.webp",
+        "dark": "img/honeysuckle.dark.webp"
+      }
+    },
+    {
+      "id": "honeysuckle-orange",
+      "name": "Honeysuckle Orange",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        9,
+        12,
+        20,
+        29,
+        34
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base44 Rate (Combe)",
+      "image": {
+        "light": "img/honeysuckle-orange.webp",
+        "dark": "img/honeysuckle-orange.dark.webp"
+      }
+    },
+    {
+      "id": "hornbeam",
+      "name": "Hornbeam",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        33,
+        47
+      ],
+      "subheading": "F.E (Flower Essence)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/hornbeam.webp",
+        "dark": "img/hornbeam.dark.webp"
+      }
+    },
+    {
+      "id": "impatiens",
+      "name": "Impatiens",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        1,
+        9,
+        12,
+        31,
+        35
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/impatiens.webp",
+        "dark": "img/impatiens.dark.webp"
+      }
+    },
+    {
+      "id": "larch",
+      "name": "Larch",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        9,
+        21,
+        31,
+        34,
+        39
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/larch.webp",
+        "dark": "img/larch.dark.webp"
+      }
+    },
+    {
+      "id": "mimulus",
+      "name": "Mimulus",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        5,
+        16,
+        23,
+        29,
+        41
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/mimulus.webp",
+        "dark": "img/mimulus.dark.webp"
+      }
+    },
+    {
+      "id": "mustard",
+      "name": "Mustard",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        4,
+        11,
+        22,
+        32,
+        40
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/mustard.webp",
+        "dark": "img/mustard.dark.webp"
+      }
+    },
+    {
+      "id": "oak",
+      "name": "Oak",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        6,
+        12,
+        18,
+        30,
+        37
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/oak.webp",
+        "dark": "img/oak.dark.webp"
+      }
+    },
+    {
+      "id": "olive",
+      "name": "Olive",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        8,
+        14,
+        21,
+        31,
+        42
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/olive.webp",
+        "dark": "img/olive.dark.webp"
+      }
+    },
+    {
+      "id": "pine",
+      "name": "Pine",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        9,
+        12,
+        22,
+        31,
+        39
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/pine.webp",
+        "dark": "img/pine.dark.webp"
+      }
+    },
+    {
+      "id": "plantain-l",
+      "name": "Plantain L",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        11,
+        17,
+        26,
+        37,
+        42
+      ],
+      "subheading": "F.E (Flower Essence)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/plantain-l.webp",
+        "dark": "img/plantain-l.dark.webp"
+      }
+    },
+    {
+      "id": "red-chestnut",
+      "name": "Red Chestnut",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        4,
+        10,
+        21,
+        34,
+        42
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/red-chestnut.webp",
+        "dark": "img/red-chestnut.dark.webp"
+      }
+    },
+    {
+      "id": "rescue-remedy",
+      "name": "Rescue Remedy",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        5,
+        11,
+        21,
+        33,
+        41
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/rescue-remedy.webp",
+        "dark": "img/rescue-remedy.dark.webp"
+      }
+    },
+    {
+      "id": "rock-rose",
+      "name": "Rock Rose",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        1,
+        6,
+        25,
+        31,
+        38
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/rock-rose.webp",
+        "dark": "img/rock-rose.dark.webp"
+      }
+    },
+    {
+      "id": "rock-water",
+      "name": "Rock Water",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        6,
+        11,
+        22,
+        31,
+        42
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/rock-water.webp",
+        "dark": "img/rock-water.dark.webp"
+      }
+    },
+    {
+      "id": "scleranthus",
+      "name": "Scleranthus",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        4,
+        10,
+        28,
+        35,
+        42
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/scleranthus.webp",
+        "dark": "img/scleranthus.dark.webp"
+      }
+    },
+    {
+      "id": "star-of-bethlehem",
+      "name": "Star Of Bethlehem",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        2,
+        9,
+        16,
+        31,
+        40
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/star-of-bethlehem.webp",
+        "dark": "img/star-of-bethlehem.dark.webp"
+      }
+    },
+    {
+      "id": "sweet-chestnut",
+      "name": "Sweet Chestnut",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        1,
+        13,
+        19,
+        34,
+        42
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/sweet-chestnut.webp",
+        "dark": "img/sweet-chestnut.dark.webp"
+      }
+    },
+    {
+      "id": "vervain",
+      "name": "Vervain",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        7,
+        20,
+        25,
+        32,
+        43
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/vervain.webp",
+        "dark": "img/vervain.dark.webp"
+      }
+    },
+    {
+      "id": "vine",
+      "name": "Vine",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        5,
+        8,
+        21,
+        31,
+        36
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/vine.webp",
+        "dark": "img/vine.dark.webp"
+      }
+    },
+    {
+      "id": "walnut",
+      "name": "Walnut",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        1,
+        11,
+        20,
+        29,
+        44
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/walnut.webp",
+        "dark": "img/walnut.dark.webp"
+      }
+    },
+    {
+      "id": "water-violet",
+      "name": "Water Violet",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        12,
+        21,
+        33,
+        40
+      ],
+      "subheading": "Flowers: Bach",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/water-violet.webp",
+        "dark": "img/water-violet.dark.webp"
+      }
+    },
+    {
+      "id": "white-chestnut",
+      "name": "White Chestnut",
+      "category": "bach-flowers",
+      "base": 44,
+      "sequence": [
+        2,
+        10,
+        25,
+        33,
+        39
+      ],
+      "subheading": "Bach: (flowers)",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/white-chestnut.webp",
+        "dark": "img/white-chestnut.dark.webp"
+      }
+    }
+  ]
+}

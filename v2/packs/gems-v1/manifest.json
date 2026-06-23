@@ -1,0 +1,295 @@
+{
+  "id": "gems-v1",
+  "name": "Gems",
+  "version": "1",
+  "taxonomy": [
+    {
+      "id": "gems",
+      "label": "Gems"
+    }
+  ],
+  "remedies": [
+    {
+      "id": "amethyst",
+      "name": "Amethyst",
+      "category": "gems",
+      "base": 10,
+      "sequence": [
+        9,
+        7,
+        7,
+        3
+      ],
+      "subheading": "Gem Stones",
+      "rateType": "Base 10 Rate",
+      "image": {
+        "light": "img/amethyst.webp",
+        "dark": "img/amethyst.dark.webp"
+      }
+    },
+    {
+      "id": "aquamarine",
+      "name": "Aquamarine",
+      "category": "gems",
+      "base": 10,
+      "sequence": [
+        3,
+        2,
+        4,
+        2
+      ],
+      "subheading": "Gem Stones",
+      "rateType": "Base 10 Rate",
+      "image": {
+        "light": "img/aquamarine.webp",
+        "dark": "img/aquamarine.dark.webp"
+      }
+    },
+    {
+      "id": "bloodstone",
+      "name": "Bloodstone",
+      "category": "gems",
+      "base": 10,
+      "sequence": [
+        7,
+        1,
+        6,
+        2
+      ],
+      "subheading": "Gem Stones",
+      "rateType": "Base 10 Rate",
+      "image": {
+        "light": "img/bloodstone.webp",
+        "dark": "img/bloodstone.dark.webp"
+      }
+    },
+    {
+      "id": "citrine",
+      "name": "Citrine",
+      "category": "gems",
+      "base": 10,
+      "sequence": [
+        3,
+        5,
+        2
+      ],
+      "subheading": "Gem Stones",
+      "rateType": "Base 10 Rate",
+      "image": {
+        "light": "img/citrine.webp",
+        "dark": "img/citrine.dark.webp"
+      }
+    },
+    {
+      "id": "diamond",
+      "name": "Diamond",
+      "category": "gems",
+      "base": 44,
+      "sequence": [],
+      "subheading": "Gems",
+      "rateType": "TT",
+      "image": {
+        "light": "img/diamond.webp",
+        "dark": "img/diamond.dark.webp"
+      }
+    },
+    {
+      "id": "emerald",
+      "name": "Emerald",
+      "category": "gems",
+      "base": 44,
+      "sequence": [
+        1,
+        4,
+        14,
+        23,
+        32
+      ],
+      "subheading": "Gems",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/emerald.webp",
+        "dark": "img/emerald.dark.webp"
+      }
+    },
+    {
+      "id": "haematite",
+      "name": "Haematite",
+      "category": "gems",
+      "base": 10,
+      "sequence": [
+        8,
+        8,
+        8,
+        1
+      ],
+      "subheading": "Gem Stones",
+      "rateType": "Base 10 Rate",
+      "image": {
+        "light": "img/haematite.webp",
+        "dark": "img/haematite.dark.webp"
+      }
+    },
+    {
+      "id": "jade",
+      "name": "Jade",
+      "category": "gems",
+      "base": 10,
+      "sequence": [
+        1,
+        3,
+        3,
+        0,
+        3
+      ],
+      "subheading": "Gem Stone",
+      "rateType": "Base 10 Rate",
+      "image": {
+        "light": "img/jade.webp",
+        "dark": "img/jade.dark.webp"
+      }
+    },
+    {
+      "id": "lapis-lazuli",
+      "name": "Lapis Lazuli",
+      "category": "gems",
+      "base": 10,
+      "sequence": [
+        6,
+        7,
+        5,
+        9
+      ],
+      "subheading": "Gem Stones",
+      "rateType": "Base 10 Rate",
+      "image": {
+        "light": "img/lapis-lazuli.webp",
+        "dark": "img/lapis-lazuli.dark.webp"
+      }
+    },
+    {
+      "id": "moonstone",
+      "name": "Moonstone",
+      "category": "gems",
+      "base": 10,
+      "sequence": [
+        7,
+        6,
+        8,
+        4
+      ],
+      "subheading": "Gem Stones",
+      "rateType": "Base 10 Rate",
+      "image": {
+        "light": "img/moonstone.webp",
+        "dark": "img/moonstone.dark.webp"
+      }
+    },
+    {
+      "id": "onyx",
+      "name": "Onyx",
+      "category": "gems",
+      "base": 10,
+      "sequence": [
+        3,
+        8,
+        9,
+        3
+      ],
+      "subheading": "Gem Stones",
+      "rateType": "Base 10 Rate",
+      "image": {
+        "light": "img/onyx.webp",
+        "dark": "img/onyx.dark.webp"
+      }
+    },
+    {
+      "id": "opal",
+      "name": "Opal",
+      "category": "gems",
+      "base": 10,
+      "sequence": [
+        5,
+        6,
+        5,
+        4
+      ],
+      "subheading": "Gem Stones",
+      "rateType": "Base 10 Rate",
+      "image": {
+        "light": "img/opal.webp",
+        "dark": "img/opal.dark.webp"
+      }
+    },
+    {
+      "id": "rose-quartz",
+      "name": "Rose Quartz",
+      "category": "gems",
+      "base": 10,
+      "sequence": [
+        5,
+        1,
+        4,
+        8
+      ],
+      "subheading": "Gem Stones",
+      "rateType": "Base 10 Rate",
+      "image": {
+        "light": "img/rose-quartz.webp",
+        "dark": "img/rose-quartz.dark.webp"
+      }
+    },
+    {
+      "id": "ruby",
+      "name": "Ruby",
+      "category": "gems",
+      "base": 10,
+      "sequence": [
+        3,
+        2
+      ],
+      "subheading": "Gem Stones",
+      "rateType": "Base 10 Rate",
+      "image": {
+        "light": "img/ruby.webp",
+        "dark": "img/ruby.dark.webp"
+      }
+    },
+    {
+      "id": "sapphire",
+      "name": "Sapphire",
+      "category": "gems",
+      "base": 10,
+      "sequence": [
+        5,
+        5,
+        4,
+        7
+      ],
+      "subheading": "Gem Stones",
+      "rateType": "Base 10 Rate",
+      "image": {
+        "light": "img/sapphire.webp",
+        "dark": "img/sapphire.dark.webp"
+      }
+    },
+    {
+      "id": "turquoise",
+      "name": "Turquoise",
+      "category": "gems",
+      "base": 10,
+      "sequence": [
+        8,
+        9,
+        8,
+        4
+      ],
+      "subheading": "Gem Stones",
+      "rateType": "Base 10 Rate",
+      "image": {
+        "light": "img/turquoise.webp",
+        "dark": "img/turquoise.dark.webp"
+      }
+    }
+  ]
+}

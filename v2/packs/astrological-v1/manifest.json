@@ -1,0 +1,156 @@
+{
+  "id": "astrological-v1",
+  "name": "Astrological",
+  "version": "1",
+  "taxonomy": [
+    {
+      "id": "astrological",
+      "label": "Astrological"
+    }
+  ],
+  "remedies": [
+    {
+      "id": "aquarius",
+      "name": "Aquarius",
+      "category": "astrological",
+      "base": 44,
+      "sequence": [],
+      "subheading": "Astrological Sign",
+      "rateType": "TT",
+      "image": {
+        "light": "img/aquarius.webp",
+        "dark": "img/aquarius.dark.webp"
+      }
+    },
+    {
+      "id": "aries",
+      "name": "Aries",
+      "category": "astrological",
+      "base": 44,
+      "sequence": [],
+      "subheading": "Astrological Sign",
+      "rateType": "TT",
+      "image": {
+        "light": "img/aries.webp",
+        "dark": "img/aries.dark.webp"
+      }
+    },
+    {
+      "id": "cancer",
+      "name": "Cancer",
+      "category": "astrological",
+      "base": 44,
+      "sequence": [],
+      "subheading": "Astrological Sign",
+      "rateType": "TT",
+      "image": {
+        "light": "img/cancer.webp",
+        "dark": "img/cancer.dark.webp"
+      }
+    },
+    {
+      "id": "capricorn",
+      "name": "Capricorn",
+      "category": "astrological",
+      "base": 44,
+      "sequence": [],
+      "subheading": "Astrological Sign",
+      "rateType": "TT",
+      "image": {
+        "light": "img/capricorn.webp",
+        "dark": "img/capricorn.dark.webp"
+      }
+    },
+    {
+      "id": "ini",
+      "name": "Ini",
+      "category": "astrological",
+      "base": 44,
+      "sequence": [],
+      "subheading": "Astrological Sign",
+      "rateType": "TT",
+      "image": {
+        "light": "img/ini.webp",
+        "dark": "img/ini.dark.webp"
+      }
+    },
+    {
+      "id": "leo",
+      "name": "Leo",
+      "category": "astrological",
+      "base": 44,
+      "sequence": [],
+      "subheading": "Astrological Sign",
+      "rateType": "TT",
+      "image": {
+        "light": "img/leo.webp",
+        "dark": "img/leo.dark.webp"
+      }
+    },
+    {
+      "id": "pisces",
+      "name": "Pisces",
+      "category": "astrological",
+      "base": 44,
+      "sequence": [],
+      "subheading": "Astrological Sign",
+      "rateType": "TT",
+      "image": {
+        "light": "img/pisces.webp",
+        "dark": "img/pisces.dark.webp"
+      }
+    },
+    {
+      "id": "sagittarius",
+      "name": "Sagittarius",
+      "category": "astrological",
+      "base": 44,
+      "sequence": [],
+      "subheading": "Astrological Sign",
+      "rateType": "TT",
+      "image": {
+        "light": "img/sagittarius.webp",
+        "dark": "img/sagittarius.dark.webp"
+      }
+    },
+    {
+      "id": "scorpion",
+      "name": "Scorpion",
+      "category": "astrological",
+      "base": 44,
+      "sequence": [],
+      "subheading": "Astrological Sign",
+      "rateType": "TT",
+      "image": {
+        "light": "img/scorpion.webp",
+        "dark": "img/scorpion.dark.webp"
+      }
+    },
+    {
+      "id": "taurus",
+      "name": "Taurus",
+      "category": "astrological",
+      "base": 44,
+      "sequence": [],
+      "subheading": "Astrological Sign",
+      "rateType": "TT",
+      "image": {
+        "light": "img/taurus.webp",
+        "dark": "img/taurus.dark.webp"
+      }
+    },
+    {
+      "id": "virgo",
+      "name": "Virgo",
+      "category": "astrological",
+      "base": 44,
+      "sequence": [],
+      "subheading": "Astrological Sign",
+      "rateType": "TT",
+      "image": {
+        "light": "img/virgo.webp",
+        "dark": "img/virgo.dark.webp"
+      }
+    }
+  ]
+}

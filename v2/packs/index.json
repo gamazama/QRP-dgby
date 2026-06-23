@@ -1,0 +1,71 @@
+{
+  "generatedAt": "2026-06-22T11:29:03.155Z",
+  "packs": [
+    {
+      "id": "bach-flowers-v1",
+      "name": "Bach Flowers",
+      "version": "1",
+      "count": 38,
+      "categories": [
+        "bach-flowers"
+      ],
+      "manifestUrl": "packs/bach-flowers-v1/manifest.json",
+      "searchIndexUrl": "packs/bach-flowers-v1/search.json"
+    },
+    {
+      "id": "astrological-v1",
+      "name": "Astrological",
+      "version": "1",
+      "count": 11,
+      "categories": [
+        "astrological"
+      ],
+      "manifestUrl": "packs/astrological-v1/manifest.json",
+      "searchIndexUrl": "packs/astrological-v1/search.json"
+    },
+    {
+      "id": "chakras-v1",
+      "name": "Chakras",
+      "version": "1",
+      "count": 17,
+      "categories": [
+        "chakras"
+      ],
+      "manifestUrl": "packs/chakras-v1/manifest.json",
+      "searchIndexUrl": "packs/chakras-v1/search.json"
+    },
+    {
+      "id": "gems-v1",
+      "name": "Gems",
+      "version": "1",
+      "count": 16,
+      "categories": [
+        "gems"
+      ],
+      "manifestUrl": "packs/gems-v1/manifest.json",
+      "searchIndexUrl": "packs/gems-v1/search.json"
+    },
+    {
+      "id": "homeopathic-v1",
+      "name": "Homeopathic",
+      "version": "1",
+      "count": 36,
+      "categories": [
+        "homeopathic"
+      ],
+      "manifestUrl": "packs/homeopathic-v1/manifest.json",
+      "searchIndexUrl": "packs/homeopathic-v1/search.json"
+    },
+    {
+      "id": "other-v1",
+      "name": "Other",
+      "version": "1",
+      "count": 5,
+      "categories": [
+        "other"
+      ],
+      "manifestUrl": "packs/other-v1/manifest.json",
+      "searchIndexUrl": "packs/other-v1/search.json"
+    }
+  ]
+}

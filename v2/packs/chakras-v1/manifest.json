@@ -1,0 +1,335 @@
+{
+  "id": "chakras-v1",
+  "name": "Chakras",
+  "version": "1",
+  "taxonomy": [
+    {
+      "id": "chakras",
+      "label": "Chakras"
+    }
+  ],
+  "remedies": [
+    {
+      "id": "ajna-brow-chakra-sulis",
+      "name": "Ajna (Brow) Chakra (SULIS)",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        8,
+        7,
+        1,
+        6,
+        5,
+        3
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Sulis Rates",
+      "image": {
+        "light": "img/ajna-brow-chakra-sulis.webp",
+        "dark": "img/ajna-brow-chakra-sulis.dark.webp"
+      }
+    },
+    {
+      "id": "ajna-chakra",
+      "name": "Ajna Chakra",
+      "category": "chakras",
+      "base": 44,
+      "sequence": [
+        5,
+        25,
+        33,
+        44
+      ],
+      "subheading": "Chakra",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/ajna-chakra.webp",
+        "dark": "img/ajna-chakra.dark.webp"
+      }
+    },
+    {
+      "id": "ajna-chakra-astral-body",
+      "name": "Ajna Chakra Astral Body",
+      "category": "chakras",
+      "base": 44,
+      "sequence": [
+        2,
+        4,
+        5,
+        8,
+        10
+      ],
+      "subheading": "Chakra",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/ajna-chakra-astral-body.webp",
+        "dark": "img/ajna-chakra-astral-body.dark.webp"
+      }
+    },
+    {
+      "id": "altar-major-chakra-sulis",
+      "name": "Altar Major Chakra (SULIS)",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        2,
+        2,
+        6,
+        1,
+        8,
+        8
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Sulis Rates",
+      "image": {
+        "light": "img/altar-major-chakra-sulis.webp",
+        "dark": "img/altar-major-chakra-sulis.dark.webp"
+      }
+    },
+    {
+      "id": "base-chakra",
+      "name": "Base Chakra",
+      "category": "chakras",
+      "base": 44,
+      "sequence": [
+        6,
+        32,
+        33,
+        44
+      ],
+      "subheading": "Chakra",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/base-chakra.webp",
+        "dark": "img/base-chakra.dark.webp"
+      }
+    },
+    {
+      "id": "base-of-spine-chakra-sulis",
+      "name": "Base Of Spine Chakra (SULIS)",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        4,
+        2,
+        1,
+        6,
+        5
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Sulis Rates",
+      "image": {
+        "light": "img/base-of-spine-chakra-sulis.webp",
+        "dark": "img/base-of-spine-chakra-sulis.dark.webp"
+      }
+    },
+    {
+      "id": "crown-chakra",
+      "name": "Crown Chakra",
+      "category": "chakras",
+      "base": 44,
+      "sequence": [
+        6,
+        22,
+        33,
+        44
+      ],
+      "subheading": "Chakra",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/crown-chakra.webp",
+        "dark": "img/crown-chakra.dark.webp"
+      }
+    },
+    {
+      "id": "crown-chakra-sulis",
+      "name": "Crown Chakra (SULIS)",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        5,
+        5,
+        2,
+        3,
+        8,
+        9
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Sulis Rates",
+      "image": {
+        "light": "img/crown-chakra-sulis.webp",
+        "dark": "img/crown-chakra-sulis.dark.webp"
+      }
+    },
+    {
+      "id": "heart-chakra",
+      "name": "Heart Chakra",
+      "category": "chakras",
+      "base": 44,
+      "sequence": [
+        5,
+        29,
+        33,
+        44
+      ],
+      "subheading": "Chakra",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/heart-chakra.webp",
+        "dark": "img/heart-chakra.dark.webp"
+      }
+    },
+    {
+      "id": "heart-chakra-sulis",
+      "name": "Heart Chakra (SULIS)",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        6,
+        9,
+        9,
+        2,
+        3,
+        5
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Sulis Rates",
+      "image": {
+        "light": "img/heart-chakra-sulis.webp",
+        "dark": "img/heart-chakra-sulis.dark.webp"
+      }
+    },
+    {
+      "id": "sacral-chakra",
+      "name": "Sacral Chakra",
+      "category": "chakras",
+      "base": 44,
+      "sequence": [
+        6,
+        31,
+        33,
+        44
+      ],
+      "subheading": "Chakra",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/sacral-chakra.webp",
+        "dark": "img/sacral-chakra.dark.webp"
+      }
+    },
+    {
+      "id": "sacral-chakra-sulis",
+      "name": "Sacral Chakra (SULIS)",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        4,
+        7,
+        1,
+        1,
+        3,
+        1
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Sulis Rates",
+      "image": {
+        "light": "img/sacral-chakra-sulis.webp",
+        "dark": "img/sacral-chakra-sulis.dark.webp"
+      }
+    },
+    {
+      "id": "solar-plexus-chakra",
+      "name": "Solar Plexus Chakra",
+      "category": "chakras",
+      "base": 44,
+      "sequence": [
+        6,
+        31,
+        33,
+        44
+      ],
+      "subheading": "Chakra",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/solar-plexus-chakra.webp",
+        "dark": "img/solar-plexus-chakra.dark.webp"
+      }
+    },
+    {
+      "id": "solar-plexus-chakra-sulis",
+      "name": "Solar Plexus Chakra (SULIS)",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        9,
+        1,
+        6,
+        6,
+        5
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Sulis Rates",
+      "image": {
+        "light": "img/solar-plexus-chakra-sulis.webp",
+        "dark": "img/solar-plexus-chakra-sulis.dark.webp"
+      }
+    },
+    {
+      "id": "spleen-chakra-sulis",
+      "name": "Spleen Chakra (SULIS)",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        2,
+        3,
+        7,
+        4,
+        2,
+        2
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Sulis Rates",
+      "image": {
+        "light": "img/spleen-chakra-sulis.webp",
+        "dark": "img/spleen-chakra-sulis.dark.webp"
+      }
+    },
+    {
+      "id": "throat-chakra",
+      "name": "Throat Chakra",
+      "category": "chakras",
+      "base": 44,
+      "sequence": [
+        6,
+        28,
+        33,
+        44
+      ],
+      "subheading": "Chakra",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/throat-chakra.webp",
+        "dark": "img/throat-chakra.dark.webp"
+      }
+    },
+    {
+      "id": "throat-chakra-sulis",
+      "name": "Throat Chakra (SULIS)",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        4,
+        6,
+        5,
+        5,
+        2
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Sulis Rates",
+      "image": {
+        "light": "img/throat-chakra-sulis.webp",
+        "dark": "img/throat-chakra-sulis.dark.webp"
+      }
+    }
+  ]
+}

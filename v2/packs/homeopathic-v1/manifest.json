@@ -1,0 +1,668 @@
+{
+  "id": "homeopathic-v1",
+  "name": "Homeopathic",
+  "version": "1",
+  "taxonomy": [
+    {
+      "id": "homeopathic",
+      "label": "Homeopathic"
+    }
+  ],
+  "remedies": [
+    {
+      "id": "aconitum-napellus",
+      "name": "Aconitum Napellus",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        5,
+        10,
+        21
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/aconitum-napellus.webp",
+        "dark": "img/aconitum-napellus.dark.webp"
+      }
+    },
+    {
+      "id": "anacardium-occidentale",
+      "name": "Anacardium Occidentale",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        14,
+        23,
+        30
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/anacardium-occidentale.webp",
+        "dark": "img/anacardium-occidentale.dark.webp"
+      }
+    },
+    {
+      "id": "antimonium-crudum",
+      "name": "Antimonium Crudum",
+      "category": "homeopathic",
+      "base": 9,
+      "sequence": [
+        2,
+        6,
+        7,
+        8,
+        5
+      ],
+      "subheading": "Homeopathy",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "image": {
+        "light": "img/antimonium-crudum.webp",
+        "dark": "img/antimonium-crudum.dark.webp"
+      }
+    },
+    {
+      "id": "apis-mellifica",
+      "name": "Apis Mellifica",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        4,
+        11,
+        35,
+        40
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/apis-mellifica.webp",
+        "dark": "img/apis-mellifica.dark.webp"
+      }
+    },
+    {
+      "id": "arsen-iod",
+      "name": "Arsen Iod",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        6,
+        22,
+        28,
+        35,
+        38
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/arsen-iod.webp",
+        "dark": "img/arsen-iod.dark.webp"
+      }
+    },
+    {
+      "id": "arsenicum-album",
+      "name": "Arsenicum Album",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        1,
+        16,
+        22,
+        28,
+        38
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/arsenicum-album.webp",
+        "dark": "img/arsenicum-album.dark.webp"
+      }
+    },
+    {
+      "id": "arsenicum-sulphuratum-flavum",
+      "name": "Arsenicum Sulphuratum Flavum",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        10,
+        17,
+        23,
+        30,
+        40
+      ],
+      "subheading": "SULPHURATUM F LAVUM",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/arsenicum-sulphuratum-flavum.webp",
+        "dark": "img/arsenicum-sulphuratum-flavum.dark.webp"
+      }
+    },
+    {
+      "id": "bacillinum",
+      "name": "Bacillinum",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        6,
+        15,
+        23,
+        32,
+        39
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/bacillinum.webp",
+        "dark": "img/bacillinum.dark.webp"
+      }
+    },
+    {
+      "id": "belladonna-flower",
+      "name": "Belladonna (Flower)",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        5,
+        18,
+        28,
+        38
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/belladonna-flower.webp",
+        "dark": "img/belladonna-flower.dark.webp"
+      }
+    },
+    {
+      "id": "carcinosinum",
+      "name": "Carcinosinum",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        6,
+        17,
+        23,
+        34,
+        40
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/carcinosinum.webp",
+        "dark": "img/carcinosinum.dark.webp"
+      }
+    },
+    {
+      "id": "causticum",
+      "name": "Causticum",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        1,
+        19,
+        25,
+        37
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/causticum.webp",
+        "dark": "img/causticum.dark.webp"
+      }
+    },
+    {
+      "id": "cina",
+      "name": "Cina",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        7,
+        19,
+        28
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/cina.webp",
+        "dark": "img/cina.dark.webp"
+      }
+    },
+    {
+      "id": "crotalus-horridus",
+      "name": "Crotalus Horridus",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        2,
+        10,
+        21,
+        35,
+        41
+      ],
+      "subheading": "HORRIDUSName",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/crotalus-horridus.webp",
+        "dark": "img/crotalus-horridus.dark.webp"
+      }
+    },
+    {
+      "id": "graphites",
+      "name": "Graphites",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [],
+      "subheading": "Homeopathic",
+      "rateType": "TT",
+      "image": {
+        "light": "img/graphites.webp",
+        "dark": "img/graphites.dark.webp"
+      }
+    },
+    {
+      "id": "hyoscyamus-niger",
+      "name": "Hyoscyamus Niger",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        6,
+        21,
+        29,
+        38
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/hyoscyamus-niger.webp",
+        "dark": "img/hyoscyamus-niger.dark.webp"
+      }
+    },
+    {
+      "id": "ignatia-amara",
+      "name": "Ignatia Amara",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        13,
+        23,
+        33,
+        36
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/ignatia-amara.webp",
+        "dark": "img/ignatia-amara.dark.webp"
+      }
+    },
+    {
+      "id": "iodum",
+      "name": "Iodum",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        1,
+        21,
+        31,
+        39
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/iodum.webp",
+        "dark": "img/iodum.dark.webp"
+      }
+    },
+    {
+      "id": "kalium-sulphuricum",
+      "name": "Kalium Sulphuricum",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        5,
+        13,
+        33,
+        37,
+        43
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/kalium-sulphuricum.webp",
+        "dark": "img/kalium-sulphuricum.dark.webp"
+      }
+    },
+    {
+      "id": "lachesis",
+      "name": "Lachesis",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        13,
+        20,
+        32,
+        30
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/lachesis.webp",
+        "dark": "img/lachesis.dark.webp"
+      }
+    },
+    {
+      "id": "lycopodium-clavatum",
+      "name": "Lycopodium Clavatum",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        3,
+        14,
+        32,
+        38,
+        41
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/lycopodium-clavatum.webp",
+        "dark": "img/lycopodium-clavatum.dark.webp"
+      }
+    },
+    {
+      "id": "medorrhinum",
+      "name": "Medorrhinum",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        6,
+        11,
+        21,
+        34,
+        42
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/medorrhinum.webp",
+        "dark": "img/medorrhinum.dark.webp"
+      }
+    },
+    {
+      "id": "mercurius-solubilis",
+      "name": "Mercurius Solubilis",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        10,
+        13,
+        22,
+        28,
+        42
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/mercurius-solubilis.webp",
+        "dark": "img/mercurius-solubilis.dark.webp"
+      }
+    },
+    {
+      "id": "natmur-natrum-muriaticum",
+      "name": "Natmur Natrum Muriaticum",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        8,
+        20,
+        33
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/natmur-natrum-muriaticum.webp",
+        "dark": "img/natmur-natrum-muriaticum.dark.webp"
+      }
+    },
+    {
+      "id": "nux-vomica",
+      "name": "Nux Vomica",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        8,
+        15,
+        31
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/nux-vomica.webp",
+        "dark": "img/nux-vomica.dark.webp"
+      }
+    },
+    {
+      "id": "phosphorus",
+      "name": "Phosphorus",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        1,
+        15,
+        27,
+        41
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/phosphorus.webp",
+        "dark": "img/phosphorus.dark.webp"
+      }
+    },
+    {
+      "id": "psorinum",
+      "name": "Psorinum",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        14,
+        20,
+        33,
+        44
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/psorinum.webp",
+        "dark": "img/psorinum.dark.webp"
+      }
+    },
+    {
+      "id": "sepia",
+      "name": "Sepia",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        9,
+        11,
+        25,
+        33,
+        41
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/sepia.webp",
+        "dark": "img/sepia.dark.webp"
+      }
+    },
+    {
+      "id": "spigelia-anthelmintica",
+      "name": "Spigelia Anthelmintica",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        4,
+        15,
+        24,
+        35,
+        44
+      ],
+      "subheading": "ANTHELMINTICA",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/spigelia-anthelmintica.webp",
+        "dark": "img/spigelia-anthelmintica.dark.webp"
+      }
+    },
+    {
+      "id": "spongia-tosta",
+      "name": "Spongia Tosta",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        9,
+        12,
+        19,
+        29,
+        41
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/spongia-tosta.webp",
+        "dark": "img/spongia-tosta.dark.webp"
+      }
+    },
+    {
+      "id": "staphisagria",
+      "name": "Staphisagria",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        12,
+        18,
+        28,
+        40
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/staphisagria.webp",
+        "dark": "img/staphisagria.dark.webp"
+      }
+    },
+    {
+      "id": "stramonium",
+      "name": "Stramonium",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        4,
+        15,
+        22,
+        32,
+        20
+      ],
+      "subheading": "Plant - Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/stramonium.webp",
+        "dark": "img/stramonium.dark.webp"
+      }
+    },
+    {
+      "id": "sulphur",
+      "name": "Sulphur",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        9,
+        20,
+        23,
+        33
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/sulphur.webp",
+        "dark": "img/sulphur.dark.webp"
+      }
+    },
+    {
+      "id": "syphilinum",
+      "name": "Syphilinum",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        12,
+        24,
+        32,
+        34,
+        41
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/syphilinum.webp",
+        "dark": "img/syphilinum.dark.webp"
+      }
+    },
+    {
+      "id": "thuja-thuya-occidentalis",
+      "name": "Thuja (Thuya Occidentalis)",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        9,
+        18,
+        28,
+        34,
+        42
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/thuja-thuya-occidentalis.webp",
+        "dark": "img/thuja-thuya-occidentalis.dark.webp"
+      }
+    },
+    {
+      "id": "tuberculinum",
+      "name": "Tuberculinum",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        9,
+        22,
+        35,
+        40
+      ],
+      "subheading": "Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/tuberculinum.webp",
+        "dark": "img/tuberculinum.dark.webp"
+      }
+    },
+    {
+      "id": "veratrum-album",
+      "name": "Veratrum Album",
+      "category": "homeopathic",
+      "base": 44,
+      "sequence": [
+        9,
+        19,
+        31,
+        34
+      ],
+      "subheading": "Plant - Homeopathic",
+      "rateType": "Base 44 Rate (Combe)",
+      "image": {
+        "light": "img/veratrum-album.webp",
+        "dark": "img/veratrum-album.dark.webp"
+      }
+    }
+  ]
+}
