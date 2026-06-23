@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { FilePlus2 } from 'lucide-react';
+import { Copy, FilePlus2 } from 'lucide-react';
 import { useRepositories } from '@/data/repository-context';
 import { useSequencerStore } from '@/store/sequencerStore';
 
@@ -46,6 +46,14 @@ export function PrescriptionPicker() {
     refresh();
   };
 
+  const onDuplicate = async () => {
+    await saveCurrent();
+    const copy = await sequences.duplicate(currentId);
+    useSequencerStore.getState().loadSequence(copy);
+    await settings.set('lastSequenceId', copy.id);
+    refresh();
+  };
+
   return (
     <div className="flex items-center gap-1.5">
       <select
@@ -61,6 +69,15 @@ export function PrescriptionPicker() {
           </option>
         ))}
       </select>
+      <button
+        type="button"
+        onClick={() => void onDuplicate()}
+        title="Duplicate this prescription"
+        aria-label="Duplicate prescription"
+        className="flex shrink-0 items-center rounded-md border border-slate-300 p-1.5 hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-900"
+      >
+        <Copy className="h-3.5 w-3.5" />
+      </button>
       <button
         type="button"
         onClick={() => void onNew()}
