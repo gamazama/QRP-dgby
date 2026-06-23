@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 
 // Crossfade between cards: the incoming card sits in normal flow (sizing the
 // container) and fades in over a frozen snapshot of the outgoing card, which
@@ -22,7 +22,11 @@ export function CardCrossfade({
   const childrenRef = useRef(children);
   childrenRef.current = children;
 
-  useEffect(() => {
+  // Layout effect (not effect) so the outgoing snapshot is committed BEFORE the
+  // browser paints the new card — otherwise the incoming paints at full opacity
+  // for one frame and the fade restarts it from 0, which reads as a flicker
+  // (most visible on transition cards).
+  useLayoutEffect(() => {
     const k = String(cardKey);
     if (k === prev.current.key) {
       prev.current = { key: k, node: childrenRef.current };
@@ -54,8 +58,8 @@ export function CardCrossfade({
       )}
       <div
         key={String(cardKey)}
-        className={`absolute inset-0 flex items-center justify-center ${outgoing ? 'qrp-fade-in' : ''}`}
-        style={outgoing ? { animationDuration: `${durationMs}ms` } : undefined}
+        className={`absolute inset-0 flex items-center justify-center ${durationMs > 0 ? 'qrp-fade-in' : ''}`}
+        style={durationMs > 0 ? { animationDuration: `${durationMs}ms` } : undefined}
       >
         {children}
       </div>
