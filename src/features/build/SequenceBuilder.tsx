@@ -143,6 +143,14 @@ function CardHeaderEditor({ card }: { card: Card }) {
         aria-label="Card description"
         className="w-full rounded border border-slate-300 bg-white px-2 py-1 text-xs dark:border-slate-700 dark:bg-slate-900"
       />
+      <textarea
+        value={card.notes ?? ''}
+        onChange={(e) => update(card.id, { notes: e.target.value })}
+        placeholder="Notes (not shown on the card)"
+        aria-label="Card notes"
+        rows={2}
+        className="w-full resize-y rounded border border-slate-300 bg-white px-2 py-1 text-xs dark:border-slate-700 dark:bg-slate-900"
+      />
     </div>
   );
 }

@@ -23,8 +23,6 @@ export type CardContent =
 
 export interface CardCenterImage {
   src: string;
-  /** Circle radius scale relative to the inner ring (default ~0.78). */
-  scale?: number;
   circle?: boolean;
   invert?: boolean;
 }
@@ -46,4 +44,6 @@ export interface Card {
    * instead — see `cardDurationMs`.
    */
   durationMs?: number;
+  /** Practitioner's free-text note on this card (not shown on the card itself). */
+  notes?: string;
 }

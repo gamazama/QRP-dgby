@@ -35,6 +35,8 @@ export interface StyleConfig {
   lobeOpacity: number;
   centerOpacity: number;
   geometryRotation: number;
+  /** Size of a card's circular photo centre, as a fraction of the inner ring. */
+  centerImageScale?: number;
 
   // Dharma-specific
   dharmaExtrusionOut: number;

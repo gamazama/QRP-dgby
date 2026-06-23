@@ -5,6 +5,9 @@ import type { StyleConfig } from '@/domain/style';
 // (minus `sequenceLength`, which is now per-card content). These MUST stay
 // value-identical so existing looks render pixel-faithful.
 
+/** Default size of a card's circular photo centre (fraction of the inner ring). */
+export const CENTER_IMAGE_SCALE_DEFAULT = 0.6;
+
 export const SUNFLOWER_STYLE: StyleConfig = {
   showFrame: true,
   showInfoLabels: true,
@@ -31,6 +34,7 @@ export const SUNFLOWER_STYLE: StyleConfig = {
   lobeOpacity: 0.35,
   centerOpacity: 0.1,
   geometryRotation: 0,
+  centerImageScale: CENTER_IMAGE_SCALE_DEFAULT,
   dharmaExtrusionOut: 0.296,
   dharmaExtrusionSide: 0.62,
   dharmaStemWidth: 0.39,
@@ -72,6 +76,7 @@ export const LOTUS_STYLE: StyleConfig = {
   lobeOpacity: 0.6,
   centerOpacity: 0.1,
   geometryRotation: 0,
+  centerImageScale: CENTER_IMAGE_SCALE_DEFAULT,
   dharmaExtrusionOut: 0.7,
   dharmaExtrusionSide: 1,
   dharmaStemWidth: 0.152,
@@ -113,6 +118,7 @@ export const DHARMA_STYLE: StyleConfig = {
   lobeOpacity: 0.65,
   centerOpacity: 0.15,
   geometryRotation: 0,
+  centerImageScale: CENTER_IMAGE_SCALE_DEFAULT,
   dharmaExtrusionOut: 0.231,
   dharmaExtrusionSide: 0.45,
   dharmaStemWidth: 0.39,

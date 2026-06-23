@@ -32,6 +32,7 @@ export const StyleConfigSchema = z.object({
   lobeOpacity: z.number(),
   centerOpacity: z.number(),
   geometryRotation: z.number(),
+  centerImageScale: z.number().optional(),
   dharmaExtrusionOut: z.number(),
   dharmaExtrusionSide: z.number(),
   dharmaStemWidth: z.number(),
@@ -111,12 +112,12 @@ export const CardSchema = z.object({
   centerImage: z
     .object({
       src: z.string(),
-      scale: z.number().optional(),
       circle: z.boolean().optional(),
       invert: z.boolean().optional(),
     })
     .optional(),
   durationMs: z.number().optional(),
+  notes: z.string().optional(),
 });
 
 export const SequenceSchema = z.object({

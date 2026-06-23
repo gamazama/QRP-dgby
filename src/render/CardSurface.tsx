@@ -3,6 +3,7 @@ import type { StyleConfig } from '@/domain/style';
 import type { CardCenterImage } from '@/domain/card';
 import { buildCardGeometryCached } from '@/engine/cache';
 import { CX, CY } from '@/engine/frame';
+import { CENTER_IMAGE_SCALE_DEFAULT } from '@/engine/presets';
 import { CELTIC_PATHS, TRISKELION_PATH } from '@/engine/shapes';
 import { resolveCardImage } from '@/lib/assets';
 import type { RenderTier } from '@/engine/constants';
@@ -194,7 +195,7 @@ function CardSurfaceImpl({
                 exactly — no zoom-and-recentre that would magnify the offset. */}
             {centerImage
               ? (() => {
-                  const r = geo.rRingInner * (centerImage.scale ?? 0.78);
+                  const r = geo.rRingInner * (style.centerImageScale ?? CENTER_IMAGE_SCALE_DEFAULT);
                   const circle = centerImage.circle !== false;
                   // Source photo: centre at (PCX, PCY), radius PR (of width); source ~PWH wide:tall.
                   const PCX = 0.505;

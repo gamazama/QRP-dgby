@@ -100,6 +100,7 @@ export const STYLE_SCHEMA: StyleFieldGroup[] = [
     fields: [
       { kind: 'select', key: 'centerDesign', label: 'Center', options: ['seeds', 'celtic', 'triskelion'] },
       slider('centerOpacity', 'Center opacity', 0, 1, 0.01),
+      slider('centerImageScale', 'Photo size', 0.2, 1, 0.01),
     ],
   },
   {
