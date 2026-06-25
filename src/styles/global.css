@@ -11,6 +11,10 @@
   /* Spin animations ported from the prototype (counter-clockwise full turns). */
   --animate-spin-reverse: spin-reverse 24s linear infinite;
   --animate-spin-reverse-slow: spin-reverse 48s linear infinite;
+
+  /* Clockwise counterparts (opt-in via the style's "Spin clockwise" toggle). */
+  --animate-spin-cw: qrp-spin 24s linear infinite;
+  --animate-spin-cw-slow: qrp-spin 48s linear infinite;
 }
 
 @keyframes spin-reverse {

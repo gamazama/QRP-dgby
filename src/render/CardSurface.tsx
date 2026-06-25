@@ -64,13 +64,15 @@ function CardSurfaceImpl({
   const clipId = useId();
 
   const f = geo.frame;
-  const seedsClass = spin ? 'animate-spin-reverse' : undefined;
-  const centerClass = spin ? 'animate-spin-reverse-slow' : undefined;
+  const cw = style.seedSpinClockwise ?? false;
+  const seedsClass = spin ? (cw ? 'animate-spin-cw' : 'animate-spin-reverse') : undefined;
+  const centerClass = spin ? (cw ? 'animate-spin-cw-slow' : 'animate-spin-reverse-slow') : undefined;
   const spinStyle: CSSProperties | undefined = spin
     ? { animationPlayState: active ? 'running' : 'paused', willChange: 'transform' }
     : undefined;
-  const seedsTransform = !spin && rotation ? `rotate(${rotation})` : undefined;
-  const centerTransform = !spin && rotation ? `rotate(${rotation * 0.5})` : undefined;
+  const dir = cw ? -1 : 1;
+  const seedsTransform = !spin && rotation ? `rotate(${rotation * dir})` : undefined;
+  const centerTransform = !spin && rotation ? `rotate(${rotation * 0.5 * dir})` : undefined;
 
   const wrapperStyle: CSSProperties =
     fill === 'height'

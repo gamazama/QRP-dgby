@@ -32,6 +32,7 @@ export const StyleConfigSchema = z.object({
   lobeOpacity: z.number(),
   centerOpacity: z.number(),
   geometryRotation: z.number(),
+  seedSpinClockwise: z.boolean().optional(),
   centerImageScale: z.number().optional(),
   dharmaExtrusionOut: z.number(),
   dharmaExtrusionSide: z.number(),

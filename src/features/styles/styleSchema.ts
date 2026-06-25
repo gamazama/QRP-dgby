@@ -90,6 +90,7 @@ export const STYLE_SCHEMA: StyleFieldGroup[] = [
       slider('petals', 'Seed count', 0, 300, 1, seedsLobe),
       slider('petalSize', 'Seed size', 0.1, 5, 0.01, seedsLobe),
       slider('petalRoundness', 'Seed roundness', 0, 1, 0.01, seedsLobe),
+      toggle('seedSpinClockwise', 'Spin clockwise', seedsLobe),
       slider('designScale', 'Design scale', 0.1, 2, 0.01, motifLobe),
       slider('designOffset', 'Design offset', -100, 100, 0.1, motifLobe),
       slider('lobeOpacity', 'Lobe opacity', 0, 1, 0.01),

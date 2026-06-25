@@ -1,10 +1,12 @@
-import type { VideoCodec, VideoEncodingConfig } from 'mediabunny';
+import type { AudioBufferSource, VideoCodec, VideoEncodingConfig } from 'mediabunny';
 import type { Card } from '@/domain/card';
 import type { Sequence } from '@/domain/sequence';
 import type { Style, StyleConfig } from '@/domain/style';
 import type { StyleId } from '@/domain/ids';
 import { DEFAULT_STYLE_CONFIG } from '@/engine/presets';
 import { cardDurationMs } from '@/domain/timing';
+import { buildTonePlan } from '@/audio/toneMath';
+import { renderSequenceTone, type ToneSegment } from '@/audio/renderSequenceTone';
 import { loadCardRaster, type CardRaster } from './cardRaster';
 
 export interface VideoExportOptions {
@@ -12,6 +14,8 @@ export interface VideoExportOptions {
   size?: number;
   /** How many times to repeat the whole sequence (>=1). */
   loops?: number;
+  /** Bake the base-9 sequence tone into the MP4's audio track. */
+  includeTone?: boolean;
   onProgress?: (fraction: number, message: string) => void;
   signal?: AbortSignal;
 }
@@ -19,6 +23,12 @@ export interface VideoExportOptions {
 const resolve = (card: Card, stylesById: Map<StyleId, Style>): StyleConfig => {
   const base = stylesById.get(card.styleId)?.config ?? DEFAULT_STYLE_CONFIG;
   return card.overrides ? { ...base, ...card.overrides } : base;
+};
+
+// The card's base-9 tone for the audio track, or null (drone holds, no notes).
+const tonePlanFor = (card: Card): ToneSegment['plan'] => {
+  const c = card.content;
+  return (c.kind === 'remedy' || c.kind === 'data') && c.base === 9 ? buildTonePlan(c.sequence) : null;
 };
 
 // Render a prescription to an MP4. mediabunny/WebCodecs is dynamically imported so
@@ -51,8 +61,32 @@ export async function exportSequenceVideo(
   });
   const total = framesPer.reduce((a, b) => a + b, 0);
 
-  const { Output, Mp4OutputFormat, BufferTarget, CanvasSource, getFirstEncodableVideoCodec, QUALITY_HIGH } =
-    await import('mediabunny');
+  // Render the tone offline (frame-aligned to the card timeline) before the heavy
+  // video loop, so A/V line up. Failure or no-tonal-cards just yields a silent video.
+  let audioBuffer: AudioBuffer | null = null;
+  if (opts.includeTone) {
+    opts.onProgress?.(0, 'Rendering tone…');
+    const segments: ToneSegment[] = cards.map((c, i) => ({
+      plan: tonePlanFor(c),
+      durationSec: framesPer[i]! / fps,
+    }));
+    try {
+      audioBuffer = await renderSequenceTone(segments);
+    } catch (err) {
+      console.error('Tone render failed; exporting silent video', err);
+    }
+  }
+
+  const {
+    Output,
+    Mp4OutputFormat,
+    BufferTarget,
+    CanvasSource,
+    AudioBufferSource: AudioBufferSourceCtor,
+    getFirstEncodableVideoCodec,
+    getFirstEncodableAudioCodec,
+    QUALITY_HIGH,
+  } = await import('mediabunny');
 
   const codecOrder = ['avc', 'hevc', 'vp9', 'av1', 'vp8'] as VideoCodec[];
   const codec = await getFirstEncodableVideoCodec(codecOrder, { width: size, height: size, bitrate: QUALITY_HIGH });
@@ -75,6 +109,23 @@ export async function exportSequenceVideo(
   };
   const source = new CanvasSource(canvas, config);
   output.addVideoTrack(source, { frameRate: fps, name: 'QRP Sequence' });
+
+  // Audio track (tracks must be added before output.start()). If no codec is
+  // encodable we just skip it and export a silent video.
+  let audioSource: AudioBufferSource | null = null;
+  if (audioBuffer) {
+    const audioCodec = await getFirstEncodableAudioCodec(['aac', 'opus'], {
+      numberOfChannels: audioBuffer.numberOfChannels,
+      sampleRate: audioBuffer.sampleRate,
+    });
+    if (audioCodec) {
+      audioSource = new AudioBufferSourceCtor({ codec: audioCodec, bitrate: 192_000 });
+      output.addAudioTrack(audioSource, { name: 'QRP Tone' });
+    } else {
+      console.warn('No encodable audio codec; exporting silent video');
+    }
+  }
+
   await output.start();
 
   const drawFit = (r: CardRaster, alpha: number) => {
@@ -97,7 +148,8 @@ export async function exportSequenceVideo(
           await output.cancel();
           throw new Error('Export cancelled');
         }
-        const rotation = -(elapsed / 24) * 360; // 24s per full turn, anti-clockwise
+        // 24s per full turn; anti-clockwise by default, clockwise when the style opts in.
+        const rotation = (style.seedSpinClockwise ? 1 : -1) * (elapsed / 24) * 360;
         const cur = await loadCardRaster(card, style, { theme, rotation, size });
 
         ctx.fillStyle = paper;
@@ -119,6 +171,11 @@ export async function exportSequenceVideo(
       }
     }
     source.close();
+    if (audioSource && audioBuffer) {
+      opts.onProgress?.(1, 'Encoding audio…');
+      await audioSource.add(audioBuffer);
+      audioSource.close();
+    }
     await output.finalize();
   } catch (err) {
     throw err instanceof Error ? err : new Error('Video export failed');
