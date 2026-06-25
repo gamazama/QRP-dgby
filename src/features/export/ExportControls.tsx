@@ -41,10 +41,14 @@ export function ExportControls({
   const [theme, setTheme] = useState<'light' | 'dark'>(currentTheme);
   const [size, setSize] = useState<number>(1000);
   const [loops, setLoops] = useState(1);
+  const [includeTone, setIncludeTone] = useState(true);
   const toast = useToast();
 
   const exporting = progress !== null;
   const hasCards = sequence.cards.length > 0;
+  const hasTonalCard = sequence.cards.some(
+    (c) => (c.content.kind === 'remedy' || c.content.kind === 'data') && c.content.base === 9,
+  );
 
   // Sync theme default to current app theme each time the dialog opens.
   useEffect(() => {
@@ -80,6 +84,7 @@ export function ExportControls({
         theme,
         size,
         loops,
+        includeTone: includeTone && hasTonalCard,
         onProgress: setProgress,
       });
       downloadBlob(blob, `${sequence.name || 'prescription'}.mp4`);
@@ -194,6 +199,30 @@ export function ExportControls({
                 />
                 <p className="mt-1.5 text-xs text-slate-400">
                   {sequence.cards.length} card{sequence.cards.length === 1 ? '' : 's'} · ≈ {fmtClock(totalMs)} · {totalFrames} frames
+                </p>
+              </div>
+
+              <div>
+                <label
+                  className={cn(
+                    'flex items-center gap-2 text-xs',
+                    !hasTonalCard && 'cursor-not-allowed opacity-50',
+                  )}
+                >
+                  <input
+                    type="checkbox"
+                    checked={includeTone && hasTonalCard}
+                    disabled={exporting || !hasTonalCard}
+                    onChange={(e) => setIncludeTone(e.target.checked)}
+                  />
+                  <span className="font-medium text-slate-600 dark:text-slate-300">
+                    Include sequence tone
+                  </span>
+                </label>
+                <p className="mt-1 text-xs text-slate-400">
+                  {hasTonalCard
+                    ? 'Bakes the base-9 cards’ meditative tone into the MP4 audio track.'
+                    : 'No base-9 cards in this prescription to sound.'}
                 </p>
               </div>
             </div>

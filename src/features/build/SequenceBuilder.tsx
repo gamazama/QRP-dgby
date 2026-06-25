@@ -25,6 +25,7 @@ import { resolveStyleConfig } from '@/features/styles/useStyles';
 import { exportSequenceJson, importSequenceJson } from './deckIO';
 import { SharePrescription } from './SharePrescription';
 import { PrescriptionPicker } from './PrescriptionPicker';
+import { SequenceTonePanel } from '@/audio/SequenceTonePanel';
 import { cn } from '@/lib/cn';
 
 const BASES: RateBase[] = [9, 10, 44];
@@ -224,6 +225,7 @@ function RateEditor({ card }: { card: Card }) {
           className={`w-full font-mono ${numInput} px-2 py-1`}
         />
       </label>
+      <SequenceTonePanel sequence={c.sequence} base={c.base} />
     </div>
   );
 }
