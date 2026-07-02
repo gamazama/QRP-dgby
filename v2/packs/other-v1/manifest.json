@@ -26,12 +26,13 @@
       "rateType": "Base 10 Rate",
       "image": {
         "light": "img/kidney-glomeruli.webp",
-        "dark": "img/kidney-glomeruli.dark.webp"
+        "dark": "img/kidney-glomeruli.dark.webp",
+        "invert": true
       }
     },
     {
       "id": "luke-grabovoi-maney",
-      "name": "Luke Grabovoi Maney",
+      "name": "Money Flow",
       "category": "other",
       "base": 9,
       "sequence": [
@@ -44,9 +45,11 @@
       ],
       "subheading": "Grabovoi",
       "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
       "image": {
         "light": "img/luke-grabovoi-maney.webp",
-        "dark": "img/luke-grabovoi-maney.dark.webp"
+        "dark": "img/luke-grabovoi-maney.dark.webp",
+        "invert": true
       }
     },
     {
@@ -64,9 +67,11 @@
       ],
       "subheading": "Body Organs",
       "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
       "image": {
         "light": "img/prostate-gland.webp",
-        "dark": "img/prostate-gland.dark.webp"
+        "dark": "img/prostate-gland.dark.webp",
+        "invert": true
       }
     },
     {
@@ -83,9 +88,11 @@
       ],
       "subheading": "Homeopathic",
       "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
       "image": {
         "light": "img/radium.webp",
-        "dark": "img/radium.dark.webp"
+        "dark": "img/radium.dark.webp",
+        "invert": true
       }
     },
     {
@@ -102,9 +109,11 @@
       ],
       "subheading": "Homeopathic",
       "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
       "image": {
         "light": "img/radium-brom.webp",
-        "dark": "img/radium-brom.dark.webp"
+        "dark": "img/radium-brom.dark.webp",
+        "invert": true
       }
     }
   ]

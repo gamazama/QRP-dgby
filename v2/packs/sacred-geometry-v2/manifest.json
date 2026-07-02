@@ -1,0 +1,39 @@
+{
+  "id": "sacred-geometry-v2",
+  "name": "Sacred Geometry (v2)",
+  "version": "1",
+  "taxonomy": [
+    {
+      "id": "sacred-geometry",
+      "label": "Sacred Geometry"
+    }
+  ],
+  "remedies": [
+    {
+      "id": "the-golden-spiral-fibonnaci-sequence",
+      "name": "The Golden Spiral & Fibonnaci Sequence",
+      "category": "sacred-geometry",
+      "base": 44,
+      "sequence": [
+        0,
+        1,
+        1,
+        2,
+        3,
+        5,
+        8,
+        13,
+        21,
+        34
+      ],
+      "subheading": "Sacred Geometry",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/the-golden-spiral-fibonnaci-sequence.webp",
+        "dark": "img/the-golden-spiral-fibonnaci-sequence.dark.webp",
+        "invert": true
+      }
+    }
+  ]
+}

@@ -24,7 +24,8 @@
       "rateType": "Base 10 Rate",
       "image": {
         "light": "img/amethyst.webp",
-        "dark": "img/amethyst.dark.webp"
+        "dark": "img/amethyst.dark.webp",
+        "invert": true
       }
     },
     {
@@ -42,7 +43,8 @@
       "rateType": "Base 10 Rate",
       "image": {
         "light": "img/aquamarine.webp",
-        "dark": "img/aquamarine.dark.webp"
+        "dark": "img/aquamarine.dark.webp",
+        "invert": true
       }
     },
     {
@@ -60,7 +62,8 @@
       "rateType": "Base 10 Rate",
       "image": {
         "light": "img/bloodstone.webp",
-        "dark": "img/bloodstone.dark.webp"
+        "dark": "img/bloodstone.dark.webp",
+        "invert": true
       }
     },
     {
@@ -107,9 +110,11 @@
       ],
       "subheading": "Gems",
       "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
       "image": {
         "light": "img/emerald.webp",
-        "dark": "img/emerald.dark.webp"
+        "dark": "img/emerald.dark.webp",
+        "invert": true
       }
     },
     {
@@ -127,7 +132,8 @@
       "rateType": "Base 10 Rate",
       "image": {
         "light": "img/haematite.webp",
-        "dark": "img/haematite.dark.webp"
+        "dark": "img/haematite.dark.webp",
+        "invert": true
       }
     },
     {
@@ -182,7 +188,8 @@
       "rateType": "Base 10 Rate",
       "image": {
         "light": "img/moonstone.webp",
-        "dark": "img/moonstone.dark.webp"
+        "dark": "img/moonstone.dark.webp",
+        "invert": true
       }
     },
     {
@@ -218,7 +225,8 @@
       "rateType": "Base 10 Rate",
       "image": {
         "light": "img/opal.webp",
-        "dark": "img/opal.dark.webp"
+        "dark": "img/opal.dark.webp",
+        "invert": true
       }
     },
     {
@@ -236,7 +244,8 @@
       "rateType": "Base 10 Rate",
       "image": {
         "light": "img/rose-quartz.webp",
-        "dark": "img/rose-quartz.dark.webp"
+        "dark": "img/rose-quartz.dark.webp",
+        "invert": true
       }
     },
     {
@@ -252,7 +261,8 @@
       "rateType": "Base 10 Rate",
       "image": {
         "light": "img/ruby.webp",
-        "dark": "img/ruby.dark.webp"
+        "dark": "img/ruby.dark.webp",
+        "invert": true
       }
     },
     {
@@ -270,7 +280,8 @@
       "rateType": "Base 10 Rate",
       "image": {
         "light": "img/sapphire.webp",
-        "dark": "img/sapphire.dark.webp"
+        "dark": "img/sapphire.dark.webp",
+        "invert": true
       }
     },
     {
@@ -288,7 +299,8 @@
       "rateType": "Base 10 Rate",
       "image": {
         "light": "img/turquoise.webp",
-        "dark": "img/turquoise.dark.webp"
+        "dark": "img/turquoise.dark.webp",
+        "invert": true
       }
     }
   ]

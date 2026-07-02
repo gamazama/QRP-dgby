@@ -1,0 +1,1530 @@
+{
+  "id": "chakras-v2",
+  "name": "Chakras (v2)",
+  "version": "1",
+  "taxonomy": [
+    {
+      "id": "chakras",
+      "label": "Chakras"
+    }
+  ],
+  "remedies": [
+    {
+      "id": "mental-base-chakra",
+      "name": "Mental Base Chakra",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        5,
+        8,
+        6,
+        9,
+        9,
+        1
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/mental-base-chakra.webp",
+        "dark": "img/mental-base-chakra.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "mental-sacral-chakra",
+      "name": "Mental Sacral Chakra",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        5,
+        9,
+        7,
+        8,
+        1,
+        3
+      ],
+      "subheading": "Subtle Body / Uplift",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/mental-sacral-chakra.webp",
+        "dark": "img/mental-sacral-chakra.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "mental-solar-plexus-chakra",
+      "name": "Mental Solar Plexus Chakra",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        5,
+        1,
+        3,
+        5,
+        7,
+        3
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/mental-solar-plexus-chakra.webp",
+        "dark": "img/mental-solar-plexus-chakra.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "heal-memories-karmic",
+      "name": "Heal Memories Karmic",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        3,
+        6,
+        7,
+        7,
+        9,
+        5
+      ],
+      "subheading": "SUBTLE BODY/CHAKRA",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/heal-memories-karmic.webp",
+        "dark": "img/heal-memories-karmic.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "heal-memories-post-birth",
+      "name": "Heal Memories Post Birth",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        4,
+        3,
+        6,
+        5,
+        8,
+        8
+      ],
+      "subheading": "SUBTLE BODY/CHAKRA",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/heal-memories-post-birth.webp",
+        "dark": "img/heal-memories-post-birth.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "heal-memories-pre-birth",
+      "name": "Heal Memories Pre Birth",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        3,
+        7,
+        9,
+        8,
+        9,
+        9
+      ],
+      "subheading": "SUBTLE BODY/CHAKRA",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/heal-memories-pre-birth.webp",
+        "dark": "img/heal-memories-pre-birth.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "ingrown-entities",
+      "name": "Ingrown Entities",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        4,
+        1,
+        3,
+        9,
+        8
+      ],
+      "subheading": "SUBTLE BODY/CHAKRA",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/ingrown-entities.webp",
+        "dark": "img/ingrown-entities.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "intense-white-light",
+      "name": "Intense White Light",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        5,
+        7,
+        9,
+        9,
+        3
+      ],
+      "subheading": "SUBTLE BODY/CHAKRA",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/intense-white-light.webp",
+        "dark": "img/intense-white-light.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "karmic-origin-disease",
+      "name": "Karmic Origin Disease",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        2,
+        3,
+        9,
+        2,
+        6,
+        4
+      ],
+      "subheading": "SUBTLE BODY/CHAKRA",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/karmic-origin-disease.webp",
+        "dark": "img/karmic-origin-disease.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "ajna-chakra",
+      "name": "Ajna Chakra",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        9,
+        2,
+        9,
+        4,
+        9,
+        6
+      ],
+      "subheading": "Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/ajna-chakra.webp",
+        "dark": "img/ajna-chakra.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "ajna-chakra-b9",
+      "name": "Ajna Chakra",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        9,
+        2,
+        9,
+        4,
+        9,
+        6
+      ],
+      "subheading": "Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/ajna-chakra-b9.webp",
+        "dark": "img/ajna-chakra-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "ajna-chakra-astral-body",
+      "name": "Ajna Chakra Astral Body",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        4,
+        5,
+        9,
+        7,
+        1,
+        8
+      ],
+      "subheading": "Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/ajna-chakra-astral-body.webp",
+        "dark": "img/ajna-chakra-astral-body.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "ajna-phys-etheric-body",
+      "name": "Ajna Phys. Etheric Body",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        3,
+        3,
+        7,
+        8,
+        9
+      ],
+      "subheading": "Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/ajna-phys-etheric-body.webp",
+        "dark": "img/ajna-phys-etheric-body.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "ajna-chakra-2",
+      "name": "Ajna Chakra",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        9,
+        2,
+        9,
+        4,
+        9,
+        6
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/ajna-chakra-2.webp",
+        "dark": "img/ajna-chakra-2.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "ajna-chakra-astral-body-b9",
+      "name": "Ajna Chakra Astral Body",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        4,
+        5,
+        9,
+        7,
+        1,
+        8
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/ajna-chakra-astral-body-b9.webp",
+        "dark": "img/ajna-chakra-astral-body-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "ajna-phys-etheric-body-b9",
+      "name": "Ajna Phys. Etheric Body",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        4,
+        6,
+        7,
+        1,
+        4,
+        4
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/ajna-phys-etheric-body-b9.webp",
+        "dark": "img/ajna-phys-etheric-body-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "ajna",
+      "name": "Ajna",
+      "category": "chakras",
+      "base": 44,
+      "sequence": [
+        5,
+        25,
+        33,
+        44,
+        44
+      ],
+      "subheading": "Chakra",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/ajna.webp",
+        "dark": "img/ajna.dark.webp",
+        "center": "img/ajna.center.webp"
+      }
+    },
+    {
+      "id": "ajna-chakra-astral-body-b44",
+      "name": "Ajna Chakra Astral Body",
+      "category": "chakras",
+      "base": 44,
+      "sequence": [
+        2,
+        4,
+        5,
+        8,
+        10
+      ],
+      "subheading": "Chakra",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/ajna-chakra-astral-body-b44.webp",
+        "dark": "img/ajna-chakra-astral-body-b44.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "base",
+      "name": "Base",
+      "category": "chakras",
+      "base": 44,
+      "sequence": [
+        6,
+        32,
+        33,
+        44,
+        44
+      ],
+      "subheading": "Chakra",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/base.webp",
+        "dark": "img/base.dark.webp",
+        "center": "img/base.center.webp"
+      }
+    },
+    {
+      "id": "crown",
+      "name": "Crown",
+      "category": "chakras",
+      "base": 44,
+      "sequence": [
+        6,
+        22,
+        33,
+        44,
+        44
+      ],
+      "subheading": "Chakra",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/crown.webp",
+        "dark": "img/crown.dark.webp",
+        "center": "img/crown.center.webp"
+      }
+    },
+    {
+      "id": "heart",
+      "name": "Heart",
+      "category": "chakras",
+      "base": 44,
+      "sequence": [
+        5,
+        29,
+        33,
+        44,
+        44
+      ],
+      "subheading": "Chakra",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/heart.webp",
+        "dark": "img/heart.dark.webp",
+        "center": "img/heart.center.webp"
+      }
+    },
+    {
+      "id": "sacral",
+      "name": "Sacral",
+      "category": "chakras",
+      "base": 44,
+      "sequence": [
+        6,
+        31,
+        33,
+        44,
+        44
+      ],
+      "subheading": "Chakra",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/sacral.webp",
+        "dark": "img/sacral.dark.webp",
+        "center": "img/sacral.center.webp"
+      }
+    },
+    {
+      "id": "solar-plexus",
+      "name": "Solar Plexus",
+      "category": "chakras",
+      "base": 44,
+      "sequence": [
+        6,
+        31,
+        33,
+        44,
+        44
+      ],
+      "subheading": "Chakra",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/solar-plexus.webp",
+        "dark": "img/solar-plexus.dark.webp",
+        "center": "img/solar-plexus.center.webp"
+      }
+    },
+    {
+      "id": "throat",
+      "name": "Throat",
+      "category": "chakras",
+      "base": 44,
+      "sequence": [
+        6,
+        28,
+        33,
+        44,
+        44
+      ],
+      "subheading": "Chakra",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/throat.webp",
+        "dark": "img/throat.dark.webp",
+        "center": "img/throat.center.webp"
+      }
+    },
+    {
+      "id": "chakra-health",
+      "name": "Chakra Health",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        4,
+        6,
+        7,
+        9,
+        8
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/chakra-health.webp",
+        "dark": "img/chakra-health.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "chakra-substance",
+      "name": "Chakra Substance",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        5,
+        8,
+        2,
+        7,
+        4
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/chakra-substance.webp",
+        "dark": "img/chakra-substance.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "alta-major-chakra",
+      "name": "Alta Major Chakra",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        9,
+        9,
+        1,
+        4,
+        9,
+        5
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/alta-major-chakra.webp",
+        "dark": "img/alta-major-chakra.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "base-chakra",
+      "name": "Base Chakra",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        9,
+        8,
+        9,
+        4,
+        9,
+        3
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/base-chakra.webp",
+        "dark": "img/base-chakra.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "base-chakra-astral-body",
+      "name": "Base Chakra Astral Body",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        3,
+        5,
+        6,
+        2,
+        5,
+        5
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/base-chakra-astral-body.webp",
+        "dark": "img/base-chakra-astral-body.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "base-chakra-mental-body",
+      "name": "Base Chakra Mental Body",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        4,
+        4,
+        5,
+        8,
+        6,
+        9
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/base-chakra-mental-body.webp",
+        "dark": "img/base-chakra-mental-body.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "base-chakra-p-ether-body",
+      "name": "Base Chakra P. Ether Body",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        4,
+        8,
+        4,
+        7,
+        5,
+        1
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/base-chakra-p-ether-body.webp",
+        "dark": "img/base-chakra-p-ether-body.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "connected-spleen",
+      "name": "Connected Spleen",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        1,
+        3,
+        5,
+        4,
+        9,
+        4
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/connected-spleen.webp",
+        "dark": "img/connected-spleen.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "connected-vagus-nerve",
+      "name": "Connected Vagus Nerve",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        7,
+        7,
+        8,
+        4,
+        9,
+        8
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/connected-vagus-nerve.webp",
+        "dark": "img/connected-vagus-nerve.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "coordination-all-chakras",
+      "name": "Coordination All Chakras",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        5,
+        8,
+        2,
+        7,
+        8,
+        9,
+        3
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/coordination-all-chakras.webp",
+        "dark": "img/coordination-all-chakras.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "crown-astral-body",
+      "name": "Crown Astral Body",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        5,
+        6,
+        9,
+        3,
+        9,
+        5
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/crown-astral-body.webp",
+        "dark": "img/crown-astral-body.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "crown-chakra",
+      "name": "Crown Chakra",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        9,
+        9,
+        9,
+        4,
+        9,
+        4
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/crown-chakra.webp",
+        "dark": "img/crown-chakra.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "crown-mental-body",
+      "name": "Crown Mental Body",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        3,
+        5,
+        8,
+        2,
+        8,
+        8
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/crown-mental-body.webp",
+        "dark": "img/crown-mental-body.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "crown-phys-etheric-body",
+      "name": "Crown Phys. Etheric Body",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        4,
+        4,
+        7,
+        1,
+        9,
+        7
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/crown-phys-etheric-body.webp",
+        "dark": "img/crown-phys-etheric-body.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "heart-astral-body",
+      "name": "Heart Astral Body",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        4,
+        4,
+        3,
+        7,
+        6,
+        6
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/heart-astral-body.webp",
+        "dark": "img/heart-astral-body.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "heart-chakra",
+      "name": "Heart Chakra",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        9,
+        1,
+        9,
+        4,
+        9,
+        5
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/heart-chakra.webp",
+        "dark": "img/heart-chakra.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "heart-mental-body",
+      "name": "Heart Mental Body",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        4,
+        5,
+        9,
+        8,
+        2,
+        1
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/heart-mental-body.webp",
+        "dark": "img/heart-mental-body.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "heart-phys-etheric-body",
+      "name": "Heart Phys. Etheric Body",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        4,
+        7,
+        1,
+        4,
+        8,
+        6
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/heart-phys-etheric-body.webp",
+        "dark": "img/heart-phys-etheric-body.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "infra-thyroid",
+      "name": "Infra Thyroid",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        6,
+        2,
+        3,
+        4,
+        9,
+        6
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/infra-thyroid.webp",
+        "dark": "img/infra-thyroid.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "integrity-major-minor-ck",
+      "name": "Integrity Major Minor Ck",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        4,
+        5,
+        9,
+        9,
+        9,
+        5,
+        5
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/integrity-major-minor-ck.webp",
+        "dark": "img/integrity-major-minor-ck.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "lalana-chakra",
+      "name": "Lalana Chakra",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        4,
+        5,
+        6,
+        8,
+        3,
+        8
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/lalana-chakra.webp",
+        "dark": "img/lalana-chakra.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "left-ankle",
+      "name": "Left Ankle",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        6,
+        9,
+        1,
+        2,
+        5,
+        5
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/left-ankle.webp",
+        "dark": "img/left-ankle.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "left-breast",
+      "name": "Left Breast",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        1,
+        1,
+        6,
+        4,
+        9,
+        3
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/left-breast.webp",
+        "dark": "img/left-breast.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "left-eye",
+      "name": "Left Eye",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        8,
+        9,
+        1,
+        4,
+        9,
+        4
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/left-eye.webp",
+        "dark": "img/left-eye.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "left-knee",
+      "name": "Left Knee",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        3,
+        6,
+        9,
+        4,
+        6,
+        1,
+        2
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/left-knee.webp",
+        "dark": "img/left-knee.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "left-mandibular",
+      "name": "Left Mandibular",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        8,
+        2,
+        8,
+        4,
+        9,
+        4
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/left-mandibular.webp",
+        "dark": "img/left-mandibular.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "left-ovary-or-gonad",
+      "name": "Left Ovary or Gonad",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        8,
+        2,
+        7,
+        4,
+        9,
+        3
+      ],
+      "subheading": "Subtle Body / Chakra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/left-ovary-or-gonad.webp",
+        "dark": "img/left-ovary-or-gonad.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "ajna-brow-chakra",
+      "name": "Ajna (Brow) Chakra - Soul",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        8,
+        7,
+        1,
+        6,
+        5,
+        3
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Sulis)",
+      "source": "Sulis",
+      "image": {
+        "light": "img/ajna-brow-chakra.webp",
+        "dark": "img/ajna-brow-chakra.dark.webp",
+        "center": "img/ajna-brow-chakra.center.webp"
+      }
+    },
+    {
+      "id": "altar-major-chakra",
+      "name": "Altar Major Chakra - Ether",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        2,
+        2,
+        6,
+        1,
+        8,
+        8
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Sulis",
+      "image": {
+        "light": "img/altar-major-chakra.webp",
+        "dark": "img/altar-major-chakra.dark.webp",
+        "center": "img/altar-major-chakra.center.webp"
+      }
+    },
+    {
+      "id": "base-of-spine-chakra",
+      "name": "Base of Spine Chakra - Earth",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        4,
+        2,
+        1,
+        6,
+        5
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Sulis",
+      "image": {
+        "light": "img/base-of-spine-chakra.webp",
+        "dark": "img/base-of-spine-chakra.dark.webp",
+        "center": "img/base-of-spine-chakra.center.webp"
+      }
+    },
+    {
+      "id": "crown-chakra-b9",
+      "name": "Crown Chakra - Spirit",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        5,
+        5,
+        2,
+        3,
+        8,
+        9
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Sulis)",
+      "source": "Sulis",
+      "image": {
+        "light": "img/crown-chakra-b9.webp",
+        "dark": "img/crown-chakra-b9.dark.webp",
+        "center": "img/crown-chakra-b9.center.webp"
+      }
+    },
+    {
+      "id": "heart-chakra-b9",
+      "name": "Heart Chakra - Air",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        6,
+        9,
+        9,
+        2,
+        3,
+        5
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Sulis)",
+      "source": "Sulis",
+      "image": {
+        "light": "img/heart-chakra-b9.webp",
+        "dark": "img/heart-chakra-b9.dark.webp",
+        "center": "img/heart-chakra-b9.center.webp"
+      }
+    },
+    {
+      "id": "sacral-chakra",
+      "name": "Sacral Chakra - Water",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        4,
+        7,
+        1,
+        1,
+        3,
+        1
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Sulis)",
+      "source": "Sulis",
+      "image": {
+        "light": "img/sacral-chakra.webp",
+        "dark": "img/sacral-chakra.dark.webp",
+        "center": "img/sacral-chakra.center.webp"
+      }
+    },
+    {
+      "id": "solar-plexus-chakra",
+      "name": "Solar Plexus Chakra - Fire",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        9,
+        1,
+        6,
+        6,
+        5
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Sulis)",
+      "source": "Sulis",
+      "image": {
+        "light": "img/solar-plexus-chakra.webp",
+        "dark": "img/solar-plexus-chakra.dark.webp",
+        "center": "img/solar-plexus-chakra.center.webp"
+      }
+    },
+    {
+      "id": "spleen-chakra",
+      "name": "Spleen Chakra - Earth",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        2,
+        3,
+        7,
+        4,
+        2,
+        2
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Sulis",
+      "image": {
+        "light": "img/spleen-chakra.webp",
+        "dark": "img/spleen-chakra.dark.webp"
+      }
+    },
+    {
+      "id": "throat-chakra",
+      "name": "Throat Chakra - Ether",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        8,
+        4,
+        6,
+        5,
+        8,
+        2
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Sulis)",
+      "source": "Sulis",
+      "image": {
+        "light": "img/throat-chakra.webp",
+        "dark": "img/throat-chakra.dark.webp",
+        "center": "img/throat-chakra.center.webp"
+      }
+    },
+    {
+      "id": "soul-cleansing",
+      "name": "Soul Cleansing",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        9,
+        1,
+        3,
+        4,
+        8
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/soul-cleansing.webp",
+        "dark": "img/soul-cleansing.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "tension-10mm",
+      "name": "Tension 10mm",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        8,
+        1,
+        3,
+        7,
+        1
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/tension-10mm.webp",
+        "dark": "img/tension-10mm.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "stabilising",
+      "name": "Stabilising",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/stabilising.webp",
+        "dark": "img/stabilising.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "uplift-200",
+      "name": "Uplift 200",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        8,
+        9,
+        8,
+        9,
+        7
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/uplift-200.webp",
+        "dark": "img/uplift-200.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "peace-love-alignment",
+      "name": "Peace & Love Alignment",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        8,
+        7,
+        8,
+        7,
+        3
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/peace-love-alignment.webp",
+        "dark": "img/peace-love-alignment.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "stress",
+      "name": "Stress",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        7,
+        3,
+        2,
+        6,
+        9
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/stress.webp",
+        "dark": "img/stress.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "meditation",
+      "name": "Meditation",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        9,
+        4,
+        6,
+        6,
+        7
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/meditation.webp",
+        "dark": "img/meditation.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "lack-of-confidence",
+      "name": "Lack of Confidence",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        7,
+        9,
+        9,
+        2,
+        9
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/lack-of-confidence.webp",
+        "dark": "img/lack-of-confidence.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "spiritual-upliftment",
+      "name": "Spiritual Upliftment",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        2,
+        6,
+        2,
+        3,
+        4
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/spiritual-upliftment.webp",
+        "dark": "img/spiritual-upliftment.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "removal-all-entities",
+      "name": "Removal All Entities",
+      "category": "chakras",
+      "base": 9,
+      "sequence": [
+        9,
+        9,
+        3,
+        5,
+        8
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/removal-all-entities.webp",
+        "dark": "img/removal-all-entities.dark.webp",
+        "invert": true
+      }
+    }
+  ]
+}

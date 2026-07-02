@@ -1,0 +1,868 @@
+{
+  "id": "body-v2",
+  "name": "Body (v2)",
+  "version": "1",
+  "taxonomy": [
+    {
+      "id": "body",
+      "label": "Body"
+    }
+  ],
+  "remedies": [
+    {
+      "id": "astral-body-base",
+      "name": "Astral Body Base",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        5,
+        7,
+        5,
+        3,
+        5,
+        7
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/astral-body-base.webp",
+        "dark": "img/astral-body-base.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "astral-body-heart",
+      "name": "Astral Body Heart",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        5,
+        6,
+        5,
+        1,
+        6,
+        5
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/astral-body-heart.webp",
+        "dark": "img/astral-body-heart.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "astral-body-permanent-atom",
+      "name": "Astral Body Permanent Atom",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        6,
+        2,
+        2,
+        3,
+        4
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/astral-body-permanent-atom.webp",
+        "dark": "img/astral-body-permanent-atom.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "astral-body-sacral",
+      "name": "Astral Body Sacral",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        5,
+        7,
+        8,
+        5,
+        1,
+        8
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/astral-body-sacral.webp",
+        "dark": "img/astral-body-sacral.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "astral-body-solar-plexus",
+      "name": "Astral Body Solar Plexus",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        5,
+        3,
+        8,
+        4,
+        9,
+        2
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/astral-body-solar-plexus.webp",
+        "dark": "img/astral-body-solar-plexus.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "astral-body-spleen",
+      "name": "Astral Body Spleen",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        5,
+        6,
+        3,
+        6,
+        1,
+        3
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/astral-body-spleen.webp",
+        "dark": "img/astral-body-spleen.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "astral-body-throat",
+      "name": "Astral Body Throat",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        5,
+        1,
+        6,
+        9,
+        5,
+        8
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/astral-body-throat.webp",
+        "dark": "img/astral-body-throat.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "skeletal",
+      "name": "Skeletal",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        6,
+        3,
+        1,
+        5,
+        6,
+        4,
+        7
+      ],
+      "subheading": "Body / Br 23.",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/skeletal.webp",
+        "dark": "img/skeletal.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "depression",
+      "name": "Depression",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        3,
+        9,
+        8,
+        8,
+        3,
+        4,
+        8
+      ],
+      "subheading": "Mind / BR 3",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/depression.webp",
+        "dark": "img/depression.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "fear",
+      "name": "Fear",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        2,
+        6,
+        1,
+        6,
+        3,
+        7,
+        7
+      ],
+      "subheading": "Mind / BR. 4",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/fear.webp",
+        "dark": "img/fear.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "br-5-heart",
+      "name": "Br 5. Heart",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        9,
+        6,
+        8,
+        7,
+        2,
+        5
+      ],
+      "subheading": "Mind / BR 6",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/br-5-heart.webp",
+        "dark": "img/br-5-heart.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "br-5-heart-b44",
+      "name": "Br 5. Heart",
+      "category": "body",
+      "base": 44,
+      "sequence": [
+        20,
+        24,
+        26,
+        27,
+        30
+      ],
+      "subheading": "Mind / BR 6",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/br-5-heart-b44.webp",
+        "dark": "img/br-5-heart-b44.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "hysteria",
+      "name": "Hysteria",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        9,
+        9,
+        3,
+        6,
+        3,
+        4,
+        7
+      ],
+      "subheading": "Mind / BR 6",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/hysteria.webp",
+        "dark": "img/hysteria.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "stress",
+      "name": "Stress",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        1,
+        5,
+        5,
+        3,
+        9,
+        2,
+        7
+      ],
+      "subheading": "Mind / Br.",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/stress.webp",
+        "dark": "img/stress.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "ether-1st",
+      "name": "Ether 1st",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        2,
+        4,
+        3,
+        7,
+        7
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/ether-1st.webp",
+        "dark": "img/ether-1st.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "ether-2nd",
+      "name": "Ether 2nd",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        2,
+        1,
+        9,
+        9,
+        3
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/ether-2nd.webp",
+        "dark": "img/ether-2nd.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "ether-3rd",
+      "name": "Ether 3rd",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        2,
+        3,
+        2,
+        8,
+        6
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/ether-3rd.webp",
+        "dark": "img/ether-3rd.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "ether-4th",
+      "name": "Ether 4th",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        2,
+        5,
+        4,
+        8,
+        1
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/ether-4th.webp",
+        "dark": "img/ether-4th.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "etheric-body",
+      "name": "Etheric Body",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        2,
+        4,
+        9,
+        5,
+        2
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/etheric-body.webp",
+        "dark": "img/etheric-body.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "stomach",
+      "name": "Stomach",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        6,
+        7,
+        4,
+        9,
+        9,
+        8
+      ],
+      "subheading": "Body / GI",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/stomach.webp",
+        "dark": "img/stomach.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "spleen",
+      "name": "Spleen",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        1,
+        6,
+        8,
+        4,
+        8,
+        9
+      ],
+      "subheading": "Body / Lymphatic",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/spleen.webp",
+        "dark": "img/spleen.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "mental-astral-p-ether-body",
+      "name": "Mental Astral P. Ether. Body",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        1,
+        6,
+        7,
+        5,
+        8,
+        2,
+        2
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/mental-astral-p-ether-body.webp",
+        "dark": "img/mental-astral-p-ether-body.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "mental-body-solar-plexus",
+      "name": "Mental Body Solar Plexus",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        1,
+        7,
+        6,
+        9,
+        1,
+        6
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/mental-body-solar-plexus.webp",
+        "dark": "img/mental-body-solar-plexus.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "mental-body-solar-plexus-b9",
+      "name": "Mental Body Solar Plexus",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        1,
+        7,
+        6,
+        9,
+        1,
+        6
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/mental-body-solar-plexus-b9.webp",
+        "dark": "img/mental-body-solar-plexus-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "mental-body",
+      "name": "Mental Body",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        4,
+        6,
+        3,
+        6,
+        9,
+        1
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/mental-body.webp",
+        "dark": "img/mental-body.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "mental-body-base",
+      "name": "Mental Body Base",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        1,
+        6,
+        5,
+        5,
+        7,
+        6
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/mental-body-base.webp",
+        "dark": "img/mental-body-base.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "mental-body-sacral",
+      "name": "Mental Body Sacral",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        1,
+        8,
+        2,
+        7,
+        4,
+        4
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/mental-body-sacral.webp",
+        "dark": "img/mental-body-sacral.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "mental-body-spleen",
+      "name": "Mental Body Spleen",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        1,
+        4,
+        1,
+        4,
+        9,
+        1
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/mental-body-spleen.webp",
+        "dark": "img/mental-body-spleen.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "mental-unit",
+      "name": "Mental Unit",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        7,
+        6,
+        6,
+        1
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/mental-unit.webp",
+        "dark": "img/mental-unit.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "phys-etheric-ajna-crown",
+      "name": "Phys. Etheric Ajna - Crown",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        4,
+        1,
+        2,
+        8,
+        3,
+        9
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/phys-etheric-ajna-crown.webp",
+        "dark": "img/phys-etheric-ajna-crown.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "phys-ether-permanent-atom",
+      "name": "Phys. Ether Permanent Atom",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        6,
+        9,
+        5,
+        6,
+        4,
+        3
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/phys-ether-permanent-atom.webp",
+        "dark": "img/phys-ether-permanent-atom.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "phys-etheric-solar-plexus",
+      "name": "Phys. Etheric Solar Plexus",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        4,
+        8,
+        2,
+        4,
+        1,
+        1
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/phys-etheric-solar-plexus.webp",
+        "dark": "img/phys-etheric-solar-plexus.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "physical-etheric-base",
+      "name": "Physical Etheric Base",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        4,
+        6,
+        6,
+        6,
+        7,
+        2
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/physical-etheric-base.webp",
+        "dark": "img/physical-etheric-base.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "physical-etheric-body",
+      "name": "Physical Etheric Body",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        9,
+        6,
+        3,
+        2,
+        9,
+        2
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/physical-etheric-body.webp",
+        "dark": "img/physical-etheric-body.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "physical-etheric-heart",
+      "name": "Physical Etheric Heart",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        4,
+        3,
+        3,
+        5,
+        2,
+        8
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/physical-etheric-heart.webp",
+        "dark": "img/physical-etheric-heart.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "physical-etheric-sacral",
+      "name": "Physical Etheric Sacral",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        4,
+        4,
+        5,
+        7,
+        4,
+        6
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/physical-etheric-sacral.webp",
+        "dark": "img/physical-etheric-sacral.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "mental-body-solar-plexus-2",
+      "name": "Mental Body Solar Plexus",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        1,
+        7,
+        6,
+        9,
+        1,
+        6
+      ],
+      "subheading": "Subtle Body / Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/mental-body-solar-plexus-2.webp",
+        "dark": "img/mental-body-solar-plexus-2.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "lumbago",
+      "name": "Lumbago",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        1,
+        9,
+        5,
+        4,
+        4,
+        5
+      ],
+      "subheading": "Body / Skeletal",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/lumbago.webp",
+        "dark": "img/lumbago.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "lumbar-vertebrae",
+      "name": "Lumbar Vertebrae",
+      "category": "body",
+      "base": 9,
+      "sequence": [
+        1,
+        9,
+        5,
+        4,
+        4,
+        5
+      ],
+      "subheading": "Body / Skeletal",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/lumbar-vertebrae.webp",
+        "dark": "img/lumbar-vertebrae.dark.webp",
+        "invert": true
+      }
+    }
+  ]
+}

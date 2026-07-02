@@ -1,0 +1,619 @@
+{
+  "id": "emotions-v2",
+  "name": "Emotions (v2)",
+  "version": "1",
+  "taxonomy": [
+    {
+      "id": "emotions",
+      "label": "Emotions"
+    }
+  ],
+  "remedies": [
+    {
+      "id": "anger",
+      "name": "Anger",
+      "category": "emotions",
+      "base": 9,
+      "sequence": [
+        4,
+        8,
+        5,
+        5,
+        9,
+        4
+      ],
+      "subheading": "Emotions",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/anger.webp",
+        "dark": "img/anger.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "anguish",
+      "name": "Anguish",
+      "category": "emotions",
+      "base": 9,
+      "sequence": [
+        4,
+        8,
+        9,
+        7,
+        8,
+        9
+      ],
+      "subheading": "Emotions",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/anguish.webp",
+        "dark": "img/anguish.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "fear",
+      "name": "Fear",
+      "category": "emotions",
+      "base": 9,
+      "sequence": [
+        9,
+        9,
+        2,
+        6,
+        8
+      ],
+      "subheading": "Emotions/Fear",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/fear.webp",
+        "dark": "img/fear.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "fear-being-hurt-non-physical",
+      "name": "Fear Being Hurt Non Physical",
+      "category": "emotions",
+      "base": 9,
+      "sequence": [
+        4,
+        5,
+        6,
+        1,
+        2,
+        5,
+        5,
+        9
+      ],
+      "subheading": "Emotions/Fear",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/fear-being-hurt-non-physical.webp",
+        "dark": "img/fear-being-hurt-non-physical.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "fear-of-being-hurt-physical",
+      "name": "Fear of Being Hurt Physical",
+      "category": "emotions",
+      "base": 9,
+      "sequence": [
+        6,
+        8,
+        8,
+        1,
+        5,
+        8,
+        9
+      ],
+      "subheading": "Emotions/Fear",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/fear-of-being-hurt-physical.webp",
+        "dark": "img/fear-of-being-hurt-physical.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "eliminate-all-known-fears",
+      "name": "Eliminate All Known Fears",
+      "category": "emotions",
+      "base": 9,
+      "sequence": [
+        4,
+        7,
+        9,
+        3,
+        2
+      ],
+      "subheading": "Emotions/Fear",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/eliminate-all-known-fears.webp",
+        "dark": "img/eliminate-all-known-fears.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "eliminate-all-unknown-fears",
+      "name": "Eliminate All Unknown Fears",
+      "category": "emotions",
+      "base": 9,
+      "sequence": [
+        4,
+        9,
+        6,
+        6,
+        8,
+        6
+      ],
+      "subheading": "Emotions/Fear",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/eliminate-all-unknown-fears.webp",
+        "dark": "img/eliminate-all-unknown-fears.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "fear-of",
+      "name": "Fear of",
+      "category": "emotions",
+      "base": 9,
+      "sequence": [
+        2,
+        8,
+        3,
+        1,
+        1,
+        6
+      ],
+      "subheading": "Emotions/Fear",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/fear-of.webp",
+        "dark": "img/fear-of.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "fear-of-being-useless",
+      "name": "Fear of Being Useless",
+      "category": "emotions",
+      "base": 44,
+      "sequence": [
+        28,
+        32,
+        43
+      ],
+      "subheading": "Emotions / Fear",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/fear-of-being-useless.webp",
+        "dark": "img/fear-of-being-useless.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "fear-of-cancer",
+      "name": "Fear of Cancer",
+      "category": "emotions",
+      "base": 9,
+      "sequence": [
+        2,
+        9,
+        2,
+        5,
+        9,
+        9
+      ],
+      "subheading": "Emotions / Fear",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/fear-of-cancer.webp",
+        "dark": "img/fear-of-cancer.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "fear-of-death",
+      "name": "Fear of Death",
+      "category": "emotions",
+      "base": 44,
+      "sequence": [
+        1,
+        4,
+        9,
+        32,
+        33
+      ],
+      "subheading": "Emotions / Fear",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/fear-of-death.webp",
+        "dark": "img/fear-of-death.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "fear-of-death-b9",
+      "name": "Fear of Death",
+      "category": "emotions",
+      "base": 9,
+      "sequence": [
+        2,
+        6,
+        9,
+        4,
+        6,
+        9
+      ],
+      "subheading": "Emotions / Fear",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/fear-of-death-b9.webp",
+        "dark": "img/fear-of-death-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "fear-of-dying",
+      "name": "Fear of Dying",
+      "category": "emotions",
+      "base": 44,
+      "sequence": [
+        1,
+        5,
+        9,
+        32,
+        33
+      ],
+      "subheading": "Emotions / Fear",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/fear-of-dying.webp",
+        "dark": "img/fear-of-dying.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "fear-of-failure",
+      "name": "Fear of Failure",
+      "category": "emotions",
+      "base": 9,
+      "sequence": [
+        4,
+        7,
+        1,
+        3,
+        5,
+        9
+      ],
+      "subheading": "Emotions / Fear",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/fear-of-failure.webp",
+        "dark": "img/fear-of-failure.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "fear-of-not-being-accepted",
+      "name": "Fear of Not Being Accepted",
+      "category": "emotions",
+      "base": 9,
+      "sequence": [
+        4,
+        2,
+        6,
+        8,
+        1,
+        3
+      ],
+      "subheading": "Emotions/Fear",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/fear-of-not-being-accepted.webp",
+        "dark": "img/fear-of-not-being-accepted.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "forgiveness",
+      "name": "Forgiveness",
+      "category": "emotions",
+      "base": 9,
+      "sequence": [
+        4,
+        2,
+        4,
+        9,
+        3,
+        4
+      ],
+      "subheading": "Emotions/Compassion",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/forgiveness.webp",
+        "dark": "img/forgiveness.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "forgiveness-b44",
+      "name": "Forgiveness",
+      "category": "emotions",
+      "base": 44,
+      "sequence": [
+        3,
+        11,
+        23,
+        40,
+        43
+      ],
+      "subheading": "Emotions/Compassion",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/forgiveness-b44.webp",
+        "dark": "img/forgiveness-b44.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "gratitude",
+      "name": "Gratitude",
+      "category": "emotions",
+      "base": 9,
+      "sequence": [
+        7,
+        9,
+        7,
+        2,
+        7
+      ],
+      "subheading": "Emotions",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/gratitude.webp",
+        "dark": "img/gratitude.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "guilt",
+      "name": "Guilt",
+      "category": "emotions",
+      "base": 9,
+      "sequence": [
+        2,
+        4,
+        5,
+        8,
+        4,
+        5
+      ],
+      "subheading": "Emotions",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/guilt.webp",
+        "dark": "img/guilt.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "guilt-about-sex",
+      "name": "Guilt About Sex",
+      "category": "emotions",
+      "base": 9,
+      "sequence": [
+        2,
+        5,
+        3,
+        6,
+        1,
+        8
+      ],
+      "subheading": "Emotions",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/guilt-about-sex.webp",
+        "dark": "img/guilt-about-sex.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "happiness",
+      "name": "Happiness",
+      "category": "emotions",
+      "base": 44,
+      "sequence": [
+        1,
+        1,
+        6,
+        20,
+        41
+      ],
+      "subheading": "Emotions",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/happiness.webp",
+        "dark": "img/happiness.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "happiness-b9",
+      "name": "Happiness",
+      "category": "emotions",
+      "base": 9,
+      "sequence": [
+        1,
+        5,
+        1,
+        3,
+        1,
+        2
+      ],
+      "subheading": "Emotions",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/happiness-b9.webp",
+        "dark": "img/happiness-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "humbleness",
+      "name": "Humbleness",
+      "category": "emotions",
+      "base": 9,
+      "sequence": [
+        4,
+        3,
+        9,
+        7,
+        6,
+        2
+      ],
+      "subheading": "Emotions",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/humbleness.webp",
+        "dark": "img/humbleness.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "inadequacy",
+      "name": "Inadequacy",
+      "category": "emotions",
+      "base": 9,
+      "sequence": [
+        7,
+        2,
+        5,
+        5
+      ],
+      "subheading": "Emotions",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/inadequacy.webp",
+        "dark": "img/inadequacy.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "indecisiveness",
+      "name": "Indecisiveness",
+      "category": "emotions",
+      "base": 9,
+      "sequence": [
+        1,
+        3,
+        3,
+        2,
+        6,
+        5,
+        2
+      ],
+      "subheading": "Emotions",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/indecisiveness.webp",
+        "dark": "img/indecisiveness.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "joy",
+      "name": "Joy",
+      "category": "emotions",
+      "base": 9,
+      "sequence": [
+        7,
+        1,
+        1,
+        5,
+        8,
+        4,
+        6
+      ],
+      "subheading": "Emotions",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/joy.webp",
+        "dark": "img/joy.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "joy-of-living",
+      "name": "Joy of Living",
+      "category": "emotions",
+      "base": 9,
+      "sequence": [
+        6,
+        9,
+        8,
+        8,
+        4
+      ],
+      "subheading": "Emotions",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/joy-of-living.webp",
+        "dark": "img/joy-of-living.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "joyfulness",
+      "name": "Joyfulness",
+      "category": "emotions",
+      "base": 9,
+      "sequence": [
+        5,
+        7,
+        8,
+        3
+      ],
+      "subheading": "Emotions",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/joyfulness.webp",
+        "dark": "img/joyfulness.dark.webp",
+        "invert": true
+      }
+    }
+  ]
+}

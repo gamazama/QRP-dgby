@@ -1,0 +1,182 @@
+{
+  "id": "misc-v2",
+  "name": "Miscellaneous (v2)",
+  "version": "1",
+  "taxonomy": [
+    {
+      "id": "misc",
+      "label": "Miscellaneous"
+    }
+  ],
+  "remedies": [
+    {
+      "id": "staphylococcus",
+      "name": "Staphylococcus",
+      "category": "misc",
+      "base": 44,
+      "sequence": [
+        1,
+        1,
+        9,
+        22,
+        33
+      ],
+      "subheading": "Bacteria Infection",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/staphylococcus.webp",
+        "dark": "img/staphylococcus.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "cancerous-tissue",
+      "name": "Cancerous Tissue",
+      "category": "misc",
+      "base": 9,
+      "sequence": [
+        2,
+        4,
+        8,
+        2,
+        7
+      ],
+      "subheading": "Cancer",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/cancerous-tissue.webp",
+        "dark": "img/cancerous-tissue.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "bone",
+      "name": "Bone",
+      "category": "misc",
+      "base": 44,
+      "sequence": [
+        21,
+        33,
+        41,
+        43
+      ],
+      "subheading": "Anatomical / Skeletal",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/bone.webp",
+        "dark": "img/bone.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "om",
+      "name": "Om",
+      "category": "misc",
+      "base": 44,
+      "sequence": [
+        15,
+        30,
+        44
+      ],
+      "subheading": "Mantra",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/om.webp",
+        "dark": "img/om.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "om-b9",
+      "name": "Om",
+      "category": "misc",
+      "base": 9,
+      "sequence": [
+        9,
+        9,
+        9,
+        4,
+        9,
+        4
+      ],
+      "subheading": "Mantra",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/om-b9.webp",
+        "dark": "img/om-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "healthy-functioning",
+      "name": "Healthy Functioning",
+      "category": "misc",
+      "base": 9,
+      "sequence": [
+        4,
+        7,
+        9,
+        3,
+        5,
+        1
+      ],
+      "subheading": "Physical Constitutions",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/healthy-functioning.webp",
+        "dark": "img/healthy-functioning.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "yin-field",
+      "name": "Yin Field",
+      "category": "misc",
+      "base": 9,
+      "sequence": [
+        2,
+        8,
+        2,
+        2,
+        8,
+        4
+      ],
+      "subheading": "Subtle Body / TC 12",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/yin-field.webp",
+        "dark": "img/yin-field.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "yang-field",
+      "name": "Yang Field",
+      "category": "misc",
+      "base": 9,
+      "sequence": [
+        3,
+        9,
+        4,
+        8,
+        1,
+        7
+      ],
+      "subheading": "Subtle Body / TC 13",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/yang-field.webp",
+        "dark": "img/yang-field.dark.webp",
+        "invert": true
+      }
+    }
+  ]
+}

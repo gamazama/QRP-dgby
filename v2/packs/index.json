@@ -1,17 +1,6 @@
 {
-  "generatedAt": "2026-06-22T11:29:03.155Z",
+  "generatedAt": "2026-07-02T00:00:00.000Z",
   "packs": [
-    {
-      "id": "bach-flowers-v1",
-      "name": "Bach Flowers",
-      "version": "1",
-      "count": 38,
-      "categories": [
-        "bach-flowers"
-      ],
-      "manifestUrl": "packs/bach-flowers-v1/manifest.json",
-      "searchIndexUrl": "packs/bach-flowers-v1/search.json"
-    },
     {
       "id": "astrological-v1",
       "name": "Astrological",
@@ -24,15 +13,48 @@
       "searchIndexUrl": "packs/astrological-v1/search.json"
     },
     {
-      "id": "chakras-v1",
-      "name": "Chakras",
+      "id": "bach-flowers-v1",
+      "name": "Bach Flowers",
       "version": "1",
-      "count": 17,
+      "count": 38,
+      "categories": [
+        "bach-flowers"
+      ],
+      "manifestUrl": "packs/bach-flowers-v1/manifest.json",
+      "searchIndexUrl": "packs/bach-flowers-v1/search.json"
+    },
+    {
+      "id": "body-v2",
+      "name": "Body (v2)",
+      "version": "1",
+      "count": 39,
+      "categories": [
+        "body"
+      ],
+      "manifestUrl": "packs/body-v2/manifest.json",
+      "searchIndexUrl": "packs/body-v2/search.json"
+    },
+    {
+      "id": "chakras-v2",
+      "name": "Chakras (v2)",
+      "version": "1",
+      "count": 70,
       "categories": [
         "chakras"
       ],
-      "manifestUrl": "packs/chakras-v1/manifest.json",
-      "searchIndexUrl": "packs/chakras-v1/search.json"
+      "manifestUrl": "packs/chakras-v2/manifest.json",
+      "searchIndexUrl": "packs/chakras-v2/search.json"
+    },
+    {
+      "id": "emotions-v2",
+      "name": "Emotions (v2)",
+      "version": "1",
+      "count": 28,
+      "categories": [
+        "emotions"
+      ],
+      "manifestUrl": "packs/emotions-v2/manifest.json",
+      "searchIndexUrl": "packs/emotions-v2/search.json"
     },
     {
       "id": "gems-v1",
@@ -57,6 +79,28 @@
       "searchIndexUrl": "packs/homeopathic-v1/search.json"
     },
     {
+      "id": "mind-v2",
+      "name": "Mind (v2)",
+      "version": "1",
+      "count": 30,
+      "categories": [
+        "mind"
+      ],
+      "manifestUrl": "packs/mind-v2/manifest.json",
+      "searchIndexUrl": "packs/mind-v2/search.json"
+    },
+    {
+      "id": "misc-v2",
+      "name": "Miscellaneous (v2)",
+      "version": "1",
+      "count": 8,
+      "categories": [
+        "misc"
+      ],
+      "manifestUrl": "packs/misc-v2/manifest.json",
+      "searchIndexUrl": "packs/misc-v2/search.json"
+    },
+    {
       "id": "other-v1",
       "name": "Other",
       "version": "1",
@@ -66,6 +110,39 @@
       ],
       "manifestUrl": "packs/other-v1/manifest.json",
       "searchIndexUrl": "packs/other-v1/search.json"
+    },
+    {
+      "id": "sacred-geometry-v2",
+      "name": "Sacred Geometry (v2)",
+      "version": "1",
+      "count": 1,
+      "categories": [
+        "sacred-geometry"
+      ],
+      "manifestUrl": "packs/sacred-geometry-v2/manifest.json",
+      "searchIndexUrl": "packs/sacred-geometry-v2/search.json"
+    },
+    {
+      "id": "soham-v2",
+      "name": "Soham (v2)",
+      "version": "1",
+      "count": 15,
+      "categories": [
+        "soham"
+      ],
+      "manifestUrl": "packs/soham-v2/manifest.json",
+      "searchIndexUrl": "packs/soham-v2/search.json"
+    },
+    {
+      "id": "subtle-bodies-v2",
+      "name": "Subtle Bodies (v2)",
+      "version": "1",
+      "count": 163,
+      "categories": [
+        "subtle-bodies"
+      ],
+      "manifestUrl": "packs/subtle-bodies-v2/manifest.json",
+      "searchIndexUrl": "packs/subtle-bodies-v2/search.json"
     }
   ]
 }

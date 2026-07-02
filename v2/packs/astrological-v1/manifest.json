@@ -19,7 +19,8 @@
       "rateType": "TT",
       "image": {
         "light": "img/aquarius.webp",
-        "dark": "img/aquarius.dark.webp"
+        "dark": "img/aquarius.dark.webp",
+        "invert": true
       }
     },
     {
@@ -32,7 +33,8 @@
       "rateType": "TT",
       "image": {
         "light": "img/aries.webp",
-        "dark": "img/aries.dark.webp"
+        "dark": "img/aries.dark.webp",
+        "invert": true
       }
     },
     {
@@ -45,7 +47,8 @@
       "rateType": "TT",
       "image": {
         "light": "img/cancer.webp",
-        "dark": "img/cancer.dark.webp"
+        "dark": "img/cancer.dark.webp",
+        "invert": true
       }
     },
     {
@@ -58,12 +61,13 @@
       "rateType": "TT",
       "image": {
         "light": "img/capricorn.webp",
-        "dark": "img/capricorn.dark.webp"
+        "dark": "img/capricorn.dark.webp",
+        "invert": true
       }
     },
     {
       "id": "ini",
-      "name": "Ini",
+      "name": "Gemini",
       "category": "astrological",
       "base": 44,
       "sequence": [],
@@ -71,7 +75,8 @@
       "rateType": "TT",
       "image": {
         "light": "img/ini.webp",
-        "dark": "img/ini.dark.webp"
+        "dark": "img/ini.dark.webp",
+        "invert": true
       }
     },
     {
@@ -84,7 +89,8 @@
       "rateType": "TT",
       "image": {
         "light": "img/leo.webp",
-        "dark": "img/leo.dark.webp"
+        "dark": "img/leo.dark.webp",
+        "invert": true
       }
     },
     {
@@ -97,7 +103,8 @@
       "rateType": "TT",
       "image": {
         "light": "img/pisces.webp",
-        "dark": "img/pisces.dark.webp"
+        "dark": "img/pisces.dark.webp",
+        "invert": true
       }
     },
     {
@@ -110,12 +117,13 @@
       "rateType": "TT",
       "image": {
         "light": "img/sagittarius.webp",
-        "dark": "img/sagittarius.dark.webp"
+        "dark": "img/sagittarius.dark.webp",
+        "invert": true
       }
     },
     {
       "id": "scorpion",
-      "name": "Scorpion",
+      "name": "Scorpio",
       "category": "astrological",
       "base": 44,
       "sequence": [],
@@ -123,7 +131,8 @@
       "rateType": "TT",
       "image": {
         "light": "img/scorpion.webp",
-        "dark": "img/scorpion.dark.webp"
+        "dark": "img/scorpion.dark.webp",
+        "invert": true
       }
     },
     {
@@ -136,7 +145,8 @@
       "rateType": "TT",
       "image": {
         "light": "img/taurus.webp",
-        "dark": "img/taurus.dark.webp"
+        "dark": "img/taurus.dark.webp",
+        "invert": true
       }
     },
     {
@@ -149,7 +159,8 @@
       "rateType": "TT",
       "image": {
         "light": "img/virgo.webp",
-        "dark": "img/virgo.dark.webp"
+        "dark": "img/virgo.dark.webp",
+        "invert": true
       }
     }
   ]

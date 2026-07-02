@@ -1,0 +1,3510 @@
+{
+  "id": "subtle-bodies-v2",
+  "name": "Subtle Bodies (v2)",
+  "version": "1",
+  "taxonomy": [
+    {
+      "id": "subtle-bodies",
+      "label": "Subtle Bodies"
+    }
+  ],
+  "remedies": [
+    {
+      "id": "align",
+      "name": "Align",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        1,
+        9,
+        5,
+        8,
+        3,
+        8
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/align.webp",
+        "dark": "img/align.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "align-astral-body-physical-body",
+      "name": "Align Astral Body/ Physical Body",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        1,
+        3,
+        6,
+        6,
+        3
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/align-astral-body-physical-body.webp",
+        "dark": "img/align-astral-body-physical-body.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "alignment",
+      "name": "Alignment",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        8,
+        1,
+        2,
+        5,
+        3
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/alignment.webp",
+        "dark": "img/alignment.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "allow-cosmic-love-to-flow",
+      "name": "Allow Cosmic Love to Flow",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        4,
+        8,
+        3,
+        6,
+        7,
+        1,
+        2
+      ],
+      "subheading": "SUBTLE BODY",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/allow-cosmic-love-to-flow.webp",
+        "dark": "img/allow-cosmic-love-to-flow.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "allow-love-to-flow",
+      "name": "Allow Love to Flow",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        4,
+        7,
+        1,
+        8,
+        2,
+        4
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/allow-love-to-flow.webp",
+        "dark": "img/allow-love-to-flow.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "blessedness",
+      "name": "Blessedness",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        2,
+        3,
+        3,
+        4
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/blessedness.webp",
+        "dark": "img/blessedness.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "blessedness-b9",
+      "name": "Blessedness",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        4,
+        7,
+        9,
+        7
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/blessedness-b9.webp",
+        "dark": "img/blessedness-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "blessedness-2",
+      "name": "Blessedness",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        4,
+        7,
+        9,
+        7
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/blessedness-2.webp",
+        "dark": "img/blessedness-2.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "blockage-energy",
+      "name": "Blockage Energy",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        6,
+        8,
+        1,
+        2,
+        3,
+        2
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/blockage-energy.webp",
+        "dark": "img/blockage-energy.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "intelligence",
+      "name": "Intelligence",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        2,
+        3,
+        4,
+        5,
+        5
+      ],
+      "subheading": "SUBTLE BODY/ AM3",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/intelligence.webp",
+        "dark": "img/intelligence.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "intense-white-light",
+      "name": "Intense White Light",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        7,
+        9,
+        9,
+        3
+      ],
+      "subheading": "Light",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/intense-white-light.webp",
+        "dark": "img/intense-white-light.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "light",
+      "name": "Light",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        8,
+        9,
+        4
+      ],
+      "subheading": "SUBTLE BODY",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/light.webp",
+        "dark": "img/light.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "lotus-of-soul",
+      "name": "Lotus of Soul",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        3,
+        5,
+        9,
+        9,
+        8
+      ],
+      "subheading": "SUBTLE BODY",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/lotus-of-soul.webp",
+        "dark": "img/lotus-of-soul.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "lotus-of-soul-b44",
+      "name": "Lotus of Soul",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        3,
+        5,
+        9,
+        9,
+        8
+      ],
+      "subheading": "Soul/Uplift",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/lotus-of-soul-b44.webp",
+        "dark": "img/lotus-of-soul-b44.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "repair-damage-aura",
+      "name": "Repair Damage Aura",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        3,
+        7,
+        9,
+        3,
+        6,
+        1
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/repair-damage-aura.webp",
+        "dark": "img/repair-damage-aura.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "reveal",
+      "name": "Reveal",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        4,
+        6,
+        7,
+        7,
+        8,
+        5
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/reveal.webp",
+        "dark": "img/reveal.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "reverse",
+      "name": "Reverse",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        7,
+        4,
+        6,
+        8,
+        7
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/reverse.webp",
+        "dark": "img/reverse.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "strengthen-aura",
+      "name": "Strengthen Aura",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        7,
+        5,
+        2,
+        8,
+        4,
+        8
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/strengthen-aura.webp",
+        "dark": "img/strengthen-aura.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "strength",
+      "name": "Strength",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        1,
+        8,
+        3,
+        2,
+        9,
+        5
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/strength.webp",
+        "dark": "img/strength.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "peace",
+      "name": "Peace",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        7,
+        3,
+        7,
+        1,
+        9
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/peace.webp",
+        "dark": "img/peace.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "stability",
+      "name": "Stability",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        7,
+        2,
+        1,
+        5,
+        2
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/stability.webp",
+        "dark": "img/stability.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "stabilize",
+      "name": "Stabilize",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        5,
+        5,
+        8,
+        5
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/stabilize.webp",
+        "dark": "img/stabilize.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "tranquility",
+      "name": "Tranquility",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        3,
+        9,
+        4,
+        5,
+        3
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/tranquility.webp",
+        "dark": "img/tranquility.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "water-pure",
+      "name": "Water Pure",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        3,
+        9,
+        4,
+        4,
+        9,
+        2
+      ],
+      "subheading": "Subtle body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/water-pure.webp",
+        "dark": "img/water-pure.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "action",
+      "name": "Action",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        8,
+        9,
+        2,
+        3,
+        4
+      ],
+      "subheading": "Subtle Body / AM4",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/action.webp",
+        "dark": "img/action.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "astral-interference",
+      "name": "Astral Interference",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        2,
+        4,
+        2,
+        8
+      ],
+      "subheading": "Subtle Body / Astral",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/astral-interference.webp",
+        "dark": "img/astral-interference.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "astral-vision-faculty-of",
+      "name": "Astral Vision Faculty of",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        2,
+        9,
+        7,
+        9,
+        3,
+        8,
+        2
+      ],
+      "subheading": "Subtle Body / Astral",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/astral-vision-faculty-of.webp",
+        "dark": "img/astral-vision-faculty-of.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "arogyavardhani",
+      "name": "Arogyavardhani",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "subheading": "Subtle Body / Ayur 1",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/arogyavardhani.webp",
+        "dark": "img/arogyavardhani.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "sattva",
+      "name": "Sattva",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        6,
+        7,
+        1,
+        9,
+        1,
+        6
+      ],
+      "subheading": "Subtle Body / Ayur",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/sattva.webp",
+        "dark": "img/sattva.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "rajas",
+      "name": "Rajas",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        4,
+        6,
+        1,
+        9,
+        1,
+        3
+      ],
+      "subheading": "Subtle Body / Ayur",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/rajas.webp",
+        "dark": "img/rajas.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "tamas",
+      "name": "Tamas",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        4,
+        5,
+        7,
+        9,
+        2,
+        9
+      ],
+      "subheading": "Subtle Body / Ayur",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/tamas.webp",
+        "dark": "img/tamas.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "find-rectify-all-disharmony",
+      "name": "Find & Rectify All Disharmony",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        4,
+        1,
+        4,
+        6,
+        8,
+        5
+      ],
+      "subheading": "Command",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/find-rectify-all-disharmony.webp",
+        "dark": "img/find-rectify-all-disharmony.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "find-and-rectify-all-defects",
+      "name": "Find and Rectify All Defects",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        4,
+        7,
+        2,
+        5,
+        6,
+        6
+      ],
+      "subheading": "Command",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/find-and-rectify-all-defects.webp",
+        "dark": "img/find-and-rectify-all-defects.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "balance-optimal-astral-body",
+      "name": "Balance & Optimal. Astral Body",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        6,
+        9,
+        1,
+        2,
+        5,
+        1
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/balance-optimal-astral-body.webp",
+        "dark": "img/balance-optimal-astral-body.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "balance-optimal-etheric-body",
+      "name": "Balance & Optimal. Etheric Body",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        6,
+        7,
+        1,
+        9,
+        2,
+        3
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/balance-optimal-etheric-body.webp",
+        "dark": "img/balance-optimal-etheric-body.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "balance-optimal-mental-body",
+      "name": "Balance & Optimal. Mental Body",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        5,
+        6,
+        8,
+        4,
+        7,
+        8
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/balance-optimal-mental-body.webp",
+        "dark": "img/balance-optimal-mental-body.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "removal-all-entities",
+      "name": "Removal All Entities",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        9,
+        20,
+        23,
+        35
+      ],
+      "subheading": "Soham",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/removal-all-entities.webp",
+        "dark": "img/removal-all-entities.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "removal-all-entities-b9",
+      "name": "Removal All Entities",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        9,
+        9,
+        3,
+        5,
+        8
+      ],
+      "subheading": "Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/removal-all-entities-b9.webp",
+        "dark": "img/removal-all-entities-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "remove-detrimental-effect-trauma",
+      "name": "Remove Detrimental Effect Trauma",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        6,
+        8,
+        8,
+        2,
+        4,
+        1
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/remove-detrimental-effect-trauma.webp",
+        "dark": "img/remove-detrimental-effect-trauma.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "remove-negative-energies",
+      "name": "Remove Negative Energies",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        5,
+        8,
+        2,
+        8,
+        1
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/remove-negative-energies.webp",
+        "dark": "img/remove-negative-energies.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "divine-love",
+      "name": "Divine Love",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        7,
+        9,
+        18,
+        23,
+        26,
+        29
+      ],
+      "subheading": "Subtle Body / Uplift",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/divine-love.webp",
+        "dark": "img/divine-love.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "divine-love-b9",
+      "name": "Divine Love",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        1,
+        9,
+        9,
+        5,
+        6,
+        9,
+        3
+      ],
+      "subheading": "Uplift",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/divine-love-b9.webp",
+        "dark": "img/divine-love-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "divine-strength",
+      "name": "Divine Strength",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        6,
+        11,
+        11,
+        13,
+        14,
+        14
+      ],
+      "subheading": "Subtle Body / Uplift",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/divine-strength.webp",
+        "dark": "img/divine-strength.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "divine-strength-b9",
+      "name": "Divine Strength",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        7,
+        3,
+        7,
+        6,
+        1,
+        7,
+        4
+      ],
+      "subheading": "Subtle Body / Uplift",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/divine-strength-b9.webp",
+        "dark": "img/divine-strength-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "divine-trinity",
+      "name": "Divine Trinity",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        3,
+        6,
+        7,
+        11,
+        13,
+        16,
+        18
+      ],
+      "subheading": "Subtle Body / Uplift",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/divine-trinity.webp",
+        "dark": "img/divine-trinity.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "divine-trinity-b9",
+      "name": "Divine Trinity",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        8,
+        9,
+        3,
+        5,
+        7,
+        7,
+        8
+      ],
+      "subheading": "Subtle Body / Uplift",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/divine-trinity-b9.webp",
+        "dark": "img/divine-trinity-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "divine-wisdom",
+      "name": "Divine Wisdom",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        7,
+        8,
+        4,
+        7,
+        2,
+        6
+      ],
+      "subheading": "Subtle Body / Uplift",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/divine-wisdom.webp",
+        "dark": "img/divine-wisdom.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "fear-of-death",
+      "name": "Fear of Death",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        2,
+        6,
+        9,
+        4,
+        6,
+        9
+      ],
+      "subheading": "Emotions / Fear",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/fear-of-death.webp",
+        "dark": "img/fear-of-death.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "fear-of-death-b44",
+      "name": "Fear of Death",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        1,
+        1,
+        2,
+        8,
+        8
+      ],
+      "subheading": "Emotions / Fear",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/fear-of-death-b44.webp",
+        "dark": "img/fear-of-death-b44.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "fear-of-death-2",
+      "name": "Fear of Death",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        1,
+        4,
+        9,
+        32,
+        33
+      ],
+      "subheading": "Emotions / Fear",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/fear-of-death-2.webp",
+        "dark": "img/fear-of-death-2.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "fear-of-dying",
+      "name": "Fear of Dying",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        1,
+        2,
+        2,
+        8,
+        8
+      ],
+      "subheading": "Emotions / Fear",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/fear-of-dying.webp",
+        "dark": "img/fear-of-dying.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "fear-of-dying-b44",
+      "name": "Fear of Dying",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        1,
+        5,
+        9,
+        32,
+        33
+      ],
+      "subheading": "Emotions / Fear",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/fear-of-dying-b44.webp",
+        "dark": "img/fear-of-dying-b44.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "fear-of-dying-b9",
+      "name": "Fear of Dying",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        2,
+        2,
+        9,
+        4,
+        6,
+        5
+      ],
+      "subheading": "Emotions / Fear",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/fear-of-dying-b9.webp",
+        "dark": "img/fear-of-dying-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "fear-of-failure",
+      "name": "Fear of Failure",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        4,
+        7,
+        1,
+        3,
+        5,
+        2
+      ],
+      "subheading": "Emotions / Fear",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/fear-of-failure.webp",
+        "dark": "img/fear-of-failure.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "life-energy",
+      "name": "Life Energy",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        1,
+        6,
+        9,
+        5,
+        1,
+        4
+      ],
+      "subheading": "Subtle Body / Uplift",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/life-energy.webp",
+        "dark": "img/life-energy.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "life-force-energy-fields",
+      "name": "Life Force Energy Fields",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        2,
+        6,
+        9,
+        9,
+        9,
+        8
+      ],
+      "subheading": "Subtle Body / Uplift",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/life-force-energy-fields.webp",
+        "dark": "img/life-force-energy-fields.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "life-force-energy-flow",
+      "name": "Life Force Energy Flow",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        2,
+        6,
+        4,
+        2,
+        9,
+        5
+      ],
+      "subheading": "Subtle Body / Uplift",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/life-force-energy-flow.webp",
+        "dark": "img/life-force-energy-flow.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "life-force-polarity",
+      "name": "Life Force Polarity",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        9,
+        4,
+        4,
+        9,
+        8
+      ],
+      "subheading": "Subtle Body / Uplift",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/life-force-polarity.webp",
+        "dark": "img/life-force-polarity.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "love-flow-of",
+      "name": "Love Flow of",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        8,
+        2,
+        5,
+        2
+      ],
+      "subheading": "Love",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/love-flow-of.webp",
+        "dark": "img/love-flow-of.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "love",
+      "name": "Love",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        2,
+        3,
+        44
+      ],
+      "subheading": "Command",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/love.webp",
+        "dark": "img/love.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "love-b9",
+      "name": "Love",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        3,
+        8,
+        9,
+        2
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/love-b9.webp",
+        "dark": "img/love-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "love-2",
+      "name": "Love",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        3,
+        8,
+        9,
+        2
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/love-2.webp",
+        "dark": "img/love-2.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "love-3",
+      "name": "Love",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        1,
+        2,
+        1,
+        2,
+        6
+      ],
+      "subheading": "Subtle Body / AM2",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/love-3.webp",
+        "dark": "img/love-3.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "love-flow-of-b9",
+      "name": "Love Flow of",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        8,
+        2,
+        5,
+        2
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/love-flow-of-b9.webp",
+        "dark": "img/love-flow-of-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "love-rejection-of",
+      "name": "Love Rejection of",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        9,
+        13,
+        17,
+        20
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/love-rejection-of.webp",
+        "dark": "img/love-rejection-of.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "love-rejection-of-b9",
+      "name": "Love Rejection of",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        1,
+        5,
+        6,
+        2,
+        5
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/love-rejection-of-b9.webp",
+        "dark": "img/love-rejection-of-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "love-rejection-of-2",
+      "name": "Love Rejection of",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        1,
+        5,
+        6,
+        2,
+        5
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/love-rejection-of-2.webp",
+        "dark": "img/love-rejection-of-2.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "lovelessness",
+      "name": "Lovelessness",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        14,
+        33,
+        33,
+        34,
+        44
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/lovelessness.webp",
+        "dark": "img/lovelessness.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "lovelessness-b9",
+      "name": "Lovelessness",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        4,
+        3,
+        7,
+        5,
+        3,
+        4
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/lovelessness-b9.webp",
+        "dark": "img/lovelessness-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "lovelessness-2",
+      "name": "Lovelessness",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        4,
+        3,
+        7,
+        5,
+        3,
+        4
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/lovelessness-2.webp",
+        "dark": "img/lovelessness-2.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "peace-love-alignment",
+      "name": "Peace & Love Alignment",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        8,
+        18,
+        28,
+        38
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/peace-love-alignment.webp",
+        "dark": "img/peace-love-alignment.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "peace-love-alignment-b9",
+      "name": "Peace & Love Alignment",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        8,
+        7,
+        8,
+        7,
+        3
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/peace-love-alignment-b9.webp",
+        "dark": "img/peace-love-alignment-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "receive-life-happiness",
+      "name": "Receive Life Happiness",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        6,
+        8,
+        9,
+        4,
+        5,
+        5
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/receive-life-happiness.webp",
+        "dark": "img/receive-life-happiness.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "receive-life-joy",
+      "name": "Receive Life Joy",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        4,
+        4,
+        5,
+        8,
+        1,
+        4
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/receive-life-joy.webp",
+        "dark": "img/receive-life-joy.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "receive-life-light",
+      "name": "Receive Life Light",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        4,
+        4,
+        7,
+        8,
+        1,
+        6
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/receive-life-light.webp",
+        "dark": "img/receive-life-light.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "receive-life-love",
+      "name": "Receive Life Love",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        3,
+        5,
+        7,
+        8,
+        9,
+        5
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/receive-life-love.webp",
+        "dark": "img/receive-life-love.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "receive-life-power",
+      "name": "Receive Life Power",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        3,
+        6,
+        3,
+        6,
+        7,
+        7
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/receive-life-power.webp",
+        "dark": "img/receive-life-power.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "receive-life-purity",
+      "name": "Receive Life Purity",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        4,
+        9,
+        4,
+        6,
+        7,
+        3
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/receive-life-purity.webp",
+        "dark": "img/receive-life-purity.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "receive-life-radiant-strength",
+      "name": "Receive Life Radiant Strength",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        3,
+        6,
+        1,
+        5,
+        6
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/receive-life-radiant-strength.webp",
+        "dark": "img/receive-life-radiant-strength.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "receive-living-happiness",
+      "name": "Receive Living Happiness",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        3,
+        5,
+        7,
+        1,
+        1,
+        8
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/receive-living-happiness.webp",
+        "dark": "img/receive-living-happiness.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "hyperacidity",
+      "name": "Hyperacidity",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        23,
+        25,
+        28,
+        36,
+        37
+      ],
+      "subheading": "Subtle Body / Septinate 87",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/hyperacidity.webp",
+        "dark": "img/hyperacidity.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "inspiration",
+      "name": "Inspiration",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        6,
+        8,
+        9,
+        9,
+        1
+      ],
+      "subheading": "Awakening",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/inspiration.webp",
+        "dark": "img/inspiration.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "brain-paralysis-50m",
+      "name": "Brain & Paralysis 50m",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        9,
+        3,
+        7,
+        2,
+        3
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/brain-paralysis-50m.webp",
+        "dark": "img/brain-paralysis-50m.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "brain-paralysis-50m-b44",
+      "name": "Brain & Paralysis 50m",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        19,
+        22,
+        29,
+        31
+      ],
+      "subheading": "SUBTLE BODY / SOHAM",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/brain-paralysis-50m-b44.webp",
+        "dark": "img/brain-paralysis-50m-b44.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "cancer-3x",
+      "name": "Cancer 3x",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        1,
+        12,
+        16,
+        25
+      ],
+      "subheading": "SUBTLE BODY / SOHAM",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/cancer-3x.webp",
+        "dark": "img/cancer-3x.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "cancer-3x-b9",
+      "name": "Cancer 3x",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        3,
+        4,
+        1,
+        5,
+        4
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/cancer-3x-b9.webp",
+        "dark": "img/cancer-3x-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "chemical-poison-200",
+      "name": "Chemical Poison 200",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        1,
+        3,
+        8,
+        10
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/chemical-poison-200.webp",
+        "dark": "img/chemical-poison-200.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "chemical-poison-200-b9",
+      "name": "Chemical Poison 200",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        4,
+        7,
+        9,
+        1,
+        3
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/chemical-poison-200-b9.webp",
+        "dark": "img/chemical-poison-200-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "circulation-3x",
+      "name": "Circulation 3x",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        7,
+        12,
+        37,
+        40
+      ],
+      "subheading": "SUBTLE BODY / SOHAM",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/circulation-3x.webp",
+        "dark": "img/circulation-3x.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "circulation-3x-b9",
+      "name": "Circulation 3x",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        9,
+        8,
+        8,
+        9,
+        7
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/circulation-3x-b9.webp",
+        "dark": "img/circulation-3x-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "diabetes-30",
+      "name": "Diabetes 30",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        9,
+        5,
+        9,
+        5,
+        1
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/diabetes-30.webp",
+        "dark": "img/diabetes-30.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "digestion-30",
+      "name": "Digestion 30",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        4,
+        2,
+        8,
+        9,
+        5
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/digestion-30.webp",
+        "dark": "img/digestion-30.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "divine-protection",
+      "name": "Divine Protection",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        9,
+        3,
+        1,
+        9,
+        4
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/divine-protection.webp",
+        "dark": "img/divine-protection.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "divine-protection-b44",
+      "name": "Divine Protection",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        7,
+        28,
+        34,
+        44
+      ],
+      "subheading": "SUBTLE BODY / SOHAM",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/divine-protection-b44.webp",
+        "dark": "img/divine-protection-b44.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "ears-30",
+      "name": "Ears 30",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        4,
+        7,
+        3,
+        6,
+        2
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/ears-30.webp",
+        "dark": "img/ears-30.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "eyes-30",
+      "name": "Eyes 30",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        1,
+        8,
+        4,
+        1,
+        5
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/eyes-30.webp",
+        "dark": "img/eyes-30.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "female-30",
+      "name": "Female 30",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        9,
+        6,
+        5,
+        2,
+        4
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/female-30.webp",
+        "dark": "img/female-30.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "flu-30",
+      "name": "Flu 30",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        4,
+        4,
+        9,
+        4
+      ],
+      "subheading": "SUBTLE BODY / SOHAM",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/flu-30.webp",
+        "dark": "img/flu-30.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "soham-22",
+      "name": "Flu 30",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        4,
+        11,
+        12,
+        19
+      ],
+      "subheading": "SUBTLE BODY / SOHAM",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/soham-22.webp",
+        "dark": "img/soham-22.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "soham-22-b9",
+      "name": "Flu 30",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        4,
+        4,
+        9,
+        4
+      ],
+      "subheading": "SUBTLE BODY / SOHAM",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/soham-22-b9.webp",
+        "dark": "img/soham-22-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "gastro-30",
+      "name": "Gastro 30",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        3,
+        4,
+        8,
+        9,
+        6
+      ],
+      "subheading": "SUBTLE BODY / SOHAM",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/gastro-30.webp",
+        "dark": "img/gastro-30.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "glandular-30",
+      "name": "Glandular 30",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        9,
+        3,
+        5,
+        8,
+        7
+      ],
+      "subheading": "SUBTLE BODY / SOHAM",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/glandular-30.webp",
+        "dark": "img/glandular-30.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "hair-200",
+      "name": "Hair 200",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        8,
+        1,
+        3,
+        5,
+        8
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/hair-200.webp",
+        "dark": "img/hair-200.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "immunity-200",
+      "name": "Immunity 200",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        9,
+        9,
+        1,
+        1,
+        2
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/immunity-200.webp",
+        "dark": "img/immunity-200.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "infection-200",
+      "name": "Infection 200",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        4,
+        8,
+        9,
+        9,
+        3
+      ],
+      "subheading": "SUBTLE BODY / SOHAM",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/infection-200.webp",
+        "dark": "img/infection-200.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "injury-30",
+      "name": "Injury 30",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        8,
+        3,
+        5,
+        8,
+        6
+      ],
+      "subheading": "SUBTLE BODY / SOHAM",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/injury-30.webp",
+        "dark": "img/injury-30.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "insomnia",
+      "name": "Insomnia",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        12,
+        22,
+        31,
+        35
+      ],
+      "subheading": "SUBTLE BODY / SOHAM",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/insomnia.webp",
+        "dark": "img/insomnia.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "insomnia-b9",
+      "name": "Insomnia",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        3,
+        6,
+        1,
+        6,
+        7
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/insomnia-b9.webp",
+        "dark": "img/insomnia-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "kidney-30",
+      "name": "Kidney 30",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        1,
+        3,
+        8,
+        1,
+        4
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/kidney-30.webp",
+        "dark": "img/kidney-30.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "life-aids-30",
+      "name": "Life (Aids) 30",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        1,
+        5,
+        8,
+        1,
+        6
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/life-aids-30.webp",
+        "dark": "img/life-aids-30.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "lung-chest-30",
+      "name": "Lung & Chest 30",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        8,
+        7,
+        5,
+        4,
+        6
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/lung-chest-30.webp",
+        "dark": "img/lung-chest-30.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "male-200",
+      "name": "Male 200",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        2,
+        5,
+        4,
+        4,
+        6
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/male-200.webp",
+        "dark": "img/male-200.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "pain-30",
+      "name": "Pain 30",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        3,
+        3,
+        2,
+        4
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/pain-30.webp",
+        "dark": "img/pain-30.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "rheum-arth-30",
+      "name": "Rheum & Arth 30",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        4,
+        5,
+        9,
+        9,
+        9
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/rheum-arth-30.webp",
+        "dark": "img/rheum-arth-30.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "sinus-30",
+      "name": "Sinus 30",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        1,
+        4,
+        6,
+        8,
+        1
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/sinus-30.webp",
+        "dark": "img/sinus-30.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "skeletal-200",
+      "name": "Skeletal 200",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        6,
+        5,
+        1,
+        3,
+        6
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/skeletal-200.webp",
+        "dark": "img/skeletal-200.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "sleep-cm",
+      "name": "Sleep Cm",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        2,
+        6,
+        1,
+        5,
+        5
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/sleep-cm.webp",
+        "dark": "img/sleep-cm.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "teeth-200",
+      "name": "Teeth 200",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        3,
+        9,
+        2,
+        1,
+        6
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/teeth-200.webp",
+        "dark": "img/teeth-200.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "throat-30",
+      "name": "Throat 30",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        4,
+        1,
+        4,
+        1,
+        1
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/throat-30.webp",
+        "dark": "img/throat-30.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "blood-pressure-200",
+      "name": "Blood Pressure 200",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        17,
+        17,
+        39,
+        39
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/blood-pressure-200.webp",
+        "dark": "img/blood-pressure-200.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "blood-pressure-200-b9",
+      "name": "Blood Pressure 200",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        6,
+        3,
+        6,
+        3,
+        9
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/blood-pressure-200-b9.webp",
+        "dark": "img/blood-pressure-200-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "stabilising",
+      "name": "Stabilising",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        11,
+        12,
+        33,
+        34
+      ],
+      "subheading": "Soham",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/stabilising.webp",
+        "dark": "img/stabilising.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "soul",
+      "name": "Soul",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        2,
+        8,
+        7,
+        8
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/soul.webp",
+        "dark": "img/soul.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "soul-cleansing",
+      "name": "Soul Cleansing",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        19,
+        20,
+        23,
+        24
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/soul-cleansing.webp",
+        "dark": "img/soul-cleansing.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "soul-cleansing-b9",
+      "name": "Soul Cleansing",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        9,
+        1,
+        3,
+        4,
+        8
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/soul-cleansing-b9.webp",
+        "dark": "img/soul-cleansing-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "soul-energy",
+      "name": "Soul Energy",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        9,
+        6,
+        7,
+        2,
+        8,
+        1
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/soul-energy.webp",
+        "dark": "img/soul-energy.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "spiritual-energy",
+      "name": "Spiritual Energy",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        2,
+        4,
+        8,
+        5,
+        8,
+        9
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/spiritual-energy.webp",
+        "dark": "img/spiritual-energy.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "spiritual-perception",
+      "name": "Spiritual Perception",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        7,
+        8,
+        3,
+        6,
+        1,
+        6,
+        4
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/spiritual-perception.webp",
+        "dark": "img/spiritual-perception.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "spiritual-resonance",
+      "name": "Spiritual Resonance",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        5,
+        8,
+        7,
+        1,
+        1,
+        9
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/spiritual-resonance.webp",
+        "dark": "img/spiritual-resonance.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "spiritual-transformation",
+      "name": "Spiritual Transformation",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        8,
+        1,
+        9,
+        4,
+        8,
+        2,
+        5
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/spiritual-transformation.webp",
+        "dark": "img/spiritual-transformation.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "spiritual-upliftment",
+      "name": "Spiritual Upliftment",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        20,
+        22,
+        33,
+        34
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/spiritual-upliftment.webp",
+        "dark": "img/spiritual-upliftment.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "spiritual-upliftment-b9",
+      "name": "Spiritual Upliftment",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        2,
+        6,
+        2,
+        3,
+        4
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/spiritual-upliftment-b9.webp",
+        "dark": "img/spiritual-upliftment-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "balance",
+      "name": "Balance",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        9,
+        4,
+        2,
+        9,
+        6
+      ],
+      "subheading": "Subtle Body / Tridosha",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/balance.webp",
+        "dark": "img/balance.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "oral-intake-p-v-k",
+      "name": "Oral Intake:p/v&k",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        3,
+        5,
+        6,
+        1,
+        2,
+        8
+      ],
+      "subheading": "Subtle Body / Tridosha",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/oral-intake-p-v-k.webp",
+        "dark": "img/oral-intake-p-v-k.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "pitta",
+      "name": "Pitta",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        4,
+        6,
+        7,
+        8,
+        7
+      ],
+      "subheading": "Subtle Body / Tridosha",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/pitta.webp",
+        "dark": "img/pitta.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "vayu",
+      "name": "Vayu",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        8,
+        1,
+        3,
+        4,
+        7
+      ],
+      "subheading": "Subtle Body / Tridosha",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/vayu.webp",
+        "dark": "img/vayu.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "ayurvedic-vata-kapha",
+      "name": "Ayurvedic Vata/kapha",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        1,
+        7,
+        1,
+        4,
+        5,
+        9,
+        9
+      ],
+      "subheading": "Subtle Body / Tridosha",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/ayurvedic-vata-kapha.webp",
+        "dark": "img/ayurvedic-vata-kapha.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "ayurvedic-vata-pitta",
+      "name": "Ayurvedic Vata/pitta",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        7,
+        8,
+        2,
+        1,
+        8,
+        9,
+        8
+      ],
+      "subheading": "Subtle Body / Tridosha",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/ayurvedic-vata-pitta.webp",
+        "dark": "img/ayurvedic-vata-pitta.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "ayurvedic-vata",
+      "name": "Ayurvedic - Vata",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        1,
+        4,
+        9,
+        4,
+        5
+      ],
+      "subheading": "Subtle Body / Tridosha",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/ayurvedic-vata.webp",
+        "dark": "img/ayurvedic-vata.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "kapha-physiolog-type",
+      "name": "Kapha Physiolog. Type",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        3,
+        6,
+        5,
+        1,
+        2,
+        6,
+        5
+      ],
+      "subheading": "Subtle Body / Tridosha",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/kapha-physiolog-type.webp",
+        "dark": "img/kapha-physiolog-type.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "oral-intake-k-v-p",
+      "name": "Oral Intake:k/v&p",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        7,
+        2,
+        6,
+        2,
+        4,
+        8
+      ],
+      "subheading": "Subtle Body / Tridosha",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/oral-intake-k-v-p.webp",
+        "dark": "img/oral-intake-k-v-p.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "oral-intake-p-k-v",
+      "name": "Oral Intake:p&k/v",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        3,
+        5,
+        6,
+        8,
+        1,
+        3,
+        8
+      ],
+      "subheading": "SUBTLE BODY/TRIDOSHA",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/oral-intake-p-k-v.webp",
+        "dark": "img/oral-intake-p-k-v.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "oral-intake-v-k-p",
+      "name": "Oral Intake:v&k/p",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        3,
+        5,
+        6,
+        8,
+        1,
+        3,
+        8
+      ],
+      "subheading": "SUBTLE BODY/TRIDOSHA",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/oral-intake-v-k-p.webp",
+        "dark": "img/oral-intake-v-k-p.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "oral-intake-v-p-k",
+      "name": "Oral Intake:v&p/k",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        4,
+        5,
+        7,
+        9,
+        1,
+        2,
+        1
+      ],
+      "subheading": "SUBTLE BODY/TRIDOSHA",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/oral-intake-v-p-k.webp",
+        "dark": "img/oral-intake-v-p-k.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "pitta-physiolog-type",
+      "name": "Pitta Physiolog. Type",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        6,
+        8,
+        2,
+        4,
+        6,
+        8,
+        7
+      ],
+      "subheading": "SUBTLE BODY/TRIDOSHA",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/pitta-physiolog-type.webp",
+        "dark": "img/pitta-physiolog-type.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "vata-physiolog-type",
+      "name": "Vata Physiolog. Type",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        8,
+        9,
+        5,
+        5,
+        9,
+        9,
+        9
+      ],
+      "subheading": "SUBTLE BODY/TRIDOSHA",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/vata-physiolog-type.webp",
+        "dark": "img/vata-physiolog-type.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "ayurvedic-pitta-kapha",
+      "name": "Ayurvedic Pitta/kapha",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        2,
+        5,
+        2,
+        6,
+        2,
+        4
+      ],
+      "subheading": "SUBTLE BODY/TRIDOSHA",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/ayurvedic-pitta-kapha.webp",
+        "dark": "img/ayurvedic-pitta-kapha.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "kapha",
+      "name": "Kapha",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        6,
+        5,
+        3,
+        2,
+        7
+      ],
+      "subheading": "SUBTLE BODY/TRIDOSHA",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/kapha.webp",
+        "dark": "img/kapha.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "uplift",
+      "name": "Uplift",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        2,
+        3,
+        6,
+        8,
+        11
+      ],
+      "subheading": "Soul/Uplift",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/uplift.webp",
+        "dark": "img/uplift.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "uplift-200",
+      "name": "Uplift 200",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        8,
+        9,
+        8,
+        9,
+        7
+      ],
+      "subheading": "Subtle Body / Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/uplift-200.webp",
+        "dark": "img/uplift-200.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "ultra-sounds",
+      "name": "Ultra Sounds",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        1,
+        5,
+        1,
+        2,
+        9,
+        9,
+        5
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/ultra-sounds.webp",
+        "dark": "img/ultra-sounds.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "yang",
+      "name": "Yang",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        3,
+        3,
+        3,
+        9
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/yang.webp",
+        "dark": "img/yang.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "yang-heel-bilateral",
+      "name": "Yang Heel Bilateral",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        8,
+        6,
+        9,
+        3,
+        6,
+        5
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/yang-heel-bilateral.webp",
+        "dark": "img/yang-heel-bilateral.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "yang-wei-mo-bilateral",
+      "name": "Yang Wei Mo Bilateral",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        4,
+        4,
+        6,
+        5,
+        2,
+        3
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/yang-wei-mo-bilateral.webp",
+        "dark": "img/yang-wei-mo-bilateral.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "yin",
+      "name": "Yin",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        6,
+        6,
+        6,
+        9
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/yin.webp",
+        "dark": "img/yin.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "yin-qui-mo-bilateral",
+      "name": "Yin Qui Mo Bilateral",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        6,
+        9,
+        3,
+        3,
+        8,
+        2
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/yin-qui-mo-bilateral.webp",
+        "dark": "img/yin-qui-mo-bilateral.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "yin-wei-mo-bilateral",
+      "name": "Yin Wei Mo Bilateral",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        4,
+        3,
+        7,
+        3,
+        4
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/yin-wei-mo-bilateral.webp",
+        "dark": "img/yin-wei-mo-bilateral.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "yin-yang-balance",
+      "name": "Yin/yang Balance",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        3,
+        6,
+        3,
+        6,
+        9
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/yin-yang-balance.webp",
+        "dark": "img/yin-yang-balance.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "transcend",
+      "name": "Transcend",
+      "category": "subtle-bodies",
+      "base": 44,
+      "sequence": [
+        8,
+        9,
+        11
+      ],
+      "subheading": "Command",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/transcend.webp",
+        "dark": "img/transcend.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "translocation",
+      "name": "Translocation",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        8,
+        5,
+        9,
+        4,
+        7,
+        6
+      ],
+      "subheading": "SUBTLE BODY",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/translocation.webp",
+        "dark": "img/translocation.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "transmute",
+      "name": "Transmute",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        4,
+        7,
+        8,
+        2,
+        4,
+        3
+      ],
+      "subheading": "SUBTLE BODY",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/transmute.webp",
+        "dark": "img/transmute.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "understanding",
+      "name": "Understanding",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        5,
+        5,
+        9,
+        3,
+        5,
+        7,
+        7
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/understanding.webp",
+        "dark": "img/understanding.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "uplift-transform",
+      "name": "Uplift Transform",
+      "category": "subtle-bodies",
+      "base": 9,
+      "sequence": [
+        2,
+        5,
+        3,
+        3,
+        5,
+        8
+      ],
+      "subheading": "Subtle Body",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/uplift-transform.webp",
+        "dark": "img/uplift-transform.dark.webp",
+        "invert": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,657 @@
+{
+  "id": "mind-v2",
+  "name": "Mind (v2)",
+  "version": "1",
+  "taxonomy": [
+    {
+      "id": "mind",
+      "label": "Mind"
+    }
+  ],
+  "remedies": [
+    {
+      "id": "altruism",
+      "name": "Altruism",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        5,
+        5,
+        5,
+        9,
+        3,
+        9
+      ],
+      "subheading": "Mind State / Attitudes",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/altruism.webp",
+        "dark": "img/altruism.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "harmlessness",
+      "name": "Harmlessness",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        6,
+        7,
+        1,
+        6,
+        2
+      ],
+      "subheading": "Mind State/Attitudes",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/harmlessness.webp",
+        "dark": "img/harmlessness.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "hope",
+      "name": "Hope",
+      "category": "mind",
+      "base": 44,
+      "sequence": [
+        19,
+        22,
+        37,
+        40
+      ],
+      "subheading": "Mind State / Attitude",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/hope.webp",
+        "dark": "img/hope.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "hopelessness",
+      "name": "Hopelessness",
+      "category": "mind",
+      "base": 44,
+      "sequence": [
+        19,
+        22,
+        37,
+        40
+      ],
+      "subheading": "Mind State / Attitude",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/hopelessness.webp",
+        "dark": "img/hopelessness.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "lack-of-confidence",
+      "name": "Lack of Confidence",
+      "category": "mind",
+      "base": 44,
+      "sequence": [
+        35,
+        38,
+        40,
+        42
+      ],
+      "subheading": "Soham",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/lack-of-confidence.webp",
+        "dark": "img/lack-of-confidence.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "lack-of-confidence-b9",
+      "name": "Lack of Confidence",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        7,
+        9,
+        9,
+        2,
+        9
+      ],
+      "subheading": "Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/lack-of-confidence-b9.webp",
+        "dark": "img/lack-of-confidence-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "intellect",
+      "name": "Intellect",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        4,
+        5,
+        7,
+        9,
+        3,
+        1
+      ],
+      "subheading": "Mental",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/intellect.webp",
+        "dark": "img/intellect.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "intellectual-confusion",
+      "name": "Intellectual Confusion",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        5,
+        1,
+        3,
+        3,
+        5,
+        8
+      ],
+      "subheading": "Mental",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/intellectual-confusion.webp",
+        "dark": "img/intellectual-confusion.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "intelligence",
+      "name": "Intelligence",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        5,
+        1,
+        4,
+        2,
+        6,
+        9
+      ],
+      "subheading": "Mental",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/intelligence.webp",
+        "dark": "img/intelligence.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "intense-mental-concentration",
+      "name": "Intense Mental Concentration",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        1,
+        5,
+        8,
+        9,
+        5
+      ],
+      "subheading": "Mental",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/intense-mental-concentration.webp",
+        "dark": "img/intense-mental-concentration.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "acceptance",
+      "name": "Acceptance",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        4,
+        5,
+        7,
+        1,
+        7,
+        6
+      ],
+      "subheading": "Mind",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/acceptance.webp",
+        "dark": "img/acceptance.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "achievement",
+      "name": "Achievement",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        6,
+        9,
+        8,
+        4,
+        2,
+        2
+      ],
+      "subheading": "Mind",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/achievement.webp",
+        "dark": "img/achievement.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "adaptability",
+      "name": "Adaptability",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        4,
+        6,
+        2,
+        9,
+        9,
+        4,
+        7
+      ],
+      "subheading": "Mind",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/adaptability.webp",
+        "dark": "img/adaptability.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "adjust",
+      "name": "Adjust",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        3,
+        8,
+        2,
+        7,
+        6,
+        8
+      ],
+      "subheading": "Mind",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/adjust.webp",
+        "dark": "img/adjust.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "aggressiveness",
+      "name": "Aggressiveness",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        8,
+        4,
+        3,
+        9,
+        7,
+        4
+      ],
+      "subheading": "Mind",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/aggressiveness.webp",
+        "dark": "img/aggressiveness.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "agoraphobia",
+      "name": "Agoraphobia",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        2,
+        3,
+        9,
+        2,
+        8,
+        6
+      ],
+      "subheading": "Mind",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/agoraphobia.webp",
+        "dark": "img/agoraphobia.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "alienation",
+      "name": "Alienation",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        8,
+        2,
+        6,
+        9,
+        5,
+        3
+      ],
+      "subheading": "Mind",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/alienation.webp",
+        "dark": "img/alienation.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "altruism-b9",
+      "name": "Altruism",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        5,
+        5,
+        5,
+        9,
+        3,
+        9
+      ],
+      "subheading": "MIND",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/altruism-b9.webp",
+        "dark": "img/altruism-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "amnesia",
+      "name": "Amnesia",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        5,
+        7,
+        8,
+        2,
+        7,
+        2
+      ],
+      "subheading": "MIND",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/amnesia.webp",
+        "dark": "img/amnesia.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "anger",
+      "name": "Anger",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        4,
+        8,
+        5,
+        5,
+        9,
+        4
+      ],
+      "subheading": "MIND",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/anger.webp",
+        "dark": "img/anger.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "angst",
+      "name": "Angst",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        6,
+        7,
+        5,
+        8,
+        5,
+        4
+      ],
+      "subheading": "Mind",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/angst.webp",
+        "dark": "img/angst.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "insecurity",
+      "name": "Insecurity",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        6,
+        4,
+        7,
+        8
+      ],
+      "subheading": "Mind",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/insecurity.webp",
+        "dark": "img/insecurity.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "worry",
+      "name": "Worry",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        2,
+        5,
+        4,
+        7,
+        5,
+        5
+      ],
+      "subheading": "Mind",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/worry.webp",
+        "dark": "img/worry.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "worry-to-trust-transmuter",
+      "name": "Worry to Trust Transmuter",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        3,
+        4,
+        8,
+        2,
+        9,
+        8
+      ],
+      "subheading": "Mind",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/worry-to-trust-transmuter.webp",
+        "dark": "img/worry-to-trust-transmuter.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "focus",
+      "name": "Focus",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        5,
+        7,
+        3,
+        2,
+        9
+      ],
+      "subheading": "Mind State",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/focus.webp",
+        "dark": "img/focus.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "honesty",
+      "name": "Honesty",
+      "category": "mind",
+      "base": 44,
+      "sequence": [
+        6,
+        26,
+        35,
+        38,
+        40
+      ],
+      "subheading": "Mind State / Principles",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/honesty.webp",
+        "dark": "img/honesty.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "honesty-b9",
+      "name": "Honesty",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        3,
+        3,
+        4,
+        9,
+        8,
+        9
+      ],
+      "subheading": "Mind State/Principles",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/honesty-b9.webp",
+        "dark": "img/honesty-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "stress",
+      "name": "Stress",
+      "category": "mind",
+      "base": 44,
+      "sequence": [
+        27,
+        32,
+        34,
+        37
+      ],
+      "subheading": "Soham",
+      "rateType": "Base 44 Rate (Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/stress.webp",
+        "dark": "img/stress.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "stress-b9",
+      "name": "Stress",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        7,
+        3,
+        2,
+        6,
+        9
+      ],
+      "subheading": "Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/stress-b9.webp",
+        "dark": "img/stress-b9.dark.webp",
+        "invert": true
+      }
+    },
+    {
+      "id": "tension-10mm",
+      "name": "Tension 10mm",
+      "category": "mind",
+      "base": 9,
+      "sequence": [
+        8,
+        1,
+        3,
+        7,
+        1
+      ],
+      "subheading": "Soham",
+      "rateType": "Base 9 Rate (336 - Combe)",
+      "source": "Combe",
+      "image": {
+        "light": "img/tension-10mm.webp",
+        "dark": "img/tension-10mm.dark.webp",
+        "invert": true
+      }
+    }
+  ]
+}
