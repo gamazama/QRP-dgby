@@ -27,6 +27,8 @@ export interface CardSurfaceProps {
   fill?: 'width' | 'height';
   /** Optional circular photo in the card's centre (e.g. a remedy's printed picture). */
   centerImage?: CardCenterImage;
+  /** Rate provenance (e.g. "Combe"/"Sulis") shown in brackets on the rate label. */
+  source?: string;
 }
 
 function Motif({ design }: { design: 'celtic' | 'triskelion' }) {
@@ -56,10 +58,11 @@ function CardSurfaceImpl({
   rotation = 0,
   fill = 'width',
   centerImage,
+  source = '',
 }: CardSurfaceProps) {
   const geo = useMemo(
-    () => buildCardGeometryCached({ style, sequence, base, title, description, tier }),
-    [style, sequence, base, title, description, tier],
+    () => buildCardGeometryCached({ style, sequence, base, title, description, tier, source }),
+    [style, sequence, base, title, description, tier, source],
   );
   const clipId = useId();
 
@@ -119,16 +122,21 @@ function CardSurfaceImpl({
                       <line x1={f.right} y1={f.top} x2={f.right} y2={f.headerY} stroke="currentColor" strokeWidth={f.strokeWidth} />
                     </>
                   )}
-                  <text
-                    x={CX}
-                    y={f.titleY}
-                    textAnchor="middle"
-                    dominantBaseline="middle"
-                    className="fill-current tracking-widest"
-                    style={{ fontSize: geo.uiFontSize, fontWeight: 'bold', fontFamily: geo.uiFont }}
-                  >
-                    {title || 'SEQUENCE'}
-                  </text>
+                  {(f.titleLines.length ? f.titleLines : [{ text: title || 'SEQUENCE', y: f.titleY }]).map(
+                    (ln, i) => (
+                      <text
+                        key={i}
+                        x={CX}
+                        y={ln.y}
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                        className="fill-current tracking-widest"
+                        style={{ fontSize: f.titleFontSize, fontWeight: 'bold', fontFamily: geo.uiFont }}
+                      >
+                        {ln.text}
+                      </text>
+                    ),
+                  )}
                   {description && (
                     <text
                       x={CX}
@@ -199,11 +207,13 @@ function CardSurfaceImpl({
               ? (() => {
                   const r = geo.rRingInner * (style.centerImageScale ?? CENTER_IMAGE_SCALE_DEFAULT);
                   const circle = centerImage.circle !== false;
-                  // Source photo: centre at (PCX, PCY), radius PR (of width); source ~PWH wide:tall.
-                  const PCX = 0.505;
-                  const PCY = 0.582;
-                  const PR = 0.15;
-                  const PWH = 0.853;
+                  // `whole`: src is an isolated symbol — draw it to fill the circle
+                  // (a touch oversized so a square symbol covers the disc). Otherwise
+                  // crop the centre photo-circle out of a full card image.
+                  const PCX = centerImage.whole ? 0.5 : 0.505;
+                  const PCY = centerImage.whole ? 0.5 : 0.582;
+                  const PR = centerImage.whole ? 0.5 : 0.15;
+                  const PWH = centerImage.whole ? 1 : 0.853;
                   const wd = r / PR; // scale source so its photo radius == display radius r
                   const hd = wd / PWH;
                   return (

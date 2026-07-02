@@ -25,6 +25,10 @@ export interface CardCenterImage {
   src: string;
   circle?: boolean;
   invert?: boolean;
+  /** When true, `src` is an isolated symbol drawn to fill the centre circle
+   *  directly. When false/absent, the centre circle is cropped out of a full
+   *  card image (the printed-photo-circle geometry). */
+  whole?: boolean;
 }
 
 /** An instance in a sequence: a remedy/data/image/transition + an applied style. */

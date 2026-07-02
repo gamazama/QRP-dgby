@@ -19,6 +19,7 @@ function keyOf(input: BuildCardGeometryInput): string {
     t: input.title ?? '',
     d: input.description ?? '',
     r: input.tier ?? 'high',
+    src: input.source ?? '',
   });
 }
 

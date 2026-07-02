@@ -17,6 +17,7 @@ export function RemedyThumb({ remedy, className = '' }: { remedy: Remedy; classN
             base={remedy.base}
             title={remedy.name}
             description={remedy.subheading ?? ''}
+            source={remedy.source ?? ''}
             tier="lite"
             fill="height"
           />

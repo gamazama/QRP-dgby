@@ -10,10 +10,13 @@ import { useToast } from '@/components/ui/toastContext';
 import { RemedyThumb } from '@/features/remedy-search/RemedyThumb';
 import { RemedyEditor } from '@/features/library/RemedyEditor';
 import { CardSurface } from '@/render/CardSurface';
-import { DEFAULT_STYLE_CONFIG } from '@/engine/presets';
+import { remedyImageRel } from '@/lib/assets';
+import { DHARMA_STYLE } from '@/engine/presets';
 import { cn } from '@/lib/cn';
 
-const DEFAULT_STYLE = 'preset:sunflower';
+// These radionic cards are drawn in the dharma-gate style, so the library
+// previews and the cards it adds use it too (matches the printed artwork).
+const DEFAULT_STYLE = 'preset:dharma';
 type DisplayMode = 'pattern' | 'artwork';
 const chip =
   'flex flex-1 items-center justify-center gap-1 rounded border px-1 py-0.5 text-[11px]';
@@ -162,7 +165,26 @@ export function LibraryPage() {
                 >
                   {mode === 'pattern' ? (
                     <div className="aspect-4/7 w-full bg-white dark:bg-slate-900">
-                      <CardSurface style={DEFAULT_STYLE_CONFIG} sequence={r.sequence} base={r.base} tier="balanced" fill="height" />
+                      <CardSurface
+                        style={DHARMA_STYLE}
+                        sequence={r.sequence}
+                        base={r.base}
+                        title={r.name}
+                        description={r.subheading ?? ''}
+                        source={r.source ?? ''}
+                        tier="balanced"
+                        fill="height"
+                        {...(r.image
+                          ? {
+                              centerImage: {
+                                src: remedyImageRel(r.packId, r.image.center ?? r.image.light),
+                                circle: true,
+                                whole: !!r.image.center,
+                                invert: r.image.invert ?? false,
+                              },
+                            }
+                          : {})}
+                      />
                     </div>
                   ) : (
                     <RemedyThumb remedy={r} className="aspect-4/7 w-full bg-white dark:bg-slate-900" />

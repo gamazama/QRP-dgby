@@ -62,6 +62,8 @@ export const StyleSchema = z.object({
 export const RemedyImageSchema = z.object({
   light: z.string(),
   dark: z.string().optional(),
+  center: z.string().optional(),
+  invert: z.boolean().optional(),
 });
 
 export const RemedySchema = z.object({
@@ -74,6 +76,7 @@ export const RemedySchema = z.object({
   base: RateBaseSchema,
   sequence: z.array(z.number()),
   rateType: z.string().optional(),
+  source: z.string().optional(),
   image: RemedyImageSchema.optional(),
   notes: z.string().optional(),
   modified: z.boolean().optional(),
@@ -115,6 +118,7 @@ export const CardSchema = z.object({
       src: z.string(),
       circle: z.boolean().optional(),
       invert: z.boolean().optional(),
+      whole: z.boolean().optional(),
     })
     .optional(),
   durationMs: z.number().optional(),

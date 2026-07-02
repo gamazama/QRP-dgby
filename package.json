@@ -16,7 +16,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "build:packs": "node scripts/pipeline/build-packs.mjs",
+    "build:packs": "node scripts/pipeline/afdesign/apply-catalog.mjs",
     "build:v2": "cross-env QRP_BASE=/QRP-dgby/v2/ vite build",
     "deploy": "npm run build:v2 && gh-pages -d dist -e v2 -a --nojekyll -m \"deploy v2 [skip ci]\"",
     "ci": "npm run typecheck && npm run lint && npm run test"

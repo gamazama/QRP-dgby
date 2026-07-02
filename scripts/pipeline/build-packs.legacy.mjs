@@ -1,3 +1,13 @@
+// ⚠️ RETIRED / DESTRUCTIVE — do not use. Superseded by afdesign/apply-catalog.mjs
+// (which `npm run build:packs` now runs). This legacy script WIPES public/packs/
+// (rmSync) and rebuilds ONLY the old QRP-dgby prototype packs, destroying the
+// afdesign v2 catalog. Kept for reference only; it refuses to run without --force.
+if (!process.argv.includes('--force')) {
+  console.error('build-packs.legacy.mjs is retired and destructive. It would WIPE public/packs/.\n' +
+    'Use `npm run build:packs` (apply-catalog) instead. Pass --force only if you truly mean to rebuild the old prototype packs.');
+  process.exit(1);
+}
+
 // Card-pack build pipeline.
 //
 // For the first packs we REUSE the prototype's already-baked light/dark WebP and

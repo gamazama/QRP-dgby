@@ -55,6 +55,9 @@ export interface CardFrameGeometry {
   squareHeader: boolean;
   headerY: number;
   titleY: number;
+  /** Title, wrapped to 1–2 balanced lines, each with its own vertical centre. */
+  titleLines: { text: string; y: number }[];
+  titleFontSize: number;
   descY: number;
 }
 
@@ -77,6 +80,8 @@ export interface BuildCardGeometryInput {
   title?: string;
   description?: string;
   tier?: RenderTier;
+  /** Rate provenance (e.g. "Combe", "Sulis"). Shown in brackets on the rate label. */
+  source?: string;
 }
 
 export interface CardGeometry {
@@ -126,8 +131,15 @@ const lobePetalCount = (petals: number, tier: RenderTier): number =>
 const centralSeedCount = (tier: RenderTier): number =>
   tier === 'lite' ? 60 : tier === 'balanced' ? 160 : 300;
 
+// Bottom-left rate label. Base 9 uses the "· 336" scale; the source (rate book,
+// e.g. Combe/Sulis) goes in brackets when known: "Base 9 · 336 (Combe)".
+function buildBaseLabel(base: number, source?: string): string {
+  const core = base === 9 ? 'Base 9 · 336' : `Base ${base}`;
+  return source ? `${core} (${source})` : core;
+}
+
 export function buildCardGeometry(input: BuildCardGeometryInput): CardGeometry {
-  const { style: s, sequence, base, title = '', description = '', tier = 'high' } = input;
+  const { style: s, sequence, base, title = '', description = '', tier = 'high', source } = input;
 
   const { viewBox, aspect } = cardFrame(s);
 
@@ -278,8 +290,25 @@ export function buildCardGeometry(input: BuildCardGeometryInput): CardGeometry {
   const headerHeight = s.frameHeaderOffset * s.frameScale;
   const headerY = fTop - headerHeight;
   const headerCenterY = fTop - headerHeight / 2;
-  const titleY = description ? headerCenterY - s.uiFontSize * 0.4 : headerCenterY;
-  const descY = headerCenterY + s.uiFontSize * 0.65;
+  // Wrap a long title onto two balanced lines (by word), and stack title lines +
+  // optional subheading centred in the (taller) header band.
+  const words = title.split(/\s+/).filter(Boolean);
+  let lines = title ? [title] : [];
+  if (title.length > 18 && words.length > 1) {
+    let best = 1, bestDiff = Infinity;
+    for (let i = 1; i < words.length; i++) {
+      const diff = Math.abs(words.slice(0, i).join(' ').length - words.slice(i).join(' ').length);
+      if (diff < bestDiff) { bestDiff = diff; best = i; }
+    }
+    lines = [words.slice(0, best).join(' '), words.slice(best).join(' ')];
+  }
+  const titleFontSize = s.uiFontSize;
+  const titleLH = titleFontSize * 1.02;
+  const descLH = s.uiFontSize * 0.7;
+  const blockTop = headerCenterY - (lines.length * titleLH + (description ? descLH : 0)) / 2;
+  const titleLines = lines.map((text, i) => ({ text, y: blockTop + titleLH * i + titleLH / 2 }));
+  const titleY = titleLines[0]?.y ?? headerCenterY;
+  const descY = blockTop + lines.length * titleLH + descLH / 2;
 
   // --- Info line: the rate system (left) + the actual rate numbers (right). ---
   const inset = 14;
@@ -326,6 +355,8 @@ export function buildCardGeometry(input: BuildCardGeometryInput): CardGeometry {
       squareHeader: s.frameSquareHeader,
       headerY,
       titleY,
+      titleLines,
+      titleFontSize,
       descY,
     },
     infoLine: {
@@ -334,7 +365,7 @@ export function buildCardGeometry(input: BuildCardGeometryInput): CardGeometry {
       right: fRight - inset,
       y: fBottom - inset,
       fontSize: s.uiFontSize * 0.7,
-      baseLabel: `Base ${base ?? sequence.length}`,
+      baseLabel: buildBaseLabel(base ?? sequence.length, source),
       seqStr,
       long: seqStr.length > 26,
     },
